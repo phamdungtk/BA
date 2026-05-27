@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Master Diagram: Đơn hàng – Hàng hoá – Workflows</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+  <style>
+    :root {
+      --bg:#060810;--surface:#0d1117;--surface-2:#161b22;--surface-3:#1f2937;
+      --border:#2d3748;--border-bright:#4a5568;--text:#e2e8f0;--text-muted:#718096;--text-dim:#4a5568;
+      --accent:#38bdf8;--green:#4ade80;--red:#f87171;--node-line:#334155;
+      --font-body:'Sora',sans-serif;--font-mono:'IBM Plex Mono',monospace;
+      --clr-kh:#0891b2;--clr-ncc:#059669;--clr-fwd:#2563eb;--clr-hq:#d97706;
+      --clr-thue:#7c3aed;--clr-qc:#dc2626;--clr-nh:#0d9488;--clr-kho:#6366f1;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--text);height:100vh;overflow:hidden;display:flex;flex-direction:column;user-select:none}
+
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:44px;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0;gap:12px}
+    .topbar-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:13px;letter-spacing:.04em}
+    .topbar-brand .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+    .topbar-center{display:flex;align-items:center;gap:3px;background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:3px}
+    .tb-btn{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;font-size:13px;transition:background .15s,color .15s}
+    .tb-btn:hover{background:var(--surface-3);color:var(--text)}
+    .tb-sep{width:1px;height:18px;background:var(--border);margin:0 2px}
+    .zoom-display{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);min-width:44px;text-align:center}
+    .topbar-right{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--text-dim);font-family:var(--font-mono)}
+    .kbd{background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-size:9px;color:var(--text-muted)}
+
+    .legend-bar{display:flex;align-items:center;gap:12px;padding:5px 20px;background:var(--surface-2);border-bottom:1px solid var(--border);flex-shrink:0;overflow-x:auto}
+    .legend-title{font-family:var(--font-mono);font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;white-space:nowrap}
+    .legend-item{display:flex;align-items:center;gap:5px;white-space:nowrap}
+    .legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+    .legend-label{font-size:10px;color:var(--text-muted)}
+
+    .canvas-wrapper{flex:1;overflow:hidden;position:relative;cursor:grab;background:radial-gradient(ellipse at 20% 30%,rgba(56,189,248,.04) 0%,transparent 55%),radial-gradient(ellipse at 80% 70%,rgba(99,102,241,.04) 0%,transparent 55%),var(--bg)}
+    .canvas-wrapper.grabbing{cursor:grabbing}
+    .canvas-wrapper::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:32px 32px;opacity:.12;pointer-events:none}
+    .canvas{position:absolute;top:50%;left:50%;transform-origin:center;will-change:transform}
+
+    /* ── TREE CONNECTORS (FIXED) ── */
+    .tree-root{display:flex;justify-content:center;padding-top:16px}
+    .tree-ul{position:relative;display:flex;justify-content:center;padding-top:22px;list-style:none}
+    .tree-ul-sub::before{content:'';position:absolute;top:0;left:50%;margin-left:-1px;border-left:2px solid var(--node-line);height:22px}
+    .tree-li{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:22px;padding-left:5px;padding-right:5px}
+    .tree-li::before{content:'';position:absolute;top:0;right:50%;border-top:2px solid var(--node-line);width:50%;height:22px}
+    .tree-li::after{content:'';position:absolute;top:0;left:50%;border-top:2px solid var(--node-line);border-left:2px solid var(--node-line);width:50%;height:22px}
+    .tree-li:first-child::before{border-top:none}
+    .tree-li:last-child::after{border-top:none}
+    .tree-li:only-child::after,.tree-li:only-child::before{display:none}
+    .tree-li:only-child{padding-top:0}
+
+    /* ── NODES ── */
+    .node{position:relative;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;border-radius:12px;border:2px solid var(--border);padding:7px 12px;min-width:95px;max-width:145px;font-size:11px;font-weight:600;color:var(--text);cursor:pointer;z-index:10;white-space:normal;line-height:1.3;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s,filter .18s}
+    .node:hover{transform:translateY(-3px);filter:brightness(1.15)}
+    .node-label{display:block;font-size:7px;font-family:var(--font-mono);letter-spacing:.12em;color:var(--text-dim);margin-bottom:2px;text-transform:uppercase}
+    .toggle-icon{font-size:8px;color:var(--text-dim);margin-top:3px;transition:transform .25s;display:block}
+    .toggle-icon.rotated{transform:rotate(-90deg)}
+
+    .node-root{background:linear-gradient(135deg,#e2e8f0,#f8fafc);color:#0f172a;border-color:#94a3b8;font-size:14px;font-weight:700;padding:12px 24px;border-radius:16px;box-shadow:0 0 32px rgba(226,232,240,.1),0 8px 32px rgba(0,0,0,.4)}
+    .node-category{background:linear-gradient(135deg,#111827,#1a1f2e);border:2px dashed #6b7280;font-weight:700;font-size:12px;padding:9px 16px;min-width:125px;max-width:175px;box-shadow:0 4px 16px rgba(0,0,0,.3)}
+    .node-category .cat-icon{font-size:16px;margin-bottom:2px}
+    .node-module{background:linear-gradient(135deg,#0f2038,#0e1b2e);border-color:#3b82f6!important;border-width:2.5px;box-shadow:0 0 24px rgba(59,130,246,.25),0 4px 16px rgba(0,0,0,.4);font-size:13px;padding:10px 18px;min-width:130px}
+    .node-module:hover{box-shadow:0 0 40px rgba(59,130,246,.4),0 8px 24px rgba(0,0,0,.5)}
+
+    .node-entity{background:var(--surface-2);border-width:2px;box-shadow:0 4px 14px rgba(0,0,0,.3);padding:7px 11px;min-width:90px;max-width:120px}
+    .node-entity .entity-icon{font-size:16px;margin-bottom:1px}
+    .node-entity-kh{border-color:var(--clr-kh);background:linear-gradient(135deg,#083344,#0c4a5e)}
+    .node-entity-ncc{border-color:var(--clr-ncc);background:linear-gradient(135deg,#022c22,#064e3b)}
+    .node-entity-fwd{border-color:var(--clr-fwd);background:linear-gradient(135deg,#172554,#1e3a5f)}
+    .node-entity-hq{border-color:var(--clr-hq);background:linear-gradient(135deg,#451a03,#78350f)}
+    .node-entity-thue{border-color:var(--clr-thue);background:linear-gradient(135deg,#2e1065,#4c1d95)}
+    .node-entity-qc{border-color:var(--clr-qc);background:linear-gradient(135deg,#450a0a,#7f1d1d)}
+    .node-entity-nh{border-color:var(--clr-nh);background:linear-gradient(135deg,#042f2e,#134e4a)}
+    .node-entity-kho{border-color:var(--clr-kho);background:linear-gradient(135deg,#1e1b4b,#312e81)}
+
+    .node-sub{background:var(--surface-2);border-radius:999px;border-width:1.5px;min-width:70px;max-width:115px;font-size:9px;padding:4px 9px;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+    .node-sub-kh{border-color:var(--clr-kh);color:#67e8f9}
+    .node-sub-ncc{border-color:var(--clr-ncc);color:#6ee7b7}
+    .node-sub-fwd{border-color:var(--clr-fwd);color:#93c5fd}
+    .node-sub-hq{border-color:var(--clr-hq);color:#fcd34d}
+    .node-sub-thue{border-color:var(--clr-thue);color:#c4b5fd}
+    .node-sub-qc{border-color:var(--clr-qc);color:#fca5a5}
+    .node-sub-nh{border-color:var(--clr-nh);color:#5eead4}
+    .node-sub-kho{border-color:var(--clr-kho);color:#a5b4fc}
+
+    .node-group{background:var(--surface-3);border-color:#475569;font-weight:700;font-size:10px;padding:7px 10px;min-width:100px;max-width:130px}
+    .group-badge{display:inline-flex;align-items:center;background:rgba(56,189,248,.15);color:var(--accent);font-family:var(--font-mono);font-size:8px;font-weight:600;border-radius:5px;padding:1px 5px;margin-top:2px}
+
+    /* Attr pill – CLICKABLE → opens flowchart */
+    .node-attr{position:relative;background:linear-gradient(135deg,#d1d5db,#e5e7eb);color:#111827;border-color:#9ca3af;border-radius:999px;min-width:70px;max-width:115px;font-size:9px;padding:5px 10px;box-shadow:0 0 6px rgba(255,255,255,.05);transition:all .2s}
+    .node-attr:hover{background:linear-gradient(135deg,#93c5fd,#bfdbfe);border-color:#3b82f6;box-shadow:0 0 16px rgba(59,130,246,.45);color:#0c1829;transform:translateY(-3px) scale(1.04)}
+    .node-attr::after{content:'📊';position:absolute;right:-6px;top:-6px;font-size:9px;opacity:0;transition:opacity .2s;pointer-events:none}
+    .node-attr:hover::after{opacity:1}
+
+    /* ── MINIMAP ── */
+    .minimap{position:fixed;bottom:14px;right:14px;width:140px;height:90px;background:rgba(13,17,23,.9);border:1px solid var(--border);border-radius:10px;overflow:hidden;backdrop-filter:blur(8px);box-shadow:0 8px 32px rgba(0,0,0,.5);z-index:100}
+    .minimap-label{position:absolute;top:4px;left:6px;font-family:var(--font-mono);font-size:7px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em}
+    #minimapCanvas{width:100%;height:100%;opacity:.7}
+    .statusbar{position:fixed;bottom:14px;left:14px;display:flex;align-items:center;gap:8px;background:rgba(13,17,23,.9);border:1px solid var(--border);border-radius:8px;padding:4px 10px;font-family:var(--font-mono);font-size:9px;color:var(--text-muted);backdrop-filter:blur(8px);z-index:100}
+    .status-dot{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
+    .statusbar .sep{color:var(--border-bright)}
+
+    /* ── CASCADE BUTTON ── */
+    .cascade-btn{background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.3);border-radius:6px;color:#fbbf24;font-size:11px;padding:2px 6px;cursor:pointer;margin-left:6px;transition:all .2s;line-height:1}
+    .cascade-btn:hover{background:rgba(251,191,36,.25);transform:scale(1.1);box-shadow:0 0 8px rgba(251,191,36,.3)}
+
+    /* ── ENTITY REFERENCE PANEL ── */
+    .entity-ref-panel{position:fixed;bottom:14px;left:180px;width:280px;background:rgba(13,17,23,.95);border:1px solid var(--border);border-radius:12px;backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,.5);z-index:100;font-size:11px;transition:all .3s ease;max-height:calc(100vh - 100px);overflow:hidden;display:flex;flex-direction:column}
+    .entity-ref-header{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;cursor:pointer;color:var(--text-muted);font-weight:600;font-size:11px;border-bottom:1px solid var(--border);flex-shrink:0;user-select:none}
+    .entity-ref-header:hover{color:var(--text);background:rgba(255,255,255,.03)}
+    .entity-toggle-icon{font-size:10px;transition:transform .3s}
+    .entity-collapsed .entity-toggle-icon{transform:rotate(-90deg)}
+    .entity-ref-body{padding:6px 10px 10px;overflow-y:auto;flex:1;min-height:0;transition:max-height .3s ease}
+    .entity-collapsed .entity-ref-body{max-height:0;padding:0 10px;overflow:hidden}
+    .entity-group-title{font-size:10px;color:var(--text-dim);font-weight:600;margin:8px 0 4px;text-transform:uppercase;letter-spacing:.08em}
+    .entity-group-title:first-child{margin-top:2px}
+    .entity-card{background:rgba(255,255,255,.02);border-radius:6px;padding:5px 8px;margin-bottom:4px;transition:background .15s}
+    .entity-card:hover{background:rgba(255,255,255,.05)}
+    .entity-card-name{font-weight:600;color:var(--text);font-size:11px;display:flex;align-items:center;gap:4px}
+    .entity-card-name .entity-icon{font-size:12px}
+    .entity-card-subs{color:var(--text-dim);font-size:9px;margin-top:2px;line-height:1.4}
+
+
+    .modal-overlay{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;background:rgba(6,8,16,.82);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .25s}
+    .modal-overlay.open{opacity:1;pointer-events:all}
+    .modal-box{background:var(--surface);border:1px solid var(--border);border-radius:18px;width:94vw;max-width:1100px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.7);transform:scale(.94) translateY(12px);transition:transform .28s cubic-bezier(.34,1.56,.64,1),width .3s,max-width .3s,max-height .3s,border-radius .3s}
+    .modal-overlay.open .modal-box{transform:scale(1) translateY(0)}
+    /* ── FULLSCREEN MODE ── */
+    .modal-overlay.fullscreen .modal-box{width:100vw!important;max-width:100vw!important;height:100vh!important;max-height:100vh!important;border-radius:0!important;border:none!important;margin:0}
+    .modal-overlay.fullscreen .modal-body{padding:0}
+    .modal-header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--border);background:var(--surface-2);flex-shrink:0}
+    .modal-header-left{display:flex;align-items:center;gap:10px}
+    .modal-icon{background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);border-radius:8px;padding:7px;color:var(--accent);font-size:16px;display:flex}
+    .modal-title{font-size:13px;font-weight:700}
+    .modal-sub{font-family:var(--font-mono);font-size:8px;color:var(--text-muted);margin-top:1px;letter-spacing:.08em}
+    .modal-header-actions{display:flex;align-items:center;gap:6px}
+    .modal-close{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .15s}
+    .modal-close:hover{background:var(--surface-3);color:var(--text)}
+    .modal-close.active{background:rgba(99,102,241,.15);border-color:rgba(99,102,241,.4);color:#818cf8}
+    .modal-toolbar{display:flex;align-items:center;gap:3px;padding:5px 20px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0}
+    .m-tb-btn{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;font-size:11px;transition:background .12s;font-family:var(--font-mono)}
+    .m-tb-btn:hover{background:var(--surface-3);color:var(--text)}
+    .m-zoom-val{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);padding:0 5px;min-width:36px;text-align:center}
+    .m-tb-sep{width:1px;height:14px;background:var(--border);margin:0 3px}
+    .modal-body{flex:1;overflow:hidden;background:var(--surface-2);position:relative;min-height:0;cursor:grab;user-select:none}
+    .modal-body.dragging{cursor:grabbing}
+    .modal-body.dragging .chart-wrap{pointer-events:none}
+    .modal-body::-webkit-scrollbar{width:6px;height:6px}
+    .modal-body::-webkit-scrollbar-thumb{background:var(--border-bright);border-radius:3px}
+    .chart-wrap{display:inline-block;transform-origin:0 0;transition:none;padding:40px;text-align:center;position:relative}
+    .chart-wrap svg{overflow:visible!important;max-width:none!important;height:auto!important;pointer-events:none}
+    .modal-footer{padding:8px 20px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+    .modal-footer-note{font-size:10px;color:var(--text-dim);display:flex;align-items:center;gap:5px}
+    .btn-primary{background:linear-gradient(135deg,#2563eb,#4f46e5);color:#fff;border:none;border-radius:8px;padding:6px 16px;font-size:11px;font-weight:600;cursor:pointer;font-family:var(--font-body);box-shadow:0 4px 12px rgba(37,99,235,.3);transition:filter .15s}
+    .btn-primary:hover{filter:brightness(1.12)}
+    .loading-indicator{text-align:center;padding:60px 20px;color:var(--text-muted)}
+    .loading-indicator i{font-size:28px;display:block;margin-bottom:8px;animation:spin 1.5s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .hint-bar{position:fixed;top:100px;left:50%;transform:translateX(-50%);background:rgba(13,17,23,.9);border:1px solid var(--border);border-radius:8px;padding:4px 12px;font-size:10px;color:var(--text-muted);backdrop-filter:blur(8px);display:flex;align-items:center;gap:6px;z-index:50;opacity:1;transition:opacity .5s;pointer-events:none}
+    .hint-bar.hidden{opacity:0}
+    .collapsible{overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1),opacity .35s;max-height:5000px;opacity:1}
+    .collapsible.collapsed{max-height:0!important;opacity:0}
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-brand"><span class="dot"></span> Master Diagram · Hàng hoá XNK</div>
+  <div class="topbar-center">
+    <button class="tb-btn" id="btnZoomIn" title="Zoom In"><i class="bi bi-zoom-in"></i></button>
+    <button class="tb-btn" id="btnZoomOut" title="Zoom Out"><i class="bi bi-zoom-out"></i></button>
+    <div class="tb-sep"></div>
+    <span class="zoom-display" id="zoomDisplay">70%</span>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" id="btnFit" title="Fit"><i class="bi bi-fullscreen"></i></button>
+    <button class="tb-btn" id="btnReset" title="Reset"><i class="bi bi-arrow-counterclockwise"></i></button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" id="btnCollapseAll" title="Thu gọn"><i class="bi bi-arrows-collapse"></i></button>
+    <button class="tb-btn" id="btnExpandAll" title="Mở rộng"><i class="bi bi-arrows-expand"></i></button>
+  </div>
+  <div class="topbar-right"><span><span class="kbd">Scroll</span>=Zoom</span><span><span class="kbd">Drag</span>=Pan</span></div>
+</header>
+
+<div class="legend-bar">
+  <span class="legend-title">Entities</span>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--clr-kh)"></div><span class="legend-label">KH</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--clr-ncc)"></div><span class="legend-label">NCC</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--clr-fwd)"></div><span class="legend-label">FWD</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--clr-hq)"></div><span class="legend-label">HQ</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--clr-thue)"></div><span class="legend-label">Thuế</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--clr-qc)"></div><span class="legend-label">QC</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--clr-nh)"></div><span class="legend-label">NH</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--clr-kho)"></div><span class="legend-label">Kho</span></div>
+  <div class="tb-sep"></div>
+  <span class="legend-title" style="color:var(--accent)">💡 Click thuộc tính → xem Flowchart</span>
+</div>
+
+<div class="hint-bar" id="hintBar"><i class="bi bi-info-circle" style="color:var(--accent)"></i>Cuộn=zoom · Kéo=pan · Click node=thu gọn · <b>Click thuộc tính=xem flowchart</b></div>
+
+<!-- ═══════════ CANVAS ═══════════ -->
+<div class="canvas-wrapper" id="canvasWrapper">
+  <div class="canvas" id="canvas">
+    <div class="tree-root">
+      <ul class="tree-ul">
+        <li class="tree-li">
+          <div class="node node-root" data-toggle="children"><span class="node-label">Root</span>Đơn hàng<i class="bi bi-chevron-down toggle-icon" id="root-icon"></i></div>
+          <ul class="tree-ul tree-ul-sub collapsible" id="root-children">
+
+            <!-- ═══ HÀNG HOÁ ═══ -->
+            <li class="tree-li">
+              <div class="node node-module" data-toggle="children"><span class="node-label">Module</span>★ Hàng hoá ★<button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-master')" title="Xem tổng thể G1-G10 (Tầng 3)" style="background:rgba(99,102,241,.15);border-color:rgba(99,102,241,.4);color:#818cf8"><i class="bi bi-diagram-3"></i> Tổng thể</button><i class="bi bi-chevron-down toggle-icon" id="goods-icon"></i></div>
+              <ul class="tree-ul tree-ul-sub collapsible" id="goods-children">
+                <!-- G1 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G1</span>Nhận dạng &amp; Phân loại<span class="group-badge">5</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g1')" title="Xem luồng nội bộ G1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g1-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g1-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('ma-hs')">Mã HS</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('ten-hang')">Tên hàng hóa</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('nhan-hieu')">Nhãn hiệu</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('nhom-hang')">Nhóm hàng (1/2)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('thanh-phan')">Thành phần</div></li></ul></li>
+                <!-- G2 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G2</span>Vật lý &amp; Kích thước<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g2')" title="Xem luồng nội bộ G2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g2-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g2-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('trong-luong')">Trọng lượng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('kich-thuoc')">Kích thước</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('cbm')">Thể tích CBM</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('so-luong')">Số lượng &amp; ĐVT</div></li></ul></li>
+                <!-- G3 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G3</span>Thương mại &amp; Trị giá<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g3')" title="Xem luồng nội bộ G3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g3-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g3-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('cif')">CIF Value</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('incoterms')">Incoterms</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('dong-tien')">Đồng tiền</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('pt-thanh-toan')">PT thanh toán</div></li></ul></li>
+                <!-- G4 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G4</span>Xuất xứ &amp; Nguồn gốc<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g4')" title="Xem luồng nội bộ G4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g4-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g4-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('nuoc-xuat-xu')">Nước xuất xứ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('loai-co')">Loại C/O</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('fta')">FTA áp dụng</div></li></ul></li>
+                <!-- G5 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G5</span>Pháp lý &amp; Tuân thủ<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g5')" title="Xem luồng nội bộ G5"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g5-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g5-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('ma-loai-hinh')">Mã loại hình</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('cam-han-che')">Cấm / Hạn chế</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('giay-phep')">Giấy phép NK</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('kiem-tra-cng')">Kiểm tra CNG</div></li></ul></li>
+                <!-- G6 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G6</span>Thuế &amp; Phí<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g6')" title="Xem luồng nội bộ G6"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g6-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g6-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('thue-nk')">Thuế NK</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('thue-gtgt')">Thuế GTGT</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('thue-ttdb')">Thuế TTĐB</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('thue-bvmt')">Thuế BVMT</div></li></ul></li>
+                <!-- G7 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G7</span>Vận chuyển<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g7')" title="Xem luồng nội bộ G7"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g7-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g7-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('pt-van-tai')">PT vận tải</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('container')">Container</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('van-don')">Vận đơn B/L</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('cang-eta')">Cảng &amp; ETA</div></li></ul></li>
+                <!-- G8 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G8</span>Chất lượng &amp; An toàn<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g8')" title="Xem luồng nội bộ G8"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g8-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g8-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('kiem-tra-cl')">Kiểm tra CL</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hang-dg')">Hàng nguy hiểm</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('kiem-dich')">Kiểm dịch</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('chung-nhan')">Chứng nhận</div></li></ul></li>
+                <!-- G9 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G9</span>Đóng gói<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g9')" title="Xem luồng nội bộ G9"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g9-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g9-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('bao-bi')">Loại bao bì</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('so-kien')">Số kiện</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('ispm15')">ISPM-15</div></li></ul></li>
+                <!-- G10 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G10</span>Chứng từ<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g10')" title="Xem luồng nội bộ G10"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g10-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g10-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('ci-pl')">CI / PL</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('van-don-doc')">Vận đơn</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('co-doc')">C/O</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('to-khai')">Tờ khai HQ</div></li></ul></li>
+              </ul>
+            </li>
+
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ENTITY REFERENCE PANEL ═══ -->
+<div class="entity-ref-panel entity-collapsed" id="entityPanel">
+  <div class="entity-ref-header" onclick="document.getElementById('entityPanel').classList.toggle('entity-collapsed')">
+    <span><i class="bi bi-people-fill" style="margin-right:6px"></i>Entity Reference (Tham chiếu)</span>
+    <i class="bi bi-chevron-down entity-toggle-icon"></i>
+  </div>
+  <div class="entity-ref-body">
+    <!-- Đối tác Thương mại -->
+    <div class="entity-group-title">🤝 Đối tác Thương mại</div>
+    <div class="entity-card" style="border-left:3px solid var(--clr-kh)">
+      <div class="entity-card-name"><span class="entity-icon">👤</span>Khách hàng (KH)</div>
+      <div class="entity-card-subs">Importer (Người mua) · Consignee (Người nhận) · Notify Party</div>
+    </div>
+    <div class="entity-card" style="border-left:3px solid var(--clr-ncc)">
+      <div class="entity-card-name"><span class="entity-icon">🏭</span>Nhà cung cấp (NCC)</div>
+      <div class="entity-card-subs">Manufacturer (Nhà SX) · Exporter/Shipper · Đại lý bán hàng</div>
+    </div>
+    <div class="entity-card" style="border-left:3px solid var(--clr-fwd)">
+      <div class="entity-card-name"><span class="entity-icon">🚢</span>Forwarder (FWD)</div>
+      <div class="entity-card-subs">Freight FWD · Carrier (Hãng tàu) · Customs Broker · Bảo hiểm</div>
+    </div>
+    <!-- Cơ quan Quản lý -->
+    <div class="entity-group-title">🏛️ Cơ quan Quản lý</div>
+    <div class="entity-card" style="border-left:3px solid var(--clr-hq)">
+      <div class="entity-card-name"><span class="entity-icon">🛃</span>Hải quan (HQ)</div>
+      <div class="entity-card-subs">Chi cục CK · Cục HQ tỉnh/TP · Tổng cục HQ · VNACCS/VCIS</div>
+    </div>
+    <div class="entity-card" style="border-left:3px solid var(--clr-thue)">
+      <div class="entity-card-name"><span class="entity-icon">🧮</span>Thuế</div>
+      <div class="entity-card-subs">Biểu thuế XNK · Kho bạc NN · e-Tax</div>
+    </div>
+    <div class="entity-card" style="border-left:3px solid var(--clr-qc)">
+      <div class="entity-card-name"><span class="entity-icon">🔬</span>QC (Kiểm tra CL)</div>
+      <div class="entity-card-subs">Bộ KH&amp;CN · Bộ Công Thương · Bộ NN&amp;PTNT · Bộ Y tế · Phòng TN</div>
+    </div>
+    <!-- Đối tác Hỗ trợ -->
+    <div class="entity-group-title">🔧 Đối tác Hỗ trợ</div>
+    <div class="entity-card" style="border-left:3px solid var(--clr-nh)">
+      <div class="entity-card-name"><span class="entity-icon">🏦</span>Ngân hàng (NH)</div>
+      <div class="entity-card-subs">NH phục vụ NK · NH phục vụ XK · L/C Issuing · Advising Bank</div>
+    </div>
+    <div class="entity-card" style="border-left:3px solid var(--clr-kho)">
+      <div class="entity-card-name"><span class="entity-icon">📦</span>Kho bãi</div>
+      <div class="entity-card-subs">Cảng biển/Sân bay · Kho ngoại quan · Kho CFS · ICD · Kho KH</div>
+    </div>
+  </div>
+</div>
+<div class="statusbar"><span class="status-dot"></span><span id="xyDisplay">0, 0</span><span class="sep">·</span><span id="nodeCount">–</span></div>
+<div class="minimap"><span class="minimap-label">Minimap</span><canvas id="minimapCanvas"></canvas></div>
+
+<!-- ═══ SINGLE MODAL – dynamic chart ═══ -->
+<div class="modal-overlay" id="wfModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <div class="modal-icon"><i class="bi bi-diagram-3-fill"></i></div>
+        <div><div class="modal-title" id="wfTitle">–</div><div class="modal-sub" id="wfSub">–</div></div>
+      </div>
+      <div class="modal-header-actions">
+        <button class="modal-close" onclick="toggleModalFS()" title="Toàn màn hình" id="btnFullscreen"><i class="bi bi-fullscreen"></i></button>
+        <button class="modal-close" onclick="closeWF()" title="Đóng"><i class="bi bi-x-lg"></i></button>
+      </div>
+    </div>
+    <div class="modal-toolbar">
+      <button class="m-tb-btn" onclick="mZIn()"><i class="bi bi-zoom-in"></i></button>
+      <span class="m-zoom-val" id="mZoomVal">100%</span>
+      <button class="m-tb-btn" onclick="mZOut()"><i class="bi bi-zoom-out"></i></button>
+      <div class="m-tb-sep"></div>
+      <button class="m-tb-btn" onclick="mZReset()">100%</button>
+      <div class="m-tb-sep"></div>
+      <button class="m-tb-btn" onclick="mZFit()" title="Vừa khung"><i class="bi bi-aspect-ratio"></i></button>
+      <div class="m-tb-sep"></div>
+      <button class="m-tb-btn" onclick="toggleModalFS()" id="btnFSTool" title="Toàn màn hình" style="width:auto;padding:0 8px;gap:4px;font-size:10px;font-weight:600"><i class="bi bi-fullscreen"></i> <span id="fsLabel">Full</span></button>
+    </div>
+    <div class="modal-body" id="wfBody">
+      <div class="chart-wrap" id="chartWrap"></div>
+    </div>
+    <div class="modal-footer">
+      <span class="modal-footer-note" id="wfNote"><i class="bi bi-cpu"></i> –</span>
+      <button class="btn-primary" onclick="closeWF()"><i class="bi bi-x-circle" style="margin-right:4px"></i>Đóng</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:false,theme:'dark',fontFamily:'Sora,sans-serif',flowchart:{curve:'basis',padding:12}});
+
+/* ── CLASS DEFS for all charts ── */
+const CLS = `classDef ncc fill:#064e3b,stroke:#059669,stroke-width:2px,color:#d1fae5
+classDef fwd fill:#1e3a5f,stroke:#2563eb,stroke-width:2px,color:#dbeafe
+classDef hq fill:#78350f,stroke:#d97706,stroke-width:2px,color:#fef3c7
+classDef thue fill:#4c1d95,stroke:#7c3aed,stroke-width:2px,color:#ede9fe
+classDef qc fill:#7f1d1d,stroke:#dc2626,stroke-width:2px,color:#fee2e2
+classDef nh fill:#134e4a,stroke:#0d9488,stroke-width:2px,color:#ccfbf1
+classDef kho fill:#312e81,stroke:#6366f1,stroke-width:2px,color:#e0e7ff
+classDef kh fill:#164e63,stroke:#0891b2,stroke-width:2px,color:#cffafe
+classDef decision fill:#0f172a,stroke:#fbbf24,stroke-width:2px,color:#fbbf24
+classDef event fill:#16a34a,stroke:#86efac,stroke-width:3px,color:#fff
+classDef endEvt fill:#991b1b,stroke:#fca5a5,stroke-width:3px,color:#fff`;
+
+/* ── 39 WORKFLOW DEFINITIONS ── */
+const WF = {
+// ─── G1: Nhận dạng ───
+'ma-hs':{title:'Mã HS (Mã phân loại hàng hoá quốc tế)',sub:'NCC → Broker (Đại lý HQ) → ECUS → HQ → Thuế',note:'HS 8-10 số quyết định thuế suất → liên kết Thuế NK (G6), Nhóm hàng (G1)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Cung cấp thông tin sản phẩm"]:::ncc
+B["Broker: Tra cứu HS 8-10 số"]:::fwd
+C["Broker: Khai mã HS trên ECUS"]:::fwd
+D{"HQ: Kiểm tra phân loại"}:::decision
+E["Chấp nhận → Áp thuế suất"]:::hq
+F["Giám định lại tại Tổng cục"]:::hq
+G["Thuế: Tra biểu thuế NK theo HS"]:::thue
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Đồng ý"| E --> G --> H
+D -->|"Nghi vấn"| F --> B`},
+
+'ten-hang':{title:'Tên hàng hóa – Đối chiếu khai báo',sub:'NCC → Broker → ECUS → HQ',note:'Tên hàng phải khớp CI (Hoá đơn TM), PL (Phiếu đóng gói) và thực tế → liên kết CI/PL (G10)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Ghi tên hàng trên CI (Hoá đơn TM)"]:::ncc
+B["Broker: Đối chiếu tên VN – EN"]:::fwd
+C["Khai tên hàng trên ECUS"]:::fwd
+D{"HQ: Tên khớp thực tế?"}:::decision
+E["Chấp nhận"]:::hq
+F["Yêu cầu sửa lại"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Khớp"| E --> G
+D -->|"Sai"| F --> B`},
+
+'nhan-hieu':{title:'Nhãn hiệu – Kiểm tra SHTT (Sở hữu trí tuệ)',sub:'NCC → Broker → HQ → Cục SHTT (Sở hữu trí tuệ)',note:'Hàng giả/xâm phạm SHTT bị tạm giữ. Cục SHTT xác minh bản quyền',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Ghi nhãn hiệu trên CI (Hoá đơn)"]:::ncc
+B["Broker: Khai báo ECUS"]:::fwd
+C{"HQ: Xâm phạm SHTT?"}:::decision
+D["Thông quan bình thường"]:::hq
+E["Tạm giữ – Kiểm tra SHTT"]:::hq
+F["Cục SHTT: Xác minh bản quyền"]:::hq
+G{"Kết luận?"}:::decision
+H["Hàng thật → Giải toả"]:::hq
+I["Vi phạm → Tịch thu / Tiêu huỷ"]:::hq
+J(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Không"| D --> J
+C -->|"Nghi vấn"| E --> F --> G
+G -->|"Hợp lệ"| H --> J
+G -->|"Vi phạm"| I --> J`},
+
+'nhom-hang':{title:'Nhóm hàng (1/2) – Kiểm tra CNG (Chuyên ngành)',sub:'HQ → QC → Thông quan',note:'Nhóm 2 = bắt buộc kiểm tra chuyên ngành qua NSW → liên kết Kiểm tra CNG (G5). SLA: NSW trả kết quả 3–5 ngày',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["HQ: Tra cứu HS Code (Mã phân loại)"]:::hq
+B{"Nhóm hàng?"}:::decision
+C["Nhóm 1: Thông quan ngay"]:::hq
+D["Nhóm 2: Kiểm tra CNG (Chuyên ngành)"]:::hq
+E["QC: Đăng ký NSW (Cổng 1 cửa QG)"]:::qc
+F["QC: Lấy mẫu và kiểm tra"]:::qc
+G{"Kết quả?"}:::decision
+H["Đạt → Cấp CN hợp quy"]:::qc
+I["Không đạt → Tái xuất"]:::qc
+J(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Nhóm 1"| C --> J
+B -->|"Nhóm 2"| D --> E --> F --> G
+G -->|"Đạt"| H --> J
+G -->|"Không"| I --> J`},
+
+'thanh-phan':{title:'Thành phần – Phân tích chất liệu',sub:'NCC → Broker → QC → HQ → Kho',note:'Thành phần quyết định phân loại HS và kiểm tra CNG → liên kết Mã HS (G1), Cấm/Hạn chế (G5)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Cung cấp MSDS (Bảng chỉ dẫn AT) / Spec"]:::ncc
+B["Broker: Xác định HS theo thành phần"]:::fwd
+C{"Chứa chất cấm/hạn chế?"}:::decision
+D["Khai ECUS bình thường"]:::fwd
+E["DN (Doanh nghiệp NK): Xin GP đặc biệt"]:::kh
+F["QC: Kiểm tra hàm lượng"]:::qc
+G["Kho: Lưu trữ hàng đặc biệt riêng"]:::kho
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Không"| D --> H
+C -->|"Có"| E --> F --> G --> H`},
+
+// ─── G2: Vật lý ───
+'trong-luong':{title:'Trọng lượng – Xác nhận VGM (Khối lượng)',sub:'NCC → FWD → ECUS → HQ',note:'VGM (Verified Gross Mass) bắt buộc theo SOLAS. Chênh lệch trên 5% bị phạt → liên kết CBM (G2). SLA: HQ cân kiểm tra 1–2 ngày',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Cân hàng Gross (Tổng) / Net (Tịnh)"]:::ncc
+B["FWD: Xác nhận VGM (Khối lượng)"]:::fwd
+C["Khai trọng lượng trên ECUS"]:::fwd
+D{"HQ: Cân kiểm tra (Luồng Đỏ)"}:::decision
+E["Chấp nhận → Thông quan"]:::hq
+F{"Chênh lệch trên 5%?"}:::decision
+G["Phạt + Điều chỉnh tờ khai"]:::hq
+H["Chấp nhận chênh lệch nhỏ"]:::hq
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"OK"| E --> I
+D -->|"Cân lại"| F
+F -->|"Có"| G --> I
+F -->|"Không"| H --> I`},
+
+'kich-thuoc':{title:'Kích thước – Tính CBM (Thể tích) và Container',sub:'NCC → FWD → Carrier → Kho',note:'Kích thước quyết định loại container và cước vận tải → liên kết Container (G7)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Đo kích thước đóng gói"]:::ncc
+B["FWD: Tính CBM (Thể tích) = D×R×C"]:::fwd
+C{"Hàng quá khổ?"}:::decision
+D["Cont thường: 20GP/40GP/40HC"]:::fwd
+E["Cont đặc biệt: OT/FR (Mở/Sàn phẳng)"]:::fwd
+F["Carrier: Xếp hàng theo kế hoạch"]:::fwd
+G["Kho: Sắp xếp theo kích thước"]:::kho
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Không"| D --> F
+C -->|"Có"| E --> F
+F --> G --> H`},
+
+'cbm':{title:'Thể tích CBM (Mét khối) – Tính cước vận tải',sub:'FWD tính CBM → So sánh TL → Cước',note:'Cước = max(CBM, Trọng lượng) theo W/M → liên kết Trọng lượng (G2), Container (G7)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["FWD: Tính CBM"]:::fwd
+B{"CBM lớn hơn TL quy đổi?"}:::decision
+C["Tính cước theo CBM"]:::fwd
+D["Tính cước theo trọng lượng"]:::fwd
+E["Booking (Đặt chỗ) container/LCL (Hàng lẻ)"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Có"| C --> E
+B -->|"Không"| D --> E
+E --> F`},
+
+'so-luong':{title:'Số lượng và ĐVT – Kiểm đếm',sub:'NCC → FWD → ECUS → HQ → KH',note:'Lệch số lượng → lập biên bản → KH có quyền khiếu nại → liên kết CI/PL (G10)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Đếm hàng – Ghi PL (Phiếu đóng gói)"]:::ncc
+B["FWD: Đối chiếu PL vs CI (Hoá đơn)"]:::fwd
+C["Khai số lượng trên ECUS"]:::fwd
+D{"HQ: Kiểm tra thực tế"}:::decision
+E["Khớp → OK"]:::hq
+F["Lệch → FWD báo NCC lập biên bản"]:::fwd
+G["KH: Kiểm đếm khi nhận"]:::kh
+H{"KH: Đủ hàng?"}:::decision
+I["Khiếu nại NCC / Bảo hiểm"]:::kh
+J(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Khớp"| E --> G --> H
+D -->|"Lệch"| F --> G
+H -->|"Đủ"| J
+H -->|"Thiếu"| I --> J`},
+
+// ─── G3: Thương mại ───
+'cif':{title:'CIF (Giá + Cước + Bảo hiểm) – Trị giá tính thuế',sub:'NCC → FWD → BH → ECUS → HQ',note:'CIF = FOB + Freight + Insurance → liên kết Incoterms (G3), Thuế NK (G6). DN có quyền khiếu nại giá tham chiếu trong 5 ngày',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Báo giá FOB (Giá tại cảng xuất)"]:::ncc
+B["FWD: Tính Freight (Cước vận tải)"]:::fwd
+C["NH/BH: Tính Insurance (Bảo hiểm)"]:::nh
+D["CIF = FOB + Cước + Bảo hiểm"]:::fwd
+E["Khai CIF trên ECUS"]:::fwd
+F{"HQ: Trị giá hợp lý?"}:::decision
+G["Chấp nhận → Tính thuế"]:::hq
+H["Tham vấn trị giá"]:::hq
+I{"DN chấp nhận giá tham chiếu?"}:::decision
+J["Áp giá tham chiếu HQ"]:::hq
+K["DN: Khiếu nại giá (5 ngày)"]:::kh
+L(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"OK"| G --> L
+F -->|"Nghi vấn"| H --> I
+I -->|"Đồng ý"| J --> L
+I -->|"Không"| K --> L`},
+
+'incoterms':{title:'Incoterms (Điều kiện giao hàng QT) – Phân bổ trách nhiệm',sub:'KH + NCC thỏa thuận → FWD → ECUS',note:'Incoterm quyết định cách tính CIF → liên kết CIF (G3). CFR/CNF = Giá + Cước (chưa BH)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["KH + NCC: Thỏa thuận Incoterm"]:::kh
+B{"Điều kiện?"}:::decision
+C["EXW (Giao tại xưởng NCC)"]:::ncc
+D["FOB (Giao tại cảng xuất)"]:::ncc
+E["CFR/CNF (Giá + Cước, chưa BH)"]:::ncc
+F["CIF (Giá + Cước + Bảo hiểm)"]:::ncc
+G["FWD: Phân bổ chi phí theo Incoterm"]:::fwd
+H["Khai ECUS theo Incoterm"]:::fwd
+I(("Hoàn thành")):::event
+S --> A --> B
+B -->|"EXW"| C --> G
+B -->|"FOB"| D --> G
+B -->|"CFR"| E --> G
+B -->|"CIF"| F --> G
+G --> H --> I`},
+
+'dong-tien':{title:'Đồng tiền – Quy đổi tỷ giá',sub:'NCC → NH → ECUS → HQ → Thuế',note:'HQ áp tỷ giá NHNN ngày ĐK tờ khai → liên kết CIF (G3), Thuế NK (G6)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Yêu cầu USD/EUR/CNY..."]:::ncc
+B["NH: Áp tỷ giá mua/bán"]:::nh
+C{"Nhiều đồng tiền?"}:::decision
+D["Quy đổi từng dòng hàng"]:::fwd
+E["FWD: Khai đồng tiền gốc trên ECUS"]:::fwd
+F["HQ: Áp tỷ giá NHNN (Ngân hàng NN)"]:::hq
+G["Thuế: Tính thuế bằng VND"]:::thue
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Có"| D --> E
+C -->|"Không"| E
+E --> F --> G --> H`},
+
+'pt-thanh-toan':{title:'Phương thức thanh toán',sub:'KH + NCC → NH → Thanh toán',note:'L/C (Thư tín dụng) an toàn nhất, T/T (Chuyển khoản) nhanh nhất → liên kết Vận đơn (G10)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["KH + NCC: Chọn phương thức"]:::kh
+B{"Phương thức?"}:::decision
+C["T/T (Telegraphic Transfer): Chuyển khoản"]:::nh
+D["L/C (Letter of Credit): Thư tín dụng"]:::nh
+E["D/P (Nhờ thu trả ngay) / D/A (Trả chậm)"]:::nh
+F["NH: Xử lý thanh toán"]:::nh
+G["NCC: Nhận tiền → Xuất hàng"]:::ncc
+H(("Hoàn thành")):::event
+S --> A --> B
+B -->|"T/T"| C --> F
+B -->|"L/C"| D --> F
+B -->|"D/P"| E --> F
+F --> G --> H`},
+
+// ─── G4: Xuất xứ ───
+'nuoc-xuat-xu':{title:'Nước xuất xứ – Tra cứu FTA (Hiệp định TM tự do)',sub:'NCC → ECUS → HQ → Thuế',note:'Nước XK có thể khác nước XX (mua qua trung gian) → liên kết C/O (G4), FTA (G4)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Xác nhận nước sản xuất"]:::ncc
+B["FWD: Khai nước XX trên ECUS"]:::fwd
+C{"Nước XK khớp nước XX?"}:::decision
+D["Khớp → Tiếp tục"]:::fwd
+E["Không khớp → Cần C/O chứng minh"]:::hq
+F{"HQ: Có FTA (Hiệp định TM) với VN?"}:::decision
+G["Tra bảng FTA → Yêu cầu C/O"]:::hq
+H["Áp thuế MFN (Thuế thông thường)"]:::thue
+I(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Khớp"| D --> F
+C -->|"Khác"| E --> F
+F -->|"Có"| G --> I
+F -->|"Không"| H --> I`},
+
+'loai-co':{title:'Loại C/O (Giấy CN xuất xứ) – Xác minh',sub:'NCC xin → FWD nộp → HQ xác minh → Thuế',note:'Form D (ASEAN), EUR.1 (EU), E (TQ), AK (HQ), RCEP. VN tham gia 16+ FTA → liên kết FTA (G4)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Xin C/O từ cơ quan"]:::ncc
+B{"Form?"}:::decision
+C["Form D – ATIGA (ASEAN)"]:::ncc
+D["Form E – ACFTA (TQ)"]:::ncc
+E["EUR.1 – EVFTA (EU)"]:::ncc
+F["RCEP/AK – Hàn, Nhật, ASEAN+"]:::ncc
+G["Gửi C/O gốc"]:::ncc
+H{"HQ: Hợp lệ?"}:::decision
+I["Thuế FTA (Ưu đãi)"]:::thue
+J["Thuế MFN (Thông thường)"]:::thue
+K(("Hoàn thành")):::event
+S --> A --> B
+B -->|"ASEAN"| C --> G
+B -->|"TQ"| D --> G
+B -->|"EU"| E --> G
+B -->|"RCEP/HQ"| F --> G
+G --> H
+H -->|"OK"| I --> K
+H -->|"Không"| J --> K`},
+
+'fta':{title:'FTA (Hiệp định TM tự do) – So sánh thuế suất',sub:'HQ tra bảng → So sánh MFN vs FTA → Áp thấp hơn',note:'VN tham gia 16+ FTA (ATIGA, EVFTA, CPTPP, RCEP, VKFTA, AJCEP và 12+ khác) → liên kết Thuế NK (G6)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["HQ: Xác định nước XX"]:::hq
+B["Tra bảng FTA hiện hành"]:::hq
+C{"FTA nào?"}:::decision
+D["ATIGA (ASEAN)"]:::hq
+E["EVFTA (VN–EU)"]:::hq
+F["CPTPP (Xuyên TBD)"]:::hq
+G["RCEP (Đối tác KT toàn diện)"]:::hq
+H["Xác định thuế suất ưu đãi"]:::thue
+I["So sánh với MFN (Thuế thông thường)"]:::thue
+J["Áp thuế thấp hơn"]:::thue
+K(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"ASEAN"| D --> H
+C -->|"EU"| E --> H
+C -->|"CPTPP"| F --> H
+C -->|"RCEP"| G --> H
+H --> I --> J --> K`},
+
+// ─── G5: Pháp lý ───
+'ma-loai-hinh':{title:'Mã loại hình – Chính sách NK',sub:'FWD (Giao nhận) chọn → ECUS → HQ áp dụng',note:'A11=KD, A12=ĐT, A31=GC, A41=SXXK và các mã khác (A42, E31, E15...) → liên kết Tờ khai (G10)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["FWD: Xác định loại hình"]:::fwd
+B{"Loại hình?"}:::decision
+C["A11 – NK Kinh doanh (Mua bán)"]:::fwd
+D["A12 – NK Đầu tư (Tài sản CĐ)"]:::fwd
+E["A31 – NK Gia công (SX cho NCC)"]:::fwd
+F["A41 – NK SXXK (SX xuất khẩu)"]:::fwd
+G["Khai ECUS"]:::fwd
+H["HQ: Áp chính sách tương ứng"]:::hq
+I(("Hoàn thành")):::event
+S --> A --> B
+B -->|"KD"| C --> G
+B -->|"ĐT"| D --> G
+B -->|"GC"| E --> G
+B -->|"SXXK"| F --> G
+G --> H --> I`},
+
+'cam-han-che':{title:'Cấm / Hạn chế – Kiểm tra danh mục',sub:'FWD tra cứu → HQ quyết định',note:'Hàng cấm NK: vũ khí, chất thải nguy hại... → liên kết Giấy phép (G5)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["FWD: Tra danh mục cấm/hạn chế"]:::fwd
+B{"Kết quả?"}:::decision
+C{"Cấm NK → Xử lý?"}:::decision
+D["Tái xuất nước gốc"]:::hq
+E["Tiêu huỷ tại VN"]:::hq
+F["Hạn chế → Cần giấy phép"]:::hq
+G["DN (Doanh nghiệp NK): Xin GP tại Bộ ngành"]:::kh
+H{"GP được cấp?"}:::decision
+I["Bình thường → Tiếp tục"]:::hq
+J(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Cấm"| C
+C -->|"Tái xuất"| D --> J
+C -->|"Tiêu huỷ"| E --> J
+B -->|"Hạn chế"| F --> G --> H
+H -->|"Có"| I --> J
+H -->|"Không"| D
+B -->|"OK"| I`},
+
+'giay-phep':{title:'Giấy phép NK – Xin phép Bộ ngành',sub:'DN xin → Bộ duyệt → FWD nộp → HQ kiểm tra',note:'GP có thời hạn, phải kiểm tra hiệu lực trước khi khai ECUS → liên kết Cấm/HC (G5). SLA: Bộ ngành duyệt 5–15 ngày',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["DN (Doanh nghiệp NK): Xin GP tại Bộ ngành"]:::kh
+B["Bộ ngành: Xem xét"]:::hq
+C{"Duyệt?"}:::decision
+D["Cấp giấy phép NK"]:::hq
+E["Từ chối → DN bổ sung hồ sơ"]:::hq
+F{"GP còn hiệu lực?"}:::decision
+G["FWD: Nộp GP kèm ECUS"]:::fwd
+H["DN: Gia hạn GP"]:::kh
+I["HQ: Kiểm tra hiệu lực"]:::hq
+J(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"OK"| D --> F
+C -->|"Không"| E --> A
+F -->|"Còn"| G --> I --> J
+F -->|"Hết"| H --> D`},
+
+'kiem-tra-cng':{title:'Kiểm tra CNG (Chuyên ngành) – Quy trình',sub:'HQ yêu cầu → QC kiểm tra → Cấp CN',note:'Nhóm 2: bắt buộc qua NSW (Cổng 1 cửa QG) → liên kết Nhóm hàng (G1). SLA: QC kiểm tra 3–7 ngày',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["HQ: HS thuộc Nhóm 2"]:::hq
+B["QC: Xác định Bộ quản lý"]:::qc
+C["QC: Đăng ký NSW (Cổng 1 cửa QG)"]:::qc
+D["QC: Lấy mẫu và kiểm tra"]:::qc
+E{"Kết quả?"}:::decision
+F["Cấp CN hợp quy"]:::qc
+G["Không đạt → Tái xuất"]:::qc
+H["HQ: Nhận CN → Thông quan"]:::hq
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Đạt"| F --> H --> I
+E -->|"Không"| G --> I`},
+
+// ─── G6: Thuế ───
+'thue-nk':{title:'Thuế NK (Thuế nhập khẩu) – Import Duty',sub:'HQ tra HS → C/O → PVTM → Thuế suất → Thu',note:'Thuế NK = CIF × Thuế suất. Có thể cộng thuế PVTM → liên kết HS (G1), FTA (G4). Có chế độ miễn/giảm thuế cho SXXK, GC',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["HQ: Xác định HS Code (Mã phân loại)"]:::hq
+B{"Có C/O?"}:::decision
+C["Áp thuế FTA (Ưu đãi)"]:::thue
+D["Áp thuế MFN (Thông thường)"]:::thue
+E{"Có PVTM (AD/CVD/SG)?"}:::decision
+F["Cộng thuế AD/CVD/SG"]:::thue
+G{"Miễn/giảm thuế?"}:::decision
+H["Thuế NK = CIF × Thuế suất"]:::thue
+I["Miễn: GC, SXXK, ĐT..."]:::thue
+J["NH: Nộp thuế"]:::nh
+K(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Có"| C --> E
+B -->|"Không"| D --> E
+E -->|"Có"| F --> G
+E -->|"Không"| G
+G -->|"Có"| I --> K
+G -->|"Không"| H --> J --> K`},
+
+'thue-gtgt':{title:'Thuế GTGT (Giá trị gia tăng) – VAT',sub:'Cơ sở = CIF + NK + TTĐB + BVMT → × thuế suất',note:'Thuế suất: 0% (XK), 5% (thiết yếu), 8% (giảm tạm), 10% (thông thường). Miễn: TB y tế, viện trợ nhân đạo',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["Thuế: Tính cơ sở VAT"]:::thue
+B["Cơ sở = CIF + NK + TTĐB + BVMT"]:::thue
+C{"Thuế suất VAT?"}:::decision
+D["0% – Tái xuất / Quá cảnh"]:::thue
+E["5% – Hàng thiết yếu"]:::thue
+F["8%/10% – Hàng thông thường"]:::thue
+G{"Miễn VAT?"}:::decision
+H["Thu VAT → NH nộp"]:::thue
+I["Miễn: TB y tế, viện trợ, NCKH..."]:::thue
+J(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"0%"| D --> J
+C -->|"5%"| E --> G
+C -->|"8–10%"| F --> G
+G -->|"Không"| H --> J
+G -->|"Có"| I --> J`},
+
+'thue-ttdb':{title:'Thuế TTĐB (Tiêu thụ đặc biệt) – Special Consumption Tax',sub:'HQ kiểm tra HS → Tính TTĐB',note:'Rượu bia, xe hơi, thuốc lá, mỹ phẩm... → Cộng vào cơ sở VAT → liên kết GTGT (G6)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["HQ: HS có TTĐB?"]:::hq
+B{"Danh mục?"}:::decision
+C["Không áp dụng"]:::thue
+D["Rượu bia / Xe / Thuốc lá..."]:::thue
+E["TTĐB = (CIF+NK) × Thuế suất"]:::thue
+F["Cộng vào cơ sở tính VAT"]:::thue
+G(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Không"| C --> G
+B -->|"Có"| D --> E --> F --> G`},
+
+'thue-bvmt':{title:'Thuế BVMT (Bảo vệ môi trường) – Environmental Tax',sub:'HQ kiểm tra HS → SL × Mức cố định',note:'Xăng dầu, túi nylon, pin, thuốc trừ sâu... → liên kết GTGT (G6)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["HQ: HS có BVMT?"]:::hq
+B{"Danh mục?"}:::decision
+C["Không áp dụng"]:::thue
+D["Xăng dầu / Nylon / Pin..."]:::thue
+E["BVMT = Số lượng × Mức cố định"]:::thue
+F["Cộng vào cơ sở tính VAT"]:::thue
+G(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Không"| C --> G
+B -->|"Có"| D --> E --> F --> G`},
+
+// ─── G7: Vận chuyển ───
+'pt-van-tai':{title:'Phương thức vận tải – Booking (Đặt chỗ)',sub:'KH + FWD chọn → Carrier (Hãng vận tải) → ECUS',note:'Biển (80%), HK (10%), Bộ (6%), Sắt (4%) → liên kết Container (G7), Vận đơn (G7)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["KH + FWD: Chọn phương thức"]:::kh
+B{"Phương thức?"}:::decision
+C["Đường biển – FCL (Nguyên cont) / LCL (Hàng lẻ)"]:::fwd
+D["Đường hàng không – AWB (Vận đơn HK)"]:::fwd
+E["Đường bộ – Xe tải / Xe cont"]:::fwd
+F["Đường sắt – Liên vận QT (VN–TQ)"]:::fwd
+G["FWD: Booking (Đặt chỗ) hãng vận tải"]:::fwd
+H["Khai PT vận tải trên ECUS"]:::fwd
+I(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Biển"| C --> G
+B -->|"HK"| D --> G
+B -->|"Bộ"| E --> G
+B -->|"Sắt"| F --> G
+G --> H --> I`},
+
+'container':{title:'Container – Đóng hàng và Seal (Niêm phong)',sub:'FWD đặt chỗ → Carrier cấp → NCC đóng → Niêm phong → Kho',note:'Demurrage (Phí lưu cont) nếu trả cont trễ hạn → liên kết Kích thước (G2)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["FWD: Chọn loại container"]:::fwd
+B{"Loại?"}:::decision
+C["20GP / 40GP / 40HC (Thường)"]:::fwd
+D["Reefer (Cont đông lạnh)"]:::fwd
+E["OT/FR (Cont mở / Sàn phẳng)"]:::fwd
+F["Carrier: Cấp cont rỗng"]:::fwd
+G["NCC: Đóng hàng + Seal (Niêm phong)"]:::ncc
+H["Kho: Nhận cont"]:::kho
+I{"Trả cont đúng hạn?"}:::decision
+J["Demurrage (Phí lưu cont quá hạn)"]:::kho
+K(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Thường"| C --> F
+B -->|"Lạnh"| D --> F
+B -->|"ĐB"| E --> F
+F --> G --> H --> I
+I -->|"Trễ"| J --> K
+I -->|"Đúng hạn"| K`},
+
+'van-don':{title:'Vận đơn (chung) – Chứng từ vận tải',sub:'Carrier cấp → FWD → NH (nếu L/C) → HQ',note:'Original = sở hữu hàng. Telex/Surrender = giao ngay. SWB = không chuyển nhượng → liên kết PT thanh toán (G3)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Giao hàng cho carrier"]:::ncc
+B["Carrier (Hãng tàu): Cấp vận đơn"]:::fwd
+C{"Loại vận đơn?"}:::decision
+D["Original (Bản gốc) → Ký hậu"]:::fwd
+E["Telex Release (Điện giao) → Giao ngay"]:::fwd
+F["SWB (Sea Waybill) → Không chuyển nhượng"]:::fwd
+G["NH: Endorse (Ký hậu) nếu L/C"]:::nh
+H["FWD: Nộp vận đơn cho HQ"]:::fwd
+I["HQ: Đối chiếu → Release (Giải phóng)"]:::hq
+J(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Original"| D --> G --> H
+C -->|"Telex"| E --> H
+C -->|"SWB"| F --> H
+H --> I --> J`},
+
+'cang-eta':{title:'Cảng và ETA (Ngày dự kiến đến) – Lịch trình',sub:'FWD xác định → Carrier theo dõi → Kho chuẩn bị',note:'POL (Cảng xếp), POD (Cảng dỡ). Delay/Rollover rất phổ biến → liên kết Container (G7)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["FWD: Xác định POL (Cảng xếp) và POD (Cảng dỡ)"]:::fwd
+B["Carrier: Thông báo ETD (Ngày đi) / ETA (Ngày đến)"]:::fwd
+C["FWD: Theo dõi hành trình"]:::fwd
+D{"Tàu đúng lịch?"}:::decision
+E["FWD: Thông báo KH + chuẩn bị HQ"]:::fwd
+F["Delay (Trễ) / Rollover (Hoãn chuyến)"]:::fwd
+G["FWD: Thông báo KH → Cập nhật kế hoạch"]:::fwd
+H["Kho: Chuẩn bị tiếp nhận"]:::kho
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Đúng"| E --> H --> I
+D -->|"Trễ"| F --> G --> H`},
+
+// ─── G8: Chất lượng ───
+'kiem-tra-cl':{title:'Kiểm tra chất lượng – QC (Quality Control)',sub:'NCC cung cấp → QC kiểm tra → Kết quả',note:'Kiểm tra theo QCVN (Quy chuẩn VN) / TCVN (Tiêu chuẩn VN) → liên kết Chứng nhận (G8). SLA: QC trả kết quả 5–10 ngày',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Cung cấp Test Report (Báo cáo thử nghiệm)"]:::ncc
+B["QC: Tiếp nhận hồ sơ"]:::qc
+C["QC: Lấy mẫu kiểm tra"]:::qc
+D{"Kết quả?"}:::decision
+E["Đạt → Cấp CN"]:::qc
+F["Không đạt"]:::qc
+G{"Sửa chữa được?"}:::decision
+H["Tái xuất"]:::ncc
+I["Sửa → Kiểm tra lại"]:::qc
+J(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Đạt"| E --> J
+D -->|"Không"| F --> G
+G -->|"Không"| H --> J
+G -->|"Có"| I --> C`},
+
+'hang-dg':{title:'Hàng nguy hiểm DG (Dangerous Goods) – IMDG',sub:'NCC phân loại → FWD đặt chỗ → NH bảo hiểm → HQ → Kho DG',note:'IMDG Class 1-9. Cần MSDS + DG Declaration + Bảo hiểm DG → liên kết Kiểm dịch (G8)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: UN Number (Mã UN) + IMDG Class"]:::ncc
+B["NCC: Cung cấp MSDS (Bảng chỉ dẫn AT)"]:::ncc
+C["NH/BH: Mua bảo hiểm hàng DG"]:::nh
+D["FWD: Booking DG + Surcharge (Phụ phí)"]:::fwd
+E["FWD: Lập DG Declaration (Khai báo hàng NH)"]:::fwd
+F{"HQ: Đủ chứng từ?"}:::decision
+G["Chấp nhận"]:::hq
+H["Yêu cầu bổ sung"]:::hq
+I["Kho: Lưu trữ DG khu vực riêng"]:::kho
+J(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"Đủ"| G --> I --> J
+F -->|"Thiếu"| H --> E`},
+
+'kiem-dich':{title:'Kiểm dịch – Động vật / Thực vật / Y tế',sub:'HQ yêu cầu → Xông trùng → QC kiểm dịch → Kết quả',note:'Bắt buộc cho thực phẩm, nông sản, động vật. Xông trùng tại cảng → liên kết ISPM-15 (G9). SLA: Kiểm dịch 3–5 ngày',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["HQ: Hàng cần kiểm dịch?"]:::hq
+B{"Loại?"}:::decision
+C["Kiểm dịch động vật"]:::qc
+D["Kiểm dịch thực vật"]:::qc
+E["Kiểm dịch y tế"]:::qc
+F["Xông trùng / Khử khuẩn tại cảng"]:::kho
+G["QC: Lấy mẫu kiểm tra"]:::qc
+H{"Kết quả?"}:::decision
+I["Đạt → Cấp CN"]:::qc
+J["Không đạt → Xử lý / Tái xuất"]:::qc
+K(("Hoàn thành")):::event
+S --> A --> B
+B -->|"ĐV"| C --> F
+B -->|"TV"| D --> F
+B -->|"YT"| E --> F
+F --> G --> H
+H -->|"OK"| I --> K
+H -->|"Không"| J --> K`},
+
+'chung-nhan':{title:'Chứng nhận – ISO, CE, FDA...',sub:'NCC cung cấp → QC xác minh → HQ chấp nhận',note:'Chứng nhận quốc tế + QCVN (Quy chuẩn VN). Kiểm tra hiệu lực → liên kết Kiểm tra CL (G8)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Cung cấp CN gốc"]:::ncc
+B{"Loại?"}:::decision
+C["Quốc tế: ISO/CE/FDA (Chứng nhận QT)"]:::ncc
+D["VN: QCVN (Quy chuẩn) / TCVN (Tiêu chuẩn)"]:::qc
+E{"CN còn hiệu lực?"}:::decision
+F["QC: Xác minh hợp lệ"]:::qc
+G["Hết hạn → NCC cấp lại"]:::ncc
+H{"OK?"}:::decision
+I["Chấp nhận → Thông quan"]:::hq
+J["Từ chối → Bổ sung"]:::hq
+K(("Hoàn thành")):::event
+S --> A --> B
+B -->|"QT"| C --> E
+B -->|"VN"| D --> E
+E -->|"Còn"| F --> H
+E -->|"Hết"| G --> F
+H -->|"OK"| I --> K
+H -->|"Không"| J --> A`},
+
+// ─── G9: Đóng gói ───
+'bao-bi':{title:'Loại bao bì – Đóng gói và Kiểm tra',sub:'NCC đóng gói → Shipping marks → FWD kiểm tra → Kho',note:'Carton, pallet, drum (thùng phuy), crate... → liên kết ISPM-15 (G9)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Chọn bao bì"]:::ncc
+B{"Loại?"}:::decision
+C["Thùng carton"]:::ncc
+D["Pallet gỗ"]:::ncc
+E["Drum (Thùng phuy) – Hàng lỏng/Hoá chất"]:::ncc
+F["Container nguyên (FCL)"]:::fwd
+G["NCC: Đóng gói + Shipping marks (Ký mã hiệu)"]:::ncc
+H["FWD: Kiểm tra và chụp ảnh trước xuất"]:::fwd
+I(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Carton"| C --> G
+B -->|"Pallet"| D --> G
+B -->|"Drum"| E --> G
+B -->|"FCL"| F --> G
+G --> H --> I`},
+
+'so-kien':{title:'Số kiện – Đếm và Đối chiếu',sub:'NCC đếm → FWD chụp ảnh → PL → HQ → KH',note:'Lệch số kiện = lập biên bản. FWD chụp ảnh làm bằng chứng → liên kết Số lượng (G2)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Đếm số kiện – Ghi PL"]:::ncc
+B["FWD: Chụp ảnh đóng gói (Bằng chứng)"]:::fwd
+C["FWD: Đối chiếu PL vs thực tế"]:::fwd
+D["Khai số kiện trên ECUS"]:::fwd
+E{"HQ: Kiểm tra Luồng Đỏ"}:::decision
+F["Khớp → OK"]:::hq
+G["Lệch → Phạt"]:::hq
+H["KH: Kiểm đếm nhận hàng"]:::kh
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> H --> I
+E -->|"Lệch"| G --> H`},
+
+'ispm15':{title:'ISPM-15 (Tiêu chuẩn xử lý gỗ QT) – Hun trùng',sub:'NCC xử lý → QC kiểm tra dấu IPPC',note:'Bắt buộc cho pallet/thùng gỗ NK → liên kết Kiểm dịch (G8), Bao bì (G9)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Sử dụng gỗ/pallet"]:::ncc
+B{"Đã xử lý ISPM-15?"}:::decision
+C["Có dấu IPPC (Kiểm dịch TV QT) → OK"]:::ncc
+D["Chưa → Hun trùng/Nhiệt"]:::ncc
+E["QC: Kiểm tra dấu ISPM-15 (Xử lý gỗ)"]:::qc
+F{"Đạt?"}:::decision
+G["Cho nhập"]:::hq
+H["Từ chối / Xử lý tại cảng"]:::hq
+I(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Có"| C --> E
+B -->|"Chưa"| D --> E
+E --> F
+F -->|"OK"| G --> I
+F -->|"Không"| H --> I`},
+
+// ─── G10: Chứng từ ───
+'ci-pl':{title:'CI (Hoá đơn TM) / PL (Phiếu đóng gói)',sub:'NCC lập → FWD đối chiếu → ECUS → HQ → NH',note:'CI = giá trị, PL = chi tiết đóng gói. CI phải khớp PL → liên kết CIF (G3), Số lượng (G2)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Lập CI (Hoá đơn thương mại)"]:::ncc
+B["NCC: Lập PL (Phiếu đóng gói)"]:::ncc
+C["FWD: Nhận và đối chiếu"]:::fwd
+D{"CI khớp PL?"}:::decision
+E["FWD: Khai ECUS từ CI / PL"]:::fwd
+F["FWD yêu cầu NCC sửa"]:::fwd
+G["HQ: Kiểm tra chứng từ"]:::hq
+H["NH: Đối chiếu thanh toán"]:::nh
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Khớp"| E --> G --> H --> I
+D -->|"Lệch"| F --> A`},
+
+'van-don-doc':{title:'Vận đơn – Chuỗi lưu chuyển chứng từ',sub:'Carrier phát hành → FWD → NH → HQ → KH nhận hàng',note:'Focus: Ai giữ vận đơn ở từng giai đoạn (custody chain) → liên kết PT thanh toán (G3)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["Carrier: Phát hành vận đơn"]:::fwd
+B["FWD xuất khẩu: Giữ vận đơn gốc"]:::fwd
+C["Gửi bộ chứng từ cho KH"]:::fwd
+D{"L/C hay T/T?"}:::decision
+E["NH: Nhận vận đơn → Kiểm tra → Endorse (Ký hậu)"]:::nh
+F["FWD nhập khẩu: Nhận vận đơn"]:::fwd
+G["FWD: Nộp vận đơn cho HQ"]:::fwd
+H["HQ: Đối chiếu → Release (Giải phóng)"]:::hq
+I["KH: Nhận hàng tại Kho"]:::kh
+J(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"L/C"| E --> F
+D -->|"T/T"| F
+F --> G --> H --> I --> J`},
+
+'co-doc':{title:'C/O – Certificate of Origin (Giấy CN xuất xứ)',sub:'NCC xin → Gửi → FWD nộp → HQ xác minh',note:'C/O hợp lệ = thuế ưu đãi 0% thay vì 5–30%+ → liên kết Thuế NK (G6), Loại C/O (G4)',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["NCC: Xin C/O"]:::ncc
+B["NCC: Gửi C/O gốc"]:::ncc
+C["FWD: Nộp C/O kèm tờ khai"]:::fwd
+D{"HQ: Xác minh C/O"}:::decision
+E["Hợp lệ → Thuế FTA (Ưu đãi)"]:::thue
+F["Không → Thuế MFN (Thông thường)"]:::thue
+G{"Xác minh thêm?"}:::decision
+H["Gửi YC nước XK xác nhận"]:::hq
+I{"Nước XK phản hồi?"}:::decision
+J(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"OK"| E --> J
+D -->|"Nghi vấn"| G
+G -->|"Có"| H --> I
+G -->|"Không"| F --> J
+I -->|"Xác nhận"| E
+I -->|"Bác bỏ"| F`},
+
+'to-khai':{title:'Tờ khai HQ – ECUS → VNACCS (HQ tự động)',sub:'FWD khai ECUS → Truyền VNACCS → Phân luồng',note:'Tờ khai tổng hợp data từ: HS, CIF, C/O, PT vận tải, Số lượng... SLA: Phân luồng tự động dưới 1 giờ',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["FWD: Chuẩn bị chứng từ (CI, PL, B/L, C/O...)"]:::fwd
+B["FWD: Khai tờ khai ECUS"]:::fwd
+C["ECUS → VNACCS (HQ tự động) truyền dữ liệu"]:::fwd
+D{"HQ: Phân luồng"}:::decision
+E["Xanh → Thông quan"]:::hq
+F["Vàng → Kiểm tra chứng từ"]:::hq
+G{"Chứng từ đầy đủ?"}:::decision
+H["Đỏ → Kiểm tra thực tế hàng hoá"]:::hq
+I{"Hàng khớp khai báo?"}:::decision
+J["Thuế: Tính và thu"]:::thue
+K["FWD: Bổ sung chứng từ thiếu"]:::fwd
+L(("Thông quan")):::event
+S --> A --> B --> C --> D
+D -->|"Xanh"| E --> J
+D -->|"Vàng"| F --> G
+G -->|"Đủ"| J
+G -->|"Thiếu"| K --> F
+D -->|"Đỏ"| H --> I
+I -->|"Khớp"| J
+I -->|"Sai"| K --> H
+J --> L`},
+
+// ═══════════ TẦNG 2: LUỒNG NỘI BỘ TỪNG NHÓM G ═══════════
+
+'cascade-master':{title:'Tổng thể – 10 nhóm G bắt cặp với nhau (12 cặp)',sub:'Bắt đầu từ G3 (Thương mại) + G2 (Vật lý) → kết thúc G10 (Tờ khai) → Thông quan',note:'12 cặp: ①G3→G1, ②G1→G6, ③G1→G5, ④G1→G8, ⑤G1→G4, ⑥G3→G6, ⑦G3→G7, ⑧G4→G6, ⑨G8→G5, ⑩G2→G7, ⑪G9→G7, ⑫G7→G10',chart:`flowchart TD
+S(("KH đặt hàng")):::event
+G3["G3: Thương mại"]:::thue
+G1["G1: Nhận dạng"]:::hq
+G4["G4: Xuất xứ"]:::ncc
+G8["G8: Chất lượng"]:::qc
+G5["G5: Pháp lý"]:::hq
+G2["G2: Vật lý"]:::fwd
+G9["G9: Đóng gói"]:::ncc
+G6["G6: Thuế"]:::thue
+G7["G7: Vận chuyển"]:::fwd
+G10["G10: Chứng từ"]:::kh
+TQ(("Thông quan")):::event
+S --> G3
+S --> G2
+G3 -->|"① Mua gì?"| G1
+G1 -->|"② HS→Thuế"| G6
+G1 -->|"③ HS→GP?"| G5
+G1 -->|"④ HS→QC?"| G8
+G1 -->|"⑤ HS→XX"| G4
+G3 -->|"⑥ CIF→Thuế"| G6
+G3 -->|"⑦ Incoterm→VC"| G7
+G4 -->|"⑧ C/O→FTA"| G6
+G8 -->|"⑨ QC→GP"| G5
+G2 -->|"⑩ KT→Cont"| G7
+G2 -->|"KT→Đóng gói"| G9
+G9 -->|"⑪ Kiện→Cont"| G7
+G5 --> G10
+G6 --> G10
+G7 -->|"⑫"| G10
+G10 --> TQ`},
+
+'cascade-g1':{title:'G1 Nhận dạng – Luồng nội bộ',sub:'HS → Tên hàng → Nhãn hiệu → Nhóm hàng → Thành phần',note:'HS Code là gốc. Nhóm 1 cũng cần qua Thành phần. Nhóm 2 = kiểm tra CNG',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["Mã HS: Tra cứu 8-10 số"]:::hq
+B["Tên hàng: Đối chiếu VN–EN"]:::hq
+C["Nhãn hiệu: Kiểm tra SHTT"]:::hq
+D{"Nhóm hàng?"}:::decision
+E["Nhóm 1 → Thông thường"]:::fwd
+F["Nhóm 2 → Kiểm tra CNG"]:::qc
+G["Thành phần: Phân tích chất liệu"]:::qc
+H(("Xong G1")):::event
+S --> A --> B --> C --> D
+D -->|"Nhóm 1"| E --> G --> H
+D -->|"Nhóm 2"| F --> G --> H`},
+
+'cascade-g2':{title:'G2 Vật lý – Luồng nội bộ',sub:'Trọng lượng → Kích thước → CBM → Số lượng',note:'TL + KT → tính CBM → so sánh W/M → quyết định cước',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["Trọng lượng: Cân Gross/Net + VGM"]:::fwd
+B["Kích thước: Đo D×R×C"]:::fwd
+C["CBM: Tính thể tích = D×R×C"]:::fwd
+D{"CBM lớn hơn TL quy đổi?"}:::decision
+E["Cước theo CBM"]:::fwd
+F["Cước theo Trọng lượng"]:::fwd
+G["Số lượng: Đếm + ghi PL"]:::fwd
+H(("Xong G2")):::event
+S --> A --> B --> C --> D
+D -->|"Có"| E --> G
+D -->|"Không"| F --> G
+G --> H`},
+
+'cascade-g3':{title:'G3 Thương mại – Luồng nội bộ',sub:'Incoterms → CIF → Đồng tiền → PT thanh toán',note:'Incoterm quyết định cách tính CIF → cơ sở tính thuế',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["Incoterms: Chọn EXW/FOB/CFR/CIF/DDP"]:::kh
+B["CIF: Tính FOB + Cước + Bảo hiểm"]:::thue
+C["Đồng tiền: USD/EUR/CNY → tỷ giá"]:::nh
+D{"PT thanh toán?"}:::decision
+E["T/T: Chuyển khoản"]:::nh
+F["L/C: Thư tín dụng"]:::nh
+G["D/P–D/A: Nhờ thu"]:::nh
+H(("Xong G3")):::event
+S --> A --> B --> C --> D
+D -->|"T/T"| E --> H
+D -->|"L/C"| F --> H
+D -->|"D/P"| G --> H`},
+
+'cascade-g4':{title:'G4 Xuất xứ – Luồng nội bộ',sub:'Nước XX → Loại C/O → FTA áp dụng',note:'Nước XX + C/O hợp lệ → thuế ưu đãi FTA hoặc MFN. Luôn nộp C/O dù khớp hay không',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["Nước xuất xứ: Xác nhận nước SX"]:::ncc
+B{"Nước XK khớp nước XX?"}:::decision
+C["Khớp → Vẫn cần C/O cho ưu đãi"]:::fwd
+D["Khác → Bắt buộc C/O chứng minh"]:::hq
+E["Loại C/O: Chọn Form D/E/AK/EUR.1/RCEP"]:::ncc
+F{"FTA áp dụng?"}:::decision
+G["Ưu đãi: ATIGA/EVFTA/CPTPP/RCEP"]:::hq
+H["Không FTA → Thuế MFN"]:::thue
+I(("Xong G4")):::event
+S --> A --> B
+B -->|"Khớp"| C --> E
+B -->|"Khác"| D --> E
+E --> F
+F -->|"Có"| G --> I
+F -->|"Không"| H --> I`},
+
+'cascade-g5':{title:'G5 Pháp lý – Luồng nội bộ',sub:'Loại hình → Cấm/HC → Giấy phép → Kiểm tra CNG',note:'Lọc tuần tự: Loại hình → Cấm? → GP? → CNG?',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["Mã loại hình: A11/A12/A31/A41"]:::fwd
+B{"Cấm / Hạn chế?"}:::decision
+C["Cấm → Tái xuất / Tiêu huỷ"]:::hq
+D["Hạn chế → Cần giấy phép"]:::hq
+E["Giấy phép: Xin GP Bộ ngành"]:::kh
+F{"Cần kiểm tra CNG?"}:::decision
+G["Kiểm tra CNG qua NSW"]:::qc
+H(("Xong G5")):::event
+S --> A --> B
+B -->|"Cấm"| C --> H
+B -->|"Hạn chế"| D --> E --> F
+B -->|"OK"| F
+F -->|"Có"| G --> H
+F -->|"Không"| H`},
+
+'cascade-g6':{title:'G6 Thuế – Luồng nội bộ',sub:'Thuế NK → PVTM → TTĐB → BVMT → GTGT (cascade cứng)',note:'Cascade: NK trước → PVTM → cộng TTĐB → cộng BVMT → tính GTGT',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["Thuế NK: CIF × thuế suất (FTA/MFN)"]:::thue
+P{"Có PVTM?"}:::decision
+Q["Thuế AD/CVD/SG (Phòng vệ TM)"]:::thue
+B{"Có TTĐB?"}:::decision
+C["TTĐB: (CIF+NK) × thuế suất"]:::thue
+D{"Có BVMT?"}:::decision
+E["BVMT: SL × Mức cố định"]:::thue
+F["GTGT: (CIF+NK+TTĐB+BVMT) × thuế suất"]:::thue
+G["Tổng = NK + PVTM + TTĐB + BVMT + GTGT"]:::thue
+H(("Xong G6")):::event
+S --> A --> P
+P -->|"Có"| Q --> B
+P -->|"Không"| B
+B -->|"Có"| C --> D
+B -->|"Không"| D
+D -->|"Có"| E --> F
+D -->|"Không"| F
+F --> G --> H`},
+
+'cascade-g7':{title:'G7 Vận chuyển – Luồng nội bộ',sub:'PT vận tải → Container → Vận đơn → Cảng ETA',note:'Chọn PT → đóng cont → lấy vận đơn → theo dõi ETA/delay',chart:`flowchart TD
+S((Bắt đầu)):::event
+A{"PT vận tải?"}:::decision
+B["Biển: FCL/LCL"]:::fwd
+C["HK: AWB (Vận đơn HK)"]:::fwd
+D["Bộ / Sắt"]:::fwd
+E["Container: Chọn loại + Đóng + Seal"]:::fwd
+F["Vận đơn: Carrier cấp"]:::fwd
+G{"Tàu đúng lịch?"}:::decision
+H["Cảng ETA: Đúng hẹn"]:::fwd
+I["Delay → Thông báo KH"]:::kh
+J(("Xong G7")):::event
+S --> A
+A -->|"Biển"| B --> E
+A -->|"HK"| C --> F
+A -->|"Bộ/Sắt"| D --> F
+E --> F --> G
+G -->|"Đúng"| H --> J
+G -->|"Trễ"| I --> J`},
+
+'cascade-g8':{title:'G8 Chất lượng – Luồng nội bộ',sub:'Kiểm tra CL → Hàng DG → Kiểm dịch → Chứng nhận',note:'Có thể kết hợp: hàng vừa DG vừa cần QC → kiểm tra song song',chart:`flowchart TD
+S((Bắt đầu)):::event
+A{"Phân loại hàng?"}:::decision
+B["Kiểm tra CL: QC lấy mẫu"]:::qc
+C["Hàng DG: MSDS + Declaration + BH"]:::qc
+D["Kiểm dịch: Xông trùng + KD"]:::qc
+E["Chứng nhận: ISO/CE/QCVN"]:::qc
+F{"Tất cả đạt?"}:::decision
+G(("Xong G8")):::event
+H["Không đạt → Tái xuất / Sửa"]:::hq
+S --> A
+A -->|"Thường"| B --> E
+A -->|"DG (có thể kết hợp QC)"| C --> B
+A -->|"Nông sản/TP"| D --> E
+E --> F
+F -->|"Đạt"| G
+F -->|"Không"| H --> G`},
+
+'cascade-g9':{title:'G9 Đóng gói – Luồng nội bộ',sub:'Bao bì → Số kiện → ISPM-15',note:'Chọn bao bì → đếm kiện → gỗ thì hun trùng ISPM-15',chart:`flowchart TD
+S((Bắt đầu)):::event
+A{"Loại bao bì?"}:::decision
+B["Carton"]:::ncc
+C["Pallet gỗ"]:::ncc
+D["Drum (Thùng phuy)"]:::ncc
+E["Số kiện: Đếm + Shipping marks"]:::ncc
+F{"Có gỗ/pallet?"}:::decision
+G["ISPM-15: Hun trùng + Dấu IPPC"]:::qc
+H["Chụp ảnh đóng gói"]:::fwd
+I(("Xong G9")):::event
+S --> A
+A -->|"Carton"| B --> E
+A -->|"Pallet"| C --> E
+A -->|"Drum"| D --> E
+E --> F
+F -->|"Có"| G --> H
+F -->|"Không"| H
+H --> I`},
+
+'cascade-g10':{title:'G10 Chứng từ – Luồng nội bộ',sub:'CI/PL → Vận đơn → C/O → Tờ khai HQ',note:'Tổng hợp bộ CT → khai tờ khai → phân luồng → thông quan. Luồng Vàng thiếu CT → bổ sung rồi kiểm tra lại',chart:`flowchart TD
+S((Bắt đầu)):::event
+A["CI/PL: NCC lập → FWD đối chiếu"]:::ncc
+B["Vận đơn: Nhận từ Carrier"]:::fwd
+C["C/O: Nộp C/O gốc"]:::ncc
+D["Tờ khai: Khai ECUS → VNACCS"]:::fwd
+E{"HQ phân luồng?"}:::decision
+F["Xanh → Thông quan"]:::hq
+G["Vàng → Kiểm tra CT"]:::hq
+H{"CT đầy đủ?"}:::decision
+I["Đỏ → Kiểm tra thực tế"]:::hq
+J["FWD: Bổ sung CT thiếu"]:::fwd
+K(("Thông quan")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Xanh"| F --> K
+E -->|"Vàng"| G --> H
+H -->|"Đủ"| K
+H -->|"Thiếu"| J --> G
+E -->|"Đỏ"| I --> K`}
+};
+/* ── RENDER + MODAL ── */
+const svgCache = {};
+let renderN = 0, mZoom = 1;
+const modal = document.getElementById('wfModal');
+const chartWrap = document.getElementById('chartWrap');
+
+window.showWF = async function(key) {
+  const d = WF[key]; if(!d) return;
+  document.getElementById('wfTitle').textContent = d.title;
+  document.getElementById('wfSub').textContent = d.sub;
+  document.getElementById('wfNote').innerHTML = '<i class="bi bi-cpu"></i> ' + d.note;
+  mZoom = 1; mTx=0; mTy=0; applyMZ();
+  modal.classList.add('open');
+  if (svgCache[key]) { chartWrap.innerHTML = svgCache[key]; setTimeout(mZFit,50); return; }
+  chartWrap.innerHTML = '<div class="loading-indicator"><i class="bi bi-arrow-repeat"></i>Rendering...</div>';
+  try {
+    renderN++;
+    const chartDef = d.chart.replace(/^flowchart (TD|LR)/, 'flowchart $1\n'+CLS);
+    const { svg } = await mermaid.render('m'+renderN, chartDef);
+    svgCache[key] = svg;
+    chartWrap.innerHTML = svg;
+    setTimeout(mZFit,50);
+  } catch(e) { chartWrap.innerHTML = '<div style="color:var(--red);padding:20px">Render error: '+e.message+'</div>'; }
+};
+window.closeWF = () => { modal.classList.remove('open'); modal.classList.remove('fullscreen'); updFSBtn(false); };
+window.toggleModalFS = () => {
+  modal.classList.toggle('fullscreen');
+  const fs = modal.classList.contains('fullscreen');
+  updFSBtn(fs);
+  setTimeout(mZFit, 100);
+};
+function updFSBtn(fs) {
+  document.getElementById('btnFullscreen').innerHTML = fs ? '<i class="bi bi-fullscreen-exit"></i>' : '<i class="bi bi-fullscreen"></i>';
+  document.getElementById('btnFullscreen').classList.toggle('active', fs);
+  document.getElementById('btnFSTool').querySelector('i').className = fs ? 'bi bi-fullscreen-exit' : 'bi bi-fullscreen';
+  document.getElementById('fsLabel').textContent = fs ? 'Exit' : 'Full';
+}
+
+/* ── MODAL ZOOM + PAN ── */
+let mTx=0,mTy=0,mDrag=false,mSX=0,mSY=0,mSTx=0,mSTy=0;
+function applyMZ(a){
+  chartWrap.style.transition=a?'transform .2s':'none';
+  chartWrap.style.transform=`translate(${mTx}px,${mTy}px) scale(${mZoom})`;
+  document.getElementById('mZoomVal').textContent=Math.round(mZoom*100)+'%';
+}
+window.mZIn = () => {mZoom=Math.min(5,mZoom*1.25);applyMZ(true);};
+window.mZOut = () => {mZoom=Math.max(.1,mZoom/1.25);applyMZ(true);};
+window.mZReset = () => {mZoom=1;mTx=0;mTy=0;applyMZ(true);};
+window.mZFit = () => {
+  const body=document.getElementById('wfBody'), svg=chartWrap.querySelector('svg');
+  if(!svg)return;
+  const bw=body.clientWidth, bh=body.clientHeight;
+  /* Use viewBox or clientWidth — getBBox gives wrong values for positioned SVGs */
+  const vb=svg.getAttribute('viewBox');
+  let sw,sh;
+  if(vb){const p=vb.split(/[\s,]+/).map(Number);sw=p[2]||svg.clientWidth||600;sh=p[3]||svg.clientHeight||400;}
+  else{sw=svg.clientWidth||600;sh=svg.clientHeight||400;}
+  mZoom=Math.min((bw-40)/sw, (bh-40)/sh, 2);
+  mZoom=Math.max(mZoom,0.15);
+  mTx=(bw-sw*mZoom)/2;
+  mTy=(bh-sh*mZoom)/2;
+  applyMZ(true);
+};
+
+/* ── MODAL DRAG TO PAN ── */
+const wfBody=document.getElementById('wfBody');
+wfBody.addEventListener('mousedown',e=>{ if(e.button!==0)return; mDrag=true; mSX=e.clientX; mSY=e.clientY; mSTx=mTx; mSTy=mTy; wfBody.classList.add('dragging'); e.preventDefault(); });
+window.addEventListener('mousemove',e=>{ if(!mDrag)return; mTx=mSTx+(e.clientX-mSX); mTy=mSTy+(e.clientY-mSY); applyMZ(); });
+window.addEventListener('mouseup',()=>{ mDrag=false; wfBody.classList.remove('dragging'); });
+
+/* ── MODAL SCROLL ZOOM (no Ctrl needed) ── */
+wfBody.addEventListener('wheel',e=>{ e.preventDefault(); const f=e.deltaY<0?1.12:1/1.12; const rect=wfBody.getBoundingClientRect(); const mx=e.clientX-rect.left, my=e.clientY-rect.top; const nz=Math.min(5,Math.max(.1,mZoom*f)); const r=nz/mZoom; mTx=mx+(mTx-mx)*r; mTy=my+(mTy-my)*r; mZoom=nz; applyMZ(); },{passive:false});
+modal.addEventListener('click',e=>{if(e.target===modal)closeWF();});
+
+/* ── CANVAS ── */
+const wrapper = document.getElementById('canvasWrapper'), canvas = document.getElementById('canvas');
+let scale=.65,tx=0,ty=0,dragging=false,startX=0,startY=0,startTx=0,startTy=0;
+const MIN=.1,MAX=3;
+function applyT(a){canvas.style.transition=a?'transform .25s cubic-bezier(.4,0,.2,1)':'none';if(a)setTimeout(()=>canvas.style.transition='',300);canvas.style.transform=`translate(calc(-50% + ${tx}px),calc(-50% + ${ty}px)) scale(${scale})`;document.getElementById('zoomDisplay').textContent=Math.round(scale*100)+'%';upMM();}
+function clamp(s){return Math.min(MAX,Math.max(MIN,s))}
+function zA(cx,cy,f){const r=wrapper.getBoundingClientRect(),x=cx-r.left-r.width/2,y=cy-r.top-r.height/2,ns=clamp(scale*f),rt=ns/scale;tx=x+(tx-x)*rt;ty=y+(ty-y)*rt;scale=ns;applyT();}
+wrapper.addEventListener('wheel',e=>{e.preventDefault();zA(e.clientX,e.clientY,e.deltaY<0?1.1:1/1.1);upXY(e.clientX,e.clientY);},{passive:false});
+wrapper.addEventListener('mousedown',e=>{if(e.button||e.target.closest('.node'))return;dragging=true;startX=e.clientX;startY=e.clientY;startTx=tx;startTy=ty;wrapper.classList.add('grabbing');});
+window.addEventListener('mousemove',e=>{upXY(e.clientX,e.clientY);if(!dragging)return;tx=startTx+(e.clientX-startX);ty=startTy+(e.clientY-startY);applyT();});
+window.addEventListener('mouseup',()=>{dragging=false;wrapper.classList.remove('grabbing');});
+let ltd=null;
+wrapper.addEventListener('touchstart',e=>{if(e.touches.length===2)ltd=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);else if(e.touches.length===1){dragging=true;startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTx=tx;startTy=ty;}},{passive:true});
+wrapper.addEventListener('touchmove',e=>{e.preventDefault();if(e.touches.length===2){const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);if(ltd)zA((e.touches[0].clientX+e.touches[1].clientX)/2,(e.touches[0].clientY+e.touches[1].clientY)/2,d/ltd);ltd=d;}else if(e.touches.length===1&&dragging){tx=startTx+(e.touches[0].clientX-startX);ty=startTy+(e.touches[0].clientY-startY);applyT();}},{passive:false});
+wrapper.addEventListener('touchend',()=>{dragging=false;ltd=null;});
+window.addEventListener('keydown',e=>{const cx=wrapper.getBoundingClientRect().left+wrapper.offsetWidth/2,cy=wrapper.getBoundingClientRect().top+wrapper.offsetHeight/2;if(e.ctrlKey||e.metaKey){if(e.key==='='||e.key==='+'){e.preventDefault();zA(cx,cy,1.15);}if(e.key==='-'){e.preventDefault();zA(cx,cy,1/1.15);}if(e.key==='0'){e.preventDefault();scale=.65;tx=0;ty=0;applyT(true);}}if(e.key==='Escape'){closeWF();} });
+document.getElementById('btnZoomIn').onclick=()=>zA(wrapper.offsetWidth/2,wrapper.offsetHeight/2,1.2);
+document.getElementById('btnZoomOut').onclick=()=>zA(wrapper.offsetWidth/2,wrapper.offsetHeight/2,1/1.2);
+document.getElementById('btnReset').onclick=()=>{scale=.65;tx=0;ty=0;applyT(true);};
+document.getElementById('btnFit').onclick=()=>{const c=canvas.getBoundingClientRect(),w=wrapper.getBoundingClientRect();scale=clamp(Math.min((w.width*.9)/(c.width/scale),(w.height*.9)/(c.height/scale)));tx=0;ty=0;applyT(true);};
+function upXY(cx,cy){const r=wrapper.getBoundingClientRect();document.getElementById('xyDisplay').textContent=`${Math.round((cx-r.left-r.width/2-tx)/scale)}, ${Math.round((cy-r.top-r.height/2-ty)/scale)}`;}
+
+/* ── TOGGLE ── */
+document.querySelectorAll('[data-toggle="children"]').forEach(n=>{n.addEventListener('click',e=>{e.stopPropagation();const i=n.querySelector('.toggle-icon');if(!i)return;const u=document.getElementById(i.id.replace('-icon','-children'));if(u){u.classList.toggle('collapsed');i.classList.toggle('rotated');setTimeout(upMM,400);}});});
+document.getElementById('btnCollapseAll').onclick=()=>{document.querySelectorAll('.collapsible').forEach(u=>u.classList.add('collapsed'));document.querySelectorAll('.toggle-icon').forEach(i=>i.classList.add('rotated'));setTimeout(upMM,400);};
+document.getElementById('btnExpandAll').onclick=()=>{document.querySelectorAll('.collapsible').forEach(u=>u.classList.remove('collapsed'));document.querySelectorAll('.toggle-icon').forEach(i=>i.classList.remove('rotated'));setTimeout(upMM,400);};
+
+/* ── MINIMAP ── */
+const allN=document.querySelectorAll('.node');
+document.getElementById('nodeCount').textContent=allN.length+' nodes';
+function upMM(){const cv=document.getElementById('minimapCanvas'),ctx=cv.getContext('2d'),W=cv.offsetWidth,H=cv.offsetHeight;cv.width=W;cv.height=H;ctx.clearRect(0,0,W,H);const cR=canvas.getBoundingClientRect(),wR=wrapper.getBoundingClientRect(),nW=cR.width/scale,nH=cR.height/scale,ms=Math.min((W-12)/nW,(H-12)/nH)*.8,mW=nW*ms,mH=nH*ms,mX=(W-mW)/2,mY=(H-mH)/2+4;ctx.fillStyle='rgba(56,189,248,.06)';ctx.strokeStyle='rgba(56,189,248,.3)';ctx.lineWidth=1;ctx.beginPath();ctx.roundRect(mX,mY,mW,mH,3);ctx.fill();ctx.stroke();const vW=(wR.width/scale)*ms,vH=(wR.height/scale)*ms;ctx.fillStyle='rgba(56,189,248,.12)';ctx.strokeStyle='rgba(56,189,248,.7)';ctx.lineWidth=1.5;ctx.beginPath();ctx.roundRect(mX+mW/2-tx*ms-vW/2,mY+mH/2-ty*ms-vH/2,vW,vH,2);ctx.fill();ctx.stroke();const cm={'node-root':'#e2e8f0','node-module':'#3b82f6','node-group':'#475569','node-category':'#6b7280','node-attr':'#9ca3af','node-entity-kh':'#0891b2','node-entity-ncc':'#059669','node-entity-fwd':'#2563eb','node-entity-hq':'#d97706','node-entity-thue':'#7c3aed','node-entity-qc':'#dc2626','node-entity-nh':'#0d9488','node-entity-kho':'#6366f1'};allN.forEach(n=>{const nr=n.getBoundingClientRect();if(!nr.width)return;const nx=mX+mW/2+((nr.left+nr.width/2)-(wR.left+wR.width/2))/scale*ms-tx*ms,ny=mY+mH/2+((nr.top+nr.height/2)-(wR.top+wR.height/2))/scale*ms-ty*ms;let c='#475569';for(const[k,v]of Object.entries(cm))if(n.classList.contains(k)){c=v;break;}ctx.fillStyle=c;ctx.beginPath();ctx.arc(nx,ny,n.classList.contains('node-root')?4:2,0,Math.PI*2);ctx.fill();});}
+setTimeout(upMM,800);
+setTimeout(()=>document.getElementById('hintBar').classList.add('hidden'),5000);
+applyT();
+</script>
+</body>
+</html>
