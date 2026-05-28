@@ -6154,6 +6154,31 @@ function filterGlossary(q){
   });
 }
 
+// Build flat lookup from GLOSSARY
+const HELP_LOOKUP={};
+for(const terms of Object.values(GLOSSARY)){
+  for(const[term,def] of Object.entries(terms)){
+    HELP_LOOKUP[term.toLowerCase()]=def;
+  }
+}
+
+// Help tooltip element
+const helpTip=document.createElement('div');
+helpTip.className='help-tooltip';
+helpTip.style.display='none';
+document.body.appendChild(helpTip);
+
+// ═══ OUTLINE PANEL (global) ═══
+function toggleOutline(){
+  const p = document.getElementById('outlinePanel');
+  if(!p) return;
+  p.classList.toggle('open');
+  if(p.classList.contains('open') && !p.dataset.built){
+    buildOutline();
+    p.dataset.built = '1';
+  }
+}
+
 document.addEventListener('DOMContentLoaded',()=>{
 renderGlossary();
 
@@ -6211,15 +6236,7 @@ document.addEventListener('mouseout',e=>{
   if(!e.target.closest('[data-help]'))helpTip.style.display='none';
 });
 
-// ═══ OUTLINE PANEL ═══
-window.toggleOutline = function(){
-  const p = document.getElementById('outlinePanel');
-  p.classList.toggle('open');
-  if(p.classList.contains('open') && !p.dataset.built){
-    buildOutline();
-    p.dataset.built = '1';
-  }
-};
+
 
 function buildOutline(){
   const body = document.getElementById('olBody');
