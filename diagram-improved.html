@@ -6256,14 +6256,14 @@ document.addEventListener('mouseout',e=>{
 
 
 
-function buildOutline(){
+window.buildOutline=function(){
   const body = document.getElementById('olBody');
   const rootUl = document.querySelector('.tree-root > .tree-ul');
   if(!rootUl) return;
   body.innerHTML = buildOlLevel(rootUl, 0);
 }
 
-function buildOlLevel(ul, depth){
+window.buildOlLevel=function(ul, depth){
   let html = '';
   const lis = ul.querySelectorAll(':scope > .tree-li');
   lis.forEach(li => {
@@ -6312,7 +6312,7 @@ window.toggleOlItem = function(toggle){
   toggle.textContent = children.classList.contains('ol-closed') ? '▸' : '▾';
 };
 
-function filterOutline(q){
+window.filterOutline=function(q){
   q = q.toLowerCase();
   document.querySelectorAll('.ol-item').forEach(el => {
     const match = !q || el.dataset.text.includes(q);
