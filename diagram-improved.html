@@ -4861,11 +4861,11 @@ H4 -->|"④ KT xong→TQ"| H5
 H6 -->|"⑥ Hàng đến CK"| H2
 H5 -->|"⑦ TQ"| E
 H5 -.->|"⑤ Hậu kiểm"| H7
-S --> H8
-H8 -.->|"⑨ Token+OLA"| H1
+
+
 H7 -.->|"⑧"| E`},
 
-'hq-manifest':{title:'H8.1 e-Manifest',sub:'Khai bản khai hàng hoá cho tàu/bay',note:'Hãng tàu/đại lý bắt buộc khai',chart:`flowchart TD
+'hq-manifest':{title:'H1.0 e-Manifest',sub:'Khai bản khai hàng hoá cho tàu/bay',note:'Hãng tàu/đại lý bắt buộc khai',chart:`flowchart TD
 S(("Bắt đầu")):::event
 A["Hãng tàu chuẩn bị manifest"]:::ncc
 B["Truyền VNACCS"]:::fwd
@@ -4884,7 +4884,7 @@ S(("Bắt đầu")):::event --> A["Airline/Agent khai MF"]:::ncc --> B["Truyền
 S(("Bắt đầu")):::event --> A["Phát hiện sai"]:::fwd --> B["Gửi yêu cầu sửa"]:::fwd --> C{"HQ duyệt?"}:::hq --> D["MF đã sửa"]:::hq --> E(("Hoàn thành")):::event
 C -->|"OK"| D
 C -->|"Từ chối"| A`},
-'hq-ola':{title:'H8.2 OLA – TK Vận chuyển',sub:'Vận chuyển bảo thuế',note:'Hàng từ cảng → kho NQ/bảo thuế',chart:`flowchart TD
+'hq-ola':{title:'H5.5 OLA – TK Vận chuyển',sub:'Vận chuyển bảo thuế',note:'Hàng từ cảng → kho NQ/bảo thuế',chart:`flowchart TD
 S(("Bắt đầu")):::event
 A{"Loại vận chuyển?"}:::fwd
 B["Chuyển cửa khẩu"]:::fwd
@@ -4903,7 +4903,7 @@ S(("Bắt đầu")):::event --> A["Khai OLA"]:::fwd --> B["HQ cảng A giám sá
 S(("Bắt đầu")):::event --> A["Khai OLA"]:::fwd --> B["HQ duyệt"]:::hq --> C["Vận chuyển → Kho NQ"]:::fwd --> D["Nhập kho NQ"]:::fwd --> E(("Hoàn thành")):::event`},
 'hq-ola-dinh-kem':{title:'TH3: Đính kèm TK NK',sub:'Khai vận chuyển ngay trên TK NK',note:'DN ưu tiên/GC/SXXK/CX',chart:`flowchart TD
 S(("Bắt đầu")):::event --> A["Tick ô vận chuyển trên TK NK"]:::fwd --> B["HQ duyệt tự động"]:::hq --> C(("Hoàn thành")):::event`},
-'hq-tea':{title:'H8.3 TEA – Danh mục miễn thuế',sub:'Đăng ký MMTB tạo TSCĐ cho dự án ưu đãi',note:'DN FDI bắt buộc đăng ký trước NK',chart:`flowchart TD
+'hq-tea':{title:'H3.7 TEA – Danh mục miễn thuế',sub:'Đăng ký MMTB tạo TSCĐ cho dự án ưu đãi',note:'DN FDI bắt buộc đăng ký trước NK',chart:`flowchart TD
 S(("Bắt đầu")):::event
 A["DN lập danh mục MMTB"]:::kh
 B["Nộp HQ"]:::fwd
