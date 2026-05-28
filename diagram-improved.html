@@ -141,7 +141,7 @@
     .node-attr:hover::after{opacity:1}
 
     /* ── MINIMAP ── */
-    .minimap{position:fixed;bottom:14px;right:14px;width:140px;height:90px;background:rgba(13,17,23,.9);border:1px solid var(--border);border-radius:10px;overflow:hidden;backdrop-filter:blur(8px);box-shadow:0 8px 32px rgba(0,0,0,.5);z-index:100}
+    .minimap{position:fixed;bottom:14px;right:14px;width:180px;height:120px;background:rgba(13,17,23,.9);border:1px solid var(--border);border-radius:10px;overflow:hidden;backdrop-filter:blur(8px);box-shadow:0 8px 32px rgba(0,0,0,.5);z-index:100}
     .minimap-label{position:absolute;top:4px;left:6px;font-family:var(--font-mono);font-size:7px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em}
     #minimapCanvas{width:100%;height:100%;opacity:.7}
     .statusbar{position:fixed;bottom:14px;left:14px;display:flex;align-items:center;gap:8px;background:rgba(13,17,23,.9);border:1px solid var(--border);border-radius:8px;padding:4px 10px;font-family:var(--font-mono);font-size:9px;color:var(--text-muted);backdrop-filter:blur(8px);z-index:100}
@@ -5985,7 +5985,7 @@ modal.addEventListener('click',e=>{if(e.target===modal)closeWF();});
 
 /* ── CANVAS ── */
 const wrapper = document.getElementById('canvasWrapper'), canvas = document.getElementById('canvas');
-let scale=.65,tx=0,ty=0,dragging=false,startX=0,startY=0,startTx=0,startTy=0;
+let scale=.45,tx=0,ty=0,dragging=false,startX=0,startY=0,startTx=0,startTy=0;
 const MIN=.1,MAX=3;
 function applyT(a){canvas.style.transition=a?'transform .25s cubic-bezier(.4,0,.2,1)':'none';if(a)setTimeout(()=>canvas.style.transition='',300);canvas.style.transform=`translate(calc(-50% + ${tx}px),calc(-50% + ${ty}px)) scale(${scale})`;document.getElementById('zoomDisplay').textContent=Math.round(scale*100)+'%';upMM();}
 function clamp(s){return Math.min(MAX,Math.max(MIN,s))}
@@ -5998,11 +5998,11 @@ let ltd=null;
 wrapper.addEventListener('touchstart',e=>{if(e.touches.length===2)ltd=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);else if(e.touches.length===1){dragging=true;startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTx=tx;startTy=ty;}},{passive:true});
 wrapper.addEventListener('touchmove',e=>{e.preventDefault();if(e.touches.length===2){const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);if(ltd)zA((e.touches[0].clientX+e.touches[1].clientX)/2,(e.touches[0].clientY+e.touches[1].clientY)/2,d/ltd);ltd=d;}else if(e.touches.length===1&&dragging){tx=startTx+(e.touches[0].clientX-startX);ty=startTy+(e.touches[0].clientY-startY);applyT();}},{passive:false});
 wrapper.addEventListener('touchend',()=>{dragging=false;ltd=null;});
-window.addEventListener('keydown',e=>{const cx=wrapper.getBoundingClientRect().left+wrapper.offsetWidth/2,cy=wrapper.getBoundingClientRect().top+wrapper.offsetHeight/2;if(e.ctrlKey||e.metaKey){if(e.key==='='||e.key==='+'){e.preventDefault();zA(cx,cy,1.15);}if(e.key==='-'){e.preventDefault();zA(cx,cy,1/1.15);}if(e.key==='0'){e.preventDefault();scale=.65;tx=0;ty=0;applyT(true);}}if(e.key==='Escape'){closeWF();} });
+window.addEventListener('keydown',e=>{const cx=wrapper.getBoundingClientRect().left+wrapper.offsetWidth/2,cy=wrapper.getBoundingClientRect().top+wrapper.offsetHeight/2;if(e.ctrlKey||e.metaKey){if(e.key==='='||e.key==='+'){e.preventDefault();zA(cx,cy,1.15);}if(e.key==='-'){e.preventDefault();zA(cx,cy,1/1.15);}if(e.key==='0'){e.preventDefault();scale=.45;tx=0;ty=0;applyT(true);}}if(e.key==='Escape'){closeWF();} });
 document.getElementById('btnZoomIn').onclick=()=>zA(wrapper.offsetWidth/2,wrapper.offsetHeight/2,1.2);
 document.getElementById('btnZoomOut').onclick=()=>zA(wrapper.offsetWidth/2,wrapper.offsetHeight/2,1/1.2);
-document.getElementById('btnReset').onclick=()=>{scale=.65;tx=0;ty=0;applyT(true);};
-document.getElementById('btnFit').onclick=()=>{const c=canvas.getBoundingClientRect(),w=wrapper.getBoundingClientRect();scale=clamp(Math.min((w.width*.9)/(c.width/scale),(w.height*.9)/(c.height/scale)));tx=0;ty=0;applyT(true);};
+document.getElementById('btnReset').onclick=()=>{scale=.45;tx=0;ty=0;applyT(true);};
+document.getElementById('btnFit').onclick=()=>{const c=canvas.getBoundingClientRect(),w=wrapper.getBoundingClientRect();scale=clamp(Math.min((w.width*.85)/(c.width/scale),(w.height*.85)/(c.height/scale)));tx=0;ty=0;applyT(true);};
 function upXY(cx,cy){const r=wrapper.getBoundingClientRect();document.getElementById('xyDisplay').textContent=`${Math.round((cx-r.left-r.width/2-tx)/scale)}, ${Math.round((cy-r.top-r.height/2-ty)/scale)}`;}
 
 /* ── TOGGLE ── */
@@ -6014,6 +6014,24 @@ document.getElementById('btnExpandAll').onclick=()=>{document.querySelectorAll('
 const allN=document.querySelectorAll('.node');
 document.getElementById('nodeCount').textContent=allN.length+' nodes';
 function upMM(){const cv=document.getElementById('minimapCanvas'),ctx=cv.getContext('2d'),W=cv.offsetWidth,H=cv.offsetHeight;cv.width=W;cv.height=H;ctx.clearRect(0,0,W,H);const cR=canvas.getBoundingClientRect(),wR=wrapper.getBoundingClientRect(),nW=cR.width/scale,nH=cR.height/scale,ms=Math.min((W-12)/nW,(H-12)/nH)*.8,mW=nW*ms,mH=nH*ms,mX=(W-mW)/2,mY=(H-mH)/2+4;ctx.fillStyle='rgba(56,189,248,.06)';ctx.strokeStyle='rgba(56,189,248,.3)';ctx.lineWidth=1;ctx.beginPath();ctx.roundRect(mX,mY,mW,mH,3);ctx.fill();ctx.stroke();const vW=(wR.width/scale)*ms,vH=(wR.height/scale)*ms;ctx.fillStyle='rgba(56,189,248,.12)';ctx.strokeStyle='rgba(56,189,248,.7)';ctx.lineWidth=1.5;ctx.beginPath();ctx.roundRect(mX+mW/2-tx*ms-vW/2,mY+mH/2-ty*ms-vH/2,vW,vH,2);ctx.fill();ctx.stroke();const cm={'node-root':'#e2e8f0','node-module':'#3b82f6','node-group':'#475569','node-category':'#6b7280','node-attr':'#9ca3af','node-entity-kh':'#0891b2','node-entity-ncc':'#059669','node-entity-fwd':'#2563eb','node-entity-hq':'#d97706','node-entity-thue':'#7c3aed','node-entity-qc':'#dc2626','node-entity-nh':'#0d9488','node-entity-kho':'#6366f1'};allN.forEach(n=>{const nr=n.getBoundingClientRect();if(!nr.width)return;const nx=mX+mW/2+((nr.left+nr.width/2)-(wR.left+wR.width/2))/scale*ms-tx*ms,ny=mY+mH/2+((nr.top+nr.height/2)-(wR.top+wR.height/2))/scale*ms-ty*ms;let c='#475569';for(const[k,v]of Object.entries(cm))if(n.classList.contains(k)){c=v;break;}ctx.fillStyle=c;ctx.beginPath();ctx.arc(nx,ny,n.classList.contains('node-root')?4:2,0,Math.PI*2);ctx.fill();});}
+// Minimap click → jump to position
+document.getElementById('minimapCanvas').addEventListener('click', function(e){
+  const cv=this, W=cv.offsetWidth, H=cv.offsetHeight;
+  const cR=canvas.getBoundingClientRect(), wR=wrapper.getBoundingClientRect();
+  const nW=cR.width/scale, nH=cR.height/scale;
+  const ms=Math.min((W-12)/nW,(H-12)/nH)*.8;
+  const mW=nW*ms, mH=nH*ms, mX=(W-mW)/2, mY=(H-mH)/2+4;
+  // Click position relative to minimap center
+  const rect=cv.getBoundingClientRect();
+  const clickX=e.clientX-rect.left, clickY=e.clientY-rect.top;
+  // Convert to canvas coordinates
+  tx = -(clickX - mX - mW/2) / ms;
+  ty = -(clickY - mY - mH/2) / ms;
+  applyT(true);
+});
+// Minimap cursor
+document.getElementById('minimapCanvas').style.cursor='crosshair';
+
 setTimeout(upMM,800);
 setTimeout(()=>document.getElementById('hintBar').classList.add('hidden'),5000);
 applyT();
