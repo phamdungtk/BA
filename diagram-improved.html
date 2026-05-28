@@ -218,7 +218,7 @@
               <ul class="tree-ul tree-ul-sub collapsible" id="goods-children">
                 <!-- G1 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G1</span>Nhận dạng &amp; Phân loại<span class="group-badge">7</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g1')" title="Xem luồng nội bộ G1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g1-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g1-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('ma-hs')">Mã HS</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('ten-hang')">Tên hàng hóa</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('nhan-hieu')">Nhãn hiệu</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('nhom-hang')">Nhóm hàng (1/2)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('thanh-phan')">Thành phần</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('model-spec')">Model / Spec</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('ma-sku')">Mã SKU / Part No</div></li></ul></li>
                 <!-- G2 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G2</span>Vật lý &amp; Kích thước<span class="group-badge">6</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g2')" title="Xem luồng nội bộ G2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g2-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g2-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('trong-luong')">Trọng lượng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('kich-thuoc')">Kích thước</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('cbm')">Thể tích CBM</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('so-luong')">Số lượng &amp; ĐVT</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('gw-nw')">GW / NW</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('chargeable-weight')">Trọng lượng tính cước</div></li></ul></li>
-                <!-- G3 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G3</span>Thương mại &amp; Trị giá<span class="group-badge">6</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g3')" title="Xem luồng nội bộ G3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g3-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g3-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('cif')">CIF Value</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('incoterms')">Incoterms</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('dong-tien')">Đồng tiền</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('pt-thanh-toan')">PT thanh toán</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('fob-value')">FOB Value</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('phi-phat-sinh')">Phí phát sinh (Adjustment)</div></li></ul></li>
+                <!-- G3 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G3</span>Thương mại &amp; Trị giá<span class="group-badge">16</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g3')" title="Xem luồng nội bộ G3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g3-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g3-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('cif')">CIF Value</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('incoterms')">Incoterms</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('dong-tien')">Đồng tiền</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('pt-thanh-toan')">PT thanh toán</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('fob-value')">FOB Value</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('phi-phat-sinh')">Phí phát sinh (Adjustment)</div></li><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G3.5</span>Mô hình giao dịch<span class="group-badge">5</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g35')" title="WF tổng G3.5"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('gd-truc-tiep')">TH1: NK trực tiếp</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('gd-uy-thac')">TH2: NK ủy thác</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('gd-trung-gian')">TH3: Qua trung gian (Trader)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('gd-cong-ty-me')">TH4: Công ty mẹ – con</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('gd-gia-cong')">TH5: Gia công (Tolling)</div></li></ul></li><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G3.6</span>Luồng thanh toán<span class="group-badge">5</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g36')" title="WF tổng G3.6"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('tt-kh-nn')">TH1: KH → Pháp nhân NN</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('tt-kh-xuong')">TH2: KH → Xưởng SX</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('tt-vn-xuong')">TH3: Pháp nhân VN → Xưởng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('tt-vn-nn')">TH4: Pháp nhân VN → Pháp nhân NN</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('tt-uy-thac')">TH5: KH → PN VN → PN NN (Ủy thác)</div></li></ul></li></ul></li>
                 <!-- G4 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G4</span>Xuất xứ &amp; Nguồn gốc<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g4')" title="Xem luồng nội bộ G4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g4-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g4-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('nuoc-xuat-xu')">Nước xuất xứ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('loai-co')">Loại C/O</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('fta')">FTA áp dụng</div></li></ul></li>
                 <!-- G5 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G5</span>Pháp lý &amp; Tuân thủ<span class="group-badge">6</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g5')" title="Xem luồng nội bộ G5"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g5-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g5-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('ma-loai-hinh')">Mã loại hình</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('cam-han-che')">Cấm / Hạn chế</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('giay-phep')">Giấy phép NK</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('kiem-tra-cng')">Kiểm tra CNG</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('quota-trq')">Hạn ngạch (TRQ)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('cites')">CITES</div></li></ul></li>
                 <!-- G6 --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">G6</span>Thuế &amp; Phí<span class="group-badge">6</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-g6')" title="Xem luồng nội bộ G6"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="g6-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="g6-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('thue-nk')">Thuế NK</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('thue-gtgt')">Thuế GTGT</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('thue-ttdb')">Thuế TTĐB</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('thue-bvmt')">Thuế BVMT</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('thue-pvtm-g')">Thuế PVTM (AD/CVD/SG)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('thue-fta-rate')">Thuế suất FTA</div></li></ul></li>
@@ -4860,6 +4860,141 @@ HQ -->|"⑦ Sau TQ"| E
 HH <-.->|"⑧ Trọng lượng, Số lượng"| HQ
 DV <-.->|"⑨ Bảo hiểm, Phí"| HH
 HQ -.->|"⑩ Hoàn thuế"| DV`},
+
+// ═══════════ G3.5: Mô hình giao dịch ═══════════
+'cascade-g35':{title:'G3.5 Mô hình giao dịch – Luồng nội bộ',sub:'Trực tiếp → Ủy thác → Trung gian → Cty mẹ-con → Gia công',note:'5 mô hình: ai đứng tên TK, ai thanh toán, ai nhận hàng',chart:`flowchart TD
+S(("Xác định mô hình")):::event
+A{"Ai đứng tên NK?"}:::kh
+B["KH tự NK"]:::kh
+C["PN VN ủy thác"]:::fwd
+D["Công ty mẹ/con"]:::ncc
+E["Gia công"]:::ncc
+F["Khai TK theo mô hình"]:::fwd
+G(("Hoàn thành")):::event
+S --> A
+A -->|"Tự NK"| B --> F --> G
+A -->|"Ủy thác"| C --> F
+A -->|"Mẹ-con"| D --> F
+A -->|"Gia công"| E --> F`},
+'gd-truc-tiep':{title:'TH1: NK trực tiếp',sub:'KH tự đứng tên NK, thanh toán trực tiếp NCC',note:'Phổ biến nhất – KH có MST XNK',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH ký HĐ với NCC"]:::kh
+B["KH thanh toán NCC"]:::kh
+C["NCC xuất hàng"]:::ncc
+D["FWD khai TK – KH đứng tên"]:::fwd
+E["KH nhận hàng"]:::kh
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'gd-uy-thac':{title:'TH2: NK ủy thác',sub:'KH ủy thác Pháp nhân VN đứng tên NK',note:'PN VN đứng tên TK, KH trả tiền qua PN VN',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH ký HĐ ủy thác với PN VN"]:::kh
+B["PN VN ký HĐ mua bán với NCC"]:::fwd
+C["KH chuyển tiền cho PN VN"]:::kh
+D["PN VN thanh toán NCC"]:::fwd
+E["FWD khai TK – PN VN đứng tên"]:::fwd
+F["PN VN giao hàng cho KH"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'gd-trung-gian':{title:'TH3: Qua trung gian (Trader)',sub:'KH mua qua Trader nước ngoài, Trader mua từ xưởng',note:'Trader đứng giữa – KH không biết xưởng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH ký HĐ với Trader NN"]:::kh
+B["Trader NN đặt hàng Xưởng"]:::ncc
+C["Xưởng xuất hàng"]:::ncc
+D["KH thanh toán Trader"]:::kh
+E["Trader thanh toán Xưởng"]:::ncc
+F["FWD khai TK – KH đứng tên"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> F --> G
+A --> D --> E`},
+'gd-cong-ty-me':{title:'TH4: Công ty mẹ – con',sub:'Công ty mẹ NN xuất cho công ty con VN',note:'Giá nội bộ (transfer pricing) – HQ giám sát chặt',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Cty mẹ NN quyết định xuất"]:::ncc
+B["Cty con VN nhận thông báo"]:::kh
+C["Giá nội bộ (transfer price)"]:::kh
+D{"HQ chấp nhận giá?"}:::hq
+E["OK → Khai TK"]:::fwd
+F["Tham vấn giá"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Chấp nhận"| E --> G
+D -->|"Nghi ngờ"| F --> C`},
+'gd-gia-cong':{title:'TH5: Gia công (Tolling)',sub:'NCC gửi NVL, KH gia công rồi xuất trả',note:'Loại hình E21/E31 – Miễn thuế NK NVL',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["NCC gửi NVL gia công"]:::ncc
+B["KH nhận NVL – Khai TK NK"]:::kh
+C["Gia công tại VN"]:::kh
+D["Xuất thành phẩm – Khai TK XK"]:::kh
+E["Thanh khoản định mức"]:::hq
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+// ═══════════ G3.6: Luồng thanh toán ═══════════
+'cascade-g36':{title:'G3.6 Luồng thanh toán – Luồng nội bộ',sub:'KH→NN → KH→Xưởng → VN→Xưởng → VN→NN → Ủy thác',note:'5 luồng tiền: ai trả ai, qua kênh nào',chart:`flowchart TD
+S(("Xác định luồng TT")):::event
+A{"Ai trả tiền?"}:::kh
+B["KH trả trực tiếp"]:::kh
+C["PN VN trả thay"]:::fwd
+D{"Trả cho ai?"}:::ncc
+E["Pháp nhân NN"]:::ncc
+F["Xưởng SX"]:::ncc
+G["Chuyển khoản quốc tế"]:::fwd
+H(("Hoàn thành")):::event
+S --> A
+A -->|"KH"| B --> D
+A -->|"PN VN"| C --> D
+D -->|"PN NN"| E --> G --> H
+D -->|"Xưởng"| F --> G`},
+'tt-kh-nn':{title:'TH1: KH → Pháp nhân NN',sub:'KH thanh toán trực tiếp cho công ty nước ngoài',note:'KH tự mua ngoại tệ, Swift transfer qua NH',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH ký HĐ với PN NN"]:::kh
+B["NH KH mở LC hoặc TT"]:::kh
+C["Swift transfer → NH PN NN"]:::fwd
+D["PN NN xác nhận nhận tiền"]:::ncc
+E["PN NN xuất hàng"]:::ncc
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'tt-kh-xuong':{title:'TH2: KH → Xưởng SX',sub:'KH thanh toán trực tiếp cho nhà máy sản xuất',note:'Bỏ qua Trader – giá tốt hơn nhưng rủi ro cao',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH liên hệ Xưởng trực tiếp"]:::kh
+B["Xưởng báo giá FOB/EXW"]:::ncc
+C["KH chuyển tiền Xưởng"]:::kh
+D["Xưởng sản xuất + xuất hàng"]:::ncc
+E{"Hàng đúng spec?"}:::qc
+F["OK → Nhận hàng"]:::kh
+G["Claim Xưởng"]:::kh
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Đạt"| F --> H
+E -->|"Lỗi"| G --> H`},
+'tt-vn-xuong':{title:'TH3: Pháp nhân VN → Xưởng',sub:'Công ty VN thanh toán trực tiếp cho xưởng SX',note:'PN VN đứng tên NK, thanh toán xưởng (không qua Trader)',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["PN VN ký HĐ với Xưởng"]:::fwd
+B["PN VN mở LC/TT"]:::fwd
+C["NH chuyển tiền Xưởng"]:::fwd
+D["Xưởng xuất hàng"]:::ncc
+E["PN VN khai TK NK"]:::fwd
+F["Giao hàng cho KH (nếu ủy thác)"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'tt-vn-nn':{title:'TH4: Pháp nhân VN → Pháp nhân NN',sub:'Công ty VN thanh toán cho công ty nước ngoài (Trader)',note:'PN NN là Trader/Distributor, không phải xưởng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["PN VN ký HĐ với PN NN"]:::fwd
+B["PN NN sourcing từ Xưởng"]:::ncc
+C["PN VN thanh toán PN NN"]:::fwd
+D["PN NN thanh toán Xưởng"]:::ncc
+E["Xưởng xuất → PN VN NK"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'tt-uy-thac':{title:'TH5: KH → PN VN → PN NN (Ủy thác)',sub:'KH trả tiền qua PN VN, PN VN thanh toán PN NN',note:'3 bên: KH không có MST XNK, PN VN đứng tên TK',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH chuyển tiền PN VN"]:::kh
+B["PN VN nhận + Giữ"]:::fwd
+C["PN VN thanh toán PN NN"]:::fwd
+D["PN NN xuất hàng"]:::ncc
+E["PN VN khai TK – đứng tên"]:::fwd
+F["PN VN giao hàng cho KH"]:::fwd
+G["KH trả phí ủy thác"]:::kh
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G --> H`},
 // ═══════════════ NEW WFs: Đợt 1 Gap Fill ═══════════════
 // ── G1: Model/Spec, SKU ──
 'model-spec':{title:'Model / Spec',sub:'Mã model + thông số kỹ thuật',note:'ECUS yêu cầu mô tả chi tiết sản phẩm',chart:`flowchart TD
