@@ -57,65 +57,53 @@
     
     /* ── HORIZONTAL TREE MODE (Mind-map) ── */
     .tree-horizontal .tree-root{
-      flex-direction:row;align-items:center;padding:20px 0 20px 20px
+      flex-direction:row;align-items:flex-start;padding:20px
     }
+    /* Stack children vertically */
     .tree-horizontal .tree-ul{
-      flex-direction:column;padding-top:0;padding-left:24px;align-items:flex-start
+      flex-direction:column;align-items:flex-start;
+      padding-top:0;padding-left:0;margin:0;gap:0
     }
-    .tree-horizontal .tree-ul-sub::before{
-      /* vertical trunk line from parent */
-      top:0;left:0;right:auto;height:100%;width:0;
-      border-left:2px solid var(--node-line);border-top:none;
-      margin-left:0
-    }
+    /* Each li = row: [node] → [children] */
     .tree-horizontal .tree-li{
       flex-direction:row;align-items:center;
-      padding:4px 0 4px 24px;text-align:left
+      padding:2px 0 2px 0;position:relative
     }
-    /* horizontal arm from trunk to node */
-    .tree-horizontal .tree-li::before{
-      top:50%;left:0;right:auto;
-      width:24px;height:0;
-      border-top:2px solid var(--node-line);
-      border-left:none
+    /* Remove ALL vertical-mode connectors */
+    .tree-horizontal .tree-li::before,
+    .tree-horizontal .tree-li::after,
+    .tree-horizontal .tree-ul-sub::before{display:none!important}
+    /* Simple left-border trunk for sub-trees */
+    .tree-horizontal .tree-ul-sub{
+      margin-left:8px;padding-left:16px;
+      border-left:2px solid var(--node-line)
     }
-    /* vertical trunk segment beside siblings */
-    .tree-horizontal .tree-li::after{
-      top:0;left:0;right:auto;
-      width:0;height:100%;
-      border-left:2px solid var(--node-line);
-      border-top:none
-    }
-    .tree-horizontal .tree-li:first-child::before{
-      border-top:2px solid var(--node-line)
-    }
-    .tree-horizontal .tree-li:first-child::after{
-      top:50%;height:50%
-    }
-    .tree-horizontal .tree-li:last-child::after{
-      height:50%
-    }
-    .tree-horizontal .tree-li:only-child::after{display:none}
-    .tree-horizontal .tree-li:only-child::before{
-      border-top:2px solid var(--node-line);display:block
-    }
-    .tree-horizontal .tree-li:only-child{padding-left:24px}
-    /* Nodes */
+    /* Nodes: compact, left-aligned, no wrap */
     .tree-horizontal .node{
-      white-space:nowrap;max-width:none;min-width:auto;text-align:left
+      white-space:nowrap;max-width:none;min-width:auto;
+      text-align:left;margin:2px 0;flex-shrink:0
     }
-    .tree-horizontal .node:hover{transform:translateX(3px);filter:brightness(1.15)}
-    .tree-horizontal .node-root{max-width:none}
-    .tree-horizontal .node-module,.tree-horizontal .node-category{max-width:none}
+    .tree-horizontal .node:hover{
+      transform:translateX(3px);filter:brightness(1.15)
+    }
+    /* Toggle icon horizontal */
     .tree-horizontal .toggle-icon{
-      display:inline-block;margin-left:4px;margin-top:0;
-      transform:rotate(-90deg)
+      display:inline;margin-left:4px;margin-top:0;
+      transform:rotate(-90deg);vertical-align:middle
     }
     .tree-horizontal .toggle-icon.rotated{transform:rotate(0deg)}
+    /* Collapse = hide horizontally */
     .tree-horizontal .collapsible.collapsed{
       max-width:0!important;max-height:none!important;
-      padding-left:0!important;overflow:hidden;opacity:0
+      padding:0!important;margin:0!important;
+      border:none!important;overflow:hidden;opacity:0
     }
+    /* Remove size limits */
+    .tree-horizontal .node-root,
+    .tree-horizontal .node-module,
+    .tree-horizontal .node-category,
+    .tree-horizontal .node-group,
+    .tree-horizontal .node-attr{max-width:none;min-width:auto}
     /* ── NODES ── */
     .node{position:relative;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;border-radius:12px;border:2px solid var(--border);padding:7px 12px;min-width:95px;max-width:145px;font-size:11px;font-weight:600;color:var(--text);cursor:pointer;z-index:10;white-space:normal;line-height:1.3;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s,filter .18s}
     .node:hover{transform:translateY(-3px);filter:brightness(1.15)}
