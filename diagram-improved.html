@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -298,34 +298,40 @@
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.4</span>Sửa/Huỷ TK<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-sua-huy')" title="WF tổng H1.4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-sua-truoc')">TH1: Sửa trước TQ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-sua-sau')">TH2: Sửa sau TQ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-huy-tk')">TH3: Huỷ tờ khai</div></li></ul></li>
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.5</span>Nộp TK qua ECUS<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-nop-vnaccs')" title="WF tổng H1.5"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-ok')">TH1: Nộp thành công</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-loi')">TH2: Lỗi hệ thống</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-bosung')">TH3: Nộp bổ sung</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-giay')">TH4: Tờ khai giấy</div></li></ul></li>
                 </ul></li>
-                <!-- H2: Phân luồng --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H2</span>Phân luồng &amp; Kiểm tra<span class="group-badge">14</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h2')" title="Luồng nội bộ H2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h2-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h2-children">
+                <!-- H2: Phân luồng --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H2</span>Phân luồng<span class="group-badge">8</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h2')" title="Luồng nội bộ H2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h2-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h2-children">
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H2.1</span>Phân luồng tự động<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-phan-luong')" title="WF tổng H2.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-luong-xanh')">TH1: Luồng Xanh</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-luong-vang')">TH2: Luồng Vàng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-luong-do')">TH3: Luồng Đỏ</div></li></ul></li>
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H2.2</span>KT hồ sơ (Vàng)<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-kt-hoso')" title="WF tổng H2.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hs-du')">TH1: Đủ CT → TQ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hs-thieu')">TH2: Thiếu → Bổ sung</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hs-sai')">TH3: Sai → Chuyển Đỏ</div></li></ul></li>
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H2.3</span>KT thực tế (Đỏ)<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-kt-thucte')" title="WF tổng H2.3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kt-5')">TH1: Kiểm 5%</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kt-10')">TH2: Kiểm 10%</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kt-100')">TH3: Kiểm 100%</div></li></ul></li>
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H2.4</span>Chuyển luồng<span class="group-badge">5</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-chuyen-luong')" title="WF tổng H2.4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cl-xv')">TH1: Xanh→Vàng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cl-vd')">TH2: Vàng→Đỏ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cl-dv')">TH3: Đỏ→Vàng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cl-dn')">TH4: Theo YC doanh nghiệp</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cl-cd')">TH5: Theo chỉ đạo</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H2.2</span>Chuyển luồng<span class="group-badge">5</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-chuyen-luong')" title="WF tổng H2.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cl-xv')">TH1: Xanh→Vàng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cl-vd')">TH2: Vàng→Đỏ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cl-dv')">TH3: Đỏ→Vàng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cl-dn')">TH4: Theo YC doanh nghiệp</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cl-cd')">TH5: Theo chỉ đạo</div></li></ul></li>
                 </ul></li>
-                <!-- H3: Trị giá --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H3</span>Trị giá &amp; Thuế HQ<span class="group-badge">13</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h3')" title="Luồng nội bộ H3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h3-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h3-children">
+                <!-- H3: Trị giá & Thuế --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H3</span>Trị giá &amp; Thuế HQ<span class="group-badge">14</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h3')" title="Luồng nội bộ H3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h3-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h3-children">
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H3.1</span>Xác định trị giá<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-tri-gia')" title="WF tổng H3.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tg-gd')">TH1: Trị giá giao dịch</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tg-tuongtu')">TH2: Trị giá tương tự</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tg-suyluan')">TH3: Trị giá suy luận</div></li></ul></li>
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H3.2</span>Tham vấn giá<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-tham-van')" title="WF tổng H3.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tv-nghinh')">TH1: HQ nghi ngờ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tv-chapnhan')">TH2: DN chấp nhận</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tv-khieunai')">TH3: DN khiếu nại</div></li></ul></li>
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H3.3</span>Tính thuế<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-tinh-thue')" title="WF tổng H3.3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-thue-thuong')">TH1: Thuế NK thường</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-thue-fta')">TH2: Thuế ưu đãi FTA</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-thue-pvtm')">TH3: Thuế PVTM</div></li></ul></li>
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H3.4</span>Nộp &amp; Bảo lãnh<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-nop-thue')" title="WF tổng H3.4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nt-ngay')">TH1: Nộp ngay</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nt-baolanh')">TH2: Bảo lãnh NH</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nt-anhan')">TH3: Ân hạn thuế</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nt-mien')">TH4: Miễn/Giảm</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H3.5</span>Lệ phí HQ &amp; Phí khác<span class="group-badge">1</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-lephi')" title="WF H3.5"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-lephi-tk')">TH1: Lệ phí TK + Phí CNG</div></li></ul></li>
                 </ul></li>
-                <!-- H4: Thông quan --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H4</span>Thông quan &amp; Giải phóng<span class="group-badge">11</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h4')" title="Luồng nội bộ H4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h4-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h4-children">
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H4.1</span>Giải phóng hàng<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-giai-phong')" title="WF tổng H4.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-gp-truocthue')">TH1: GP trước nộp thuế</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-gp-baolanh')">TH2: GP có bảo lãnh</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-gp-uutien')">TH3: GP hàng ưu tiên</div></li></ul></li>
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H4.2</span>Thông quan<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-thong-quan')" title="WF tổng H4.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tq-tudong')">TH1: TQ tự động (Xanh)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tq-saukt')">TH2: TQ sau kiểm tra</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tq-dieukien')">TH3: TQ có điều kiện</div></li></ul></li>
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H4.3</span>Đưa hàng về BQ<span class="group-badge">2</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-bao-quan')" title="WF tổng H4.3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-bq-cng')">TH1: Chờ kết quả CNG</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-bq-gp')">TH2: Chờ GP chuyên ngành</div></li></ul></li>
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H4.4</span>Tạm giữ/Thu giữ<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-tam-giu')" title="WF tổng H4.4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tg-hoso')">TH1: Tạm giữ hồ sơ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tg-hang')">TH2: Tạm giữ hàng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-thu-giu')">TH3: Thu giữ vi phạm</div></li></ul></li>
+                <!-- H4: Kiểm tra HQ --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H4</span>Kiểm tra HQ<span class="group-badge">9</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h4')" title="Luồng nội bộ H4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h4-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h4-children">
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H4.1</span>KT hồ sơ (Vàng)<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-kt-hoso')" title="WF tổng H4.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hs-du')">TH1: Đủ CT → TQ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hs-thieu')">TH2: Thiếu → Bổ sung</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hs-sai')">TH3: Sai → Chuyển Đỏ</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H4.2</span>KT thực tế (Đỏ)<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-kt-thucte')" title="WF tổng H4.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kt-5')">TH1: Kiểm 5%</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kt-10')">TH2: Kiểm 10%</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kt-100')">TH3: Kiểm 100%</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H4.3</span>Giám định<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-giam-dinh')" title="WF tổng H4.3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-gd-hs')">TH1: Giám định mã HS</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-gd-chatluong')">TH2: Giám định chất lượng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-gd-soluong')">TH3: Giám định số lượng</div></li></ul></li>
                 </ul></li>
-                <!-- H5: Cửa khẩu --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H5</span>Cửa khẩu<span class="group-badge">10</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h5')" title="Luồng nội bộ H5"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h5-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h5-children">
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H5.1</span>Cảng biển<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-cang-bien')" title="WF tổng H5.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cb-catlai')">TH1: Cát Lái</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cb-haiphong')">TH2: Hải Phòng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cb-khac')">TH3: Cảng khác</div></li></ul></li>
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H5.2</span>Sân bay<span class="group-badge">2</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-san-bay')" title="WF tổng H5.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-sb-tsn')">TH1: TSN/Nội Bài</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-sb-express')">TH2: Chuyển phát nhanh</div></li></ul></li>
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H5.3</span>CK đường bộ<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-ck-bo')" title="WF tổng H5.3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-ck-langson')">TH1: Lạng Sơn</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-ck-laocai')">TH2: Lào Cai</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-ck-khac')">TH3: CK khác</div></li></ul></li>
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H5.4</span>ICD/Cảng cạn<span class="group-badge">2</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-icd')" title="WF tổng H5.4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-icd-truongtho')">TH1: ICD Trường Thọ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-icd-phuoclong')">TH2: ICD Phước Long</div></li></ul></li>
+                <!-- H5: Thông quan --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H5</span>Thông quan &amp; Giải phóng<span class="group-badge">11</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h5')" title="Luồng nội bộ H5"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h5-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h5-children">
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H5.1</span>Giải phóng hàng<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-giai-phong')" title="WF tổng H5.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-gp-truocthue')">TH1: GP trước nộp thuế</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-gp-baolanh')">TH2: GP có bảo lãnh</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-gp-uutien')">TH3: GP hàng ưu tiên</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H5.2</span>Thông quan<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-thong-quan')" title="WF tổng H5.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tq-tudong')">TH1: TQ tự động (Xanh)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tq-saukt')">TH2: TQ sau kiểm tra</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tq-dieukien')">TH3: TQ có điều kiện</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H5.3</span>Đưa hàng về BQ<span class="group-badge">2</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-bao-quan')" title="WF tổng H5.3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-bq-cng')">TH1: Chờ kết quả CNG</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-bq-gp')">TH2: Chờ GP chuyên ngành</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H5.4</span>Tạm giữ/Thu giữ<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-tam-giu')" title="WF tổng H5.4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tg-hoso')">TH1: Tạm giữ hồ sơ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tg-hang')">TH2: Tạm giữ hàng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-thu-giu')">TH3: Thu giữ vi phạm</div></li></ul></li>
                 </ul></li>
-                <!-- H6: Sau thông quan --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H6</span>Sau thông quan<span class="group-badge">9</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h6')" title="Luồng nội bộ H6"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h6-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h6-children">
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H6.1</span>KTSTQ<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-ktstq')" title="WF tổng H6.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-ktstq-hq')">TH1: Tại trụ sở HQ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-ktstq-dn')">TH2: Tại trụ sở DN</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-ktstq-dinhky')">TH3: Kiểm tra định kỳ</div></li></ul></li>
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H6.2</span>Xử lý vi phạm<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-vi-pham')" title="WF tổng H6.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-vp-phat')">TH1: Phạt hành chính</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-vp-truythu')">TH2: Truy thu thuế</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-vp-cqdt')">TH3: Chuyển CQĐT</div></li></ul></li>
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H6.3</span>Khiếu nại<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-khieu-nai')" title="WF tổng H6.3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kn-lan1')">TH1: Khiếu nại lần 1</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kn-lan2')">TH2: Khiếu nại lần 2</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kn-toaan')">TH3: Khởi kiện TA</div></li></ul></li>
+                <!-- H6: Cửa khẩu --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H6</span>Cửa khẩu<span class="group-badge">10</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h6')" title="Luồng nội bộ H6"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h6-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h6-children">
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H6.1</span>Cảng biển<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-cang-bien')" title="WF tổng H6.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cb-catlai')">TH1: Cát Lái</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cb-haiphong')">TH2: Hải Phòng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-cb-khac')">TH3: Cảng khác</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H6.2</span>Sân bay<span class="group-badge">2</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-san-bay')" title="WF tổng H6.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-sb-tsn')">TH1: TSN/Nội Bài</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-sb-express')">TH2: Chuyển phát nhanh</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H6.3</span>CK đường bộ<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-ck-bo')" title="WF tổng H6.3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-ck-langson')">TH1: Lạng Sơn</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-ck-laocai')">TH2: Lào Cai</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-ck-khac')">TH3: CK khác</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H6.4</span>ICD/Cảng cạn<span class="group-badge">2</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-icd')" title="WF tổng H6.4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-icd-truongtho')">TH1: ICD Trường Thọ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-icd-phuoclong')">TH2: ICD Phước Long</div></li></ul></li>
+                </ul></li>
+                <!-- H7: Sau thông quan --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H7</span>Sau thông quan<span class="group-badge">15</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h7')" title="Luồng nội bộ H7"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h7-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h7-children">
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H7.1</span>KTSTQ<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-ktstq')" title="WF tổng H7.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-ktstq-hq')">TH1: Tại trụ sở HQ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-ktstq-dn')">TH2: Tại trụ sở DN</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-ktstq-dinhky')">TH3: Kiểm tra định kỳ</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H7.2</span>Xử lý vi phạm<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-vi-pham')" title="WF tổng H7.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-vp-phat')">TH1: Phạt hành chính</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-vp-truythu')">TH2: Truy thu thuế</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-vp-cqdt')">TH3: Chuyển CQĐT</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H7.3</span>Khiếu nại<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-khieu-nai')" title="WF tổng H7.3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kn-lan1')">TH1: Khiếu nại lần 1</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kn-lan2')">TH2: Khiếu nại lần 2</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kn-toaan')">TH3: Khởi kiện TA</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H7.4</span>Thanh khoản SXXK<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-thanh-khoan')" title="WF tổng H7.4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-bc15')">TH1: BC15 – Định mức NVL</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-quyettoan')">TH2: Quyết toán NVL</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-chuyendoi')">TH3: Chuyển đổi MĐSD</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H7.5</span>Giám sát HQ<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-giam-sat')" title="WF tổng H7.5"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-gs-tamnhap')">TH1: GS tạm nhập tái xuất</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-gs-kho')">TH2: GS kho ngoại quan</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-gs-quacanh')">TH3: GS quá cảnh</div></li></ul></li>
                 </ul></li>
               </ul>
             </li>
@@ -3848,22 +3854,22 @@ A -->|"KT OK"| D --> G
 A -->|"DN xin"| E --> G
 A -->|"Cấp trên"| F --> G
 G --> H`},
-'cascade-h2':{title:'H2: Luồng nội bộ Phân luồng',sub:'4 bước',note:'H2.1 Phân luồng → H2.2 KT hồ sơ → H2.3 KT thực tế → H2.4 Chuyển luồng',chart:`flowchart TD
+'cascade-h2':{title:'H2: Luồng nội bộ Phân luồng',sub:'2 bước',note:'H2.1 Phân luồng tự động → H2.2 Chuyển luồng (nếu cần)',chart:`flowchart TD
 S(("TK từ H1")):::event
 A["H2.1 Phân luồng tự động"]:::hq
 B{"Luồng?"}:::hq
-C["H2.2 KT hồ sơ"]:::hq
-D["H2.3 KT thực tế"]:::hq
-E{"Cần chuyển luồng?"}:::hq
-F["H2.4 Chuyển luồng"]:::hq
-G["TQ Xanh"]:::hq
-H(("Chuyển H3")):::event
+C["Luồng Xanh → H3"]:::hq
+D["Luồng Vàng → H3"]:::hq
+E["Luồng Đỏ → H3"]:::hq
+F{"Cần chuyển luồng?"}:::hq
+G["H2.2 Chuyển luồng"]:::hq
+H(("→ H3 Thuế")):::event
 S --> A --> B
-B -->|"Xanh"| G --> H
-B -->|"Vàng"| C --> E
-B -->|"Đỏ"| D --> E
-E -->|"Có"| F --> B
-E -->|"Không"| H`},
+B -->|"Xanh"| C --> H
+B -->|"Vàng"| D --> F
+B -->|"Đỏ"| E --> F
+F -->|"Có"| G --> B
+F -->|"Không"| H`},
 // ═══════════════════════════════════════════════════════
 // MODULE HẢI QUAN — H3: Trị giá & Thuế HQ
 // ═══════════════════════════════════════════════════════
@@ -4288,15 +4294,15 @@ A -->|"Nghi ngờ"| B --> E
 A -->|"Vi phạm"| C --> E
 A -->|"Nghiêm trọng"| D --> E
 E --> F`},
-'cascade-h4':{title:'H4: Luồng nội bộ Thông quan',sub:'4 bước',note:'H4.1 GP → H4.2 TQ → H4.3 BQ → H4.4 Tạm/Thu giữ',chart:`flowchart TD
-S(("TK từ H3")):::event
-A["H4.1 Giải phóng hàng"]:::hq
-B["H4.2 Thông quan"]:::hq
+'cascade-h5':{title:'H5: Luồng nội bộ Thông quan',sub:'4 bước',note:'H5.1 GP → H5.2 TQ → H5.3 BQ → H5.4 Tạm/Thu giữ',chart:`flowchart TD
+S(("TK từ H4")):::event
+A["H5.1 Giải phóng hàng"]:::hq
+B["H5.2 Thông quan"]:::hq
 C{"Cần BQ?"}:::hq
-D["H4.3 Bảo quản"]:::fwd
+D["H5.3 Bảo quản"]:::fwd
 E{"Vi phạm?"}:::hq
-F["H4.4 Tạm/Thu giữ"]:::hq
-G(("Chuyển H5")):::event
+F["H5.4 Tạm/Thu giữ"]:::hq
+G(("Chuyển H6")):::event
 S --> A --> B --> C
 C -->|"Có"| D --> B
 C -->|"Không"| E
@@ -4465,21 +4471,6 @@ S --> A --> B --> C
 C -->|"TT"| D --> F
 C -->|"PL"| E --> F
 F --> G --> H`},
-'cascade-h5':{title:'H5: Luồng nội bộ Cửa khẩu',sub:'4 loại cửa khẩu',note:'H5.1 Cảng biển → H5.2 Sân bay → H5.3 CK bộ → H5.4 ICD',chart:`flowchart TD
-S(("Hàng đến VN")):::event
-A{"Loại CK?"}:::fwd
-B["H5.1 Cảng biển"]:::fwd
-C["H5.2 Sân bay"]:::fwd
-D["H5.3 CK đường bộ"]:::fwd
-E["H5.4 ICD/Cảng cạn"]:::fwd
-F["HQ CK xử lý"]:::hq
-G(("Chuyển H4")):::event
-S --> A
-A -->|"Biển"| B --> F
-A -->|"Air"| C --> F
-A -->|"Bộ"| D --> F
-A -->|"ICD"| E --> F
-F --> G`},
 // ═══════════════════════════════════════════════════════
 // MODULE HẢI QUAN — H6: Sau thông quan
 // ═══════════════════════════════════════════════════════
@@ -4626,36 +4617,224 @@ C -->|"OK"| G
 C -->|"Không"| D --> E
 E -->|"OK"| G
 E -->|"Không"| F --> G`},
-'cascade-h6':{title:'H6: Luồng nội bộ Sau TQ',sub:'3 bước',note:'H6.1 KTSTQ → H6.2 Xử lý VP → H6.3 Khiếu nại',chart:`flowchart TD
+// ═══════════ NEW WFs for restructured H3-H7 ═══════════
+'hq-lephi-tk':{title:'TH1: Lệ phí TK + Phí CNG',sub:'20K/TK + Phí CNG tuỳ mặt hàng',note:'Lệ phí nộp qua ECUS cùng thuế',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["ECUS tính lệ phí 20K/TK"]:::fwd
+B{"Có phí CNG?"}:::fwd
+C["Cộng phí CNG"]:::fwd
+D["Không phí CNG"]:::fwd
+E["Tổng phí = Thuế + Lệ phí"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Có"| C --> E --> F
+B -->|"Không"| D --> E`},
+'hq-lephi':{title:'H3.5 Lệ phí HQ',sub:'Lệ phí TK + Phí CNG',note:'Nộp cùng thuế',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Lệ phí TK 20K"]:::fwd
+B["Phí CNG (nếu có)"]:::fwd
+C["Nộp qua NH/ECUS"]:::fwd
+D(("Hoàn thành")):::event
+S --> A --> B --> C --> D`},
+'hq-gd-hs':{title:'TH1: Giám định mã HS',sub:'HQ yêu cầu giám định phân loại',note:'Khi nghi ngờ HS khai sai',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HQ yêu cầu giám định"]:::hq
+B["Lấy mẫu hàng"]:::hq
+C["Gửi tổ chức giám định"]:::hq
+D["Nhận kết quả GĐ"]:::hq
+E{"HS đúng?"}:::hq
+F["Giữ nguyên HS"]:::hq
+G["Thay đổi HS + Truy thu"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Đúng"| F --> H
+E -->|"Sai"| G --> H`},
+'hq-gd-chatluong':{title:'TH2: Giám định chất lượng',sub:'Kiểm tra tiêu chuẩn chất lượng',note:'Áp dụng cho hàng có QCVN',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HQ yêu cầu GĐ chất lượng"]:::hq
+B["Lấy mẫu"]:::hq
+C["Gửi phòng thí nghiệm"]:::hq
+D{"Đạt tiêu chuẩn?"}:::hq
+E["TQ bình thường"]:::hq
+F["Không cho NK + Tái xuất"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Đạt"| E --> G
+D -->|"Không"| F --> G`},
+'hq-gd-soluong':{title:'TH3: Giám định số lượng',sub:'Đếm kiểm số lượng thực tế',note:'Khi nghi ngờ SL khai khác thực tế',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HQ yêu cầu GĐ số lượng"]:::hq
+B["Giám định viên đếm kiểm"]:::hq
+C{"SL khớp khai báo?"}:::hq
+D["Xác nhận SL"]:::hq
+E["Lệch → Phạt + Truy thu"]:::hq
+F(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Khớp"| D --> F
+C -->|"Lệch"| E --> F`},
+'hq-giam-dinh':{title:'H4.3 Giám định',sub:'GĐ mã HS, chất lượng, số lượng',note:'HQ yêu cầu khi nghi ngờ khai báo',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Loại GĐ?"}:::hq
+B["GĐ mã HS"]:::hq
+C["GĐ chất lượng"]:::hq
+D["GĐ số lượng"]:::hq
+E["Nhận kết quả"]:::hq
+F(("Hoàn thành")):::event
+S --> A
+A -->|"HS"| B --> E --> F
+A -->|"CL"| C --> E
+A -->|"SL"| D --> E`},
+'hq-tk-bc15':{title:'TH1: BC15 – Định mức NVL',sub:'Báo cáo định mức nguyên vật liệu',note:'SXXK phải báo cáo định mức trước khi NK',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN lập bảng định mức NVL"]:::kh
+B["Đăng ký trên ECUS"]:::fwd
+C["HQ xem xét"]:::hq
+D{"Hợp lý?"}:::hq
+E["Chấp nhận định mức"]:::hq
+F["Yêu cầu giải trình"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"OK"| E --> G
+D -->|"Nghi ngờ"| F --> A`},
+'hq-tk-quyettoan':{title:'TH2: Quyết toán NVL',sub:'Quyết toán NVL nhập vs thành phẩm XK',note:'Hàng năm – Deadline 90 ngày sau 31/12',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN lập bảng quyết toán"]:::kh
+B["Nộp qua ECUS"]:::fwd
+C["HQ đối chiếu NK vs XK"]:::hq
+D{"Cân đối?"}:::hq
+E["Xác nhận quyết toán"]:::hq
+F["Truy thu thuế chênh lệch"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Cân"| E --> G
+D -->|"Lệch"| F --> G`},
+'hq-tk-chuyendoi':{title:'TH3: Chuyển đổi MĐSD',sub:'Chuyển NVL SXXK sang tiêu thụ nội địa',note:'Phải nộp thuế NK + VAT khi chuyển đổi',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN xin chuyển đổi MĐSD"]:::kh
+B["Khai TK mới loại hình NK nội địa"]:::fwd
+C["HQ tính thuế NK + VAT"]:::hq
+D["DN nộp thuế"]:::kh
+E["Cập nhật quyết toán"]:::hq
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-thanh-khoan':{title:'H7.4 Thanh khoản SXXK',sub:'BC15 + Quyết toán + Chuyển đổi',note:'Bắt buộc cho loại hình A41 (SXXK)',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Đăng ký định mức (BC15)"]:::kh
+B["NK nguyên liệu"]:::fwd
+C["SX + XK thành phẩm"]:::kh
+D["Quyết toán NVL"]:::kh
+E{"Dư NVL?"}:::hq
+F["Chuyển đổi MĐSD"]:::kh
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Không dư"| G
+E -->|"Dư"| F --> G`},
+'hq-gs-tamnhap':{title:'TH1: GS tạm nhập tái xuất',sub:'Theo dõi thời hạn tái xuất',note:'G13 – Tạm nhập phải tái xuất trong thời hạn',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Hàng tạm nhập (G13)"]:::fwd
+B["HQ ghi nhận thời hạn"]:::hq
+C{"Hết hạn?"}:::hq
+D["DN tái xuất đúng hạn"]:::kh
+E["Quá hạn → Chuyển NK + Thuế"]:::hq
+F(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Chưa"| D --> F
+C -->|"Hết"| E --> F`},
+'hq-gs-kho':{title:'TH2: GS kho ngoại quan',sub:'Theo dõi hàng vào/ra kho NQ',note:'Hàng trong kho NQ chưa nộp thuế',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Hàng nhập kho NQ"]:::fwd
+B["HQ niêm phong + Ghi sổ"]:::hq
+C["DN xin xuất kho"]:::kh
+D{"Hướng đi?"}:::hq
+E["NK nội địa → Nộp thuế"]:::hq
+F["Tái xuất → Miễn thuế"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Nội địa"| E --> G
+D -->|"Tái xuất"| F --> G`},
+'hq-gs-quacanh':{title:'TH3: GS quá cảnh',sub:'Giám sát hàng quá cảnh qua VN',note:'Hàng đi qua VN không được tiêu thụ nội địa',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Hàng QC nhập CK A"]:::fwd
+B["HQ niêm phong"]:::hq
+C["Vận chuyển nội địa"]:::fwd
+D["Hàng xuất CK B"]:::fwd
+E{"Nguyên niêm phong?"}:::hq
+F["Hoàn tất QC"]:::hq
+G["Vi phạm → Xử lý"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> H
+E -->|"Phá seal"| G --> H`},
+'hq-giam-sat':{title:'H7.5 Giám sát HQ',sub:'GS tạm nhập, kho NQ, quá cảnh',note:'HQ giám sát hàng đặc biệt sau TQ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Loại GS?"}:::hq
+B["GS tạm nhập tái xuất"]:::hq
+C["GS kho ngoại quan"]:::hq
+D["GS quá cảnh"]:::hq
+E(("Hoàn thành")):::event
+S --> A
+A -->|"Tạm nhập"| B --> E
+A -->|"Kho NQ"| C --> E
+A -->|"Quá cảnh"| D --> E`},
+'cascade-h4':{title:'H4: Luồng nội bộ Kiểm tra HQ',sub:'3 bước',note:'KT Hồ sơ (Vàng) → KT Thực tế (Đỏ) → Giám định',chart:`flowchart TD
+S(("Phân luồng")):::event
+A["H4.1 KT Hồ sơ (Vàng)"]:::hq
+B["H4.2 KT Thực tế (Đỏ)"]:::hq
+C["H4.3 Giám định"]:::hq
+D(("→ Thông quan")):::event
+S -->|"Vàng"| A --> D
+S -->|"Đỏ"| B --> D
+A -->|"Cần GĐ"| C --> D
+B -->|"Cần GĐ"| C`},
+'cascade-h6':{title:'H6: Luồng nội bộ Cửa khẩu',sub:'4 loại CK',note:'Cảng biển / Sân bay / Đường bộ / ICD',chart:`flowchart TD
+S(("Hàng đến VN")):::event
+A{"PT vận tải?"}:::fwd
+B["H6.1 Cảng biển"]:::fwd
+C["H6.2 Sân bay"]:::fwd
+D["H6.3 CK đường bộ"]:::fwd
+E["H6.4 ICD/Cảng cạn"]:::fwd
+F(("Vào kho")):::event
+S --> A
+A -->|"Sea"| B --> F
+A -->|"Air"| C --> F
+A -->|"Road"| D --> F
+A -->|"ICD"| E --> F`},
+'cascade-h7':{title:'H7: Luồng nội bộ Sau TQ',sub:'5 nhóm',note:'KTSTQ → VP → Khiếu nại + Thanh khoản + Giám sát',chart:`flowchart TD
 S(("Sau thông quan")):::event
-A["H6.1 KTSTQ"]:::hq
+A["H7.1 KTSTQ"]:::hq
 B{"Phát hiện VP?"}:::hq
-C["H6.2 Xử lý VP"]:::hq
+C["H7.2 Xử lý VP"]:::hq
 D{"DN khiếu nại?"}:::kh
-E["H6.3 Khiếu nại"]:::kh
-F(("Kết thúc")):::event
+E["H7.3 Khiếu nại"]:::kh
+F["H7.4 Thanh khoản SXXK"]:::kh
+G["H7.5 Giám sát HQ"]:::hq
+H(("Kết thúc")):::event
 S --> A --> B
 B -->|"Có"| C --> D
-B -->|"Không"| F
-D -->|"Có"| E --> F
-D -->|"Không"| F`},
-'cascade-hq-master':{title:'Tổng thể Module Hải quan',sub:'6 nhóm · 22 nghiệp vụ · 72 TH',note:'H1→H2→H3→H4 (H5 song song) → H6 sau TQ',chart:`flowchart TD
+B -->|"Không"| H
+D -->|"Có"| E --> H
+D -->|"Không"| H
+S --> F --> H
+S --> G --> H`},
+'cascade-hq-master':{title:'Tổng thể Module Hải quan',sub:'7 nhóm · 124 TH',note:'H1→H2→H3→H4→H5 (H6 song song) → H7 sau TQ',chart:`flowchart TD
 S(("KH yêu cầu NK")):::event
-H1["H1: Tờ khai"]:::fwd
-H2["H2: Phân luồng"]:::hq
-H3["H3: Trị giá + Thuế"]:::thue
-H4["H4: Thông quan"]:::hq
-H5["H5: Cửa khẩu"]:::fwd
-H6["H6: Sau TQ"]:::hq
+H1["H1: Tờ khai (55)"]:::fwd
+H2["H2: Phân luồng (8)"]:::hq
+H3["H3: Trị giá + Thuế (14)"]:::thue
+H4["H4: Kiểm tra HQ (9)"]:::hq
+H5["H5: Thông quan (11)"]:::hq
+H6["H6: Cửa khẩu (10)"]:::fwd
+H7["H7: Sau TQ (15)"]:::hq
 E(("Hàng về kho")):::event
 S --> H1
 H1 -->|"Khai + Nộp"| H2
 H2 -->|"Phân luồng"| H3
-H5 -->|"Hàng đến CK"| H2
-H3 -->|"Tính thuế"| H4
-H4 -->|"TQ xong"| E
-H4 -.->|"Hậu kiểm"| H6
-H6 -.-> E`},
+H3 -->|"Nộp thuế"| H4
+H6 -->|"Hàng đến CK"| H2
+H4 -->|"KT xong"| H5
+H5 -->|"TQ"| E
+H5 -..->|"Hậu kiểm"| H7
+H7 -..-> E`},
 }; // end WF
 /* ── RENDER + MODAL ── */
 const svgCache = {};
