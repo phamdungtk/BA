@@ -55,22 +55,67 @@
     .tree-li:only-child{padding-top:0}
 
     
-    /* ── HORIZONTAL TREE MODE ── */
-    /* Rotate entire tree -90deg, then rotate each node back +90deg */
-    .tree-horizontal .tree-root{transform:rotate(-90deg);transform-origin:center center;padding-top:16px}
-    .tree-horizontal .node{transform:rotate(90deg);white-space:nowrap;min-width:auto;max-width:none;padding:5px 10px;font-size:10px}
-    .tree-horizontal .node-root{font-size:12px;padding:8px 16px}
-    .tree-horizontal .node-module{font-size:11px;padding:7px 14px}
-    .tree-horizontal .node-category{font-size:11px;padding:7px 14px}
-    .tree-horizontal .node-group{font-size:9px;padding:5px 8px;min-width:auto;max-width:none}
-    .tree-horizontal .node-attr{font-size:8px;padding:3px 8px;min-width:auto;max-width:none}
-    .tree-horizontal .node:hover{transform:rotate(90deg) scale(1.08)}
-    .tree-horizontal .group-badge{font-size:7px}
-    .tree-horizontal .node-label{font-size:6px}
-    .tree-horizontal .cascade-btn{font-size:9px;padding:1px 4px}
-    .tree-horizontal .toggle-icon{font-size:7px}
-    .tree-horizontal .tree-li{padding-left:3px;padding-right:3px}
-    .tree-horizontal .collapsible.collapsed{max-height:0!important;opacity:0}
+    /* ── HORIZONTAL TREE MODE (Mind-map) ── */
+    .tree-horizontal .tree-root{
+      flex-direction:row;align-items:center;padding:20px 0 20px 20px
+    }
+    .tree-horizontal .tree-ul{
+      flex-direction:column;padding-top:0;padding-left:24px;align-items:flex-start
+    }
+    .tree-horizontal .tree-ul-sub::before{
+      /* vertical trunk line from parent */
+      top:0;left:0;right:auto;height:100%;width:0;
+      border-left:2px solid var(--node-line);border-top:none;
+      margin-left:0
+    }
+    .tree-horizontal .tree-li{
+      flex-direction:row;align-items:center;
+      padding:4px 0 4px 24px;text-align:left
+    }
+    /* horizontal arm from trunk to node */
+    .tree-horizontal .tree-li::before{
+      top:50%;left:0;right:auto;
+      width:24px;height:0;
+      border-top:2px solid var(--node-line);
+      border-left:none
+    }
+    /* vertical trunk segment beside siblings */
+    .tree-horizontal .tree-li::after{
+      top:0;left:0;right:auto;
+      width:0;height:100%;
+      border-left:2px solid var(--node-line);
+      border-top:none
+    }
+    .tree-horizontal .tree-li:first-child::before{
+      border-top:2px solid var(--node-line)
+    }
+    .tree-horizontal .tree-li:first-child::after{
+      top:50%;height:50%
+    }
+    .tree-horizontal .tree-li:last-child::after{
+      height:50%
+    }
+    .tree-horizontal .tree-li:only-child::after{display:none}
+    .tree-horizontal .tree-li:only-child::before{
+      border-top:2px solid var(--node-line);display:block
+    }
+    .tree-horizontal .tree-li:only-child{padding-left:24px}
+    /* Nodes */
+    .tree-horizontal .node{
+      white-space:nowrap;max-width:none;min-width:auto;text-align:left
+    }
+    .tree-horizontal .node:hover{transform:translateX(3px);filter:brightness(1.15)}
+    .tree-horizontal .node-root{max-width:none}
+    .tree-horizontal .node-module,.tree-horizontal .node-category{max-width:none}
+    .tree-horizontal .toggle-icon{
+      display:inline-block;margin-left:4px;margin-top:0;
+      transform:rotate(-90deg)
+    }
+    .tree-horizontal .toggle-icon.rotated{transform:rotate(0deg)}
+    .tree-horizontal .collapsible.collapsed{
+      max-width:0!important;max-height:none!important;
+      padding-left:0!important;overflow:hidden;opacity:0
+    }
     /* ── NODES ── */
     .node{position:relative;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;border-radius:12px;border:2px solid var(--border);padding:7px 12px;min-width:95px;max-width:145px;font-size:11px;font-weight:600;color:var(--text);cursor:pointer;z-index:10;white-space:normal;line-height:1.3;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s,filter .18s}
     .node:hover{transform:translateY(-3px);filter:brightness(1.15)}
