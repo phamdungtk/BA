@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -277,12 +277,13 @@
             <li class="tree-li">
               <div class="node node-module" data-toggle="children"><span class="node-label">Module</span>★ Hải quan ★<button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-hq-master')" title="Xem tổng thể H1-H6" style="background:rgba(245,158,11,.15);border-color:rgba(245,158,11,.4);color:#fbbf24"><i class="bi bi-diagram-3"></i> Tổng thể</button><i class="bi bi-chevron-down toggle-icon" id="hq-icon"></i></div>
               <ul class="tree-ul tree-ul-sub collapsible collapsed" id="hq-children">
-                <!-- H1: Tờ khai --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1</span>Tờ khai<span class="group-badge">15</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h1')" title="Luồng nội bộ H1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h1-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h1-children">
+                <!-- H1: Tờ khai --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1</span>Tờ khai<span class="group-badge">19</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h1')" title="Luồng nội bộ H1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h1-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h1-children">
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.1</span>Đăng ký TK<span class="group-badge">5</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-dang-ky-tk')" title="WF tổng H1.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-a11')">TH1: NK thường (A11)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-a41')">TH2: SXXK (A41)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-a31')">TH3: Tại chỗ (A31)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-g13')">TH4: Tạm nhập (G13)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-a12')">TH5: Hàng mẫu (A12)</div></li></ul></li>
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.2</span>Khai báo chi tiết<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-khai-bao')" title="WF tổng H1.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kb-hs-trigia')">TH1: HS + Trị giá</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kb-xuatxu')">TH2: Xuất xứ + C/O</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kb-cont')">TH3: Container + Kiện</div></li></ul></li>
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.3</span>Sửa/Huỷ TK<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-sua-huy')" title="WF tổng H1.3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-sua-truoc')">TH1: Sửa trước TQ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-sua-sau')">TH2: Sửa sau TQ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-huy-tk')">TH3: Huỷ tờ khai</div></li></ul></li>
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.4</span>Nộp TK VNACCS<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-nop-vnaccs')" title="WF tổng H1.4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-ok')">TH1: Nộp thành công</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-loi')">TH2: Lỗi hệ thống</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-bosung')">TH3: Nộp bổ sung</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-giay')">TH4: Tờ khai giấy</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.4</span>Nộp TK qua ECUS<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-nop-vnaccs')" title="WF tổng H1.4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-ok')">TH1: Nộp thành công</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-loi')">TH2: Lỗi hệ thống</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-bosung')">TH3: Nộp bổ sung</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-giay')">TH4: Tờ khai giấy</div></li></ul></li>
                 </ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.5</span>Dòng tờ khai<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-dong-tk')" title="WF tổng H1.5"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-them')">TH1: Thêm dòng TK</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-sua')">TH2: Sửa dòng TK</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-xoa')">TH3: Xoá dòng TK</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-nhieucont')">TH4: Dòng nhiều container</div></li></ul></li>
                 <!-- H2: Phân luồng --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H2</span>Phân luồng &amp; Kiểm tra<span class="group-badge">14</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h2')" title="Luồng nội bộ H2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h2-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h2-children">
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H2.1</span>Phân luồng tự động<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-phan-luong')" title="WF tổng H2.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-luong-xanh')">TH1: Luồng Xanh</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-luong-vang')">TH2: Luồng Vàng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-luong-do')">TH3: Luồng Đỏ</div></li></ul></li>
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H2.2</span>KT hồ sơ (Vàng)<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-kt-hoso')" title="WF tổng H2.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hs-du')">TH1: Đủ CT → TQ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hs-thieu')">TH2: Thiếu → Bổ sung</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hs-sai')">TH3: Sai → Chuyển Đỏ</div></li></ul></li>
@@ -2717,7 +2718,7 @@ E -->|"Chưa"| G --> C`},
 // ═══════════════════════════════════════════════════════
 'hq-tk-a11':{title:'TH1: NK thường (A11)',sub:'Phí: 20K/TK · SLA: 4h khai',note:'Loại hình phổ biến nhất – chiếm 70% TK NK',chart:`flowchart TD
 S(("Bắt đầu")):::event
-A["FWD khai trên VNACCS"]:::fwd
+A["FWD khai trên ECUS"]:::fwd
 B["Chọn loại hình A11"]:::fwd
 C["Nhập thông tin hàng hoá"]:::fwd
 D["Ký số + Gửi"]:::fwd
@@ -2826,7 +2827,7 @@ A["DN phát hiện sai sót"]:::kh
 B["FWD nộp đơn sửa TK"]:::fwd
 C["HQ xem xét nội dung sửa"]:::hq
 D{"Chấp nhận sửa?"}:::hq
-E["Cập nhật TK trên VNACCS"]:::hq
+E["Cập nhật TK trên hệ thống HQ"]:::hq
 F["Từ chối – Giữ nguyên"]:::hq
 G(("Hoàn thành")):::event
 S --> A --> B --> C --> D
@@ -2850,7 +2851,7 @@ A["DN nộp đơn xin huỷ TK"]:::kh
 B["FWD chuyển HQ"]:::fwd
 C["HQ kiểm tra ĐK huỷ"]:::hq
 D{"Đủ ĐK huỷ?"}:::hq
-E["Huỷ TK trên VNACCS"]:::hq
+E["Huỷ TK trên hệ thống HQ"]:::hq
 F["Từ chối huỷ"]:::hq
 G["Thông báo DN"]:::hq
 H(("Hoàn thành")):::event
@@ -2861,7 +2862,7 @@ D -->|"Không"| F --> G`},
 S(("Bắt đầu")):::event
 A["FWD hoàn tất khai báo"]:::fwd
 B["Ký số điện tử"]:::fwd
-C["Gửi qua VNACCS"]:::fwd
+C["Gửi qua ECUS"]:::fwd
 D["Hệ thống xử lý"]:::hq
 E["Nhận số TK 12 số"]:::hq
 F["Phân luồng tự động"]:::hq
@@ -2869,7 +2870,7 @@ G(("Hoàn thành")):::event
 S --> A --> B --> C --> D --> E --> F --> G`},
 'hq-nop-loi':{title:'TH2: Lỗi hệ thống VNACCS',sub:'Downtime TB: 2–4h · Ảnh hưởng toàn quốc',note:'Lỗi VNACCS xảy ra định kỳ – cần phương án dự phòng',chart:`flowchart TD
 S(("Bắt đầu")):::event
-A["FWD gửi TK"]:::fwd
+A["FWD gửi TK qua ECUS"]:::fwd
 B["VNACCS báo lỗi"]:::hq
 C{"Loại lỗi?"}:::hq
 D["Lỗi dữ liệu – Sửa + Gửi lại"]:::fwd
@@ -2884,7 +2885,7 @@ C -->|"Hệ thống"| E --> F --> G --> A`},
 S(("Bắt đầu")):::event
 A["TK đã có số"]:::fwd
 B["Phát sinh thông tin mới"]:::kh
-C["FWD khai bổ sung VNACCS"]:::fwd
+C["FWD khai bổ sung ECUS"]:::fwd
 D["HQ xem xét"]:::hq
 E{"Chấp nhận?"}:::hq
 F["Cập nhật TK"]:::hq
@@ -2900,10 +2901,10 @@ B["HQ cho phép khai giấy"]:::hq
 C["FWD điền mẫu TK giấy"]:::fwd
 D["Nộp trực tiếp Chi cục"]:::fwd
 E["CBHQ tiếp nhận + Đóng dấu"]:::hq
-F["Nhập vào VNACCS khi phục hồi"]:::hq
+F["Nhập vào hệ thống HQ khi phục hồi"]:::hq
 G(("Hoàn thành")):::event
 S --> A --> B --> C --> D --> E --> F --> G`},
-'hq-dang-ky-tk':{title:'H1.1 Đăng ký Tờ khai',sub:'5 loại hình NK phổ biến',note:'Mỗi loại hình có mã riêng trên VNACCS',chart:`flowchart TD
+'hq-dang-ky-tk':{title:'H1.1 Đăng ký Tờ khai',sub:'5 loại hình NK phổ biến',note:'Mỗi loại hình có mã riêng trên ECUS',chart:`flowchart TD
 S(("Bắt đầu")):::event
 A{"Loại hình NK?"}:::fwd
 B["A11: NK thường"]:::fwd
@@ -2911,7 +2912,7 @@ C["A41: SXXK"]:::fwd
 D["A31: Tại chỗ"]:::fwd
 E["G13: Tạm nhập"]:::fwd
 F["A12: Hàng mẫu"]:::fwd
-G["Khai VNACCS theo mã"]:::fwd
+G["Khai ECUS theo mã"]:::fwd
 H["HQ cấp số TK"]:::hq
 I(("Hoàn thành")):::event
 S --> A
@@ -2952,10 +2953,10 @@ A -->|"Huỷ"| D --> E
 E --> F
 F -->|"OK"| G --> I
 F -->|"Không"| H --> I`},
-'hq-nop-vnaccs':{title:'H1.4 Nộp TK qua VNACCS',sub:'4 trường hợp nộp TK',note:'90% nộp thành công – 10% gặp sự cố cần xử lý',chart:`flowchart TD
+'hq-nop-vnaccs':{title:'H1.4 Nộp TK qua ECUS',sub:'4 trường hợp nộp TK',note:'90% nộp thành công – 10% gặp sự cố cần xử lý',chart:`flowchart TD
 S(("Bắt đầu")):::event
 A["FWD hoàn tất khai"]:::fwd
-B["Ký số + Gửi VNACCS"]:::fwd
+B["Ký số + Gửi ECUS"]:::fwd
 C{"Kết quả?"}:::hq
 D["Nhận số TK"]:::hq
 E["Lỗi hệ thống"]:::hq
@@ -2967,17 +2968,81 @@ C -->|"Thành công"| D --> H
 C -->|"Lỗi HT"| E --> B
 C -->|"Bổ sung"| F --> B
 C -->|"Sự cố dài"| G --> H`},
-'cascade-h1':{title:'H1: Luồng nội bộ Tờ khai',sub:'4 bước tuần tự',note:'H1.1 Đăng ký → H1.2 Khai báo → H1.3 Sửa/Huỷ → H1.4 Nộp VNACCS',chart:`flowchart TD
+'hq-dtk-them':{title:'TH1: Thêm dòng TK',sub:'Mỗi dòng = 1 mặt hàng trên ECUS',note:'Mỗi dòng gồm: HS 8 số, mô tả, SL, đơn giá, trị giá, thuế suất',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD mở TK trên ECUS"]:::fwd
+B["Thêm dòng mới"]:::fwd
+C["Nhập HS 8 số"]:::fwd
+D["Nhập mô tả + SL + Đơn giá"]:::fwd
+E["ECUS tự tính trị giá + Thuế"]:::fwd
+F{"Thêm dòng tiếp?"}:::fwd
+G["Lưu TK"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"Có"| B
+F -->|"Không"| G --> H`},
+'hq-dtk-sua':{title:'TH2: Sửa dòng TK',sub:'Sửa HS/SL/Giá trên ECUS',note:'Sửa trước nộp = tự do · Sửa sau nộp = cần đơn',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD chọn dòng cần sửa"]:::fwd
+B{"Đã nộp TK chưa?"}:::fwd
+C["Sửa trực tiếp trên ECUS"]:::fwd
+D["Khai bổ sung trên ECUS"]:::fwd
+E["ECUS tính lại thuế"]:::fwd
+F["Lưu thay đổi"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Chưa"| C --> E --> F --> G
+B -->|"Rồi"| D --> E`},
+'hq-dtk-xoa':{title:'TH3: Xoá dòng TK',sub:'Chỉ xoá được trước khi nộp',note:'Sau khi nộp phải huỷ TK hoặc khai bổ sung',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD chọn dòng cần xoá"]:::fwd
+B{"TK đã nộp?"}:::fwd
+C["Xoá dòng trên ECUS"]:::fwd
+D["ECUS tính lại tổng"]:::fwd
+E["Không được xoá"]:::fwd
+F["Phải huỷ TK hoặc khai BS"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Chưa"| C --> D --> G
+B -->|"Rồi"| E --> F --> G`},
+'hq-dtk-nhieucont':{title:'TH4: Dòng nhiều container',sub:'1 dòng hàng chia ra nhiều cont',note:'Phân bổ SL/Trọng lượng theo từng cont trên ECUS',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Dòng TK có SL lớn"]:::fwd
+B["Khai đóng nhiều cont"]:::fwd
+C["Phân bổ SL theo cont"]:::fwd
+D["Khai số cont + Seal"]:::fwd
+E["ECUS tổng hợp"]:::fwd
+F["Đối chiếu manifest"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'hq-dong-tk':{title:'H1.5 Dòng tờ khai',sub:'4 thao tác trên dòng TK',note:'Mỗi TK có N dòng – mỗi dòng = 1 mặt hàng với HS/SL/Giá/Thuế riêng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD mở TK trên ECUS"]:::fwd
+B{"Thao tác?"}:::fwd
+C["Thêm dòng mới"]:::fwd
+D["Sửa dòng"]:::fwd
+E["Xoá dòng"]:::fwd
+F["Phân bổ cont"]:::fwd
+G["ECUS tính tổng thuế"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Thêm"| C --> G
+B -->|"Sửa"| D --> G
+B -->|"Xoá"| E --> G
+B -->|"Nhiều cont"| F --> G
+G --> H`},
+'cascade-h1':{title:'H1: Luồng nội bộ Tờ khai',sub:'5 bước tuần tự trên ECUS',note:'H1.1 Đăng ký → H1.2 Khai báo → H1.5 Dòng TK → H1.3 Sửa/Huỷ → H1.4 Nộp ECUS',chart:`flowchart TD
 S(("KH yêu cầu khai TK")):::event
 A["H1.1 Đăng ký TK"]:::fwd
 B["H1.2 Khai báo chi tiết"]:::fwd
+J["H1.5 Nhập dòng TK"]:::fwd
 C{"Cần sửa/huỷ?"}:::fwd
 D["H1.3 Sửa/Huỷ TK"]:::fwd
-E["H1.4 Nộp VNACCS"]:::fwd
+E["H1.4 Nộp qua ECUS"]:::fwd
 F["HQ cấp số + Phân luồng"]:::hq
 G(("Chuyển H2")):::event
-S --> A --> B --> C
-C -->|"Có"| D --> B
+S --> A --> B --> J --> C
+C -->|"Có"| D --> J
 C -->|"Không"| E --> F --> G`},
 // ═══════════════════════════════════════════════════════
 // MODULE HẢI QUAN — H2: Phân luồng & Kiểm tra
