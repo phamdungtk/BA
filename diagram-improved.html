@@ -2711,8 +2711,1317 @@ G["Gia nhiệt thêm"]:::qc
 H(("Hoàn thành")):::event
 S --> A --> B --> C --> D --> E
 E -->|"Đạt"| F --> H
-E -->|"Chưa"| G --> C`}
-};
+E -->|"Chưa"| G --> C`},
+// ═══════════════════════════════════════════════════════
+// MODULE HẢI QUAN — H1: Tờ khai
+// ═══════════════════════════════════════════════════════
+'hq-tk-a11':{title:'TH1: NK thường (A11)',sub:'Phí: 20K/TK · SLA: 4h khai',note:'Loại hình phổ biến nhất – chiếm 70% TK NK',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD khai trên VNACCS"]:::fwd
+B["Chọn loại hình A11"]:::fwd
+C["Nhập thông tin hàng hoá"]:::fwd
+D["Ký số + Gửi"]:::fwd
+E{"HQ tiếp nhận?"}:::hq
+F["Cấp số tờ khai"]:::hq
+G["Phân luồng tự động"]:::hq
+H["Thông báo FWD"]:::fwd
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> G --> H --> I
+E -->|"Lỗi"| A`},
+'hq-tk-a41':{title:'TH2: SXXK (A41)',sub:'Phí: 20K/TK · SLA: 4h',note:'NK nguyên liệu để sản xuất hàng xuất khẩu – cần ĐKĐM',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD khai loại hình A41"]:::fwd
+B["Đăng ký DKSS/Định mức"]:::fwd
+C["HQ kiểm tra định mức"]:::hq
+D{"Định mức hợp lệ?"}:::hq
+E["Cấp TK + Theo dõi ĐM"]:::hq
+F["FWD nhận TK"]:::fwd
+G(("Hoàn thành")):::event
+H["Yêu cầu sửa ĐM"]:::hq
+S --> A --> B --> C --> D
+D -->|"Hợp lệ"| E --> F --> G
+D -->|"Sai"| H --> B`},
+'hq-tk-a31':{title:'TH3: Tại chỗ (A31)',sub:'Phí: 20K×2 TK · SLA: 1 ngày',note:'2 DN khai song song – XK tại chỗ + NK tại chỗ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN xuất khai TK XK"]:::ncc
+B["DN nhập khai TK NK A31"]:::fwd
+C["HQ đối chiếu 2 TK"]:::hq
+D{"Khớp thông tin?"}:::hq
+E["Cấp TK đôi"]:::hq
+F["Thông quan tại chỗ"]:::hq
+G(("Hoàn thành")):::event
+H["Yêu cầu sửa TK"]:::hq
+S --> A --> B --> C --> D
+D -->|"Khớp"| E --> F --> G
+D -->|"Lệch"| H --> B`},
+'hq-tk-g13':{title:'TH4: Tạm nhập (G13)',sub:'Phí: 20K/TK · Hạn tái xuất: 90–180 ngày',note:'Tạm nhập tái xuất – phải tái xuất trong thời hạn',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD khai loại hình G13"]:::fwd
+B["Nêu mục đích tạm nhập"]:::fwd
+C["HQ kiểm tra mục đích"]:::hq
+D{"Hợp lệ?"}:::hq
+E["Cấp TK + Hạn tái xuất"]:::hq
+F["FWD theo dõi hạn"]:::fwd
+G(("Hoàn thành")):::event
+H["Từ chối – Khai lại"]:::hq
+S --> A --> B --> C --> D
+D -->|"OK"| E --> F --> G
+D -->|"Không"| H --> A`},
+'hq-tk-a12':{title:'TH5: Hàng mẫu (A12)',sub:'Phí: 20K/TK · Miễn thuế nếu đủ ĐK',note:'Hàng mẫu không có giá trị thương mại',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD khai A12"]:::fwd
+B["Khai SL + Giá trị mẫu"]:::fwd
+C["HQ kiểm tra ĐK miễn thuế"]:::hq
+D{"Đủ ĐK miễn?"}:::hq
+E["Miễn thuế + Cấp TK"]:::hq
+F["Tính thuế thường"]:::hq
+G["FWD nhận TK"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Đủ"| E --> G --> H
+D -->|"Không"| F --> G`},
+'hq-kb-hs-trigia':{title:'TH1: Khai HS + Trị giá',sub:'Rủi ro: Sai HS = truy thu thuế',note:'HS 8 số quyết định thuế suất – sai 1 số = sai thuế',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD tra mã HS 8 số"]:::fwd
+B["Khai trị giá CIF"]:::fwd
+C["VNACCS đối chiếu CSDL"]:::hq
+D{"Giá bất thường?"}:::hq
+E["Chấp nhận giá khai"]:::hq
+F["Cảnh báo – Chờ tham vấn"]:::hq
+G["Ghi nhận vào TK"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Bình thường"| E --> G --> H
+D -->|"Bất thường"| F --> G`},
+'hq-kb-xuatxu':{title:'TH2: Khai Xuất xứ + C/O',sub:'Tiết kiệm 5–15% thuế nếu có C/O hợp lệ',note:'C/O quyết định thuế ưu đãi FTA',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD khai nước xuất xứ"]:::fwd
+B["Chọn loại C/O"]:::fwd
+C["Khai FTA áp dụng"]:::fwd
+D["VNACCS tính thuế ưu đãi"]:::hq
+E{"C/O hợp lệ?"}:::hq
+F["Áp thuế suất ưu đãi"]:::hq
+G["Áp thuế MFN thường"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Hợp lệ"| F --> H
+E -->|"Không"| G --> H`},
+'hq-kb-cont':{title:'TH3: Khai Container + Kiện',sub:'Sai cont/seal = giữ hàng kiểm tra',note:'Đối chiếu manifest hãng tàu',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD khai số container"]:::fwd
+B["Khai số seal"]:::fwd
+C["Khai số kiện + Trọng lượng"]:::fwd
+D["VNACCS đối chiếu manifest"]:::hq
+E{"Khớp manifest?"}:::hq
+F["Xác nhận thông tin"]:::hq
+G["Cảnh báo – Yêu cầu sửa"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Khớp"| F --> H
+E -->|"Lệch"| G --> A`},
+'hq-sua-truoc':{title:'TH1: Sửa TK trước thông quan',sub:'Miễn phí · Thời hạn: trước khi TQ',note:'DN được sửa tự do trước khi HQ kiểm tra',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN phát hiện sai sót"]:::kh
+B["FWD nộp đơn sửa TK"]:::fwd
+C["HQ xem xét nội dung sửa"]:::hq
+D{"Chấp nhận sửa?"}:::hq
+E["Cập nhật TK trên VNACCS"]:::hq
+F["Từ chối – Giữ nguyên"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"OK"| E --> G
+D -->|"Không"| F --> G`},
+'hq-sua-sau':{title:'TH2: Sửa TK sau thông quan',sub:'Có thể bị truy thu/hoàn thuế',note:'Sửa sau TQ cần chứng từ chứng minh – rủi ro truy thu',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN phát hiện sai sau TQ"]:::kh
+B["FWD nộp đơn + CT chứng minh"]:::fwd
+C["HQ kiểm tra hồ sơ"]:::hq
+D{"Sai do DN hay HQ?"}:::hq
+E["Truy thu thuế chênh lệch"]:::thue
+F["Hoàn thuế cho DN"]:::thue
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"DN khai sai"| E --> G
+D -->|"HQ tính sai"| F --> G`},
+'hq-huy-tk':{title:'TH3: Huỷ tờ khai',sub:'Thời hạn: 15 ngày từ ngày đăng ký',note:'Chỉ huỷ được khi hàng chưa thông quan',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN nộp đơn xin huỷ TK"]:::kh
+B["FWD chuyển HQ"]:::fwd
+C["HQ kiểm tra ĐK huỷ"]:::hq
+D{"Đủ ĐK huỷ?"}:::hq
+E["Huỷ TK trên VNACCS"]:::hq
+F["Từ chối huỷ"]:::hq
+G["Thông báo DN"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Đủ"| E --> G --> H
+D -->|"Không"| F --> G`},
+'hq-nop-ok':{title:'TH1: Nộp TK thành công',sub:'SLA: dưới 30 phút',note:'Luồng chính – 90% TK nộp thành công lần đầu',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD hoàn tất khai báo"]:::fwd
+B["Ký số điện tử"]:::fwd
+C["Gửi qua VNACCS"]:::fwd
+D["Hệ thống xử lý"]:::hq
+E["Nhận số TK 12 số"]:::hq
+F["Phân luồng tự động"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'hq-nop-loi':{title:'TH2: Lỗi hệ thống VNACCS',sub:'Downtime TB: 2–4h · Ảnh hưởng toàn quốc',note:'Lỗi VNACCS xảy ra định kỳ – cần phương án dự phòng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD gửi TK"]:::fwd
+B["VNACCS báo lỗi"]:::hq
+C{"Loại lỗi?"}:::hq
+D["Lỗi dữ liệu – Sửa + Gửi lại"]:::fwd
+E["Lỗi hệ thống – Chờ"]:::fwd
+F["Báo CNTT HQ"]:::fwd
+G["Hệ thống phục hồi"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Dữ liệu"| D --> A
+C -->|"Hệ thống"| E --> F --> G --> A`},
+'hq-nop-bosung':{title:'TH3: Khai bổ sung TK',sub:'Phí: 20K · Thời hạn: 60 ngày',note:'Phát sinh thêm thông tin sau khi đã nộp TK',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["TK đã có số"]:::fwd
+B["Phát sinh thông tin mới"]:::kh
+C["FWD khai bổ sung VNACCS"]:::fwd
+D["HQ xem xét"]:::hq
+E{"Chấp nhận?"}:::hq
+F["Cập nhật TK"]:::hq
+G["Từ chối bổ sung"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> H
+E -->|"Không"| G --> H`},
+'hq-nop-giay':{title:'TH4: Tờ khai giấy',sub:'Chỉ dùng khi VNACCS sự cố kéo dài',note:'Phương án dự phòng – HQ nhập hệ thống sau',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["VNACCS sự cố kéo dài"]:::hq
+B["HQ cho phép khai giấy"]:::hq
+C["FWD điền mẫu TK giấy"]:::fwd
+D["Nộp trực tiếp Chi cục"]:::fwd
+E["CBHQ tiếp nhận + Đóng dấu"]:::hq
+F["Nhập vào VNACCS khi phục hồi"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'hq-dang-ky-tk':{title:'H1.1 Đăng ký Tờ khai',sub:'5 loại hình NK phổ biến',note:'Mỗi loại hình có mã riêng trên VNACCS',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Loại hình NK?"}:::fwd
+B["A11: NK thường"]:::fwd
+C["A41: SXXK"]:::fwd
+D["A31: Tại chỗ"]:::fwd
+E["G13: Tạm nhập"]:::fwd
+F["A12: Hàng mẫu"]:::fwd
+G["Khai VNACCS theo mã"]:::fwd
+H["HQ cấp số TK"]:::hq
+I(("Hoàn thành")):::event
+S --> A
+A -->|"Thường"| B --> G
+A -->|"SXXK"| C --> G
+A -->|"Tại chỗ"| D --> G
+A -->|"Tạm nhập"| E --> G
+A -->|"Mẫu"| F --> G
+G --> H --> I`},
+'hq-khai-bao':{title:'H1.2 Khai báo chi tiết',sub:'3 nhóm thông tin bắt buộc',note:'HS + Trị giá + Xuất xứ + Container – quyết định thuế + luồng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Khai mã HS + Trị giá"]:::fwd
+B["Khai Xuất xứ + C/O"]:::fwd
+C["Khai Container + Kiện"]:::fwd
+D["VNACCS validate dữ liệu"]:::hq
+E{"Dữ liệu hợp lệ?"}:::hq
+F["Hoàn tất khai báo"]:::fwd
+G["Báo lỗi – Sửa lại"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> H
+E -->|"Lỗi"| G --> A`},
+'hq-sua-huy':{title:'H1.3 Sửa / Huỷ Tờ khai',sub:'Sửa trước TQ miễn phí – Sửa sau có rủi ro',note:'Huỷ TK chỉ được trong 15 ngày',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Thời điểm?"}:::fwd
+B["Sửa trước TQ"]:::fwd
+C["Sửa sau TQ"]:::fwd
+D["Huỷ TK"]:::fwd
+E["HQ xem xét"]:::hq
+F{"Chấp nhận?"}:::hq
+G["Cập nhật VNACCS"]:::hq
+H["Từ chối"]:::hq
+I(("Hoàn thành")):::event
+S --> A
+A -->|"Trước TQ"| B --> E
+A -->|"Sau TQ"| C --> E
+A -->|"Huỷ"| D --> E
+E --> F
+F -->|"OK"| G --> I
+F -->|"Không"| H --> I`},
+'hq-nop-vnaccs':{title:'H1.4 Nộp TK qua VNACCS',sub:'4 trường hợp nộp TK',note:'90% nộp thành công – 10% gặp sự cố cần xử lý',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD hoàn tất khai"]:::fwd
+B["Ký số + Gửi VNACCS"]:::fwd
+C{"Kết quả?"}:::hq
+D["Nhận số TK"]:::hq
+E["Lỗi hệ thống"]:::hq
+F["Khai bổ sung"]:::fwd
+G["Khai giấy dự phòng"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Thành công"| D --> H
+C -->|"Lỗi HT"| E --> B
+C -->|"Bổ sung"| F --> B
+C -->|"Sự cố dài"| G --> H`},
+'cascade-h1':{title:'H1: Luồng nội bộ Tờ khai',sub:'4 bước tuần tự',note:'H1.1 Đăng ký → H1.2 Khai báo → H1.3 Sửa/Huỷ → H1.4 Nộp VNACCS',chart:`flowchart TD
+S(("KH yêu cầu khai TK")):::event
+A["H1.1 Đăng ký TK"]:::fwd
+B["H1.2 Khai báo chi tiết"]:::fwd
+C{"Cần sửa/huỷ?"}:::fwd
+D["H1.3 Sửa/Huỷ TK"]:::fwd
+E["H1.4 Nộp VNACCS"]:::fwd
+F["HQ cấp số + Phân luồng"]:::hq
+G(("Chuyển H2")):::event
+S --> A --> B --> C
+C -->|"Có"| D --> B
+C -->|"Không"| E --> F --> G`},
+// ═══════════════════════════════════════════════════════
+// MODULE HẢI QUAN — H2: Phân luồng & Kiểm tra
+// ═══════════════════════════════════════════════════════
+'hq-luong-xanh':{title:'TH1: Luồng Xanh',sub:'TQ tự động · 0h kiểm tra',note:'DN uy tín + hàng rủi ro thấp – VCIS chấm điểm',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["VNACCS nhận TK"]:::hq
+B["VCIS chấm điểm rủi ro"]:::hq
+C["Rủi ro thấp"]:::hq
+D["Tự động thông quan"]:::hq
+E["FWD nhận kết quả"]:::fwd
+F["In TK + Lấy hàng"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'hq-luong-vang':{title:'TH2: Luồng Vàng',sub:'KT hồ sơ · SLA: 2h',note:'Rủi ro trung bình – CBHQ kiểm tra chứng từ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["VCIS phân luồng Vàng"]:::hq
+B["Chuyển CBHQ phụ trách"]:::hq
+C["CBHQ kiểm tra hồ sơ"]:::hq
+D{"Hồ sơ đầy đủ?"}:::hq
+E["Duyệt thông quan"]:::hq
+F["Yêu cầu bổ sung CT"]:::hq
+G["FWD bổ sung"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Đủ"| E --> H
+D -->|"Thiếu"| F --> G --> C`},
+'hq-luong-do':{title:'TH3: Luồng Đỏ',sub:'KT thực tế · SLA: 8h',note:'Rủi ro cao – mở cont kiểm tra thực tế hàng hoá',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["VCIS phân luồng Đỏ"]:::hq
+B["CBHQ lập kế hoạch KT"]:::hq
+C["Mở cont tại bãi"]:::fwd
+D["CBHQ kiểm tra hàng"]:::hq
+E["Đối chiếu TK vs thực tế"]:::hq
+F{"Kết quả?"}:::hq
+G["Lập biên bản OK"]:::hq
+H["Lập biên bản vi phạm"]:::hq
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"Khớp"| G --> I
+F -->|"Sai lệch"| H --> I`},
+'hq-hs-du':{title:'TH1: Hồ sơ đầy đủ',sub:'SLA: 2h duyệt',note:'Trường hợp lý tưởng – CT đầy đủ, thông quan nhanh',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["CBHQ nhận hồ sơ"]:::hq
+B["Kiểm tra CI/PL"]:::hq
+C["Kiểm tra B/L + C/O"]:::hq
+D["Đối chiếu TK"]:::hq
+E{"Tất cả khớp?"}:::hq
+F["Duyệt thông quan"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Khớp"| F --> G
+E -->|"Lệch"| A`},
+'hq-hs-thieu':{title:'TH2: Thiếu CT – Bổ sung',sub:'Gia hạn: 5 ngày bổ sung',note:'FWD phải bổ sung trong thời hạn',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["CBHQ phát hiện thiếu CT"]:::hq
+B["Thông báo FWD danh sách"]:::hq
+C["FWD thu thập CT"]:::fwd
+D["FWD nộp bổ sung"]:::fwd
+E["CBHQ kiểm tra lại"]:::hq
+F{"Đủ chưa?"}:::hq
+G["Duyệt TQ"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"Đủ"| G --> H
+F -->|"Còn thiếu"| B`},
+'hq-hs-sai':{title:'TH3: Sai lệch – Chuyển Đỏ',sub:'Rủi ro: Phạt + Chuyển luồng',note:'Nghi ngờ gian lận → chuyển kiểm tra thực tế',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["CBHQ phát hiện sai lệch"]:::hq
+B["So sánh CSDL HQ"]:::hq
+C{"Nghi gian lận?"}:::hq
+D["Đề xuất chuyển Đỏ"]:::hq
+E["Lãnh đạo duyệt"]:::hq
+F["Chuyển KT thực tế"]:::hq
+G["Yêu cầu giải trình"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Có"| D --> E --> F --> H
+C -->|"Nhẹ"| G --> H`},
+'hq-kt-5':{title:'TH1: Kiểm 5% hàng',sub:'SLA: 4h · Phí nâng hạ: DN chịu',note:'Kiểm ngẫu nhiên 5% số kiện',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Lệnh kiểm 5%"]:::hq
+B["Chọn ngẫu nhiên kiện"]:::hq
+C["Mở cont tại bãi"]:::fwd
+D["CBHQ kiểm mẫu"]:::hq
+E["Đối chiếu TK"]:::hq
+F{"Kết quả?"}:::hq
+G["BB kiểm tra OK"]:::hq
+H["BB vi phạm – Nâng tỉ lệ"]:::hq
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"OK"| G --> I
+F -->|"Sai"| H --> I`},
+'hq-kt-10':{title:'TH2: Kiểm 10% hàng',sub:'SLA: 6h · Nghiêm ngặt hơn',note:'Tỉ lệ kiểm cao hơn – hàng nhạy cảm',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Lệnh kiểm 10%"]:::hq
+B["Chọn mẫu đại diện"]:::hq
+C["Mở cont kiểm tra"]:::fwd
+D["CBHQ kiểm từng mẫu"]:::hq
+E["Đối chiếu chi tiết"]:::hq
+F{"Kết quả?"}:::hq
+G["BB OK – Duyệt TQ"]:::hq
+H["BB vi phạm – Xử lý"]:::hq
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"OK"| G --> I
+F -->|"Vi phạm"| H --> I`},
+'hq-kt-100':{title:'TH3: Kiểm 100% hàng',sub:'SLA: 1–2 ngày · Chi phí cao',note:'Dỡ toàn bộ – kiểm từng kiện – rất tốn thời gian',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Lệnh kiểm 100%"]:::hq
+B["Dỡ toàn bộ hàng"]:::fwd
+C["CBHQ kiểm từng kiện"]:::hq
+D["Cân + Đo + Đếm"]:::hq
+E["Lập BB chi tiết"]:::hq
+F{"Kết quả?"}:::hq
+G["TQ sau khi kiểm xong"]:::hq
+H["Tạm giữ hàng vi phạm"]:::hq
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"OK"| G --> I
+F -->|"Vi phạm"| H --> I`},
+'hq-cl-xv':{title:'TH1: Chuyển Xanh → Vàng',sub:'Do HQ phát hiện rủi ro mới',note:'Hiếm – thường do thông tin tình báo HQ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HQ phát hiện rủi ro"]:::hq
+B["Ra QĐ chuyển luồng"]:::hq
+C["Thông báo DN/FWD"]:::hq
+D["CBHQ kiểm tra hồ sơ"]:::hq
+E{"HS đầy đủ?"}:::hq
+F["Duyệt TQ"]:::hq
+G["Yêu cầu bổ sung"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Đủ"| F --> H
+E -->|"Thiếu"| G --> D`},
+'hq-cl-vd':{title:'TH2: Chuyển Vàng → Đỏ',sub:'KT hồ sơ phát hiện nghi vấn',note:'Từ kiểm CT → kiểm thực tế',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["CBHQ KT hồ sơ"]:::hq
+B["Phát hiện nghi vấn"]:::hq
+C["Đề xuất chuyển Đỏ"]:::hq
+D["Lãnh đạo phê duyệt"]:::hq
+E["Ra lệnh KT thực tế"]:::hq
+F["Thông báo FWD"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'hq-cl-dv':{title:'TH3: Chuyển Đỏ → Vàng',sub:'KT thực tế OK – giảm luồng',note:'Hàng OK nhưng CT chưa đủ → giảm về Vàng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KT thực tế OK"]:::hq
+B["Đề xuất giảm luồng"]:::hq
+C["Lãnh đạo phê duyệt"]:::hq
+D["Chuyển về KT hồ sơ"]:::hq
+E["CBHQ duyệt CT"]:::hq
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-cl-dn':{title:'TH4: Theo YC doanh nghiệp',sub:'DN xin giảm luồng – cần căn cứ',note:'DN ưu tiên AEO có quyền đề nghị',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN nộp đơn YC"]:::kh
+B["FWD chuyển HQ"]:::fwd
+C["HQ xem xét căn cứ"]:::hq
+D{"Có căn cứ?"}:::hq
+E["Chấp nhận giảm luồng"]:::hq
+F["Từ chối – Giữ nguyên"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Có"| E --> G
+D -->|"Không"| F --> G`},
+'hq-cl-cd':{title:'TH5: Theo chỉ đạo cấp trên',sub:'Tổng cục HQ ra lệnh',note:'Áp dụng cho chiến dịch kiểm tra đặc biệt',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Tổng cục ra chỉ đạo"]:::hq
+B["Chi cục tiếp nhận"]:::hq
+C["Áp dụng cho TK liên quan"]:::hq
+D["Thực hiện KT"]:::hq
+E["Báo cáo kết quả"]:::hq
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-phan-luong':{title:'H2.1 Phân luồng tự động',sub:'3 luồng: Xanh/Vàng/Đỏ',note:'VCIS chấm điểm rủi ro tự động – quyết định luồng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["VNACCS nhận TK"]:::hq
+B["VCIS chấm điểm"]:::hq
+C{"Mức rủi ro?"}:::hq
+D["Xanh – TQ tự động"]:::hq
+E["Vàng – KT hồ sơ"]:::hq
+F["Đỏ – KT thực tế"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Thấp"| D --> G
+C -->|"TB"| E --> G
+C -->|"Cao"| F --> G`},
+'hq-kt-hoso':{title:'H2.2 KT hồ sơ (Luồng Vàng)',sub:'3 kết quả: Đủ/Thiếu/Sai',note:'CBHQ kiểm tra chứng từ – quyết định TQ hay chuyển Đỏ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["CBHQ nhận hồ sơ Vàng"]:::hq
+B["Kiểm tra chứng từ"]:::hq
+C{"Kết quả?"}:::hq
+D["Đủ CT → TQ"]:::hq
+E["Thiếu → FWD bổ sung"]:::fwd
+F["Sai → Chuyển Đỏ"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Đủ"| D --> G
+C -->|"Thiếu"| E --> B
+C -->|"Sai"| F --> G`},
+'hq-kt-thucte':{title:'H2.3 KT thực tế (Luồng Đỏ)',sub:'3 mức: 5%/10%/100%',note:'Mở cont kiểm hàng – chi phí + thời gian cao',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Lệnh KT thực tế"]:::hq
+B{"Tỉ lệ kiểm?"}:::hq
+C["Kiểm 5%"]:::hq
+D["Kiểm 10%"]:::hq
+E["Kiểm 100%"]:::hq
+F["Lập biên bản"]:::hq
+G{"Kết quả?"}:::hq
+H["TQ"]:::hq
+I["Xử lý VP"]:::hq
+J(("Hoàn thành")):::event
+S --> A --> B
+B -->|"5%"| C --> F
+B -->|"10%"| D --> F
+B -->|"100%"| E --> F
+F --> G
+G -->|"OK"| H --> J
+G -->|"VP"| I --> J`},
+'hq-chuyen-luong':{title:'H2.4 Chuyển luồng',sub:'5 trường hợp chuyển luồng',note:'Có thể nâng hoặc giảm luồng tuỳ tình huống',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Lý do chuyển?"}:::hq
+B["Xanh→Vàng"]:::hq
+C["Vàng→Đỏ"]:::hq
+D["Đỏ→Vàng"]:::hq
+E["Theo YC DN"]:::kh
+F["Theo chỉ đạo"]:::hq
+G["Ra QĐ chuyển"]:::hq
+H(("Hoàn thành")):::event
+S --> A
+A -->|"Rủi ro mới"| B --> G
+A -->|"Nghi vấn"| C --> G
+A -->|"KT OK"| D --> G
+A -->|"DN xin"| E --> G
+A -->|"Cấp trên"| F --> G
+G --> H`},
+'cascade-h2':{title:'H2: Luồng nội bộ Phân luồng',sub:'4 bước',note:'H2.1 Phân luồng → H2.2 KT hồ sơ → H2.3 KT thực tế → H2.4 Chuyển luồng',chart:`flowchart TD
+S(("TK từ H1")):::event
+A["H2.1 Phân luồng tự động"]:::hq
+B{"Luồng?"}:::hq
+C["H2.2 KT hồ sơ"]:::hq
+D["H2.3 KT thực tế"]:::hq
+E{"Cần chuyển luồng?"}:::hq
+F["H2.4 Chuyển luồng"]:::hq
+G["TQ Xanh"]:::hq
+H(("Chuyển H3")):::event
+S --> A --> B
+B -->|"Xanh"| G --> H
+B -->|"Vàng"| C --> E
+B -->|"Đỏ"| D --> E
+E -->|"Có"| F --> B
+E -->|"Không"| H`},
+// ═══════════════════════════════════════════════════════
+// MODULE HẢI QUAN — H3: Trị giá & Thuế HQ
+// ═══════════════════════════════════════════════════════
+'hq-tg-gd':{title:'TH1: Trị giá giao dịch (PP1)',sub:'Phương pháp phổ biến nhất – 95% TK',note:'Lấy giá trên CI + phí VT + BH = CIF',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Lấy giá trên CI"]:::fwd
+B["Cộng phí vận tải"]:::fwd
+C["Cộng phí bảo hiểm"]:::fwd
+D["Tính CIF"]:::fwd
+E["So sánh CSDL HQ"]:::hq
+F{"Giá hợp lý?"}:::hq
+G["Chấp nhận trị giá"]:::hq
+H["Chuyển tham vấn"]:::hq
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"OK"| G --> I
+F -->|"Nghi ngờ"| H --> I`},
+'hq-tg-tuongtu':{title:'TH2: Trị giá tương tự (PP2–5)',sub:'HQ bác PP1 – dùng giá hàng tương tự',note:'Áp giá từ CSDL HQ cho hàng tương tự đã NK',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HQ bác trị giá PP1"]:::hq
+B["Tìm hàng tương tự CSDL"]:::hq
+C{"Tìm thấy?"}:::hq
+D["Áp giá hàng tương tự"]:::hq
+E["Tính thuế theo giá mới"]:::thue
+F["Chuyển PP6 suy luận"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Có"| D --> E --> G
+C -->|"Không"| F --> G`},
+'hq-tg-suyluan':{title:'TH3: Trị giá suy luận (PP6)',sub:'Phương pháp cuối cùng – HQ ấn định',note:'Không có giá tham chiếu – HQ tự tính',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Không có giá tham chiếu"]:::hq
+B["HQ yêu cầu DN cung cấp CT"]:::hq
+C["DN nộp CT chi phí SX"]:::kh
+D["HQ phân tích + Suy luận"]:::hq
+E["Ấn định trị giá"]:::hq
+F["Tính thuế"]:::thue
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'hq-tv-nghinh':{title:'TH1: HQ nghi ngờ giá',sub:'Mời DN tham vấn trong 5 ngày',note:'Giá khai thấp hơn CSDL – HQ mời giải trình',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HQ so CSDL giá"]:::hq
+B["Giá thấp bất thường"]:::hq
+C["Mời DN tham vấn"]:::hq
+D["DN chuẩn bị CT"]:::kh
+E["Buổi tham vấn"]:::hq
+F{"DN chứng minh được?"}:::hq
+G["Chấp nhận giá khai"]:::hq
+H["Áp giá CSDL"]:::hq
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"Được"| G --> I
+F -->|"Không"| H --> I`},
+'hq-tv-chapnhan':{title:'TH2: DN chấp nhận giá mới',sub:'DN đồng ý giá HQ – tính thuế mới',note:'DN không tranh chấp – chấp nhận giá tham chiếu',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HQ đề xuất giá mới"]:::hq
+B["DN xem xét"]:::kh
+C["DN đồng ý giá mới"]:::kh
+D["Tính lại thuế"]:::thue
+E["DN nộp thuế chênh lệch"]:::kh
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-tv-khieunai':{title:'TH3: DN khiếu nại giá',sub:'DN không đồng ý – khiếu nại chính thức',note:'DN có quyền khiếu nại 2 lần + kiện TA',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN không đồng ý giá HQ"]:::kh
+B["Nộp đơn khiếu nại"]:::kh
+C["HQ xem xét lại"]:::hq
+D{"Kết quả?"}:::hq
+E["Sửa giá theo DN"]:::hq
+F["Giữ nguyên QĐ"]:::hq
+G["DN khiếu nại lần 2/TA"]:::kh
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Chấp nhận"| E --> H
+D -->|"Bác"| F --> G --> H`},
+'hq-thue-thuong':{title:'TH1: Thuế NK thường (MFN)',sub:'Thuế suất MFN 0–50%',note:'Áp dụng khi không có C/O ưu đãi',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Xác định mã HS"]:::hq
+B["Tra thuế suất MFN"]:::hq
+C["Tính thuế NK = CIF × TS"]:::thue
+D["Tính VAT = (CIF+NK) × 10%"]:::thue
+E["Tổng thuế phải nộp"]:::thue
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-thue-fta':{title:'TH2: Thuế ưu đãi FTA',sub:'Tiết kiệm 5–30% thuế',note:'ATIGA/EVFTA/CPTPP/RCEP – cần C/O hợp lệ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Xác định HS + C/O"]:::hq
+B["Kiểm ĐK FTA"]:::hq
+C{"C/O hợp lệ?"}:::hq
+D["Thuế suất ưu đãi FTA"]:::thue
+E["Thuế suất MFN thường"]:::thue
+F["Tính tổng thuế"]:::thue
+G(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Hợp lệ"| D --> F --> G
+C -->|"Không"| E --> F`},
+'hq-thue-pvtm':{title:'TH3: Thuế PVTM',sub:'AD/CVD/Safeguard – thuế bổ sung',note:'Áp dụng khi hàng có biện pháp PVTM',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Xác định mã HS"]:::hq
+B["Tra danh sách PVTM"]:::hq
+C{"Có biện pháp?"}:::hq
+D["Tính thuế AD (chống bán phá giá)"]:::thue
+E["Tính thuế CVD (chống trợ cấp)"]:::thue
+F["Cộng vào thuế NK"]:::thue
+G["Không có thuế bổ sung"]:::thue
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"AD"| D --> F --> H
+C -->|"CVD"| E --> F
+C -->|"Không"| G --> H`},
+'hq-nt-ngay':{title:'TH1: Nộp thuế ngay',sub:'Nộp trong 275 ngày',note:'DN nộp thuế qua NH – HQ ghi nhận tự động',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["VNACCS tính thuế"]:::hq
+B["Thông báo DN"]:::hq
+C["DN chuyển khoản NH"]:::kh
+D["NH xác nhận"]:::thue
+E["HQ ghi nhận đã nộp"]:::hq
+F["Cho phép TQ"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'hq-nt-baolanh':{title:'TH2: Bảo lãnh ngân hàng',sub:'NH phát hành thư BL – GP hàng trước',note:'DN lấy hàng trước, nộp thuế sau',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN xin bảo lãnh"]:::kh
+B["NH phát hành thư BL"]:::thue
+C["FWD nộp thư BL cho HQ"]:::fwd
+D["HQ kiểm tra hiệu lực"]:::hq
+E{"BL hợp lệ?"}:::hq
+F["GP hàng trước"]:::hq
+G["Từ chối – Nộp thuế ngay"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> H
+E -->|"Không"| G --> H`},
+'hq-nt-anhan':{title:'TH3: Ân hạn thuế',sub:'275 ngày ân hạn – DN ưu tiên',note:'DN đủ ĐK được ân hạn – theo dõi tự động',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN đủ ĐK ân hạn"]:::kh
+B["HQ xác nhận ĐK"]:::hq
+C["Ân hạn 275 ngày"]:::hq
+D["GP hàng ngay"]:::hq
+E["Hệ thống theo dõi hạn"]:::hq
+F{"Nộp đúng hạn?"}:::hq
+G["Tất toán"]:::thue
+H["Cưỡng chế thuế"]:::hq
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"Đúng hạn"| G --> I
+F -->|"Quá hạn"| H --> I`},
+'hq-nt-mien':{title:'TH4: Miễn/Giảm thuế',sub:'Hàng FDI/ODA/Miễn thuế đặc biệt',note:'Cần hồ sơ chứng minh ĐK miễn giảm',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN nộp HS miễn/giảm"]:::kh
+B["HQ kiểm tra ĐK"]:::hq
+C{"Đủ ĐK?"}:::hq
+D["Ra QĐ miễn/giảm"]:::hq
+E["Ghi nhận vào TK"]:::hq
+F["Từ chối – Tính thuế thường"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Đủ"| D --> E --> G
+C -->|"Không"| F --> G`},
+'hq-tri-gia':{title:'H3.1 Xác định trị giá',sub:'6 phương pháp – PP1 ưu tiên',note:'Trị giá HQ quyết định số thuế phải nộp',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Lấy giá CI"]:::fwd
+B["Tính CIF"]:::fwd
+C["So CSDL HQ"]:::hq
+D{"Giá hợp lý?"}:::hq
+E["PP1: Trị giá giao dịch"]:::hq
+F["PP2–5: Hàng tương tự"]:::hq
+G["PP6: Suy luận"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"OK"| E --> H
+D -->|"Nghi ngờ"| F --> H
+D -->|"Không có"| G --> H`},
+'hq-tham-van':{title:'H3.2 Tham vấn giá',sub:'3 kết quả tham vấn',note:'HQ mời DN giải trình khi giá bất thường',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HQ nghi ngờ giá"]:::hq
+B["Mời DN tham vấn"]:::hq
+C["Buổi tham vấn"]:::hq
+D{"Kết quả?"}:::hq
+E["Giữ giá khai"]:::hq
+F["DN chấp nhận giá mới"]:::kh
+G["DN khiếu nại"]:::kh
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"DN đúng"| E --> H
+D -->|"DN đồng ý"| F --> H
+D -->|"Tranh chấp"| G --> H`},
+'hq-tinh-thue':{title:'H3.3 Tính thuế',sub:'NK + VAT + PVTM',note:'VNACCS tự động tính – CBHQ kiểm tra',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Xác định HS + Trị giá"]:::hq
+B{"Có C/O FTA?"}:::hq
+C["Thuế ưu đãi FTA"]:::thue
+D["Thuế MFN"]:::thue
+E{"Có PVTM?"}:::hq
+F["Cộng thuế AD/CVD"]:::thue
+G["Tính VAT"]:::thue
+H["Tổng thuế"]:::thue
+I(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Có"| C --> E
+B -->|"Không"| D --> E
+E -->|"Có"| F --> G
+E -->|"Không"| G
+G --> H --> I`},
+'hq-nop-thue':{title:'H3.4 Nộp & Bảo lãnh thuế',sub:'4 hình thức nộp thuế',note:'DN chọn hình thức phù hợp',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Tổng thuế đã tính"]:::thue
+B{"Hình thức nộp?"}:::kh
+C["Nộp ngay qua NH"]:::kh
+D["Bảo lãnh NH"]:::thue
+E["Ân hạn 275 ngày"]:::hq
+F["Miễn/Giảm"]:::hq
+G["GP hàng"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Ngay"| C --> G
+B -->|"BL"| D --> G
+B -->|"Ân hạn"| E --> G
+B -->|"Miễn"| F --> G
+G --> H`},
+'cascade-h3':{title:'H3: Luồng nội bộ Trị giá & Thuế',sub:'4 bước',note:'H3.1 Trị giá → H3.2 Tham vấn → H3.3 Tính thuế → H3.4 Nộp',chart:`flowchart TD
+S(("TK từ H2")):::event
+A["H3.1 Xác định trị giá"]:::hq
+B{"Nghi ngờ giá?"}:::hq
+C["H3.2 Tham vấn giá"]:::hq
+D["H3.3 Tính thuế"]:::thue
+E["H3.4 Nộp/Bảo lãnh"]:::kh
+F(("Chuyển H4")):::event
+S --> A --> B
+B -->|"Có"| C --> D
+B -->|"Không"| D
+D --> E --> F`},
+// ═══════════════════════════════════════════════════════
+// MODULE HẢI QUAN — H4: Thông quan & Giải phóng
+// ═══════════════════════════════════════════════════════
+'hq-gp-truocthue':{title:'TH1: GP trước nộp thuế',sub:'Hàng cần gấp – cam kết nộp sau',note:'DN cam kết nộp thuế trong thời hạn',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Hàng cần gấp"]:::kh
+B["DN cam kết nộp thuế"]:::kh
+C["FWD nộp đơn xin GP"]:::fwd
+D["HQ xem xét"]:::hq
+E{"Chấp nhận?"}:::hq
+F["GP hàng trước"]:::hq
+G["DN nộp thuế sau"]:::kh
+H["Từ chối – Nộp thuế trước"]:::hq
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> G --> I
+E -->|"Không"| H --> I`},
+'hq-gp-baolanh':{title:'TH2: GP có bảo lãnh',sub:'NH bảo lãnh – GP ngay',note:'Thư bảo lãnh NH thay thế nộp thuế',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN có thư BL từ NH"]:::kh
+B["FWD nộp thư BL"]:::fwd
+C["HQ kiểm tra hiệu lực"]:::hq
+D{"BL còn hiệu lực?"}:::hq
+E["GP hàng ngay"]:::hq
+F["Từ chối – BL hết hạn"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Còn"| E --> G
+D -->|"Hết"| F --> G`},
+'hq-gp-uutien':{title:'TH3: GP hàng ưu tiên (AEO)',sub:'GP ngay – KT sau',note:'DN AEO được ưu tiên giải phóng hàng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN ưu tiên AEO"]:::kh
+B["TK luồng Xanh"]:::hq
+C["KT nhanh hồ sơ"]:::hq
+D["GP hàng ngay"]:::hq
+E["KT sau thông quan"]:::hq
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-tq-tudong':{title:'TH1: TQ tự động (Xanh)',sub:'0h – Tự động 100%',note:'VNACCS tự động thông quan – không cần CBHQ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["TK luồng Xanh"]:::hq
+B["VNACCS tự động TQ"]:::hq
+C["Cập nhật trạng thái"]:::hq
+D["FWD nhận thông báo"]:::fwd
+E["In TK đã TQ"]:::fwd
+F["Đi lấy hàng"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'hq-tq-saukt':{title:'TH2: TQ sau kiểm tra',sub:'SLA: 2–8h sau KT',note:'CBHQ ký duyệt sau khi KT hồ sơ/thực tế OK',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KT xong – BB OK"]:::hq
+B["CBHQ ký duyệt"]:::hq
+C["Cập nhật VNACCS"]:::hq
+D["Trạng thái: Đã TQ"]:::hq
+E["FWD nhận thông báo"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-tq-dieukien':{title:'TH3: TQ có điều kiện',sub:'TQ nhưng chờ kết quả CNG',note:'Hàng được GP nhưng phải chờ CNG kiểm tra',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Chờ kết quả CNG"]:::hq
+B["HQ GP hàng có ĐK"]:::hq
+C["DN ký cam kết"]:::kh
+D["Có kết quả CNG"]:::qc
+E{"Đạt?"}:::qc
+F["TQ chính thức"]:::hq
+G["Tái xuất/Tiêu huỷ"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Đạt"| F --> H
+E -->|"Không"| G --> H`},
+'hq-bq-cng':{title:'TH1: Chờ kết quả CNG',sub:'5–15 ngày chờ kiểm nghiệm',note:'Hàng lưu kho bảo quản chờ CNG kiểm tra',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Hàng cần CNG kiểm tra"]:::hq
+B["Đưa về kho BQ"]:::fwd
+C["Niêm phong HQ"]:::hq
+D["CNG lấy mẫu kiểm"]:::qc
+E["Chờ kết quả"]:::qc
+F{"Kết quả?"}:::qc
+G["GP hàng"]:::hq
+H["Tái xuất/Tiêu huỷ"]:::hq
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"Đạt"| G --> I
+F -->|"Không đạt"| H --> I`},
+'hq-bq-gp':{title:'TH2: Chờ GP chuyên ngành',sub:'7–30 ngày chờ Bộ ngành',note:'Hàng cần GP từ Bộ NN/YT/CT trước khi TQ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Hàng cần GP chuyên ngành"]:::hq
+B["Lưu kho bảo quản"]:::fwd
+C["DN xin GP từ Bộ ngành"]:::kh
+D["Bộ ngành xem xét"]:::hq
+E{"Cấp GP?"}:::hq
+F["HQ thông quan"]:::hq
+G["Từ chối – Tái xuất"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Cấp"| F --> H
+E -->|"Không"| G --> H`},
+'hq-tg-hoso':{title:'TH1: Tạm giữ hồ sơ',sub:'Tối đa 30 ngày',note:'Nghi ngờ gian lận – giữ CT để xác minh',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Nghi ngờ gian lận CT"]:::hq
+B["QĐ tạm giữ hồ sơ"]:::hq
+C["Xác minh thông tin"]:::hq
+D{"Kết quả?"}:::hq
+E["Trả hồ sơ – TQ"]:::hq
+F["Chuyển xử lý VP"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"OK"| E --> G
+D -->|"VP"| F --> G`},
+'hq-tg-hang':{title:'TH2: Tạm giữ hàng',sub:'Tối đa 30 ngày – gia hạn 30 ngày',note:'Hàng bị giữ tại kho HQ chờ xử lý',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Phát hiện vi phạm"]:::hq
+B["QĐ tạm giữ hàng"]:::hq
+C["Lập biên bản"]:::hq
+D["Lưu kho HQ"]:::hq
+E["Xác minh + Xử lý"]:::hq
+F{"Kết quả?"}:::hq
+G["Trả hàng + Phạt"]:::hq
+H["Tịch thu"]:::hq
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"Nhẹ"| G --> I
+F -->|"Nặng"| H --> I`},
+'hq-thu-giu':{title:'TH3: Thu giữ vi phạm',sub:'Tịch thu – Sung công/Tiêu huỷ',note:'Vi phạm nghiêm trọng – hàng cấm/giả/gian lận',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["VP nghiêm trọng"]:::hq
+B["QĐ thu giữ"]:::hq
+C["Lập BB chi tiết"]:::hq
+D["Chuyển kho tang vật"]:::hq
+E{"Loại hàng?"}:::hq
+F["Sung công quỹ"]:::hq
+G["Tiêu huỷ"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Có giá trị"| F --> H
+E -->|"Hàng cấm"| G --> H`},
+'hq-giai-phong':{title:'H4.1 Giải phóng hàng',sub:'3 hình thức GP',note:'GP trước thuế / BL / Ưu tiên AEO',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Hình thức GP?"}:::hq
+B["GP trước nộp thuế"]:::hq
+C["GP có bảo lãnh"]:::thue
+D["GP ưu tiên AEO"]:::kh
+E["Hàng được GP"]:::hq
+F(("Hoàn thành")):::event
+S --> A
+A -->|"Cam kết"| B --> E
+A -->|"BL NH"| C --> E
+A -->|"AEO"| D --> E
+E --> F`},
+'hq-thong-quan':{title:'H4.2 Thông quan',sub:'3 hình thức TQ',note:'Tự động / Sau KT / Có điều kiện',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Hình thức TQ?"}:::hq
+B["TQ tự động Xanh"]:::hq
+C["TQ sau KT"]:::hq
+D["TQ có điều kiện"]:::hq
+E["Trạng thái: Đã TQ"]:::hq
+F(("Hoàn thành")):::event
+S --> A
+A -->|"Xanh"| B --> E
+A -->|"Sau KT"| C --> E
+A -->|"Có ĐK"| D --> E
+E --> F`},
+'hq-bao-quan':{title:'H4.3 Đưa hàng về bảo quản',sub:'Chờ CNG hoặc GP chuyên ngành',note:'Hàng lưu kho chờ kết quả kiểm tra',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Lý do BQ?"}:::hq
+B["Chờ CNG kiểm nghiệm"]:::qc
+C["Chờ GP chuyên ngành"]:::hq
+D["Lưu kho BQ"]:::fwd
+E["Có kết quả"]:::hq
+F{"Đạt?"}:::hq
+G["GP hàng"]:::hq
+H["Xử lý"]:::hq
+I(("Hoàn thành")):::event
+S --> A
+A -->|"CNG"| B --> D
+A -->|"GP"| C --> D
+D --> E --> F
+F -->|"OK"| G --> I
+F -->|"Không"| H --> I`},
+'hq-tam-giu':{title:'H4.4 Tạm giữ / Thu giữ',sub:'3 mức xử lý',note:'Tạm giữ HS / Tạm giữ hàng / Thu giữ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Mức vi phạm?"}:::hq
+B["Tạm giữ hồ sơ"]:::hq
+C["Tạm giữ hàng"]:::hq
+D["Thu giữ"]:::hq
+E["Xác minh + Xử lý"]:::hq
+F(("Hoàn thành")):::event
+S --> A
+A -->|"Nghi ngờ"| B --> E
+A -->|"Vi phạm"| C --> E
+A -->|"Nghiêm trọng"| D --> E
+E --> F`},
+'cascade-h4':{title:'H4: Luồng nội bộ Thông quan',sub:'4 bước',note:'H4.1 GP → H4.2 TQ → H4.3 BQ → H4.4 Tạm/Thu giữ',chart:`flowchart TD
+S(("TK từ H3")):::event
+A["H4.1 Giải phóng hàng"]:::hq
+B["H4.2 Thông quan"]:::hq
+C{"Cần BQ?"}:::hq
+D["H4.3 Bảo quản"]:::fwd
+E{"Vi phạm?"}:::hq
+F["H4.4 Tạm/Thu giữ"]:::hq
+G(("Chuyển H5")):::event
+S --> A --> B --> C
+C -->|"Có"| D --> B
+C -->|"Không"| E
+E -->|"Có"| F --> G
+E -->|"Không"| G`},
+// ═══════════════════════════════════════════════════════
+// MODULE HẢI QUAN — H5: Cửa khẩu
+// ═══════════════════════════════════════════════════════
+'hq-cb-catlai':{title:'TH1: Cảng Cát Lái',sub:'Cảng lớn nhất miền Nam – 65% cont',note:'HQ Cát Lái – quy trình chuẩn quốc gia',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Tàu cập cảng Cát Lái"]:::fwd
+B["Hãng tàu nộp manifest"]:::ncc
+C["HQ Cát Lái tiếp nhận"]:::hq
+D["Cont vào CY/CFS"]:::fwd
+E["FWD làm thủ tục"]:::fwd
+F["HQ xử lý TK"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'hq-cb-haiphong':{title:'TH2: Cảng Hải Phòng',sub:'Cảng lớn nhất miền Bắc',note:'HQ Hải Phòng – đặc thù hàng TQ qua đường biển',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Tàu cập HP"]:::fwd
+B["Manifest + D/O"]:::ncc
+C["HQ Hải Phòng tiếp nhận"]:::hq
+D["Cont vào bãi"]:::fwd
+E["FWD làm thủ tục"]:::fwd
+F["Đặc thù miền Bắc"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'hq-cb-khac':{title:'TH3: Cảng khu vực khác',sub:'Cảng Đà Nẵng/Quy Nhơn/Vũng Tàu',note:'HQ địa phương – quy trình tương tự',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Tàu cập cảng khu vực"]:::fwd
+B["HQ địa phương tiếp nhận"]:::hq
+C["Quy trình chuẩn"]:::hq
+D["Đặc thù riêng địa phương"]:::hq
+E["FWD làm thủ tục"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-sb-tsn':{title:'TH1: Sân bay TSN/Nội Bài',sub:'SLA: 4–8h · Hàng air',note:'HQ sân bay – quy trình nhanh cho hàng air',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Hàng đến sân bay"]:::fwd
+B["HQ sân bay tiếp nhận"]:::hq
+C["Kho hàng air cargo"]:::fwd
+D["FWD làm thủ tục"]:::fwd
+E["HQ kiểm tra nhanh"]:::hq
+F["GP hàng"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'hq-sb-express':{title:'TH2: Chuyển phát nhanh',sub:'SLA: 4h · Giá trị thấp',note:'Đại lý express (DHL/FedEx) làm HQ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Hàng express đến"]:::fwd
+B["Đại lý express khai HQ"]:::fwd
+C["HQ kiểm nhanh"]:::hq
+D{"Giá trị?"}:::hq
+E["Miễn thuế dưới 1tr"]:::hq
+F["Tính thuế thường"]:::thue
+G["GP nhanh 4h"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Thấp"| E --> G --> H
+D -->|"Cao"| F --> G`},
+'hq-ck-langson':{title:'TH1: CK Lạng Sơn',sub:'CK lớn nhất biên giới phía Bắc',note:'Hàng TQ qua đường bộ – đặc thù biên mậu',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Hàng TQ đến CK"]:::ncc
+B["HQ Lạng Sơn kiểm tra"]:::hq
+C["Khai báo TK"]:::fwd
+D["KT thực tế biên giới"]:::hq
+E{"Hàng hợp lệ?"}:::hq
+F["Cho phép NK"]:::hq
+G["Từ chối/Tạm giữ"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> H
+E -->|"VP"| G --> H`},
+'hq-ck-laocai':{title:'TH2: CK Lào Cai',sub:'Đường sắt + Đường bộ',note:'CK Lào Cai – hàng TQ qua đường sắt liên vận',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Hàng TQ đến Lào Cai"]:::ncc
+B{"Phương thức?"}:::fwd
+C["Đường sắt liên vận"]:::fwd
+D["Đường bộ"]:::fwd
+E["HQ Lào Cai kiểm tra"]:::hq
+F["Thủ tục TQ"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Sắt"| C --> E
+B -->|"Bộ"| D --> E
+E --> F --> G`},
+'hq-ck-khac':{title:'TH3: CK đường bộ khác',sub:'Móng Cái/Tân Thanh/Hữu Nghị',note:'CK biên giới khác – quy trình chung',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Hàng đến CK"]:::fwd
+B["HQ CK tiếp nhận"]:::hq
+C["Kiểm tra hàng"]:::hq
+D["Thủ tục chuẩn"]:::hq
+E["GP qua biên giới"]:::hq
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-icd-truongtho':{title:'TH1: ICD Trường Thọ',sub:'ICD lớn nhất TP.HCM',note:'Cont từ cảng chuyển ICD – làm HQ tại ICD',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Cont từ cảng Cát Lái"]:::fwd
+B["Vận chuyển đến ICD"]:::fwd
+C["HQ ICD tiếp nhận"]:::hq
+D["Làm thủ tục tại ICD"]:::fwd
+E["HQ kiểm tra"]:::hq
+F["TQ tại ICD"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'hq-icd-phuoclong':{title:'TH2: ICD Phước Long',sub:'ICD phía Đông TP.HCM',note:'Tương tự ICD Trường Thọ – khu vực khác',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Cont từ cảng"]:::fwd
+B["Vận chuyển ICD PL"]:::fwd
+C["HQ ICD tiếp nhận"]:::hq
+D["Thủ tục tại ICD"]:::fwd
+E["TQ tại ICD"]:::hq
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-cang-bien':{title:'H5.1 Cảng biển',sub:'3 khu vực cảng chính',note:'Cát Lái / Hải Phòng / Cảng khu vực',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Khu vực cảng?"}:::fwd
+B["Cát Lái – Miền Nam"]:::fwd
+C["Hải Phòng – Miền Bắc"]:::fwd
+D["Cảng khác"]:::fwd
+E["HQ cảng tiếp nhận"]:::hq
+F["Thủ tục TQ"]:::hq
+G(("Hoàn thành")):::event
+S --> A
+A -->|"Nam"| B --> E
+A -->|"Bắc"| C --> E
+A -->|"Khác"| D --> E
+E --> F --> G`},
+'hq-san-bay':{title:'H5.2 Sân bay',sub:'Air cargo + Express',note:'Hàng air nhanh hơn – SLA 4–8h',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Loại hàng air?"}:::fwd
+B["Air cargo thường"]:::fwd
+C["Chuyển phát nhanh"]:::fwd
+D["HQ sân bay"]:::hq
+E["Thủ tục nhanh"]:::hq
+F(("Hoàn thành")):::event
+S --> A
+A -->|"Cargo"| B --> D
+A -->|"Express"| C --> D
+D --> E --> F`},
+'hq-ck-bo':{title:'H5.3 CK đường bộ',sub:'3 CK chính biên giới TQ',note:'Lạng Sơn / Lào Cai / CK khác',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"CK nào?"}:::fwd
+B["Lạng Sơn"]:::fwd
+C["Lào Cai"]:::fwd
+D["CK khác"]:::fwd
+E["HQ CK kiểm tra"]:::hq
+F["Thủ tục biên giới"]:::hq
+G(("Hoàn thành")):::event
+S --> A
+A -->|"LS"| B --> E
+A -->|"LC"| C --> E
+A -->|"Khác"| D --> E
+E --> F --> G`},
+'hq-icd':{title:'H5.4 ICD/Cảng cạn',sub:'TQ tại ICD thay vì cảng',note:'Giảm tải cảng – làm HQ tại ICD nội địa',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Cont từ cảng biển"]:::fwd
+B["Vận chuyển đến ICD"]:::fwd
+C{"ICD nào?"}:::fwd
+D["ICD Trường Thọ"]:::fwd
+E["ICD Phước Long"]:::fwd
+F["HQ ICD tiếp nhận"]:::hq
+G["TQ tại ICD"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"TT"| D --> F
+C -->|"PL"| E --> F
+F --> G --> H`},
+'cascade-h5':{title:'H5: Luồng nội bộ Cửa khẩu',sub:'4 loại cửa khẩu',note:'H5.1 Cảng biển → H5.2 Sân bay → H5.3 CK bộ → H5.4 ICD',chart:`flowchart TD
+S(("Hàng đến VN")):::event
+A{"Loại CK?"}:::fwd
+B["H5.1 Cảng biển"]:::fwd
+C["H5.2 Sân bay"]:::fwd
+D["H5.3 CK đường bộ"]:::fwd
+E["H5.4 ICD/Cảng cạn"]:::fwd
+F["HQ CK xử lý"]:::hq
+G(("Chuyển H4")):::event
+S --> A
+A -->|"Biển"| B --> F
+A -->|"Air"| C --> F
+A -->|"Bộ"| D --> F
+A -->|"ICD"| E --> F
+F --> G`},
+// ═══════════════════════════════════════════════════════
+// MODULE HẢI QUAN — H6: Sau thông quan
+// ═══════════════════════════════════════════════════════
+'hq-ktstq-hq':{title:'TH1: KTSTQ tại trụ sở HQ',sub:'3–5 ngày kiểm tra',note:'HQ mời DN mang sổ sách đến Chi cục',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HQ ra QĐ KTSTQ"]:::hq
+B["Mời DN đến trụ sở"]:::hq
+C["DN mang sổ sách"]:::kh
+D["CBHQ đối chiếu"]:::hq
+E{"Kết quả?"}:::hq
+F["Kết luận OK"]:::hq
+G["Phát hiện sai sót"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> H
+E -->|"Sai"| G --> H`},
+'hq-ktstq-dn':{title:'TH2: KTSTQ tại trụ sở DN',sub:'5–10 ngày · Kiểm tra sâu',note:'HQ đến DN kiểm tra kho + sổ sách tại chỗ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HQ ra QĐ KT tại DN"]:::hq
+B["Đoàn KT đến DN"]:::hq
+C["Kiểm tra kho hàng"]:::hq
+D["Đối chiếu sổ sách"]:::hq
+E["Lập biên bản"]:::hq
+F{"Kết quả?"}:::hq
+G["Kết luận OK"]:::hq
+H["Xử lý vi phạm"]:::hq
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"OK"| G --> I
+F -->|"VP"| H --> I`},
+'hq-ktstq-dinhky':{title:'TH3: Kiểm tra định kỳ',sub:'Theo kế hoạch năm của Tổng cục',note:'Chọn DN theo tiêu chí rủi ro hàng năm',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Kế hoạch KT năm"]:::hq
+B["Chọn DN theo rủi ro"]:::hq
+C["Thông báo DN"]:::hq
+D["Thực hiện KTSTQ"]:::hq
+E["Lập báo cáo"]:::hq
+F["Báo cáo Tổng cục"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'hq-vp-phat':{title:'TH1: Phạt hành chính',sub:'Phạt 1–80tr tuỳ mức VP',note:'Vi phạm nhẹ – xử phạt tiền',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Phát hiện VP"]:::hq
+B["Lập biên bản VP"]:::hq
+C["Ra QĐ xử phạt"]:::hq
+D["Thông báo DN"]:::hq
+E["DN nộp phạt"]:::kh
+F["Ghi nhận + Đóng vụ"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'hq-vp-truythu':{title:'TH2: Truy thu thuế',sub:'Truy thu + Phạt chậm nộp',note:'Khai sai thuế – phải nộp bổ sung + lãi phạt',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Phát hiện khai sai thuế"]:::hq
+B["Tính chênh lệch"]:::hq
+C["Ra QĐ truy thu"]:::hq
+D["Tính lãi phạt chậm nộp"]:::thue
+E["DN nộp bổ sung"]:::kh
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-vp-cqdt':{title:'TH3: Chuyển CQĐT',sub:'VP nghiêm trọng – Hình sự',note:'Buôn lậu/Trốn thuế lớn – chuyển công an',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["VP nghiêm trọng"]:::hq
+B["Lập hồ sơ VP"]:::hq
+C["Chuyển CQĐT"]:::hq
+D["Khởi tố vụ án"]:::hq
+E["Điều tra"]:::hq
+F["Xử lý hình sự"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+'hq-kn-lan1':{title:'TH1: Khiếu nại lần 1',sub:'30 ngày giải quyết',note:'DN khiếu nại Chi cục HQ nơi làm thủ tục',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN nộp đơn KN"]:::kh
+B["Chi cục HQ tiếp nhận"]:::hq
+C["Xem xét 30 ngày"]:::hq
+D{"Kết quả?"}:::hq
+E["Chấp nhận KN"]:::hq
+F["Bác đơn KN"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Chấp nhận"| E --> G
+D -->|"Bác"| F --> G`},
+'hq-kn-lan2':{title:'TH2: Khiếu nại lần 2',sub:'45 ngày giải quyết',note:'DN không đồng ý lần 1 → khiếu nại Cục HQ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN không đồng ý lần 1"]:::kh
+B["Nộp đơn KN lần 2"]:::kh
+C["Cục HQ tiếp nhận"]:::hq
+D["Xem xét 45 ngày"]:::hq
+E{"Kết quả?"}:::hq
+F["Chấp nhận KN"]:::hq
+G["Bác đơn – QĐ cuối"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Chấp nhận"| F --> H
+E -->|"Bác"| G --> H`},
+'hq-kn-toaan':{title:'TH3: Khởi kiện Toà án',sub:'Thời hạn: 1 năm từ QĐ cuối',note:'Hết quyền KN hành chính → kiện TA HC',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Hết quyền KN hành chính"]:::kh
+B["DN khởi kiện TA HC"]:::kh
+C["Toà thụ lý"]:::hq
+D["Phiên toà xét xử"]:::hq
+E{"Phán quyết?"}:::hq
+F["DN thắng"]:::kh
+G["HQ thắng"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"DN thắng"| F --> H
+E -->|"HQ thắng"| G --> H`},
+'hq-ktstq':{title:'H6.1 KTSTQ',sub:'3 hình thức kiểm tra',note:'Kiểm tra sau thông quan – tại HQ/DN/Định kỳ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Hình thức KTSTQ?"}:::hq
+B["Tại trụ sở HQ"]:::hq
+C["Tại trụ sở DN"]:::hq
+D["Định kỳ theo KH"]:::hq
+E["Lập kết luận"]:::hq
+F(("Hoàn thành")):::event
+S --> A
+A -->|"Tại HQ"| B --> E
+A -->|"Tại DN"| C --> E
+A -->|"Định kỳ"| D --> E
+E --> F`},
+'hq-vi-pham':{title:'H6.2 Xử lý vi phạm',sub:'3 mức xử lý',note:'Phạt HC / Truy thu / Chuyển CQĐT',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Phát hiện VP"]:::hq
+B{"Mức VP?"}:::hq
+C["Phạt hành chính"]:::hq
+D["Truy thu thuế"]:::thue
+E["Chuyển CQĐT"]:::hq
+F(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Nhẹ"| C --> F
+B -->|"Thuế"| D --> F
+B -->|"Nghiêm trọng"| E --> F`},
+'hq-khieu-nai':{title:'H6.3 Khiếu nại',sub:'3 cấp: Chi cục → Cục → TA',note:'DN có quyền KN 2 lần + kiện TA hành chính',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN khiếu nại lần 1"]:::kh
+B["Chi cục giải quyết"]:::hq
+C{"Đồng ý?"}:::kh
+D["KN lần 2 – Cục HQ"]:::kh
+E{"Đồng ý?"}:::kh
+F["Khởi kiện TA"]:::kh
+G(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"OK"| G
+C -->|"Không"| D --> E
+E -->|"OK"| G
+E -->|"Không"| F --> G`},
+'cascade-h6':{title:'H6: Luồng nội bộ Sau TQ',sub:'3 bước',note:'H6.1 KTSTQ → H6.2 Xử lý VP → H6.3 Khiếu nại',chart:`flowchart TD
+S(("Sau thông quan")):::event
+A["H6.1 KTSTQ"]:::hq
+B{"Phát hiện VP?"}:::hq
+C["H6.2 Xử lý VP"]:::hq
+D{"DN khiếu nại?"}:::kh
+E["H6.3 Khiếu nại"]:::kh
+F(("Kết thúc")):::event
+S --> A --> B
+B -->|"Có"| C --> D
+B -->|"Không"| F
+D -->|"Có"| E --> F
+D -->|"Không"| F`},
+'cascade-hq-master':{title:'Tổng thể Module Hải quan',sub:'6 nhóm · 22 nghiệp vụ · 72 TH',note:'H1→H2→H3→H4 (H5 song song) → H6 sau TQ',chart:`flowchart TD
+S(("KH yêu cầu NK")):::event
+H1["H1: Tờ khai"]:::fwd
+H2["H2: Phân luồng"]:::hq
+H3["H3: Trị giá + Thuế"]:::thue
+H4["H4: Thông quan"]:::hq
+H5["H5: Cửa khẩu"]:::fwd
+H6["H6: Sau TQ"]:::hq
+E(("Hàng về kho")):::event
+S --> H1
+H1 -->|"Khai + Nộp"| H2
+H2 -->|"Phân luồng"| H3
+H5 -->|"Hàng đến CK"| H2
+H3 -->|"Tính thuế"| H4
+H4 -->|"TQ xong"| E
+H4 -.->|"Hậu kiểm"| H6
+H6 -.-> E`},
 /* ── RENDER + MODAL ── */
 const svgCache = {};
 let renderN = 0, mZoom = 1;
