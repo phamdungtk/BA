@@ -277,9 +277,16 @@
             <li class="tree-li">
               <div class="node node-module" data-toggle="children"><span class="node-label">Module</span>★ Hải quan ★<button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-hq-master')" title="Xem tổng thể H1-H6" style="background:rgba(245,158,11,.15);border-color:rgba(245,158,11,.4);color:#fbbf24"><i class="bi bi-diagram-3"></i> Tổng thể</button><i class="bi bi-chevron-down toggle-icon" id="hq-icon"></i></div>
               <ul class="tree-ul tree-ul-sub collapsible collapsed" id="hq-children">
-                <!-- H1: Tờ khai --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1</span>Tờ khai<span class="group-badge">39</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h1')" title="Luồng nội bộ H1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h1-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h1-children">
+                <!-- H1: Tờ khai --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1</span>Tờ khai<span class="group-badge">55</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h1')" title="Luồng nội bộ H1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h1-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h1-children">
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.1</span>Đăng ký TK<span class="group-badge">5</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-dang-ky-tk')" title="WF tổng H1.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-a11')">TH1: NK thường (A11)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-a41')">TH2: SXXK (A41)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-a31')">TH3: Tại chỗ (A31)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-g13')">TH4: Tạm nhập (G13)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-a12')">TH5: Hàng mẫu (A12)</div></li></ul></li>
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.2</span>Khai báo chi tiết<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-khai-bao')" title="WF tổng H1.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kb-hs-trigia')">TH1: HS + Trị giá</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kb-xuatxu')">TH2: Xuất xứ + C/O</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kb-cont')">TH3: Container + Kiện</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.2</span>Phần chung TK (Header)<span class="group-badge">19</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h12')" title="Luồng nội bộ H1.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed">
+                    <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.2.1</span>Các bên liên quan<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-hdr-cacben')" title="WF tổng H1.2.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-dnnk')">TH1: DN nhập khẩu (MST)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-nccxk')">TH2: Người XK (Shipper)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-daily')">TH3: Đại lý HQ (FWD)</div></li></ul></li>
+                    <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.2.2</span>Giao dịch thương mại<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-hdr-giaodich')" title="WF tổng H1.2.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-hopdong')">TH1: Hợp đồng mua bán</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-incoterms')">TH2: Incoterms &amp; PTTT</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-dongtien')">TH3: Đồng tiền &amp; Tỷ giá</div></li></ul></li>
+                    <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.2.3</span>Vận chuyển<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-hdr-vantai')" title="WF tổng H1.2.3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-ptvt')">TH1: PT vận tải (Sea/Air/Road)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-tau')">TH2: Tên tàu / Số chuyến bay</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-vandon')">TH3: Số vận đơn (B/L · AWB)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-cang')">TH4: Cảng xếp (POL) &amp; Cảng dỡ (POD)</div></li></ul></li>
+                    <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.2.4</span>Hàng tổng quát<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-hdr-hangtq')" title="WF tổng H1.2.4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-kien')">TH1: Tổng kiện &amp; Trọng lượng (GW)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-conttong')">TH2: Tổng container &amp; Loại cont</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-khobai')">TH3: Kho / Bãi / CFS hạ hàng</div></li></ul></li>
+                    <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.2.5</span>Chi cục HQ<span class="group-badge">2</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-hdr-chicuc')" title="WF tổng H1.2.5"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-ccdky')">TH1: Chi cục đăng ký TK</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-ccnhap')">TH2: Chi cục CK nhập</div></li></ul></li>
+                    <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.2.6</span>Chứng từ đính kèm<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-hdr-chungtu')" title="WF tổng H1.2.6"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-cipl')">TH1: CI / PL (Hoá đơn / Phiếu đóng gói)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-bldo')">TH2: B/L &amp; D/O (Vận đơn &amp; Lệnh giao)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-cogp')">TH3: C/O &amp; GP chuyên ngành</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hdr-ctkhac')">TH4: CT khác (BH, Fumigation, CNG)</div></li></ul></li>
+                  </ul></li>
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.3</span>Sửa/Huỷ TK<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-sua-huy')" title="WF tổng H1.3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-sua-truoc')">TH1: Sửa trước TQ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-sua-sau')">TH2: Sửa sau TQ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-huy-tk')">TH3: Huỷ tờ khai</div></li></ul></li>
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.4</span>Nộp TK qua ECUS<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-nop-vnaccs')" title="WF tổng H1.4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-ok')">TH1: Nộp thành công</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-loi')">TH2: Lỗi hệ thống</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-bosung')">TH3: Nộp bổ sung</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-giay')">TH4: Tờ khai giấy</div></li></ul></li>
                 </ul></li>
@@ -2790,45 +2797,291 @@ H(("Hoàn thành")):::event
 S --> A --> B --> C --> D
 D -->|"Đủ"| E --> G --> H
 D -->|"Không"| F --> G`},
-'hq-kb-hs-trigia':{title:'TH1: Khai HS + Trị giá',sub:'Rủi ro: Sai HS = truy thu thuế',note:'HS 8 số quyết định thuế suất – sai 1 số = sai thuế',chart:`flowchart TD
+// ═══════════════════════════════════════════════════════
+// H1.2 Phần chung TK (Header) — 19 TH + 6 service + 1 cascade
+// ═══════════════════════════════════════════════════════
+// ── H1.2.1 Các bên liên quan ──
+'hq-hdr-dnnk':{title:'TH1: DN nhập khẩu (MST)',sub:'MST 10–13 số · ECUS tự điền',note:'Nhập MST → ECUS tự load tên + địa chỉ DN',chart:`flowchart TD
 S(("Bắt đầu")):::event
-A["FWD tra mã HS 8 số"]:::fwd
-B["Khai trị giá CIF"]:::fwd
-C["VNACCS đối chiếu CSDL"]:::hq
-D{"Giá bất thường?"}:::hq
-E["Chấp nhận giá khai"]:::hq
-F["Cảnh báo – Chờ tham vấn"]:::hq
-G["Ghi nhận vào TK"]:::hq
-H(("Hoàn thành")):::event
+A["FWD nhập MST DN nhập"]:::fwd
+B["ECUS tự điền tên DN"]:::fwd
+C["Tự điền địa chỉ"]:::fwd
+D{"MST hợp lệ?"}:::fwd
+E["Xác nhận thông tin DN"]:::fwd
+F["MST không tồn tại"]:::fwd
+G(("Hoàn thành")):::event
 S --> A --> B --> C --> D
-D -->|"Bình thường"| E --> G --> H
-D -->|"Bất thường"| F --> G`},
-'hq-kb-xuatxu':{title:'TH2: Khai Xuất xứ + C/O',sub:'Tiết kiệm 5–15% thuế nếu có C/O hợp lệ',note:'C/O quyết định thuế ưu đãi FTA',chart:`flowchart TD
+D -->|"OK"| E --> G
+D -->|"Lỗi"| F --> A`},
+'hq-hdr-nccxk':{title:'TH2: Người XK (Shipper)',sub:'Tên + Địa chỉ NCC nước ngoài',note:'Lấy từ CI – phải khớp B/L',chart:`flowchart TD
 S(("Bắt đầu")):::event
-A["FWD khai nước xuất xứ"]:::fwd
-B["Chọn loại C/O"]:::fwd
-C["Khai FTA áp dụng"]:::fwd
-D["VNACCS tính thuế ưu đãi"]:::hq
-E{"C/O hợp lệ?"}:::hq
-F["Áp thuế suất ưu đãi"]:::hq
-G["Áp thuế MFN thường"]:::hq
+A["Lấy tên Shipper từ CI"]:::fwd
+B["Nhập tên NCC tiếng Anh"]:::fwd
+C["Nhập địa chỉ NCC"]:::fwd
+D["Nhập nước XK"]:::fwd
+E["ECUS lưu"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-hdr-daily':{title:'TH3: Đại lý HQ (FWD)',sub:'Mã đại lý + Nhân viên khai',note:'FWD phải có giấy uỷ quyền từ DN NK',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["ECUS tự nhận đại lý HQ"]:::fwd
+B["Mã đại lý 13 số"]:::fwd
+C["Nhân viên khai (mã NV)"]:::fwd
+D{"Có uỷ quyền?"}:::fwd
+E["Xác nhận uỷ quyền"]:::fwd
+F["Cần giấy UQ từ DN"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Có"| E --> G
+D -->|"Không"| F --> G`},
+'hq-hdr-cacben':{title:'H1.2.1 Các bên liên quan',sub:'DN NK + NCC XK + Đại lý HQ',note:'3 bên chính trên mọi TK',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Nhập MST DN NK"]:::fwd
+B["Nhập Shipper (NCC XK)"]:::fwd
+C["Xác nhận Đại lý HQ"]:::fwd
+D["ECUS validate"]:::fwd
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+// ── H1.2.2 Giao dịch thương mại ──
+'hq-hdr-hopdong':{title:'TH1: Hợp đồng mua bán',sub:'Số HĐ + Ngày HĐ',note:'HĐ là căn cứ pháp lý cho giao dịch NK',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD nhập số hợp đồng"]:::fwd
+B["Nhập ngày ký HĐ"]:::fwd
+C["Loại HĐ (mua đứt/uỷ thác)"]:::fwd
+D["ECUS ghi nhận"]:::fwd
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+'hq-hdr-incoterms':{title:'TH2: Incoterms & PTTT',sub:'FOB/CIF/EXW + TT/LC/DP/DA',note:'Incoterms quyết định ai chịu phí VT/BH',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD chọn Incoterms"]:::fwd
+B{"Loại?"}:::fwd
+C["FOB – Buyer chịu VT/BH"]:::fwd
+D["CIF – Seller chịu VT/BH"]:::fwd
+E["EXW/DDP/Khác"]:::fwd
+F["Chọn PTTT (TT/LC/DP)"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B
+B -->|"FOB"| C --> F --> G
+B -->|"CIF"| D --> F
+B -->|"Khác"| E --> F`},
+'hq-hdr-dongtien':{title:'TH3: Đồng tiền & Tỷ giá',sub:'USD/EUR/CNY/JPY + Tỷ giá NHNN',note:'ECUS tự lấy tỷ giá ngày đăng ký TK',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD chọn đồng tiền"]:::fwd
+B["ECUS lấy tỷ giá NHNN"]:::fwd
+C["Ngày tỷ giá = Ngày ĐK TK"]:::fwd
+D["Hiển thị tỷ giá áp dụng"]:::fwd
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+'hq-hdr-giaodich':{title:'H1.2.2 Giao dịch thương mại',sub:'HĐ + Incoterms + PTTT + Đồng tiền',note:'Thông tin giao dịch ảnh hưởng tính trị giá',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Nhập hợp đồng"]:::fwd
+B["Chọn Incoterms"]:::fwd
+C["Chọn PTTT"]:::fwd
+D["Chọn đồng tiền"]:::fwd
+E["ECUS lấy tỷ giá"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+// ── H1.2.3 Vận chuyển ──
+'hq-hdr-ptvt':{title:'TH1: PT vận tải',sub:'Đường biển / Hàng không / Đường bộ',note:'PT vận tải quyết định cửa khẩu nhập',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD chọn PT vận tải"]:::fwd
+B{"Loại?"}:::fwd
+C["Đường biển (Sea)"]:::fwd
+D["Hàng không (Air)"]:::fwd
+E["Đường bộ (Road)"]:::fwd
+F["ECUS lọc CK phù hợp"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Sea"| C --> F --> G
+B -->|"Air"| D --> F
+B -->|"Road"| E --> F`},
+'hq-hdr-tau':{title:'TH2: Tên tàu / Số chuyến bay',sub:'Đối chiếu manifest hãng vận tải',note:'Sea: Tên tàu + Số chuyến · Air: Số flight',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD nhập tên PT"]:::fwd
+B["Nhập số chuyến (Voyage/Flight)"]:::fwd
+C["ECUS đối chiếu manifest"]:::fwd
+D{"Tìm thấy?"}:::fwd
+E["Xác nhận"]:::fwd
+F["Cảnh báo – Kiểm tra lại"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"OK"| E --> G
+D -->|"Không"| F --> A`},
+'hq-hdr-vandon':{title:'TH3: Số vận đơn (B/L · AWB)',sub:'B/L đường biển · AWB hàng không',note:'Vận đơn = chứng từ quyền sở hữu hàng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD nhập số B/L hoặc AWB"]:::fwd
+B["Nhập ngày phát hành"]:::fwd
+C["Loại: Original/Telex/SWB"]:::fwd
+D["ECUS đối chiếu manifest"]:::fwd
+E{"Khớp?"}:::fwd
+F["Ghi nhận"]:::fwd
+G["Cảnh báo lệch"]:::fwd
 H(("Hoàn thành")):::event
 S --> A --> B --> C --> D --> E
-E -->|"Hợp lệ"| F --> H
-E -->|"Không"| G --> H`},
-'hq-kb-cont':{title:'TH3: Khai Container + Kiện',sub:'Sai cont/seal = giữ hàng kiểm tra',note:'Đối chiếu manifest hãng tàu',chart:`flowchart TD
-S(("Bắt đầu")):::event
-A["FWD khai số container"]:::fwd
-B["Khai số seal"]:::fwd
-C["Khai số kiện + Trọng lượng"]:::fwd
-D["VNACCS đối chiếu manifest"]:::hq
-E{"Khớp manifest?"}:::hq
-F["Xác nhận thông tin"]:::hq
-G["Cảnh báo – Yêu cầu sửa"]:::hq
-H(("Hoàn thành")):::event
-S --> A --> B --> C --> D --> E
-E -->|"Khớp"| F --> H
+E -->|"OK"| F --> H
 E -->|"Lệch"| G --> A`},
+'hq-hdr-cang':{title:'TH4: Cảng xếp (POL) & Cảng dỡ (POD)',sub:'Mã cảng UN/LOCODE',note:'POL = cảng nước XK · POD = cảng VN nhập',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD chọn cảng xếp (POL)"]:::fwd
+B["Chọn cảng dỡ (POD)"]:::fwd
+C["ECUS tra mã UN/LOCODE"]:::fwd
+D["Xác định CK nhập"]:::fwd
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+'hq-hdr-vantai':{title:'H1.2.3 Vận chuyển',sub:'PT vận tải + Tàu + Vận đơn + Cảng',note:'Thông tin vận chuyển phải khớp manifest hãng tàu',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Chọn PT vận tải"]:::fwd
+B["Nhập tên tàu/bay"]:::fwd
+C["Nhập số B/L"]:::fwd
+D["Chọn cảng POL/POD"]:::fwd
+E["ECUS đối chiếu manifest"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+// ── H1.2.4 Hàng tổng quát ──
+'hq-hdr-kien':{title:'TH1: Tổng kiện & GW',sub:'Số kiện + Loại kiện + Gross Weight',note:'Phải khớp PL và B/L',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Lấy tổng kiện từ PL"]:::fwd
+B["Nhập loại kiện (CTN/PLT/DRM)"]:::fwd
+C["Nhập Gross Weight (KGM)"]:::fwd
+D["ECUS đối chiếu B/L"]:::fwd
+E{"Khớp?"}:::fwd
+F["Xác nhận"]:::fwd
+G["Cảnh báo chênh lệch"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> H
+E -->|"Lệch"| G --> A`},
+'hq-hdr-conttong':{title:'TH2: Tổng container & Loại cont',sub:'20GP/40GP/40HC/45HC',note:'Số cont + Loại + Seal phải khớp manifest',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Nhập tổng số container"]:::fwd
+B["Chọn loại cont"]:::fwd
+C["Nhập số cont + Seal"]:::fwd
+D["ECUS đối chiếu manifest"]:::fwd
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+'hq-hdr-khobai':{title:'TH3: Kho / Bãi / CFS hạ hàng',sub:'Nơi lưu giữ hàng sau dỡ',note:'Kho ngoại quan / ICD / CFS – ảnh hưởng CC HQ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD chọn nơi hạ hàng"]:::fwd
+B{"Loại?"}:::fwd
+C["Bãi cảng (CY)"]:::fwd
+D["Kho CFS"]:::fwd
+E["ICD/Kho ngoại quan"]:::fwd
+F["ECUS ghi nhận mã kho"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B
+B -->|"CY"| C --> F --> G
+B -->|"CFS"| D --> F
+B -->|"ICD"| E --> F`},
+'hq-hdr-hangtq':{title:'H1.2.4 Hàng tổng quát',sub:'Kiện + GW + Container + Kho bãi',note:'Thông tin tổng quát phải khớp PL + B/L + Manifest',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Nhập tổng kiện + GW"]:::fwd
+B["Nhập container + Seal"]:::fwd
+C["Chọn kho/bãi hạ hàng"]:::fwd
+D["ECUS đối chiếu"]:::fwd
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+// ── H1.2.5 Chi cục HQ ──
+'hq-hdr-ccdky':{title:'TH1: Chi cục đăng ký TK',sub:'Nơi FWD nộp TK – theo MST DN',note:'ECUS tự gợi ý CC theo MST DN NK',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["ECUS gợi ý CC theo MST"]:::fwd
+B["FWD chọn Chi cục"]:::fwd
+C{"CC đúng khu vực?"}:::fwd
+D["Xác nhận CC đăng ký"]:::fwd
+E["Cảnh báo – Chọn lại"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Đúng"| D --> F
+C -->|"Sai"| E --> B`},
+'hq-hdr-ccnhap':{title:'TH2: Chi cục CK nhập',sub:'Nơi hàng thực tế nhập cảnh VN',note:'CC CK nhập có thể khác CC đăng ký (chuyển CK)',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["ECUS gợi ý CC CK theo cảng"]:::fwd
+B["FWD chọn CC CK nhập"]:::fwd
+C{"Cùng CC đăng ký?"}:::fwd
+D["Cùng – Thủ tục thường"]:::fwd
+E["Khác – Chuyển CK nội địa"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Cùng"| D --> F
+C -->|"Khác"| E --> F`},
+'hq-hdr-chicuc':{title:'H1.2.5 Chi cục HQ',sub:'CC đăng ký + CC CK nhập',note:'Chọn đúng CC ảnh hưởng thủ tục + thời gian',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Chọn CC đăng ký"]:::fwd
+B["Chọn CC CK nhập"]:::fwd
+C{"Cùng CC?"}:::fwd
+D["Thủ tục thường"]:::fwd
+E["Chuyển CK nội địa"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Cùng"| D --> F
+C -->|"Khác"| E --> F`},
+// ── H1.2.6 Chứng từ đính kèm ──
+'hq-hdr-cipl':{title:'TH1: CI / PL',sub:'Hoá đơn thương mại + Phiếu đóng gói',note:'CI = căn cứ trị giá · PL = căn cứ kiện/GW',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Nhập số CI + Ngày"]:::fwd
+B["Nhập số PL + Ngày"]:::fwd
+C["Scan/Upload file CT"]:::fwd
+D["ECUS đính kèm TK"]:::fwd
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+'hq-hdr-bldo':{title:'TH2: B/L & D/O',sub:'Vận đơn + Lệnh giao hàng',note:'Original B/L cần D/O từ hãng tàu mới lấy được hàng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Nhập số B/L"]:::fwd
+B{"Loại B/L?"}:::fwd
+C["Original – Cần D/O"]:::fwd
+D["Telex Release – Không cần D/O"]:::fwd
+E["Surrender – Tương tự Telex"]:::fwd
+F["Đính kèm TK"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Original"| C --> F --> G
+B -->|"Telex"| D --> F
+B -->|"Surrender"| E --> F`},
+'hq-hdr-cogp':{title:'TH3: C/O & GP chuyên ngành',sub:'C/O ưu đãi + GP Bộ ngành',note:'C/O quyết định thuế FTA · GP quyết định TQ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Có C/O?"}:::fwd
+B["Nhập số C/O + Form"]:::fwd
+C{"Cần GP chuyên ngành?"}:::fwd
+D["Nhập số GP + Ngày cấp"]:::fwd
+E["Không cần GP"]:::fwd
+F["Đính kèm TK"]:::fwd
+G(("Hoàn thành")):::event
+S --> A
+A -->|"Có"| B --> C
+A -->|"Không"| C
+C -->|"Có"| D --> F --> G
+C -->|"Không"| E --> F`},
+'hq-hdr-ctkhac':{title:'TH4: CT khác',sub:'BH, Fumigation, CNG, Giám định',note:'Tuỳ mặt hàng có thể cần thêm CT đặc biệt',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Kiểm tra DS CT yêu cầu"]:::fwd
+B{"CT nào?"}:::fwd
+C["Chứng thư BH"]:::fwd
+D["Phiếu Fumigation"]:::fwd
+E["Phiếu CNG/Giám định"]:::fwd
+F["Đính kèm TK"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B
+B -->|"BH"| C --> F --> G
+B -->|"Fumi"| D --> F
+B -->|"CNG"| E --> F`},
+'hq-hdr-chungtu':{title:'H1.2.6 Chứng từ đính kèm',sub:'CI/PL + B/L + C/O + GP + CT khác',note:'HQ kiểm tra CT khi luồng Vàng/Đỏ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["CI + PL"]:::fwd
+B["B/L + D/O"]:::fwd
+C["C/O + GP"]:::fwd
+D["CT khác (BH/Fumi/CNG)"]:::fwd
+E["Upload + Đính kèm TK"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'cascade-h12':{title:'H1.2: Luồng nội bộ Header TK',sub:'6 nhóm trường ECUS',note:'Các bên → Giao dịch → Vận chuyển → Hàng TQ → Chi cục → Chứng từ',chart:`flowchart TD
+S(("FWD mở TK")):::event
+A["H1.2.1 Các bên"]:::fwd
+B["H1.2.2 Giao dịch TM"]:::fwd
+C["H1.2.3 Vận chuyển"]:::fwd
+D["H1.2.4 Hàng TQ"]:::fwd
+E["H1.2.5 Chi cục HQ"]:::hq
+F["H1.2.6 Chứng từ"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
 'hq-sua-truoc':{title:'TH1: Sửa TK trước thông quan',sub:'Miễn phí · Thời hạn: trước khi TQ',note:'DN được sửa tự do trước khi HQ kiểm tra',chart:`flowchart TD
 S(("Bắt đầu")):::event
 A["DN phát hiện sai sót"]:::kh
@@ -2930,19 +3183,7 @@ A -->|"Tại chỗ"| D --> G
 A -->|"Tạm nhập"| E --> G
 A -->|"Mẫu"| F --> G
 G --> H --> I`},
-'hq-khai-bao':{title:'H1.2 Khai báo chi tiết',sub:'3 nhóm thông tin bắt buộc',note:'HS + Trị giá + Xuất xứ + Container – quyết định thuế + luồng',chart:`flowchart TD
-S(("Bắt đầu")):::event
-A["Khai mã HS + Trị giá"]:::fwd
-B["Khai Xuất xứ + C/O"]:::fwd
-C["Khai Container + Kiện"]:::fwd
-D["VNACCS validate dữ liệu"]:::hq
-E{"Dữ liệu hợp lệ?"}:::hq
-F["Hoàn tất khai báo"]:::fwd
-G["Báo lỗi – Sửa lại"]:::fwd
-H(("Hoàn thành")):::event
-S --> A --> B --> C --> D --> E
-E -->|"OK"| F --> H
-E -->|"Lỗi"| G --> A`},
+
 'hq-sua-huy':{title:'H1.3 Sửa / Huỷ Tờ khai',sub:'Sửa trước TQ miễn phí – Sửa sau có rủi ro',note:'Huỷ TK chỉ được trong 15 ngày',chart:`flowchart TD
 S(("Bắt đầu")):::event
 A{"Thời điểm?"}:::fwd
