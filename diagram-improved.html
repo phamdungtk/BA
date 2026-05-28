@@ -4844,21 +4844,21 @@ H5 -->|"⑦ TQ"| E
 H5 -.->|"⑤ Hậu kiểm"| H7
 H7 -.->|"⑧"| E`},
 // ═══════════ TỔNG THỂ ĐƠN HÀNG ═══════════
-'cascade-don-hang':{title:'Tổng thể Đơn hàng – 3 Module bắt cặp (10 cặp)',sub:'Hàng hoá (G1-G10) → Dịch vụ (S1-S6) → Hải quan (H1-H7) → Giao hàng',note:'10 cặp: ①KH→HH, ②HH→DV, ③HH→HQ, ④DV→HQ, ⑤HQ→DV, ⑥DV→KH, ⑦HQ→KH, ⑧HH↔HQ, ⑨DV↔HH, ⑩HQ→DV',chart:`flowchart TD
+'cascade-don-hang':{title:'Tổng thể Đơn hàng – 3 Module bắt cặp (10 cặp)',sub:'Hàng hoá (G1-G10) → Dịch vụ (S1-S6) → Hải quan (H1-H7) → Giao hàng',note:'10 cặp: ①Đặt hàng, ②Đặt chỗ+VT, ③HS+Giá+XX, ④CT+Thuế, ⑤TQ→GP, ⑥Giao hàng, ⑦Sau TQ, ⑧TL+SL, ⑨BH+Phí, ⑩Hoàn thuế',chart:`flowchart TD
 S(("KH đặt hàng NK")):::event
 HH["★ Hàng hoá ★\nG1-G10 · 58 TH\nHS, Trị giá, Thuế, VT..."]:::fwd
 DV["★ Dịch vụ ★\nS1-S6 · 83 TH\nTQ, VT, Kho, CT, TC, KT"]:::hq
 HQ["★ Hải quan ★\nH1-H7 · 131 TH\nTK, Luồng, Thuế, TQ..."]:::thue
 E(("Giao hàng KH")):::event
-S -->|"① PO + Specs"| HH
-HH -->|"② Booking + VT"| DV
-HH -->|"③ HS + Trị giá + XX"| HQ
-DV -->|"④ CT + Thuế"| HQ
-HQ -->|"⑤ TQ → Release"| DV
+S -->|"① Đặt hàng"| HH
+HH -->|"② Đặt chỗ + Vận tải"| DV
+HH -->|"③ Mã HS + Trị giá + Xuất xứ"| HQ
+DV -->|"④ Chứng từ + Nộp thuế"| HQ
+HQ -->|"⑤ Thông quan → Giải phóng"| DV
 DV -->|"⑥ Giao hàng"| E
 HQ -->|"⑦ Sau TQ"| E
-HH <-.->|"⑧ GW/NW, SL"| HQ
-DV <-.->|"⑨ BH, Phí"| HH
+HH <-.->|"⑧ Trọng lượng, Số lượng"| HQ
+DV <-.->|"⑨ Bảo hiểm, Phí"| HH
 HQ -.->|"⑩ Hoàn thuế"| DV`},
 // ═══════════════ NEW WFs: Đợt 1 Gap Fill ═══════════════
 // ── G1: Model/Spec, SKU ──
