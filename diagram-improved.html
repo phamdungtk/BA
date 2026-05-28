@@ -6208,6 +6208,92 @@ document.addEventListener('mouseover',e=>{
 document.addEventListener('mouseout',e=>{
   if(!e.target.closest('[data-help]'))helpTip.style.display='none';
 });
+
+// ═══ OUTLINE PANEL ═══
+window.toggleOutline = function(){
+  const p = document.getElementById('outlinePanel');
+  p.classList.toggle('open');
+  if(p.classList.contains('open') && !p.dataset.built){
+    buildOutline();
+    p.dataset.built = '1';
+  }
+};
+
+function buildOutline(){
+  const body = document.getElementById('olBody');
+  const rootUl = document.querySelector('.tree-root > .tree-ul');
+  if(!rootUl) return;
+  body.innerHTML = buildOlLevel(rootUl, 0);
+}
+
+function buildOlLevel(ul, depth){
+  let html = '';
+  const lis = ul.querySelectorAll(':scope > .tree-li');
+  lis.forEach(li => {
+    const node = li.querySelector(':scope > .node');
+    if(!node) return;
+    const text = node.textContent.replace(/[▸▾]/g,'').replace(/\s+/g,' ').trim();
+    const subUl = li.querySelector(':scope > .tree-ul');
+    const childCount = subUl ? subUl.querySelectorAll(':scope > .tree-li').length : 0;
+    const hasChildren = childCount > 0;
+    const onclickAttr = node.getAttribute('onclick') || '';
+    const wfMatch = onclickAttr.match(/showWF\('([^']+)'\)/);
+    const wfKey = wfMatch ? wfMatch[1] : '';
+    
+    let icon = '📄';
+    if(node.classList.contains('node-root')) icon = '🏠';
+    else if(node.classList.contains('node-module')) icon = '📦';
+    else if(node.classList.contains('node-category')) icon = '📂';
+    else if(node.classList.contains('node-group')) icon = '📁';
+    else if(node.classList.contains('node-sub')) icon = '📋';
+    else if(node.classList.contains('node-attr')) icon = '📊';
+    else if(node.classList.contains('node-entity')) icon = '👤';
+    
+    const toggleHtml = hasChildren ? '<span class="ol-toggle" onclick="event.stopPropagation();toggleOlItem(this)">▸</span>' : '<span class="ol-toggle"></span>';
+    const badge = hasChildren ? '<span class="ol-badge">' + childCount + '</span>' : '';
+    const clickFn = wfKey ? "showWF('" + wfKey + "')" : (hasChildren ? "toggleOlItem(this.querySelector('.ol-toggle'))" : "");
+    const pad = 12 + depth * 16;
+    
+    html += '<div class="ol-item ol-depth-' + Math.min(depth,4) + '" style="padding-left:' + pad + 'px" onclick="' + clickFn + '" data-text="' + text.toLowerCase() + '">';
+    html += toggleHtml + '<span class="ol-icon">' + icon + '</span><span class="ol-text">' + text + '</span>' + badge;
+    html += '</div>';
+    
+    if(hasChildren){
+      html += '<div class="ol-children ol-closed">';
+      html += buildOlLevel(subUl, depth + 1);
+      html += '</div>';
+    }
+  });
+  return html;
+}
+
+window.toggleOlItem = function(toggle){
+  if(!toggle) return;
+  const children = toggle.closest('.ol-item').nextElementSibling;
+  if(!children || !children.classList.contains('ol-children')) return;
+  children.classList.toggle('ol-closed');
+  toggle.textContent = children.classList.contains('ol-closed') ? '▸' : '▾';
+};
+
+function filterOutline(q){
+  q = q.toLowerCase();
+  document.querySelectorAll('.ol-item').forEach(el => {
+    const match = !q || el.dataset.text.includes(q);
+    el.style.display = match ? '' : 'none';
+    if(match && q){
+      let parent = el.parentElement;
+      while(parent){
+        if(parent.classList && parent.classList.contains('ol-children')){
+          parent.classList.remove('ol-closed');
+          const prevToggle = parent.previousElementSibling ? parent.previousElementSibling.querySelector('.ol-toggle') : null;
+          if(prevToggle) prevToggle.textContent = '▾';
+        }
+        parent = parent.parentElement;
+      }
+    }
+  });
+}
+
 }); // end DOMContentLoaded
 </script>
 
