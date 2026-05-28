@@ -109,6 +109,35 @@
     .cascade-btn{background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.3);border-radius:6px;color:#fbbf24;font-size:11px;padding:2px 6px;cursor:pointer;margin-left:6px;transition:all .2s;line-height:1}
     .cascade-btn:hover{background:rgba(251,191,36,.25);transform:scale(1.1);box-shadow:0 0 8px rgba(251,191,36,.3)}
 
+    
+    /* ── GLOSSARY PANEL ── */
+    .glossary-panel{position:fixed;bottom:14px;right:14px;width:320px;background:rgba(13,17,23,.97);border:1px solid var(--border);border-radius:12px;backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,.5);z-index:100;font-size:11px;transition:all .3s ease;max-height:calc(100vh - 100px);overflow:hidden;display:flex;flex-direction:column}
+    .glossary-panel.gl-collapsed .glossary-body{max-height:0;padding:0 10px;overflow:hidden}
+    .glossary-header{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;cursor:pointer;color:var(--text-muted);font-weight:600;font-size:11px;border-bottom:1px solid var(--border);flex-shrink:0;user-select:none}
+    .glossary-header:hover{color:var(--text);background:rgba(255,255,255,.03)}
+    .gl-collapsed .gl-toggle{transform:rotate(-90deg)}
+    .gl-toggle{font-size:10px;transition:transform .3s}
+    .glossary-search{width:100%;padding:6px 10px;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:11px;font-family:var(--font-body);outline:none;margin-bottom:6px}
+    .glossary-search:focus{border-color:var(--accent)}
+    .glossary-search::placeholder{color:var(--text-dim)}
+    .glossary-body{padding:6px 10px 10px;overflow-y:auto;flex:1;min-height:0}
+    .gl-group{font-size:9px;color:var(--accent);font-weight:700;margin:10px 0 4px;text-transform:uppercase;letter-spacing:.1em}
+    .gl-group:first-child{margin-top:2px}
+    .gl-item{padding:4px 6px;border-radius:4px;margin-bottom:2px;cursor:default;transition:background .15s;line-height:1.4}
+    .gl-item:hover{background:rgba(255,255,255,.05)}
+    .gl-term{font-weight:700;color:#fbbf24;font-size:11px}
+    .gl-vi{color:var(--text-muted);font-size:10px;margin-left:4px}
+    .gl-def{color:var(--text);font-size:10px;margin-top:1px;padding-left:2px}
+    .gl-hide{display:none}
+
+    /* ── HELP TOOLTIP on tree nodes ── */
+    .node[data-help]{position:relative}
+    .node[data-help]::after{content:'?';position:absolute;top:-4px;right:-4px;width:14px;height:14px;background:rgba(251,191,36,.2);border:1px solid rgba(251,191,36,.4);border-radius:50%;font-size:8px;color:#fbbf24;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;pointer-events:none}
+    .node[data-help]:hover::after{opacity:1}
+    .help-tooltip{position:fixed;max-width:280px;background:rgba(13,17,23,.98);border:1px solid var(--accent);border-radius:8px;padding:8px 10px;font-size:11px;color:var(--text);z-index:200;pointer-events:none;box-shadow:0 4px 20px rgba(0,0,0,.6);line-height:1.5}
+    .help-tooltip .ht-term{color:#fbbf24;font-weight:700;font-size:12px}
+    .help-tooltip .ht-vi{color:var(--accent);font-size:10px}
+    .help-tooltip .ht-def{margin-top:4px;color:var(--text-muted)}
     /* ── ENTITY REFERENCE PANEL ── */
     .entity-ref-panel{position:fixed;bottom:14px;left:180px;width:280px;background:rgba(13,17,23,.95);border:1px solid var(--border);border-radius:12px;backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,.5);z-index:100;font-size:11px;transition:all .3s ease;max-height:calc(100vh - 100px);overflow:hidden;display:flex;flex-direction:column}
     .entity-ref-header{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;cursor:pointer;color:var(--text-muted);font-weight:600;font-size:11px;border-bottom:1px solid var(--border);flex-shrink:0;user-select:none}
@@ -5941,6 +5970,197 @@ function upMM(){const cv=document.getElementById('minimapCanvas'),ctx=cv.getCont
 setTimeout(upMM,800);
 setTimeout(()=>document.getElementById('hintBar').classList.add('hidden'),5000);
 applyT();
+
+// ═══ GLOSSARY DATA + SEARCH + TOOLTIP ═══
+const GLOSSARY = {
+  'Thương mại & Thanh toán':{
+    'Incoterms':'Điều kiện giao hàng quốc tế (International Commercial Terms) — 11 quy tắc do ICC ban hành, xác định ai chịu phí vận tải, bảo hiểm, rủi ro.',
+    'FOB':'Free On Board — Người bán giao hàng lên tàu tại cảng xuất. Rủi ro chuyển sang người mua từ lan can tàu.',
+    'CIF':'Cost, Insurance & Freight — Giá hàng + BH + cước tàu. Người bán chịu phí đến cảng đích.',
+    'EXW':'Ex Works — Giao tại xưởng. Người mua chịu toàn bộ chi phí + rủi ro từ cổng nhà máy.',
+    'DDP':'Delivered Duty Paid — Giao tận nơi đã nộp thuế. Người bán chịu mọi phí + thuế đến kho người mua.',
+    'L/C':'Letter of Credit — Thư tín dụng. Ngân hàng cam kết thanh toán cho người bán khi nộp đủ chứng từ hợp lệ.',
+    'UCP 600':'Quy tắc Thực hành Thống nhất về Tín dụng Chứng từ (ICC). Bộ luật quốc tế cho L/C.',
+    'T/T':'Telegraphic Transfer — Chuyển tiền điện. Thanh toán trực tiếp qua ngân hàng (wire transfer).',
+    'DA/DP':'Documents against Acceptance / Payment — Nhờ thu kèm chứng từ. DA: trả chậm, DP: trả ngay.',
+    'Debit Note':'Giấy báo nợ — FWD gửi KH thông báo các khoản phí phải thanh toán.',
+    'Credit Note':'Giấy báo có — Hoàn tiền hoặc giảm giá cho KH.'
+  },
+  'Hải quan & Thuế':{
+    'HS Code':'Harmonized System — Mã phân loại hàng hoá quốc tế (6-10 số). VN dùng 8 số, có thể mở rộng 10.',
+    'ECUS':'Electronic Customs — Hệ thống khai báo hải quan điện tử của Việt Nam.',
+    'VNACCS':'Vietnam Automated Cargo Clearance System — Hệ thống thông quan tự động (do Nhật hỗ trợ).',
+    'TK':'Tờ khai — Tờ khai hải quan (Import/Export Declaration).',
+    'IDA/IDB/IDC':'3 bước khai TK: IDA = khai trước, IDB = gọi lại sửa, IDC = đăng ký chính thức.',
+    'Luồng Xanh':'Miễn kiểm tra — Thông quan ngay (Green Channel).',
+    'Luồng Vàng':'Kiểm tra hồ sơ — HQ chỉ kiểm chứng từ (Yellow Channel).',
+    'Luồng Đỏ':'Kiểm tra thực tế — HQ mở container kiểm hàng (Red Channel).',
+    'KTSTQ':'Kiểm tra sau thông quan — HQ kiểm tra lại hồ sơ DN sau khi hàng đã được giải phóng.',
+    'PVTM':'Phòng vệ thương mại — Biện pháp chống bán phá giá (AD), chống trợ cấp (CVD), tự vệ (SG).',
+    'AD/CVD':'Anti-Dumping / Countervailing Duty — Thuế chống bán phá giá / Thuế chống trợ cấp.',
+    'TTĐB':'Thuế Tiêu thụ Đặc biệt — Áp dụng cho rượu, bia, thuốc lá, ô tô, xăng...',
+    'BVMT':'Thuế Bảo vệ Môi trường — Áp dụng cho xăng dầu, túi nilon, thuốc trừ sâu...',
+    'TKTG':'Tờ khai Trị giá — Mẫu khai bổ sung để xác định trị giá tính thuế NK.',
+    'TEA':'Tax Exemption Approval — Danh mục miễn thuế cho MMTB tạo TSCĐ (dự án FDI).',
+    'OLA':'On-Line Authorization — TK vận chuyển bảo thuế (chuyển cửa khẩu, kho ngoại quan).',
+    'TIA':'Temporary Import Authorization — Tạm nhập tái xuất (loại hình G13).',
+    'A11':'Mã loại hình NK thường (kinh doanh).',
+    'A12':'Mã loại hình NK hàng mẫu.',
+    'A31':'Mã loại hình NK tại chỗ (xuất tại VN cho DN khác tại VN).',
+    'A41':'Mã loại hình NK SXXK — Nhập nguyên liệu để sản xuất hàng xuất khẩu.',
+    'G13':'Mã loại hình tạm nhập tái xuất.',
+    'BC15':'Báo cáo quyết toán nguyên vật liệu cho loại hình SXXK (A41).',
+    'CKS/Token':'Chữ ký số — USB Token để ký điện tử khi khai TK trên ECUS.'
+  },
+  'Vận tải & Logistics':{
+    'B/L':'Bill of Lading — Vận đơn đường biển. Bằng chứng hợp đồng vận tải + chứng từ sở hữu hàng.',
+    'AWB':'Air Waybill — Vận đơn hàng không.',
+    'D/O':'Delivery Order — Lệnh giao hàng. Hãng tàu cấp để nhận hàng tại cảng.',
+    'Telex Release':'Giải phóng vận đơn bằng điện — Không cần B/L gốc, hãng tàu điện báo cho đại lý đích.',
+    'SWB':'Sea Waybill — Vận đơn biển không sở hữu (không chuyển nhượng được).',
+    'FCL':'Full Container Load — Nguyên container (hàng đủ 1 cont).',
+    'LCL':'Less than Container Load — Hàng lẻ, ghép nhiều chủ hàng vào 1 cont.',
+    'THC':'Terminal Handling Charge — Phí xếp dỡ container tại cảng.',
+    'D&D':'Detention & Demurrage — Phí lưu container (Demurrage: tại cảng, Detention: ngoài cảng).',
+    'ETA':'Estimated Time of Arrival — Thời gian dự kiến hàng đến.',
+    'ETD':'Estimated Time of Departure — Thời gian dự kiến tàu chạy.',
+    'CY':'Container Yard — Bãi container tại cảng.',
+    'CFS':'Container Freight Station — Kho gom/tách hàng lẻ (LCL).',
+    'ICD':'Inland Container Depot — Cảng cạn/cảng nội địa (TQ hàng không cần ra cảng biển).',
+    'Manifest':'Bản khai hàng hoá — Hãng tàu/hàng không khai báo toàn bộ hàng trên tàu/chuyến bay.',
+    'Hague-Visby':'Công ước quốc tế về vận đơn đường biển — quy định trách nhiệm hãng tàu.',
+    'IMDG':'International Maritime Dangerous Goods — Bộ luật hàng nguy hiểm đường biển (IMO).',
+    'Fumigation':'Xông trùng — Xử lý gỗ/pallet bằng hoá chất (Methyl Bromide) hoặc nhiệt.',
+    'ISPM-15':'International Standards for Phytosanitary Measures No.15 — Tiêu chuẩn xử lý gỗ đóng gói.'
+  },
+  'Xuất xứ & FTA':{
+    'C/O':'Certificate of Origin — Giấy chứng nhận xuất xứ hàng hoá.',
+    'FTA':'Free Trade Agreement — Hiệp định thương mại tự do (giảm/miễn thuế NK).',
+    'ATIGA':'ASEAN Trade in Goods Agreement — Hiệp định thương mại hàng hoá ASEAN.',
+    'EVFTA':'EU-Vietnam Free Trade Agreement — FTA Việt Nam–EU (thuế suất ưu đãi).',
+    'CPTPP':'Comprehensive and Progressive Agreement for Trans-Pacific Partnership — Hiệp định CPTPP.',
+    'RCEP':'Regional Comprehensive Economic Partnership — Hiệp định RCEP (15 nước châu Á-TBD).',
+    'MFN':'Most Favoured Nation — Thuế suất Tối huệ quốc (áp cho thành viên WTO).',
+    'Form D':'C/O mẫu D — Giấy chứng nhận xuất xứ ASEAN (áp thuế ATIGA).',
+    'Form EUR.1':'C/O mẫu EUR.1 — Cho hàng từ EU (áp thuế EVFTA).',
+    'WTO':'World Trade Organization — Tổ chức Thương mại Thế giới. VN gia nhập 2007.'
+  },
+  'Chất lượng & Kiểm tra':{
+    'CNG':'Chuyên ngành — Kiểm tra chất lượng theo yêu cầu Bộ chuyên ngành (ATTP, hợp quy, kiểm dịch).',
+    'QCVN':'Quy chuẩn kỹ thuật Quốc gia Việt Nam — Tiêu chuẩn bắt buộc cho hàng NK.',
+    'ATTP':'An toàn Thực phẩm — Kiểm tra theo Bộ Y tế/NN&PTNT/Công Thương.',
+    'FDA':'Food and Drug Administration — Cơ quan quản lý thực phẩm & dược phẩm (Mỹ).',
+    'CE':'Conformité Européenne — Chứng nhận tuân thủ tiêu chuẩn EU.',
+    'Hàng DG':'Dangerous Goods — Hàng nguy hiểm (9 loại: cháy, nổ, độc, phóng xạ...).',
+    'Tally':'Kiểm đếm — Đếm số kiện/cont tại cảng hoặc kho, đối chiếu với chứng từ.',
+    'EIR':'Equipment Interchange Receipt — Phiếu giao nhận tình trạng container.',
+    'CITES':'Convention on Int\'l Trade in Endangered Species — Công ước CITES (động thực vật nguy cấp).'
+  },
+  'Chứng từ & Pháp lý':{
+    'CI/PL':'Commercial Invoice / Packing List — Hoá đơn thương mại / Phiếu đóng gói.',
+    'SXXK':'Sản xuất Xuất khẩu — Loại hình NK nguyên liệu để SX hàng xuất khẩu (A41).',
+    'NĐ':'Nghị định — Văn bản pháp luật do Chính phủ ban hành.',
+    'TT':'Thông tư — Văn bản hướng dẫn do Bộ ban hành.',
+    'SOP':'Standard Operating Procedure — Quy trình vận hành chuẩn (nội bộ DN).',
+    'Compliance':'Tuân thủ — Kiểm soát nội bộ đảm bảo DN tuân thủ pháp luật XNK.',
+    'Shipping Mark':'Ký mã hiệu — Nhãn dán trên kiện hàng (tên, địa chỉ, số HĐ, mã cont...).',
+    'CBM':'Cubic Meter — Mét khối. Đơn vị đo thể tích hàng hoá (Dài × Rộng × Cao).',
+    'GW/NW':'Gross Weight / Net Weight — Trọng lượng tổng (có bao bì) / Trọng lượng tịnh.'
+  },
+  'Vai trò & Tổ chức':{
+    'FWD':'Forwarder — Đại lý giao nhận vận tải. Trung gian xử lý logistics cho chủ hàng.',
+    'Broker':'Đại lý hải quan — Người được uỷ quyền khai TK thay chủ hàng.',
+    'Consignee':'Người nhận hàng — Tên ghi trên B/L, thường là người NK.',
+    'Shipper':'Người gửi hàng — Tên ghi trên B/L, thường là NCC nước ngoài.',
+    'Notify Party':'Bên được thông báo — Đơn vị nhận thông báo khi hàng đến (thường = FWD).',
+    'ICC':'International Chamber of Commerce — Phòng Thương mại Quốc tế (ban hành Incoterms, UCP).',
+    'IMO':'International Maritime Organization — Tổ chức Hàng hải Quốc tế (ban hành IMDG).'
+  }
+};
+
+// Render glossary
+function renderGlossary(){
+  const el=document.getElementById('glList');
+  let html='';
+  for(const[group,terms] of Object.entries(GLOSSARY)){
+    html+=`<div class="gl-group">${group}</div>`;
+    for(const[term,def] of Object.entries(terms)){
+      html+=`<div class="gl-item" data-term="${term.toLowerCase()}"><span class="gl-term">${term}</span><div class="gl-def">${def}</div></div>`;
+    }
+  }
+  el.innerHTML=html;
+}
+function filterGlossary(q){
+  q=q.toLowerCase();
+  document.querySelectorAll('.gl-item').forEach(el=>{
+    const match=el.dataset.term.includes(q)||el.textContent.toLowerCase().includes(q);
+    el.classList.toggle('gl-hide',!match);
+  });
+  document.querySelectorAll('.gl-group').forEach(g=>{
+    let next=g.nextElementSibling;
+    let hasVisible=false;
+    while(next&&!next.classList.contains('gl-group')){
+      if(!next.classList.contains('gl-hide'))hasVisible=true;
+      next=next.nextElementSibling;
+    }
+    g.classList.toggle('gl-hide',!hasVisible);
+  });
+}
+renderGlossary();
+
+// Help tooltip on hover for tree nodes with data-help
+const helpTip=document.createElement('div');
+helpTip.className='help-tooltip';
+helpTip.style.display='none';
+document.body.appendChild(helpTip);
+
+// Build flat lookup from GLOSSARY
+const HELP_LOOKUP={};
+for(const terms of Object.values(GLOSSARY)){
+  for(const[term,def] of Object.entries(terms)){
+    HELP_LOOKUP[term.toLowerCase()]=def;
+  }
+}
+
+// Add data-help to tree nodes that contain known terms
+document.querySelectorAll('.node').forEach(node=>{
+  const text=node.textContent;
+  for(const term of Object.keys(HELP_LOOKUP)){
+    if(text.toLowerCase().includes(term.toLowerCase())&&term.length>1){
+      node.setAttribute('data-help',term);
+      break;
+    }
+  }
+});
+
+// Show tooltip on hover
+document.addEventListener('mouseover',e=>{
+  const node=e.target.closest('[data-help]');
+  if(!node){helpTip.style.display='none';return;}
+  const term=node.getAttribute('data-help');
+  const def=HELP_LOOKUP[term]||'';
+  if(!def){helpTip.style.display='none';return;}
+  helpTip.innerHTML=`<div class="ht-term">${term.toUpperCase()}</div><div class="ht-def">${def}</div>`;
+  helpTip.style.display='block';
+  const r=node.getBoundingClientRect();
+  helpTip.style.left=Math.min(r.left,window.innerWidth-300)+'px';
+  helpTip.style.top=(r.bottom+8)+'px';
+});
+document.addEventListener('mouseout',e=>{
+  if(!e.target.closest('[data-help]'))helpTip.style.display='none';
+});
 </script>
+
+<!-- ═══ GLOSSARY PANEL ═══ -->
+<div class="glossary-panel gl-collapsed" id="glossaryPanel">
+  <div class="glossary-header" onclick="document.getElementById('glossaryPanel').classList.toggle('gl-collapsed')">
+    <span><i class="bi bi-book" style="margin-right:6px"></i>Glossary – Thuật ngữ XNK</span>
+    <i class="bi bi-chevron-down gl-toggle"></i>
+  </div>
+  <div class="glossary-body">
+    <input type="text" class="glossary-search" id="glSearch" placeholder="🔍 Tìm thuật ngữ..." oninput="filterGlossary(this.value)">
+    <div id="glList"></div>
+  </div>
+</div>
 </body>
 </html>
