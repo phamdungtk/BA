@@ -6177,6 +6177,14 @@ function toggleTreeDir(){
       if(icon) icon.classList.add('rotated');
     });
   }
+  // When switching back to vertical, expand top 2 levels
+  if(!treeHorizontal){
+    document.querySelectorAll('.collapsible.collapsed').forEach(el=>{
+      el.classList.remove('collapsed');
+      const icon = el.previousElementSibling?.querySelector?.('.toggle-icon');
+      if(icon) icon.classList.remove('rotated');
+    });
+  }
   canvas.classList.toggle('tree-horizontal', treeHorizontal);
   const btn = document.getElementById('btnTreeDir');
   btn.innerHTML = treeHorizontal ? '<i class="bi bi-layout-split"></i>' : '<i class="bi bi-layout-sidebar"></i>';
