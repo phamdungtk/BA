@@ -3085,7 +3085,7 @@ D["CT khác (BH/Fumi/CNG)"]:::fwd
 E["Upload + Đính kèm TK"]:::fwd
 F(("Hoàn thành")):::event
 S --> A --> B --> C --> D --> E --> F`},
-'cascade-h12':{title:'H1.2: Luồng nội bộ Header TK',sub:'6 nhóm trường ECUS',note:'Các bên → Giao dịch → Vận chuyển → Hàng TQ → Chi cục → Chứng từ',chart:`flowchart TD
+'cascade-h12':{title:'H1.2 Header TK – Luồng nội bộ',sub:'Các bên → Giao dịch → Vận chuyển → Hàng TQ → Chi cục → Chứng từ',note:'Các bên → Giao dịch → Vận chuyển → Hàng TQ → Chi cục → Chứng từ',chart:`flowchart TD
 S(("FWD mở TK")):::event
 A["H1.2.1 Các bên"]:::fwd
 B["H1.2.2 Giao dịch TM"]:::fwd
@@ -3602,7 +3602,7 @@ A -->|"1:1"| B --> E
 A -->|"1:N"| C --> E
 A -->|"N:1"| D --> E
 E --> F`},
-'cascade-h15':{title:'H1.3: Luồng nội bộ Dòng TK',sub:'7 nhóm trường trên ECUS',note:'Phân loại → Lượng → Trị giá → Thuế → XX → GP/CNG → Container',chart:`flowchart TD
+'cascade-h15':{title:'H1.3 Dòng TK – Luồng nội bộ',sub:'Phân loại → Lượng hàng → Trị giá → Thuế → Xuất xứ → GP/CNG → Container',note:'Phân loại → Lượng → Trị giá → Thuế → XX → GP/CNG → Container',chart:`flowchart TD
 S(("FWD thêm dòng")):::event
 A["H1.3.1 Phân loại (HS)"]:::fwd
 B["H1.3.2 Lượng hàng"]:::fwd
@@ -3614,7 +3614,7 @@ G["H1.3.7 Container"]:::fwd
 H(("Hoàn thành")):::event
 S --> A --> B --> C --> E
 E --> D --> F --> G --> H`},
-'cascade-h1':{title:'H1: Luồng nội bộ Tờ khai',sub:'5 bước tuần tự trên ECUS',note:'H1.1 Đăng ký → H1.2 Khai báo → H1.3 Dòng TK → H1.4 Sửa/Huỷ → H1.4 Nộp ECUS',chart:`flowchart TD
+'cascade-h1':{title:'H1 Tờ khai – Luồng nội bộ',sub:'Đăng ký → Header → Dòng TK → Sửa/Huỷ → Nộp ECUS',note:'H1.1 Đăng ký → H1.2 Khai báo → H1.3 Dòng TK → H1.4 Sửa/Huỷ → H1.4 Nộp ECUS',chart:`flowchart TD
 S(("KH yêu cầu khai TK")):::event
 A["H1.1 Đăng ký TK"]:::fwd
 B["H1.2 Khai báo chi tiết"]:::fwd
@@ -3862,7 +3862,7 @@ A -->|"KT OK"| D --> G
 A -->|"DN xin"| E --> G
 A -->|"Cấp trên"| F --> G
 G --> H`},
-'cascade-h2':{title:'H2: Luồng nội bộ Phân luồng',sub:'2 bước',note:'H2.1 Phân luồng tự động → H2.2 Chuyển luồng (nếu cần)',chart:`flowchart TD
+'cascade-h2':{title:'H2 Phân luồng – Luồng nội bộ',sub:'Phân luồng tự động → Chuyển luồng (nếu cần)',note:'2 bước: H2.1 PL tự động (Xanh/Vàng/Đỏ) → H2.2 Chuyển luồng',chart:`flowchart TD
 S(("TK từ H1")):::event
 A["H2.1 Phân luồng tự động"]:::hq
 B{"Luồng?"}:::hq
@@ -4098,7 +4098,7 @@ B -->|"BL"| D --> G
 B -->|"Ân hạn"| E --> G
 B -->|"Miễn"| F --> G
 G --> H`},
-'cascade-h3':{title:'H3: Luồng nội bộ Trị giá & Thuế',sub:'4 bước',note:'H3.1 Trị giá → H3.2 Tham vấn → H3.3 Tính thuế → H3.4 Nộp',chart:`flowchart TD
+'cascade-h3':{title:'H3 Trị giá & Thuế – Luồng nội bộ',sub:'Xác định trị giá → Tham vấn → Tính thuế → Nộp/BL → Lệ phí → Hoàn thuế',note:'H3.1 Trị giá → H3.2 Tham vấn → H3.3 Tính thuế → H3.4 Nộp',chart:`flowchart TD
 S(("TK từ H2")):::event
 A["H3.1 Xác định trị giá"]:::hq
 B{"Nghi ngờ giá?"}:::hq
@@ -4302,7 +4302,7 @@ A -->|"Nghi ngờ"| B --> E
 A -->|"Vi phạm"| C --> E
 A -->|"Nghiêm trọng"| D --> E
 E --> F`},
-'cascade-h5':{title:'H5: Luồng nội bộ Thông quan',sub:'4 bước',note:'H5.1 GP → H5.2 TQ → H5.3 BQ → H5.4 Tạm/Thu giữ',chart:`flowchart TD
+'cascade-h5':{title:'H5 Thông quan – Luồng nội bộ',sub:'Giải phóng → Thông quan → Bảo quản → Tạm/Thu giữ',note:'H5.1 GP → H5.2 TQ → H5.3 BQ → H5.4 Tạm/Thu giữ',chart:`flowchart TD
 S(("TK từ H4")):::event
 A["H5.1 Giải phóng hàng"]:::hq
 B["H5.2 Thông quan"]:::hq
@@ -4784,7 +4784,7 @@ S --> A
 A -->|"Tạm nhập"| B --> E
 A -->|"Kho NQ"| C --> E
 A -->|"Quá cảnh"| D --> E`},
-'cascade-h4':{title:'H4: Luồng nội bộ Kiểm tra HQ',sub:'3 bước',note:'KT Hồ sơ (Vàng) → KT Thực tế (Đỏ) → Giám định',chart:`flowchart TD
+'cascade-h4':{title:'H4 Kiểm tra HQ – Luồng nội bộ',sub:'KT Hồ sơ (Vàng) → KT Thực tế (Đỏ) → Giám định',note:'KT Hồ sơ (Vàng) → KT Thực tế (Đỏ) → Giám định',chart:`flowchart TD
 S(("Phân luồng")):::event
 A["H4.1 KT Hồ sơ (Vàng)"]:::hq
 B["H4.2 KT Thực tế (Đỏ)"]:::hq
@@ -4794,7 +4794,7 @@ S -->|"Vàng"| A --> D
 S -->|"Đỏ"| B --> D
 A -->|"Cần GĐ"| C --> D
 B -->|"Cần GĐ"| C`},
-'cascade-h6':{title:'H6: Luồng nội bộ Cửa khẩu',sub:'4 loại CK',note:'Cảng biển / Sân bay / Đường bộ / ICD',chart:`flowchart TD
+'cascade-h6':{title:'H6 Cửa khẩu – Luồng nội bộ',sub:'Cảng biển → Sân bay → CK đường bộ → ICD/Cảng cạn',note:'4 loại: H6.1 Cảng biển → H6.2 Sân bay → H6.3 CK bộ → H6.4 ICD',chart:`flowchart TD
 S(("Hàng đến VN")):::event
 A{"PT vận tải?"}:::fwd
 B["H6.1 Cảng biển"]:::fwd
@@ -4807,7 +4807,7 @@ A -->|"Sea"| B --> F
 A -->|"Air"| C --> F
 A -->|"Road"| D --> F
 A -->|"ICD"| E --> F`},
-'cascade-h7':{title:'H7: Luồng nội bộ Sau TQ',sub:'5 nhóm',note:'KTSTQ → VP → Khiếu nại + Thanh khoản + Giám sát',chart:`flowchart TD
+'cascade-h7':{title:'H7 Sau TQ – Luồng nội bộ',sub:'KTSTQ → Xử lý VP → Khiếu nại → Thanh khoản → Giám sát → Hoàn thuế → Ấn định',note:'7 nhóm: H7.1 KTSTQ → H7.2 VP → H7.3 KN → H7.4 TK SXXK → H7.5 GS → H7.6 Hoàn thuế → H7.7 Ấn định',chart:`flowchart TD
 S(("Sau thông quan")):::event
 A["H7.1 KTSTQ"]:::hq
 B{"Phát hiện VP?"}:::hq
