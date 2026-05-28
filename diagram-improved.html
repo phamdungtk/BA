@@ -229,6 +229,50 @@
               </ul>
             </li>
 
+            <!-- ═══ DỊCH VỤ ═══ -->
+            <li class="tree-li">
+              <div class="node node-module" data-toggle="children"><span class="node-label">Module</span>★ Dịch vụ ★<button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-svc-master')" title="Xem tổng thể S1-S6 (Tầng 3)" style="background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.4);color:#34d399"><i class="bi bi-diagram-3"></i> Tổng thể</button><i class="bi bi-chevron-down toggle-icon" id="svc-icon"></i></div>
+              <ul class="tree-ul tree-ul-sub collapsible" id="svc-children">
+                <!-- S1: Thông quan --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">S1</span>Thông quan<span class="group-badge">17</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-s1')" title="Luồng nội bộ S1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="s1-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="s1-children">
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-khai-bao')"><span class="node-label">S1.1</span>Khai báo HQ<span class="group-badge">5</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-kb-a11')">TH1: NK thường (A11)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-kb-a41')">TH2: NK SXXK (A41)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-kb-a31')">TH3: NK tại chỗ (A31)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-kb-g13')">TH4: Tạm nhập tái xuất</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-kb-a12')">TH5: Hàng mẫu (A12)</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-phan-luong')"><span class="node-label">S1.2</span>Phân luồng<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-pl-xanh')">TH1: Luồng Xanh</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-pl-vang')">TH2: Luồng Vàng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-pl-do')">TH3: Luồng Đỏ</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-kiem-tra-cng')"><span class="node-label">S1.3</span>Kiểm tra CNG<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-cng-attp')">TH1: ATTP</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-cng-hop-quy')">TH2: Hợp quy</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-cng-kiem-dich')">TH3: Kiểm dịch</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-nop-thue')"><span class="node-label">S1.4</span>Nộp thuế<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-thue-ngay')">TH1: Nộp ngay</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-thue-bao-lanh')">TH2: Bảo lãnh NH</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-thue-mien')">TH3: Miễn thuế</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-giai-phong')"><span class="node-label">S1.5</span>Giải phóng hàng<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-gp-fcl')">TH1: FCL nguyên cont</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-gp-lcl')">TH2: LCL hàng lẻ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-gp-air')">TH3: Hàng Air</div></li></ul></li>
+                </ul></li>
+                <!-- S2: Vận tải --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">S2</span>Vận tải<span class="group-badge">17</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-s2')" title="Luồng nội bộ S2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="s2-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="s2-children">
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-vt-quocte')"><span class="node-label">S2.1</span>VT quốc tế<span class="group-badge">4</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-vtqt-sea-fcl')">TH1: Sea FCL</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-vtqt-sea-lcl')">TH2: Sea LCL</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-vtqt-air')">TH3: Air Freight</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-vtqt-road')">TH4: Cross-border</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-vt-noidia')"><span class="node-label">S2.2</span>VT nội địa<span class="group-badge">4</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-vtnd-20gp')">TH1: Cont 20GP</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-vtnd-40hc')">TH2: Cont 40HC</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-vtnd-hang-le')">TH3: Hàng lẻ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-vtnd-qua-kho')">TH4: Quá khổ</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-phi-vt')"><span class="node-label">S2.3</span>Phí VT<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-pvt-fob')">TH1: FOB</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-pvt-cif')">TH2: CIF</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-pvt-exw')">TH3: EXW</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-dnd')"><span class="node-label">S2.4</span>D&amp;D<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-dnd-free')">TH1: Trong free time</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-dnd-demurrage')">TH2: Demurrage</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-dnd-detention')">TH3: Detention</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-boc-xep')"><span class="node-label">S2.5</span>Bốc xếp<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-bx-thuong')">TH1: Hàng thường</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-bx-qua-kho')">TH2: Quá khổ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-bx-dg')">TH3: Hàng DG</div></li></ul></li>
+                </ul></li>
+                <!-- S3: Kho bãi --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">S3</span>Kho bãi<span class="group-badge">11</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-s3')" title="Luồng nội bộ S3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="s3-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="s3-children">
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-luu-cang')"><span class="node-label">S3.1</span>Lưu kho cảng<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-lc-cy')">TH1: CY (Bãi cont)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-lc-cfs')">TH2: CFS (Hàng lẻ)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-lc-icd')">TH3: ICD (Cảng cạn)</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-kho-nq')"><span class="node-label">S3.2</span>Kho ngoại quan<span class="group-badge">2</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-knq-cho-gp')">TH1: Chờ GP/CT</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-knq-tam-giu')">TH2: Tạm giữ HQ</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-kho-kh')"><span class="node-label">S3.3</span>Kho KH<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-kkh-du')">TH1: Nhận đủ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-kkh-thieu')">TH2: Nhận thiếu</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-kkh-hong')">TH3: Nhận hàng hỏng</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-phi-kho')"><span class="node-label">S3.4</span>Phí kho<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-pk-luu-kho')">TH1: Storage</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-pk-xep-do')">TH2: Handling</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-pk-repack')">TH3: Repacking</div></li></ul></li>
+                </ul></li>
+                <!-- S4: Chứng từ DV --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">S4</span>Chứng từ DV<span class="group-badge">9</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-s4')" title="Luồng nội bộ S4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="s4-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="s4-children">
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-lap-ct')"><span class="node-label">S4.1</span>Lập bộ CT<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-ct-thuong')">TH1: Lô hàng thường</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-ct-fta')">TH2: Có C/O (FTA)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-ct-sxxk')">TH3: SXXK</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-do')"><span class="node-label">S4.2</span>D/O<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-do-original')">TH1: B/L gốc</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-do-telex')">TH2: Telex Release</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-do-swb')">TH3: Sea Waybill</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-attr" onclick="showWF('s-phi-ct')">Phí chứng từ</div></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-luu-tru')"><span class="node-label">S4.4</span>Lưu trữ<span class="group-badge">2</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-lt-dien-tu')">TH1: Điện tử</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-lt-ban-cung')">TH2: Bản cứng</div></li></ul></li>
+                </ul></li>
+                <!-- S5: Tài chính --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">S5</span>Tài chính<span class="group-badge">8</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-s5')" title="Luồng nội bộ S5"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="s5-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="s5-children">
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-bao-hiem')"><span class="node-label">S5.1</span>Bảo hiểm<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-bh-all-risk')">TH1: All Risk</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-bh-wa')">TH2: WA</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-bh-fpa')">TH3: FPA</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-lc')"><span class="node-label">S5.2</span>L/C<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-lc-sight')">TH1: L/C at sight</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-lc-usance')">TH2: L/C usance</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-lc-transferable')">TH3: Transferable</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-debit-note')"><span class="node-label">S5.3</span>Debit Note<span class="group-badge">2</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-dn-ok')">TH1: Chấp nhận</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-dn-dispute')">TH2: Phản hồi</div></li></ul></li>
+                </ul></li>
+                <!-- S6: Kiểm tra --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">S6</span>Kiểm tra &amp; Giám định<span class="group-badge">8</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-s6')" title="Luồng nội bộ S6"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="s6-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="s6-children">
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-giam-dinh')"><span class="node-label">S6.1</span>Giám định<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-gd-so-luong')">TH1: Số lượng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-gd-chat-luong')">TH2: Chất lượng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-gd-ton-that')">TH3: Tổn thất</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-kiem-dich-dv')"><span class="node-label">S6.2</span>Kiểm dịch<span class="group-badge">3</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-kd-dong-vat')">TH1: Động vật</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-kd-thuc-vat')">TH2: Thực vật</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-kd-y-te')">TH3: Y tế</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children" onclick="showWF('s-fumigation')"><span class="node-label">S6.3</span>Fumigation<span class="group-badge">2</span><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('s-fm-mb')">TH1: Methyl Bromide</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('s-fm-ht')">TH2: Heat Treatment</div></li></ul></li>
+                </ul></li>
+                <!-- Combo --><li class="tree-li"><div class="node node-group" data-toggle="children" style="border-left:3px solid #f59e0b"><span class="node-label" style="background:rgba(245,158,11,.15);color:#f59e0b">Combo</span>Gói dịch vụ<span class="group-badge">4</span><i class="bi bi-chevron-down toggle-icon" id="combo-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="combo-children"><li class="tree-li"><div class="node node-attr" onclick="showWF('combo-thong-quan')">C1: Gói Thông quan</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('combo-cang-kho')">C2: Gói Cảng→Kho</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('combo-d2d')">C3: Gói Door-to-Door</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('combo-tron-goi')">C4: Gói XNK Trọn gói</div></li></ul></li>
+              </ul>
+            </li>
+
           </ul>
         </li>
       </ul>
@@ -1241,7 +1285,1391 @@ E -->|"Xanh"| F --> K
 E -->|"Vàng"| G --> H
 H -->|"Đủ"| K
 H -->|"Thiếu"| J --> G
-E -->|"Đỏ"| I --> K`}
+E -->|"Đỏ"| I --> K`},
+
+// ═══════════════════════════════════════════════════
+// ═══════════ MODULE DỊCH VỤ ═══════════════════════
+// ═══════════════════════════════════════════════════
+
+// ─── S1: Thông quan ───
+'s-khai-bao':{title:'Khai báo HQ – Dịch vụ khai ECUS',sub:'KH gửi CT → FWD khai ECUS → Truyền VNACCS',note:'FWD khai thay KH. Phí khai báo: 500k–2tr/TK → liên kết Tờ khai (G10)',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Gửi bộ chứng từ gốc"]:::kh
+B["FWD: Kiểm tra đủ CT?"]:::fwd
+C{"CT đầy đủ?"}:::decision
+D["FWD: Yêu cầu KH bổ sung"]:::fwd
+E["FWD: Khai ECUS theo CI/PL/B/L"]:::fwd
+F["Truyền VNACCS → Nhận số TK"]:::fwd
+G["FWD: Gửi TK cho KH xác nhận"]:::kh
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Đủ"| E --> F --> G --> H
+C -->|"Thiếu"| D --> A`},
+
+'s-phan-luong':{title:'Phân luồng – Xử lý kết quả VNACCS',sub:'VNACCS trả luồng → FWD xử lý → Thông quan',note:'Xanh=tự động, Vàng=CT, Đỏ=kiểm thực tế. SLA: Xanh dưới 1h',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["VNACCS: Trả kết quả phân luồng"]:::hq
+B{"Luồng?"}:::decision
+C["Xanh → Thông quan tự động"]:::hq
+D["Vàng → FWD nộp CT bổ sung"]:::fwd
+E["Đỏ → FWD chuẩn bị kiểm thực tế"]:::fwd
+F{"HQ: CT/Hàng OK?"}:::decision
+G["Thông quan"]:::hq
+H["FWD: Bổ sung/Giải trình"]:::fwd
+I(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Xanh"| C --> I
+B -->|"Vàng"| D --> F
+B -->|"Đỏ"| E --> F
+F -->|"OK"| G --> I
+F -->|"Thiếu"| H --> F`},
+
+'s-kiem-tra-cng':{title:'DV Kiểm tra CNG – Đại lý nộp hồ sơ',sub:'FWD nộp hồ sơ CNG → QC kiểm tra → Cấp CN',note:'FWD làm thay KH. Phí DV: 1–3tr/lần. SLA: 3–7 ngày → liên kết G1 Nhóm hàng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Xác định Bộ quản lý"]:::fwd
+B["FWD: Chuẩn bị hồ sơ CNG"]:::fwd
+C["FWD: Nộp hồ sơ NSW (Cổng 1 cửa)"]:::fwd
+D["QC: Kiểm tra mẫu / Hồ sơ"]:::qc
+E{"Kết quả?"}:::decision
+F["Đạt → Cấp CN hợp quy"]:::qc
+G["Không → FWD bổ sung"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Đạt"| F --> H
+E -->|"Không"| G --> C`},
+
+'s-nop-thue':{title:'Nộp thuế đại lý – FWD nộp thay KH',sub:'HQ ra thuế → FWD thông báo → KH chuyển tiền → FWD nộp Kho bạc',note:'Phí DV nộp thuế: 200–500k/TK. HQ cho nợ thuế 275 ngày (bảo lãnh) → liên kết G6',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HQ: Thông báo số thuế phải nộp"]:::hq
+B["FWD: Gửi bảng kê thuế cho KH"]:::fwd
+C{"KH: Chọn cách nộp?"}:::decision
+D["Nộp ngay → KH chuyển tiền cho FWD"]:::kh
+E["Bảo lãnh → NH bảo lãnh nợ thuế"]:::nh
+F["FWD: Nộp thuế tại Kho bạc NN"]:::fwd
+G["HQ: Xác nhận đã nộp → Release"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Nộp ngay"| D --> F
+C -->|"Bảo lãnh"| E --> G
+F --> G --> H`},
+
+'s-giai-phong':{title:'Giải phóng hàng – Release từ cảng',sub:'HQ release → FWD làm D/O → Kho cảng giao cont/hàng',note:'Free time: 3–7 ngày. Quá hạn = Demurrage → liên kết S2.D&D',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HQ: Release thông quan"]:::hq
+B["FWD: Lấy D/O (Lệnh giao hàng)"]:::fwd
+C["FWD: Nộp D/O tại cảng"]:::fwd
+D{"Loại hàng?"}:::decision
+E["FCL → Kéo cont nguyên"]:::kho
+F["LCL → Rút hàng tại CFS"]:::kho
+G["Kho cảng: Giao hàng"]:::kho
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"FCL"| E --> G
+D -->|"LCL"| F --> G
+G --> H`},
+
+// ─── S2: Vận tải ───
+'s-vt-quocte':{title:'DV Vận tải quốc tế – Booking tàu/bay',sub:'FWD booking → Carrier xác nhận → Theo dõi ETA',note:'Biển: 15–30 ngày, HK: 3–5 ngày, Bộ: 5–10 ngày → liên kết G7',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Yêu cầu booking"]:::kh
+B["FWD: Chọn Carrier + tuyến"]:::fwd
+C["FWD: Gửi Booking Request"]:::fwd
+D{"Carrier: Chấp nhận?"}:::decision
+E["Xác nhận → Cấp S/O (Lệnh cấp cont)"]:::fwd
+F["Từ chối → FWD tìm carrier khác"]:::fwd
+G["FWD: Theo dõi ETD/ETA"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"OK"| E --> G --> H
+D -->|"Không"| F --> C`},
+
+'s-vt-noidia':{title:'DV Vận tải nội địa – Cảng → Kho KH',sub:'FWD điều xe → Kéo cont/giao hàng → KH nhận',note:'Trucking: 1–3tr/cont 20GP nội thành. SLA: giao trong ngày',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Điều xe cont/tải"]:::fwd
+B["Lái xe: Nhận cont tại cảng"]:::fwd
+C["Vận chuyển cảng → Kho KH"]:::fwd
+D["KH: Kiểm tra Seal nguyên vẹn"]:::kh
+E{"Seal OK?"}:::decision
+F["Rút hàng + Kiểm đếm"]:::kh
+G["Lập biên bản → BH/FWD"]:::kh
+H["Trả cont rỗng về depot (Bãi)"]:::fwd
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> H --> I
+E -->|"Hỏng"| G --> F`},
+
+'s-phi-vt':{title:'Phí vận tải – Cấu trúc chi phí',sub:'Ocean Freight + THC + Local charges → Tổng',note:'THC: 1.5–2.5tr/cont. BAF, CAF, CIC theo mùa → liên kết G3 Incoterms',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Carrier: Báo giá Ocean Freight"]:::fwd
+B["Cảng: THC (Phí xếp dỡ cảng)"]:::kho
+C["FWD: Local charges (CIC, BAF, CAF)"]:::fwd
+D{"Incoterm?"}:::decision
+E["FOB → KH chịu Freight"]:::kh
+F["CIF → NCC chịu Freight"]:::ncc
+G["FWD: Tổng hợp chi phí → Báo giá"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"FOB"| E --> G
+D -->|"CIF"| F --> G
+G --> H`},
+
+'s-dnd':{title:'D&D (Demurrage & Detention) – Phí lưu cont',sub:'Free time hết → Tính phí → FWD thu KH',note:'Demurrage: phí lưu cont tại cảng. Detention: phí giữ cont ngoài cảng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Carrier: Free time bắt đầu"]:::fwd
+B{"Trả cont trong free time?"}:::decision
+C["Không phát sinh phí"]:::fwd
+D["Demurrage: Lưu cont tại cảng"]:::kho
+E["Detention: Giữ cont ngoài cảng"]:::fwd
+F["FWD: Tính phí D&D"]:::fwd
+G["KH: Thanh toán phí phát sinh"]:::kh
+H(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Kịp"| C --> H
+B -->|"Trễ cảng"| D --> F
+B -->|"Trễ ngoài"| E --> F
+F --> G --> H`},
+
+'s-boc-xep':{title:'Bốc xếp – Loading/Unloading',sub:'Bốc hàng lên/xuống xe, cont, kho',note:'Phí bốc xếp: 150–500k/tấn. Hàng quá khổ cần cẩu → liên kết G2',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Loại bốc xếp?"}:::decision
+B["Bốc tại cảng (Stevedoring)"]:::kho
+C["Rút hàng CFS (Hàng lẻ)"]:::kho
+D["Bốc xếp tại kho KH"]:::kho
+E{"Hàng quá khổ?"}:::decision
+F["Cần cẩu / Xe nâng đặc biệt"]:::kho
+G["Xe nâng thường"]:::kho
+H(("Hoàn thành")):::event
+S --> A
+A -->|"Cảng"| B --> E
+A -->|"CFS"| C --> E
+A -->|"Kho KH"| D --> E
+E -->|"Có"| F --> H
+E -->|"Không"| G --> H`},
+
+// ─── S3: Kho bãi ───
+'s-luu-cang':{title:'Lưu kho cảng – CFS / CY / Bãi',sub:'Hàng đến cảng → Lưu bãi → Chờ thông quan → Xuất',note:'Free storage: 3–5 ngày. Sau đó phí lưu bãi tăng dần → liên kết G7 Cảng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Hàng đến cảng → Dỡ hàng"]:::kho
+B{"FCL hay LCL?"}:::decision
+C["CY (Bãi cont): Lưu cont nguyên"]:::kho
+D["CFS (Kho hàng lẻ): Rút hàng"]:::kho
+E{"Trong free storage?"}:::decision
+F["Miễn phí lưu bãi"]:::kho
+G["Phí lưu bãi phát sinh"]:::kho
+H(("Hoàn thành")):::event
+S --> A --> B
+B -->|"FCL"| C --> E
+B -->|"LCL"| D --> E
+E -->|"Có"| F --> H
+E -->|"Không"| G --> H`},
+
+'s-kho-nq':{title:'Kho ngoại quan – Tạm giữ chưa thông quan',sub:'Hàng vào kho NQ → Chờ GP/CT → Thông quan → Xuất kho',note:'Lưu kho NQ: max 12 tháng (gia hạn 2 lần). Phí: 10–30k/m3/ngày',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Làm thủ tục nhập kho NQ"]:::fwd
+B["HQ: Niêm phong + Giám sát"]:::hq
+C["Hàng lưu kho ngoại quan"]:::kho
+D{"Đã có GP/CT đầy đủ?"}:::decision
+E["FWD: Làm thủ tục xuất kho NQ"]:::fwd
+F["Chờ bổ sung GP/CT"]:::fwd
+G["HQ: Kiểm tra → Cho xuất"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Đủ"| E --> G --> H
+D -->|"Chưa"| F --> D`},
+
+'s-kho-kh':{title:'Kho KH – Nhập kho khách hàng',sub:'Hàng đến kho → Kiểm đếm → Nhập kho → Xác nhận',note:'KH kiểm đếm so PL. Lệch → lập biên bản → liên kết G2 Số lượng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Giao hàng đến kho KH"]:::fwd
+B["KH: Kiểm tra ngoại quan bao bì"]:::kh
+C["KH: Kiểm đếm so Packing List"]:::kh
+D{"Khớp PL?"}:::decision
+E["Nhập kho → Ký xác nhận"]:::kh
+F["Lập biên bản lệch → FWD/BH"]:::kh
+G["KH: Sắp xếp kho theo SKU"]:::kh
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Khớp"| E --> G --> H
+D -->|"Lệch"| F --> E`},
+
+'s-phi-kho':{title:'Phí kho – Cấu trúc chi phí kho bãi',sub:'Phí lưu kho + Xếp dỡ + Đóng gói lại + Phí quản lý',note:'Tính theo CBM/ngày hoặc pallet/ngày → liên kết S3',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Kho: Tính phí lưu kho (CBM/ngày)"]:::kho
+B["Kho: Phí xếp dỡ vào/ra"]:::kho
+C{"Cần đóng gói lại?"}:::decision
+D["Phí đóng gói lại"]:::kho
+E["Phí quản lý kho (monthly)"]:::kho
+F["Tổng hợp → Debit Note"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Có"| D --> E
+C -->|"Không"| E
+E --> F --> G`},
+
+// ─── S4: Chứng từ ───
+'s-lap-ct':{title:'DV Lập bộ chứng từ – Soạn CI/PL/TK',sub:'FWD soạn CT từ data KH/NCC → Kiểm tra → Nộp HQ',note:'Phí lập CT: 500k–1.5tr/bộ. FWD kiểm tra chéo trước nộp → liên kết G10',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH/NCC: Gửi data (giá, SL, HS)"]:::kh
+B["FWD: Soạn CI (Hoá đơn TM)"]:::fwd
+C["FWD: Soạn PL (Phiếu đóng gói)"]:::fwd
+D["FWD: Đối chiếu CI vs PL"]:::fwd
+E{"Khớp?"}:::decision
+F["FWD: Khai tờ khai ECUS"]:::fwd
+G["Sửa lỗi → Đối chiếu lại"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> H
+E -->|"Lệch"| G --> D`},
+
+'s-do':{title:'D/O (Delivery Order) – Lệnh giao hàng',sub:'FWD lấy D/O từ hãng tàu → Nộp cảng → Nhận hàng',note:'Phí D/O: 700k–1.5tr/BL. Cần B/L gốc hoặc Telex Release → liên kết G7',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Loại B/L?"}:::decision
+B["Original → FWD nộp B/L gốc"]:::fwd
+C["Telex → Hãng tàu xác nhận điện tử"]:::fwd
+D["FWD: Nộp phí D/O + Nhận D/O"]:::fwd
+E["FWD: Nộp D/O tại cảng"]:::fwd
+F["Cảng: Release cont/hàng"]:::kho
+G(("Hoàn thành")):::event
+S --> A
+A -->|"Original"| B --> D
+A -->|"Telex/SWB"| C --> D
+D --> E --> F --> G`},
+
+'s-phi-ct':{title:'Phí chứng từ – Tổng hợp phí CT',sub:'D/O + THC + Handling + Seal + Phí TK',note:'Phí CT thường gộp vào Debit Note → liên kết S5',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Phí D/O (Lệnh giao hàng)"]:::fwd
+B["Phí THC (Xếp dỡ cảng)"]:::kho
+C["Phí Handling (Xử lý hồ sơ)"]:::fwd
+D["Phí Seal (Niêm phong)"]:::fwd
+E["Phí khai TK (Tờ khai)"]:::fwd
+F["FWD: Tổng hợp → Debit Note"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+
+'s-luu-tru':{title:'Lưu trữ CT – Scan và Lưu hồ sơ',sub:'FWD scan CT → Lưu trữ → KH tra cứu',note:'Lưu trữ 5 năm theo quy định HQ. Số hoá để tra cứu nhanh',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Thu thập bộ CT gốc"]:::fwd
+B["FWD: Scan + Đánh mã hồ sơ"]:::fwd
+C["Lưu trữ điện tử (Cloud/Server)"]:::fwd
+D["Lưu trữ bản cứng (Kho CT)"]:::fwd
+E["KH: Tra cứu khi cần"]:::kh
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+
+// ─── S5: Tài chính ───
+'s-bao-hiem':{title:'DV Bảo hiểm hàng hoá – Marine Insurance',sub:'KH/FWD mua BH → Cấp Policy → Claim khi tổn thất',note:'All Risk = 0.1–0.3% CIF. WA = rẻ hơn. FPA = rẻ nhất → liên kết G3 CIF',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH/FWD: Yêu cầu báo giá BH"]:::kh
+B{"Loại BH?"}:::decision
+C["All Risk (Mọi rủi ro)"]:::nh
+D["WA (Tổn thất riêng)"]:::nh
+E["FPA (Tổn thất toàn bộ)"]:::nh
+F["BH: Cấp Policy (Hợp đồng BH)"]:::nh
+G{"Có tổn thất?"}:::decision
+H["Claim → Giám định → Bồi thường"]:::nh
+I(("Hoàn thành")):::event
+S --> A --> B
+B -->|"All Risk"| C --> F
+B -->|"WA"| D --> F
+B -->|"FPA"| E --> F
+F --> G
+G -->|"Không"| I
+G -->|"Có"| H --> I`},
+
+'s-lc':{title:'DV L/C handling – Xử lý Thư tín dụng',sub:'KH mở L/C → NH kiểm CT → Thanh toán → Ký hậu B/L',note:'Phí L/C: 0.1–0.25% giá trị + phí swift. SLA: NH kiểm CT 5 ngày → liên kết G3',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Yêu cầu mở L/C"]:::kh
+B["NH phát hành: Mở L/C → Swift"]:::nh
+C["NH thông báo: Gửi L/C cho NCC"]:::nh
+D["NCC: Giao hàng + Nộp CT"]:::ncc
+E["NH: Kiểm tra CT hợp lệ?"]:::nh
+F{"CT hợp lệ?"}:::decision
+G["NH: Thanh toán → Ký hậu B/L"]:::nh
+H["Bất hợp lệ → Sửa đổi L/C"]:::nh
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"OK"| G --> I
+F -->|"Không"| H --> E`},
+
+'s-debit-note':{title:'Debit Note – Bảng kê chi phí',sub:'FWD tổng hợp phí → Gửi KH → KH thanh toán',note:'Debit Note = hoá đơn nội bộ FWD. KH thanh toán 7–30 ngày',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Tổng hợp chi phí phát sinh"]:::fwd
+B["FWD: Lập Debit Note chi tiết"]:::fwd
+C["FWD: Gửi Debit Note cho KH"]:::fwd
+D{"KH: Xác nhận?"}:::decision
+E["KH: Thanh toán"]:::kh
+F["KH: Phản hồi → FWD điều chỉnh"]:::kh
+G["FWD: Xuất hoá đơn VAT"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"OK"| E --> G --> H
+D -->|"Phản hồi"| F --> B`},
+
+// ─── S6: Kiểm tra & Giám định ───
+'s-giam-dinh':{title:'DV Giám định – Kiểm tra SL/CL/Tổn thất',sub:'KH yêu cầu → Giám định viên kiểm → Cấp CN giám định',note:'Giám định độc lập: SGS, Vinacontrol, Bureau Veritas. Phí: 2–5tr/lô',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH/FWD: Yêu cầu giám định"]:::kh
+B{"Loại giám định?"}:::decision
+C["Giám định số lượng"]:::qc
+D["Giám định chất lượng"]:::qc
+E["Giám định tổn thất (cho BH)"]:::qc
+F["GĐ viên: Kiểm tra thực tế"]:::qc
+G["Cấp Chứng thư giám định"]:::qc
+H(("Hoàn thành")):::event
+S --> A --> B
+B -->|"SL"| C --> F
+B -->|"CL"| D --> F
+B -->|"Tổn thất"| E --> F
+F --> G --> H`},
+
+'s-kiem-dich-dv':{title:'DV Kiểm dịch – ĐV/TV/Y tế',sub:'FWD đăng ký → Cơ quan KD kiểm tra → Cấp CN',note:'Bắt buộc: Nông sản, Thực phẩm, Động vật. Phí: 1–3tr/lô. SLA: 3–5 ngày',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Đăng ký kiểm dịch online"]:::fwd
+B["FWD: Nộp hồ sơ + Mẫu"]:::fwd
+C{"Loại kiểm dịch?"}:::decision
+D["Kiểm dịch Động vật (Cục Thú y)"]:::qc
+E["Kiểm dịch Thực vật (Cục BVTV)"]:::qc
+F["Kiểm dịch Y tế (Bộ Y tế)"]:::qc
+G{"Kết quả?"}:::decision
+H["Đạt → Cấp CN kiểm dịch"]:::qc
+I["Không → Xử lý / Tái xuất"]:::qc
+J(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"ĐV"| D --> G
+C -->|"TV"| E --> G
+C -->|"YT"| F --> G
+G -->|"Đạt"| H --> J
+G -->|"Không"| I --> J`},
+
+'s-fumigation':{title:'DV Fumigation – Hun trùng / Xông hơi',sub:'FWD đặt lịch → Đơn vị hun trùng → Cấp CN',note:'ISPM-15: pallet gỗ. Methyl Bromide hoặc nhiệt. Phí: 1–2tr/cont',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Đặt lịch hun trùng"]:::fwd
+B{"Phương pháp?"}:::decision
+C["MB – Methyl Bromide (Hoá chất)"]:::qc
+D["HT – Heat Treatment (Nhiệt)"]:::qc
+E["Thực hiện xử lý tại cảng/kho"]:::qc
+F["Chờ thời gian xử lý (24–48h)"]:::qc
+G["Cấp CN hun trùng + Dấu IPPC"]:::qc
+H(("Hoàn thành")):::event
+S --> A --> B
+B -->|"MB"| C --> E
+B -->|"HT"| D --> E
+E --> F --> G --> H`},
+
+// ═══════════ TẦNG 2: LUỒNG NỘI BỘ TỪNG NHÓM S ═══════════
+
+'cascade-s1':{title:'S1 Thông quan – Luồng nội bộ',sub:'Khai báo → Phân luồng → CNG → Nộp thuế → Giải phóng',note:'Luồng tuần tự: khai trước → luồng → xử lý → thuế → release',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Khai báo HQ: ECUS → VNACCS"]:::fwd
+B["Phân luồng: Xanh/Vàng/Đỏ"]:::hq
+C{"Cần CNG?"}:::decision
+D["Kiểm tra CNG: Nộp hồ sơ → QC"]:::qc
+E["Nộp thuế: FWD nộp đại lý"]:::fwd
+F["Giải phóng: Release cont/hàng"]:::kho
+G(("Xong S1")):::event
+S --> A --> B --> C
+C -->|"Có"| D --> E
+C -->|"Không"| E
+E --> F --> G`},
+
+'cascade-s2':{title:'S2 Vận tải – Luồng nội bộ',sub:'VT quốc tế → Phí VT → Bốc xếp → VT nội địa → D&D',note:'QT trước → hàng đến → bốc xếp → nội địa → D&D nếu trễ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["VT quốc tế: Booking + Theo dõi"]:::fwd
+B["Phí VT: Freight + THC + Phụ phí"]:::fwd
+C["Bốc xếp: Dỡ hàng tại cảng"]:::kho
+D["VT nội địa: Cảng → Kho KH"]:::fwd
+E{"Trả cont đúng hạn?"}:::decision
+F["OK → Không phí D&D"]:::fwd
+G["Trễ → D&D phát sinh"]:::kho
+H(("Xong S2")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Kịp"| F --> H
+E -->|"Trễ"| G --> H`},
+
+'cascade-s3':{title:'S3 Kho bãi – Luồng nội bộ',sub:'Lưu cảng → Kho NQ (nếu cần) → Kho KH → Phí kho',note:'Hàng đến → lưu cảng → thông quan → kho KH',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Lưu kho cảng: CY/CFS"]:::kho
+B{"Cần kho ngoại quan?"}:::decision
+C["Kho NQ: Chờ GP/CT"]:::kho
+D["Kho KH: Nhập + Kiểm đếm"]:::kh
+E["Phí kho: Tổng hợp chi phí"]:::kho
+F(("Xong S3")):::event
+S --> A --> B
+B -->|"Có"| C --> D
+B -->|"Không"| D
+D --> E --> F`},
+
+'cascade-s4':{title:'S4 Chứng từ DV – Luồng nội bộ',sub:'Lập CT → D/O → Phí CT → Lưu trữ',note:'Soạn CT → lấy D/O → tính phí → lưu trữ hồ sơ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Lập bộ CT: CI, PL, TK"]:::fwd
+B["D/O: Lấy lệnh giao từ hãng tàu"]:::fwd
+C["Phí CT: D/O + THC + Handling"]:::fwd
+D["Lưu trữ: Scan + Lưu 5 năm"]:::fwd
+E(("Xong S4")):::event
+S --> A --> B --> C --> D --> E`},
+
+'cascade-s5':{title:'S5 Tài chính – Luồng nội bộ',sub:'Bảo hiểm → L/C → Debit Note',note:'BH mua trước → L/C xử lý → cuối cùng Debit Note tổng hợp',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Bảo hiểm: Mua policy trước giao hàng"]:::nh
+B{"Có L/C?"}:::decision
+C["L/C: NH kiểm CT → Thanh toán"]:::nh
+D["T/T: Chuyển khoản trực tiếp"]:::nh
+E["Debit Note: FWD tổng hợp phí"]:::fwd
+F["KH: Thanh toán tất cả"]:::kh
+G(("Xong S5")):::event
+S --> A --> B
+B -->|"L/C"| C --> E
+B -->|"T/T"| D --> E
+E --> F --> G`},
+
+'cascade-s6':{title:'S6 Kiểm tra – Luồng nội bộ',sub:'Giám định → Kiểm dịch → Fumigation',note:'Có thể song song. Kết quả feed vào S1 Thông quan',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Loại kiểm tra cần?"}:::decision
+B["Giám định: SL/CL/Tổn thất"]:::qc
+C["Kiểm dịch: ĐV/TV/Y tế"]:::qc
+D["Fumigation: Hun trùng ISPM-15"]:::qc
+E["Cấp CN/Chứng thư"]:::qc
+F(("Xong S6")):::event
+S --> A
+A -->|"Giám định"| B --> E
+A -->|"Kiểm dịch"| C --> E
+A -->|"Hun trùng"| D --> E
+E --> F`},
+
+'cascade-svc-master':{title:'Tổng thể Dịch vụ – 6 nhóm S bắt cặp (8 cặp)',sub:'S4 (CT) → S1 (Thông quan) → S5 (Tài chính) + S3 (Kho) → S2 (Vận tải) → Giao KH',note:'8 cặp: ①S4→S1, ②S1→S5, ③S1→S3, ④S3→S2, ⑤S6→S1, ⑥S5→S1, ⑦S4→S5, ⑧S2→S3',chart:`flowchart TD
+S(("KH yêu cầu DV")):::event
+S4["S4: Chứng từ"]:::fwd
+S1["S1: Thông quan"]:::hq
+S6["S6: Kiểm tra"]:::qc
+S5["S5: Tài chính"]:::nh
+S3["S3: Kho bãi"]:::kho
+S2["S2: Vận tải"]:::fwd
+TQ(("Giao hàng KH")):::event
+S --> S4
+S --> S6
+S4 -->|"① CT đủ→Khai HQ"| S1
+S4 -->|"⑦ B/L→L/C"| S5
+S6 -->|"⑤ KQ kiểm tra"| S1
+S1 -->|"② Thuế"| S5
+S1 -->|"③ Release→Kho"| S3
+S5 -->|"⑥ Nộp thuế→Release"| S1
+S2 -->|"⑧ Hàng đến→Kho"| S3
+S3 -->|"④ Xuất kho→VT"| S2
+S2 --> TQ`},
+
+// ═══════════ COMBO DỊCH VỤ ═══════════
+
+'combo-thong-quan':{title:'C1: Gói Thông quan – Customs Clearance',sub:'S1 (Thông quan) + S4 (Lập CT + D/O)',note:'Cho KH tự vận chuyển. Phí: 2–5tr/lô tuỳ loại hàng',chart:`flowchart TD
+S(("KH đặt gói C1")):::event
+A["S4: FWD nhận CT từ KH/NCC"]:::fwd
+B["S4: Lập bộ CT (CI/PL/TK)"]:::fwd
+C["S4: Lấy D/O từ hãng tàu"]:::fwd
+D["S1: Khai ECUS → VNACCS"]:::fwd
+E["S1: Xử lý phân luồng"]:::hq
+F{"Cần CNG?"}:::decision
+G["S1: Kiểm tra CNG"]:::qc
+H["S1: Nộp thuế đại lý"]:::fwd
+I["S1: Giải phóng hàng → KH tự nhận"]:::kho
+J(("Hoàn thành C1")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"Có"| G --> H
+F -->|"Không"| H
+H --> I --> J`},
+
+'combo-cang-kho':{title:'C2: Gói Cảng→Kho – Port to Warehouse',sub:'S2 (VT nội địa + Bốc xếp) + S3 (Lưu cảng + Kho KH)',note:'Cho KH đã thông quan xong. Phí: 3–8tr/cont tuỳ khoảng cách',chart:`flowchart TD
+S(("KH đặt gói C2")):::event
+A["S3: Lưu kho cảng chờ kéo"]:::kho
+B["S2: FWD điều xe cont/tải"]:::fwd
+C["S2: Bốc xếp tại cảng"]:::kho
+D["S2: Vận chuyển cảng → Kho KH"]:::fwd
+E["S3: KH kiểm đếm nhập kho"]:::kh
+F["S2: Trả cont rỗng"]:::fwd
+G{"D&D?"}:::decision
+H["Không phí"]:::fwd
+I["Phí D&D phát sinh"]:::kho
+J(("Hoàn thành C2")):::event
+S --> A --> B --> C --> D --> E --> F --> G
+G -->|"Không"| H --> J
+G -->|"Có"| I --> J`},
+
+'combo-d2d':{title:'C3: Gói Door-to-Door – Trọn gói vận chuyển',sub:'S1 + S2 + S3 + S4 + S5.BH',note:'FWD lo từ cảng xuất → kho KH. Phí: 8–20tr/cont tuỳ tuyến',chart:`flowchart TD
+S(("KH đặt gói C3")):::event
+A["S5: Mua bảo hiểm hàng"]:::nh
+B["S4: FWD lập bộ CT"]:::fwd
+C["S4: Lấy D/O"]:::fwd
+D["S1: Khai HQ + Thông quan"]:::hq
+E["S3: Giải phóng hàng tại cảng"]:::kho
+F["S2: VT nội địa → Kho KH"]:::fwd
+G["S3: KH kiểm đếm nhập kho"]:::kh
+H["S5: FWD gửi Debit Note"]:::fwd
+I(("Hoàn thành C3")):::event
+S --> A --> B --> C --> D --> E --> F --> G --> H --> I`},
+
+'combo-tron-goi':{title:'C4: Gói XNK Trọn gói – Full Service',sub:'S1 + S2 + S3 + S4 + S5 + S6 – Tất cả dịch vụ',note:'KH không cần kinh nghiệm XNK. Phí: % CIF + phí cố định',chart:`flowchart TD
+S(("KH đặt gói C4")):::event
+A["S5: BH + L/C (nếu cần)"]:::nh
+B["S4: Lập toàn bộ CT"]:::fwd
+C["S6: Giám định + Kiểm dịch"]:::qc
+D["S1: Thông quan trọn gói"]:::hq
+E["S3: Quản lý kho bãi"]:::kho
+F["S2: VT quốc tế + Nội địa"]:::fwd
+G["S3: Giao hàng tận kho KH"]:::kh
+H["S5: Debit Note tổng hợp"]:::fwd
+I["KH: Thanh toán 1 lần"]:::kh
+J(("Hoàn thành C4")):::event
+S --> A --> B --> C --> D --> E --> F --> G --> H --> I --> J`},
+
+// ═══════════════════════════════════════════════════
+// ═══════════ TẦNG TRƯỜNG HỢP (TH) ════════════════
+// ═══════════════════════════════════════════════════
+
+// ─── S1.1 KHAI BÁO HQ: 5 TH ───
+'s-kb-a11':{title:'TH1: NK thường – Mã A11',sub:'Giá: 1–2tr/TK | CT: CI, PL, B/L, C/O | SLA: 1–3 ngày',note:'Luồng phổ biến nhất. KH NK hàng tiêu dùng, nguyên liệu SX thông thường',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Gửi CI + PL + B/L + C/O"]:::kh
+B["FWD: Tra HS theo mô tả hàng"]:::fwd
+C["FWD: Khai ECUS – Mã LH A11"]:::fwd
+D["Truyền VNACCS → Nhận số TK"]:::fwd
+E["FWD: Đính kèm CT scan"]:::fwd
+F["HQ: Phân luồng Xanh/Vàng/Đỏ"]:::hq
+G["FWD: Gửi TK cho KH"]:::kh
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G --> H`},
+
+'s-kb-a41':{title:'TH2: NK SXXK – Mã A41',sub:'Giá: 1.5–3tr/TK | CT: + HĐ gia công, Định mức SX | Miễn thuế NK',note:'NK nguyên liệu sản xuất hàng xuất khẩu. Miễn thuế NK. Phải có HĐ SX, Định mức, Bảng ĐMSX',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Gửi HĐ gia công + Định mức SX"]:::kh
+B["FWD: Đăng ký ĐMSX với HQ"]:::fwd
+C["FWD: Khai ECUS – Mã LH A41"]:::fwd
+D{"HQ: Chấp nhận ĐMSX?"}:::decision
+E["OK → Miễn thuế NK"]:::hq
+F["Không → Bổ sung định mức"]:::fwd
+G["Truyền VNACCS → TK miễn thuế"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"OK"| E --> G --> H
+D -->|"Không"| F --> C`},
+
+'s-kb-a31':{title:'TH3: NK tại chỗ – Mã A31',sub:'Giá: 1–1.5tr/TK | CT: CI, PL (2 bên cùng khai) | Không vận tải',note:'2 DN cùng khai. Bên xuất khai A31, bên nhập khai A31. Không có B/L, không vận chuyển',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["DN Xuất: Khai TK xuất tại chỗ"]:::ncc
+B["DN Nhập: Khai TK nhập tại chỗ"]:::kh
+C["FWD: Đối chiếu 2 TK khớp nhau"]:::fwd
+D{"Khớp?"}:::decision
+E["Truyền VNACCS song song"]:::fwd
+F["Sửa TK cho khớp"]:::fwd
+G["HQ: Xác nhận 2 TK"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Khớp"| E --> G --> H
+D -->|"Lệch"| F --> C`},
+
+'s-kb-g13':{title:'TH4: Tạm nhập tái xuất – Mã G13',sub:'Giá: 2–4tr/TK | CT: + Bảo lãnh NH, HĐ mua bán | Thời hạn 120 ngày',note:'Hàng NK tạm → tái xuất trong 120 ngày. Phải có bảo lãnh NH. Hoàn thuế khi tái xuất',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Nộp HĐ mua bán + Bảo lãnh NH"]:::kh
+B["FWD: Khai ECUS – Mã LH G13"]:::fwd
+C["HQ: Ấn định thời hạn 120 ngày"]:::hq
+D["NK hàng → Sử dụng tạm"]:::kh
+E{"Tái xuất đúng hạn?"}:::decision
+F["Khai TK tái xuất → Hoàn thuế"]:::fwd
+G["Quá hạn → Chuyển NK chính thức → Nộp thuế"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Kịp"| F --> H
+E -->|"Trễ"| G --> H`},
+
+'s-kb-a12':{title:'TH5: Hàng mẫu/Quà biếu – Mã A12',sub:'Giá: 500k–1tr/TK | CT: CI (giá trị thấp) | Miễn thuế dưới 30tr',note:'Hàng không mục đích TM. Giá trị dưới 30tr miễn thuế. CT đơn giản, không cần C/O',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Khai báo hàng mẫu/quà biếu"]:::kh
+B{"Giá trị?"}:::decision
+C["Dưới 30tr → Miễn thuế NK"]:::hq
+D["Trên 30tr → Nộp thuế bình thường"]:::hq
+E["FWD: Khai ECUS – Mã LH A12"]:::fwd
+F["HQ: Phân luồng (thường Xanh)"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Dưới 30tr"| C --> E
+B -->|"Trên 30tr"| D --> E
+E --> F --> G`},
+
+// ─── S1.2 PHÂN LUỒNG: 3 TH ───
+'s-pl-xanh':{title:'TH1: Luồng Xanh – Thông quan tự động',sub:'Giá: 0 | Thời gian: dưới 1h | CT: Không cần bổ sung',note:'HQ không kiểm tra. TK tự động thông quan. DN uy tín, hàng rủi ro thấp',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["VNACCS: Kết quả = Luồng Xanh"]:::hq
+B["Hệ thống tự động thông quan"]:::hq
+C["FWD: In TK đã thông quan"]:::fwd
+D["Tiến hành giải phóng hàng"]:::fwd
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+
+'s-pl-vang':{title:'TH2: Luồng Vàng – Kiểm tra hồ sơ',sub:'Giá: 500k–1tr (phí bổ sung CT) | Thời gian: 1–3 ngày | CT: Nộp bổ sung',note:'HQ kiểm tra CT giấy. FWD nộp bộ CT gốc. Nếu thiếu → bổ sung → kiểm lại',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["VNACCS: Kết quả = Luồng Vàng"]:::hq
+B["FWD: Chuẩn bị bộ CT gốc"]:::fwd
+C["FWD: Nộp CT tại Chi cục HQ"]:::fwd
+D["HQ: Kiểm tra đối chiếu"]:::hq
+E{"CT hợp lệ?"}:::decision
+F["Thông quan"]:::hq
+G["FWD: Bổ sung/Giải trình"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> H
+E -->|"Thiếu"| G --> D`},
+
+'s-pl-do':{title:'TH3: Luồng Đỏ – Kiểm tra thực tế',sub:'Giá: 1–3tr (phí KT thực tế) | Thời gian: 3–7 ngày | CT: + Biên bản kiểm tra',note:'HQ kiểm tra thực tế hàng hoá tại cảng/kho. Mở cont, đếm, đối chiếu mô tả',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["VNACCS: Kết quả = Luồng Đỏ"]:::hq
+B["FWD: Chuẩn bị hàng tại cảng"]:::fwd
+C["HQ: Kiểm tra thực tế (mở cont)"]:::hq
+D["HQ: Đối chiếu hàng vs TK"]:::hq
+E{"Kết quả?"}:::decision
+F["Khớp → Thông quan"]:::hq
+G["Sai lệch → Xử lý vi phạm"]:::hq
+H["Sửa TK + Nộp phạt (nếu có)"]:::fwd
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Khớp"| F --> I
+E -->|"Sai"| G --> H --> I`},
+
+// ─── S1.3 KIỂM TRA CNG: 3 TH ───
+'s-cng-attp':{title:'TH1: ATTP – An toàn thực phẩm',sub:'Giá: 2–5tr/lô | SLA: 5–7 ngày | CT: CN ATTP, Kết quả kiểm nghiệm',note:'Bộ Y tế hoặc NN&PTNT. Bắt buộc: TP nhập khẩu, mỹ phẩm, dược phẩm',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Đăng ký kiểm tra ATTP (NSW)"]:::fwd
+B["FWD: Nộp mẫu + Hồ sơ CN"]:::fwd
+C["QC: Lấy mẫu kiểm nghiệm"]:::qc
+D["Phòng thí nghiệm: Phân tích"]:::qc
+E{"Kết quả?"}:::decision
+F["Đạt → Cấp Thông báo kết quả"]:::qc
+G["Không → Tái chế / Tái xuất / Tiêu hủy"]:::qc
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Đạt"| F --> H
+E -->|"Không"| G --> H`},
+
+'s-cng-hop-quy':{title:'TH2: Hợp quy – Chất lượng sản phẩm',sub:'Giá: 3–8tr/lô | SLA: 7–15 ngày | CT: CN hợp quy, QCVN áp dụng',note:'Bộ KH&CN. Hàng thuộc Nhóm 2 (có khả năng gây mất ATVS). Cần thử nghiệm mẫu',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Xác định QCVN áp dụng"]:::fwd
+B["FWD: Đăng ký hợp quy (NSW)"]:::fwd
+C["Tổ chức chứng nhận: Đánh giá"]:::qc
+D["Thử nghiệm mẫu tại Lab"]:::qc
+E{"Kết quả?"}:::decision
+F["Đạt → Cấp CN hợp quy"]:::qc
+G["Không → Khắc phục + Thử lại"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Đạt"| F --> H
+E -->|"Không"| G --> D`},
+
+'s-cng-kiem-dich':{title:'TH3: Kiểm dịch – Động vật/Thực vật',sub:'Giá: 1–3tr/lô | SLA: 3–5 ngày | CT: CN kiểm dịch',note:'Cục Thú y (ĐV), Cục BVTV (TV). Bắt buộc: nông sản, thực phẩm tươi, gỗ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Đăng ký kiểm dịch online"]:::fwd
+B["FWD: Nộp hồ sơ + Dẫn hàng kiểm"]:::fwd
+C["QC: Kiểm tra ngoại quan + Lấy mẫu"]:::qc
+D{"Kết quả?"}:::decision
+E["Đạt → Cấp CN kiểm dịch"]:::qc
+F["Nhiễm sâu bệnh → Xử lý KD"]:::qc
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Đạt"| E --> G
+D -->|"Nhiễm"| F --> G`},
+
+// ─── S1.4 NỘP THUẾ: 3 TH ───
+'s-thue-ngay':{title:'TH1: Nộp thuế ngay – Trong 24h',sub:'Giá DV: 200–500k/TK | Flow: KH chuyển → FWD nộp Kho bạc | CT: Biên lai thuế',note:'Phổ biến nhất. KH chuyển tiền thuế cho FWD, FWD nộp qua e-banking Kho bạc NN',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HQ: Thông báo số thuế"]:::hq
+B["FWD: Gửi bảng kê cho KH"]:::fwd
+C["KH: Chuyển tiền thuế cho FWD"]:::kh
+D["FWD: Nộp thuế e-banking KBNN"]:::fwd
+E["KBNN: Xác nhận → HQ Release"]:::hq
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+
+'s-thue-bao-lanh':{title:'TH2: Bảo lãnh NH – Nợ thuế 275 ngày',sub:'Giá DV: 500k–1tr + phí BL 0.5–1%/năm | CT: Thư bảo lãnh NH',note:'NH bảo lãnh → HQ cho nợ thuế 275 ngày. Phù hợp KH dòng tiền chậm. Phí BL = 0.5–1%/năm trên số thuế',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Yêu cầu bảo lãnh thuế"]:::kh
+B["NH: Thẩm định tín dụng KH"]:::nh
+C{"NH: Duyệt?"}:::decision
+D["Cấp Thư bảo lãnh thuế"]:::nh
+E["Từ chối → KH nộp ngay"]:::nh
+F["FWD: Nộp BL cho HQ"]:::fwd
+G["HQ: Gia hạn 275 ngày"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Duyệt"| D --> F --> G --> H
+C -->|"Không"| E --> H`},
+
+'s-thue-mien':{title:'TH3: Miễn thuế – SXXK/FTA/Ưu đãi',sub:'Giá DV: 300k/TK | CT: QĐ miễn thuế, C/O, HĐ gia công',note:'Áp dụng: SXXK (A41), FTA có C/O, Ưu đãi đầu tư. FWD nộp hồ sơ miễn, HQ ra QĐ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Căn cứ miễn?"}:::decision
+B["SXXK → HĐ gia công + ĐMSX"]:::fwd
+C["FTA → C/O + Thuế suất ưu đãi"]:::fwd
+D["Ưu đãi ĐT → QĐ ưu đãi"]:::fwd
+E["FWD: Nộp hồ sơ miễn thuế"]:::fwd
+F["HQ: Xét duyệt → Ra QĐ miễn"]:::hq
+G(("Hoàn thành")):::event
+S --> A
+A -->|"SXXK"| B --> E
+A -->|"FTA"| C --> E
+A -->|"Ưu đãi"| D --> E
+E --> F --> G`},
+
+// ─── S1.5 GIẢI PHÓNG: 3 TH ───
+'s-gp-fcl':{title:'TH1: FCL nguyên cont – Kéo cont',sub:'Giá: 500k–1tr/cont | CT: D/O, Lệnh điều xe | SLA: 1–2 ngày',note:'Kéo nguyên cont về kho KH. Cần xe đầu kéo. Trả cont rỗng tại depot',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Nộp D/O tại cảng"]:::fwd
+B["Cảng: Xác nhận Release cont"]:::kho
+C["FWD: Điều xe đầu kéo"]:::fwd
+D["Lái xe: Nhận cont + Kiểm Seal"]:::fwd
+E["Kéo cont → Kho KH"]:::fwd
+F["KH: Rút hàng + Trả cont rỗng"]:::kh
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+
+'s-gp-lcl':{title:'TH2: LCL hàng lẻ – Rút hàng CFS',sub:'Giá: 300–700k/lô | CT: D/O, Phiếu xuất CFS | SLA: 1–3 ngày',note:'Hàng lẻ ghép cont. Rút tại kho CFS. Phí CFS: 15–30 USD/CBM',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Nộp D/O tại CFS"]:::fwd
+B["CFS: Rút hàng từ cont ghép"]:::kho
+C["CFS: Phân loại theo lô"]:::kho
+D["FWD: Kiểm đếm hàng"]:::fwd
+E["FWD: Giao hàng cho KH/Xe tải"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+
+'s-gp-air':{title:'TH3: Hàng Air – Nhận tại sân bay',sub:'Giá: 200–500k/lô | CT: AWB, Delivery Note | SLA: trong ngày',note:'Nhanh nhất. Nhận tại kho hàng sân bay (TCS, SCSC...). Phí handling air cao hơn sea',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Nộp AWB tại kho hàng SB"]:::fwd
+B["Kho SB: Kiểm tra AWB + Release"]:::kho
+C["FWD: Nhận hàng + Ký Delivery Note"]:::fwd
+D["FWD: Giao hàng cho KH"]:::fwd
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+
+// ─── S2.1 VT QUỐC TẾ: 4 TH ───
+'s-vtqt-sea-fcl':{title:'TH1: Sea FCL – Cont nguyên đường biển',sub:'Giá: 800–3000 USD/cont | Transit: 15–30 ngày | CT: B/L, S/O, Booking Confirm',note:'Phổ biến nhất. 20GP: 800–1500 USD, 40HC: 1500–3000 USD. Tuyến châu Á rẻ hơn EU/US',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Gửi Booking Request"]:::fwd
+B["Carrier: Xác nhận + Cấp S/O"]:::fwd
+C["NCC: Đóng hàng vào cont + Seal"]:::ncc
+D["Carrier: Load lên tàu → ETD"]:::fwd
+E["FWD: Nhận B/L từ Carrier"]:::fwd
+F["Theo dõi ETA → Thông báo KH"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+
+'s-vtqt-sea-lcl':{title:'TH2: Sea LCL – Hàng lẻ đường biển',sub:'Giá: 50–100 USD/CBM | Transit: 20–35 ngày | CT: House B/L + Master B/L',note:'Nhiều lô ghép 1 cont. FWD consolidator gom hàng. Chậm hơn FCL 5–7 ngày',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Booking LCL consolidation"]:::fwd
+B["NCC: Giao hàng tại CFS xuất"]:::ncc
+C["FWD: Gom hàng + Đóng cont"]:::fwd
+D["Carrier: Vận chuyển cont ghép"]:::fwd
+E["CFS đích: Rút + Phân lô"]:::kho
+F["FWD: Cấp House B/L cho KH"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+
+'s-vtqt-air':{title:'TH3: Air Freight – Hàng không',sub:'Giá: 3–8 USD/kg | Transit: 3–5 ngày | CT: AWB (Air Waybill)',note:'Nhanh, đắt. Phù hợp hàng gấp, giá trị cao, nhẹ. Min charge: 45kg',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Booking với airline/GSA"]:::fwd
+B["NCC: Giao hàng tại kho airline"]:::ncc
+C["Airline: Cấp MAWB"]:::fwd
+D["FWD: Cấp HAWB cho KH"]:::fwd
+E["Bay → Đến SB đích"]:::fwd
+F["FWD: Nhận hàng tại kho SB"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+
+'s-vtqt-road':{title:'TH4: Cross-border – Đường bộ',sub:'Giá: 15–40tr/xe | Transit: 5–10 ngày | CT: CMR, Transit, GP quá cảnh',note:'NK từ TQ, Lào, Campuchia qua cửa khẩu. Cần GP quá cảnh, khai Transit',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Booking xe tải xuyên biên giới"]:::fwd
+B["NCC: Xếp hàng tại kho XK"]:::ncc
+C["HQ XK: Khai Transit → Seal"]:::hq
+D["Vận chuyển → Cửa khẩu VN"]:::fwd
+E["HQ VN: Kiểm tra Seal + CT"]:::hq
+F["Thông quan → Giao hàng"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+
+// ─── S2.2 VT NỘI ĐỊA: 4 TH ───
+'s-vtnd-20gp':{title:'TH1: Cont 20GP – Xe đầu kéo nhỏ',sub:'Giá: 1.5–3tr/chuyến | Tải: max 22 tấn | CT: Lệnh điều xe',note:'Phổ biến nhất. Hàng thông thường, trọng lượng vừa phải',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Điều xe đầu kéo 20GP"]:::fwd
+B["Lái xe: Nhận cont tại cảng"]:::fwd
+C["Vận chuyển cảng → Kho KH"]:::fwd
+D["KH: Rút hàng + Kiểm đếm"]:::kh
+E["Lái xe: Trả cont rỗng tại Depot"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+
+'s-vtnd-40hc':{title:'TH2: Cont 40HC – Xe đầu kéo lớn',sub:'Giá: 2.5–5tr/chuyến | Tải: max 26 tấn | Cần lưu ý cầu đường',note:'Hàng cồng kềnh, nhẹ (vải, nhựa, linh kiện). 40HC cao hơn 40GP 1 foot',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Kiểm tra tải trọng cầu đường"]:::fwd
+B["FWD: Điều xe đầu kéo 40HC"]:::fwd
+C["Lái xe: Nhận cont 40HC tại cảng"]:::fwd
+D["Vận chuyển (tránh cầu yếu/hẻm)"]:::fwd
+E["KH: Rút hàng → Trả cont"]:::kh
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+
+'s-vtnd-hang-le':{title:'TH3: Hàng lẻ – Xe tải 5–15 tấn',sub:'Giá: 500k–2tr/chuyến | CT: Phiếu giao hàng | Gom nhiều lô',note:'Hàng LCL sau khi rút tại CFS. Dùng xe tải thường, gom nhiều lô giao',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Gom hàng từ CFS"]:::fwd
+B["FWD: Xếp xe tải theo route"]:::fwd
+C["Giao lần lượt các KH"]:::fwd
+D["KH: Ký nhận từng lô"]:::kh
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+
+'s-vtnd-qua-kho':{title:'TH4: Hàng quá khổ – OT/FR + xe đặc biệt',sub:'Giá: 5–15tr/chuyến | CT: GP vận chuyển hàng siêu trường | Cần cảnh sát dẫn đường',note:'Máy móc, thiết bị lớn. Cần cont OT (Open Top) hoặc FR (Flat Rack). GP đặc biệt',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Khảo sát kích thước/trọng lượng"]:::fwd
+B["FWD: Xin GP vận chuyển siêu trường"]:::fwd
+C{"Cần cẩu?"}:::decision
+D["Thuê cẩu 50–200T tại cảng"]:::kho
+E["Xe nâng đặc biệt"]:::kho
+F["Vận chuyển + Cảnh sát dẫn đường"]:::fwd
+G["KH: Bốc dỡ bằng cẩu tại kho"]:::kh
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Có"| D --> F
+C -->|"Không"| E --> F
+F --> G --> H`},
+
+// ─── S2.3 PHÍ VT: 3 TH ───
+'s-pvt-fob':{title:'TH1: FOB – KH chịu Freight',sub:'KH trả: Ocean Freight + THC đích + Local charges | NCC chỉ giao lên tàu',note:'Free On Board. NCC giao hàng lên tàu tại cảng xuất. KH chịu mọi phí từ đó',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["NCC: Giao hàng lên tàu (FOB)"]:::ncc
+B["KH chịu: Ocean Freight"]:::kh
+C["KH chịu: THC cảng đích"]:::kh
+D["KH chịu: Local charges (CIC, BAF)"]:::kh
+E["KH chịu: Trucking nội địa"]:::kh
+F["FWD: Tổng hợp → Báo giá all-in"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+
+'s-pvt-cif':{title:'TH2: CIF – NCC chịu Freight + BH',sub:'NCC trả: Freight + Insurance | KH chỉ trả: THC đích + Local',note:'Cost Insurance Freight. NCC chịu freight + BH đến cảng đích. KH chịu local',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["NCC: Đã bao gồm Freight + BH"]:::ncc
+B["KH chịu: THC cảng đích"]:::kh
+C["KH chịu: D/O + Handling"]:::kh
+D["KH chịu: Trucking nội địa"]:::kh
+E["FWD: Tổng hợp local charges"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+
+'s-pvt-exw':{title:'TH3: EXW – KH chịu ALL',sub:'KH trả: Mọi phí từ kho NCC | NCC chỉ giao tại xưởng',note:'Ex Works. KH chịu mọi rủi ro + chi phí từ kho NCC. Phí cao nhất cho KH',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["NCC: Giao hàng tại xưởng"]:::ncc
+B["KH chịu: Pickup + VT đến cảng"]:::kh
+C["KH chịu: THC xuất + Freight"]:::kh
+D["KH chịu: BH hàng"]:::kh
+E["KH chịu: THC đích + Local"]:::kh
+F["KH chịu: Trucking nội địa"]:::kh
+G["FWD: Tổng hợp → Báo giá full"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G --> H`},
+
+// ─── S2.4 D&D: 3 TH ───
+'s-dnd-free':{title:'TH1: Trong free time – Không phí',sub:'Free time: 3–7 ngày (tuỳ Carrier) | Phí: 0 | Mục tiêu: Luôn nhắm đến',note:'Trả cont trong free time → không phí. FWD cần thông quan nhanh + kéo cont sớm',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Hàng đến cảng → Free time bắt đầu"]:::kho
+B["FWD: Thông quan trong 1–2 ngày"]:::fwd
+C["FWD: Kéo cont trong ngày 3–5"]:::fwd
+D["KH: Rút hàng nhanh"]:::kh
+E["Trả cont rỗng trước deadline"]:::fwd
+F["Không phí D&D phát sinh"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+
+'s-dnd-demurrage':{title:'TH2: Demurrage – Phí lưu cont tại cảng',sub:'Phí: 30–100 USD/cont/ngày | Nguyên nhân: Thông quan chậm',note:'Cont nằm tại cảng quá free time. Do HQ chậm, CT thiếu, luồng Đỏ kéo dài',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Free time hết → Demurrage bắt đầu"]:::kho
+B["Carrier: Tính phí theo ngày"]:::fwd
+C{"Nguyên nhân?"}:::decision
+D["HQ chậm → FWD đẩy nhanh TK"]:::fwd
+E["CT thiếu → FWD bổ sung gấp"]:::fwd
+F["Carrier: Xuất invoice Demurrage"]:::fwd
+G["KH: Thanh toán phí phát sinh"]:::kh
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"HQ"| D --> G
+C -->|"CT"| E --> G
+B --> F --> G --> H`},
+
+'s-dnd-detention':{title:'TH3: Detention – Phí giữ cont ngoài cảng',sub:'Phí: 20–80 USD/cont/ngày | Nguyên nhân: KH rút hàng chậm',note:'Cont đã kéo khỏi cảng nhưng chưa trả. Do KH rút hàng chậm, kho đầy',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Cont tại kho KH → Free detention hết"]:::kh
+B["Carrier: Tính phí Detention"]:::fwd
+C["FWD: Nhắc KH rút hàng gấp"]:::fwd
+D["KH: Rút hàng + Trả cont rỗng"]:::kh
+E["Carrier: Xuất invoice Detention"]:::fwd
+F["KH: Thanh toán"]:::kh
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+
+// ─── S2.5 BỐC XẾP: 3 TH ───
+'s-bx-thuong':{title:'TH1: Hàng thường – Xe nâng',sub:'Giá: 150–300k/tấn | Thiết bị: Xe nâng 3–5T | CT: Phiếu bốc xếp',note:'Hàng đóng pallet, carton, bao. Xe nâng thường đủ xử lý',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Xe nâng: Rút hàng từ cont"]:::kho
+B["Xếp lên pallet → Kiểm đếm"]:::kho
+C["Nhập vào vị trí kho"]:::kho
+D["Ký phiếu bốc xếp"]:::kho
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+
+'s-bx-qua-kho':{title:'TH2: Hàng quá khổ – Cẩu trục',sub:'Giá: 500k–2tr/tấn | Thiết bị: Cẩu 50–200T | CT: Kế hoạch nâng, GP cẩu',note:'Máy móc, thiết bị công nghiệp. Cần kế hoạch nâng (lifting plan), cẩu chuyên dụng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Lập kế hoạch nâng (Lifting Plan)"]:::fwd
+B["Thuê cẩu chuyên dụng"]:::kho
+C["Kiểm tra an toàn trước nâng"]:::qc
+D["Cẩu hàng ra khỏi cont/tàu"]:::kho
+E["Đặt lên xe siêu trường"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+
+'s-bx-dg':{title:'TH3: Hàng DG – Bốc xếp đặc biệt',sub:'Giá: 300–500k/tấn | Thiết bị: Xe nâng + Bảo hộ | CT: MSDS, SOP DG',note:'Hàng nguy hiểm (Class 1–9). Cần SOP riêng, nhân viên có chứng chỉ DG handling',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Kiểm tra MSDS + Phân loại DG"]:::qc
+B["Chuẩn bị bảo hộ (PPE) cho công nhân"]:::kho
+C["Bốc xếp theo SOP hàng DG"]:::kho
+D["Kiểm tra rò rỉ / Hư hỏng bao bì"]:::qc
+E["Lưu kho riêng khu DG"]:::kho
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+
+// ─── S3.1 LƯU CẢNG: 3 TH ───
+'s-lc-cy':{title:'TH1: CY – Bãi cont (Container Yard)',sub:'Phí: 150–400k/cont/ngày | Free: 3–5 ngày | Cont nguyên',note:'Cont nguyên lưu tại bãi CY. Chờ thông quan hoặc chờ xe kéo',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Cont dỡ từ tàu → Bãi CY"]:::kho
+B["Free storage: 3–5 ngày"]:::kho
+C{"Kéo cont kịp free?"}:::decision
+D["Kịp → Không phí lưu bãi"]:::kho
+E["Trễ → Phí lưu bãi phát sinh"]:::kho
+F(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Kịp"| D --> F
+C -->|"Trễ"| E --> F`},
+
+'s-lc-cfs':{title:'TH2: CFS – Kho hàng lẻ',sub:'Phí: 50–150k/CBM/ngày | Free: 3 ngày | Hàng LCL',note:'Hàng lẻ rút tại CFS. Phân loại theo lô, chờ KH/FWD đến nhận',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Cont ghép đến CFS → Rút hàng"]:::kho
+B["CFS: Phân loại theo House B/L"]:::kho
+C["Free storage CFS: 3 ngày"]:::kho
+D{"Nhận hàng kịp?"}:::decision
+E["Kịp → Không phí"]:::kho
+F["Trễ → Phí CFS phát sinh"]:::kho
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Kịp"| E --> G
+D -->|"Trễ"| F --> G`},
+
+'s-lc-icd':{title:'TH3: ICD – Cảng cạn (Inland Container Depot)',sub:'Phí: 100–300k/cont/ngày | Chuyển cont về ICD thông quan',note:'ICD: cảng nội địa. Chuyển cont từ cảng biển → ICD → thông quan tại ICD. Giảm tải cảng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Đăng ký chuyển cont về ICD"]:::fwd
+B["HQ: Niêm phong + Giám sát transit"]:::hq
+C["Vận chuyển cảng biển → ICD"]:::fwd
+D["ICD: Nhận cont + Kiểm Seal"]:::kho
+E["Thông quan tại ICD"]:::hq
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+
+// ─── S3.2 KHO NQ: 2 TH ───
+'s-knq-cho-gp':{title:'TH1: Chờ GP/CT – Kho ngoại quan hợp pháp',sub:'Phí: 15–30k/CBM/ngày | Thời hạn: max 12 tháng (gia hạn 2 lần)',note:'Hàng chưa đủ GP/CT. Lưu kho NQ chờ bổ sung. HQ giám sát',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Làm thủ tục nhập kho NQ"]:::fwd
+B["HQ: Niêm phong + Giám sát"]:::hq
+C["Hàng lưu kho NQ (max 12 tháng)"]:::kho
+D{"GP/CT đủ?"}:::decision
+E["Xuất kho NQ → Thông quan"]:::fwd
+F["Gia hạn (tối đa 2 lần)"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Đủ"| E --> G
+D -->|"Chưa"| F --> D`},
+
+'s-knq-tam-giu':{title:'TH2: Tạm giữ HQ – Vi phạm/Tranh chấp',sub:'Phí: Theo QĐ HQ | Thời hạn: đến khi giải quyết',note:'HQ tạm giữ do nghi vi phạm: khai sai, hàng cấm, gian lận. Cần luật sư',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HQ: Ra QĐ tạm giữ hàng"]:::hq
+B["Hàng lưu kho HQ giám sát"]:::kho
+C["KH/Luật sư: Giải trình + Nộp hồ sơ"]:::kh
+D{"HQ: Kết luận?"}:::decision
+E["Trả hàng → Nộp phạt (nếu có)"]:::hq
+F["Tịch thu / Tiêu hủy"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Trả"| E --> G
+D -->|"Tịch thu"| F --> G`},
+
+// ─── S3.3 KHO KH: 3 TH ───
+'s-kkh-du':{title:'TH1: Nhận đủ – Nhập kho bình thường',sub:'Flow: Kiểm đếm → Khớp PL → Nhập kho → Ký xác nhận',note:'Happy path. Hàng đúng số lượng, chất lượng OK, bao bì nguyên vẹn',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Giao hàng đến kho KH"]:::fwd
+B["KH: Kiểm tra bao bì"]:::kh
+C["KH: Kiểm đếm so PL"]:::kh
+D["Khớp → Nhập kho"]:::kh
+E["KH: Ký xác nhận nhận hàng"]:::kh
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+
+'s-kkh-thieu':{title:'TH2: Nhận thiếu – Lệch số lượng',sub:'Flow: Kiểm đếm → Lệch → Biên bản → Khiếu nại FWD/NCC',note:'Thiếu hàng so PL. Lập biên bản có FWD ký. Claim NCC hoặc BH hàng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Kiểm đếm → Phát hiện lệch"]:::kh
+B["Lập biên bản lệch (KH + FWD ký)"]:::kh
+C["Chụp ảnh bằng chứng"]:::kh
+D{"Nguyên nhân?"}:::decision
+E["NCC giao thiếu → Claim NCC"]:::ncc
+F["Mất mát vận chuyển → Claim BH"]:::nh
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"NCC"| E --> G
+D -->|"Vận chuyển"| F --> G`},
+
+'s-kkh-hong':{title:'TH3: Nhận hàng hỏng – Tổn thất',sub:'Flow: Phát hiện hỏng → Ảnh + BB → Giám định → BH claim',note:'Hàng bị hư hỏng (vỡ, ướt, biến dạng). Cần giám định độc lập để claim BH',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Phát hiện hàng hỏng"]:::kh
+B["Chụp ảnh + Giữ nguyên hiện trường"]:::kh
+C["Lập biên bản tổn thất"]:::kh
+D["Yêu cầu giám định độc lập"]:::qc
+E["GĐ viên: Cấp chứng thư tổn thất"]:::qc
+F["KH: Nộp claim BH + Chứng thư"]:::nh
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+
+// ─── S3.4 PHÍ KHO: 3 TH ───
+'s-pk-luu-kho':{title:'TH1: Storage – Phí lưu kho',sub:'Tính: CBM/ngày hoặc Pallet/ngày | Giá: 5–20k/CBM/ngày',note:'Phí theo diện tích/thể tích chiếm dụng. Kho lạnh đắt gấp 2–3 lần kho thường',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Kho: Đo CBM/Pallet chiếm dụng"]:::kho
+B["Tính: CBM x Số ngày x Đơn giá"]:::kho
+C{"Kho lạnh?"}:::decision
+D["Đơn giá x 2.5 (phí điện lạnh)"]:::kho
+E["Đơn giá kho thường"]:::kho
+F["Xuất hoá đơn lưu kho"]:::kho
+G(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Có"| D --> F
+C -->|"Không"| E --> F
+F --> G`},
+
+'s-pk-xep-do':{title:'TH2: Handling – Phí xếp dỡ',sub:'Tính: Per lần vào/ra kho | Giá: 50–200k/tấn',note:'Phí mỗi lần nhập/xuất kho. Bao gồm xe nâng, công nhân, kiểm đếm',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Loại thao tác?"}:::decision
+B["Nhập kho (In) → Bốc + Xếp vị trí"]:::kho
+C["Xuất kho (Out) → Lấy + Bốc xe"]:::kho
+D["Tính: Tấn x Đơn giá handling"]:::kho
+E["Ghi nhận vào Debit Note"]:::fwd
+F(("Hoàn thành")):::event
+S --> A
+A -->|"Nhập"| B --> D
+A -->|"Xuất"| C --> D
+D --> E --> F`},
+
+'s-pk-repack':{title:'TH3: Repacking – Phí đóng gói lại',sub:'Giá: Theo yêu cầu (100–500k/kiện) | CT: Yêu cầu + Báo giá kho',note:'Đóng gói lại bao bì hỏng, dán nhãn lại, chia nhỏ lô. Theo yêu cầu KH',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Yêu cầu đóng gói lại"]:::kh
+B["Kho: Khảo sát + Báo giá"]:::kho
+C{"KH: Duyệt giá?"}:::decision
+D["Kho: Thực hiện repack"]:::kho
+E["Huỷ yêu cầu"]:::kh
+F["KH: Kiểm tra + Nghiệm thu"]:::kh
+G(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"OK"| D --> F --> G
+C -->|"Không"| E --> G`},
+
+// ─── S4.1 LẬP CT: 3 TH ───
+'s-ct-thuong':{title:'TH1: Lô hàng thường – CT cơ bản',sub:'CT: CI + PL + TK | Giá: 500k–1tr/bộ | Phổ biến nhất',note:'NK hàng tiêu dùng thông thường. Bộ CT chuẩn: CI, PL, B/L, TK ECUS',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["NCC: Gửi CI + PL bản gốc"]:::ncc
+B["FWD: Kiểm tra CI vs PL"]:::fwd
+C["FWD: Soạn TK ECUS từ CI/PL"]:::fwd
+D["FWD: Đính kèm B/L + Scan CT"]:::fwd
+E["Truyền VNACCS"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+
+'s-ct-fta':{title:'TH2: Có C/O (FTA) – Giảm thuế',sub:'CT: CI + PL + TK + C/O + Form ưu đãi | Giá: 800k–1.5tr/bộ',note:'Cần C/O hợp lệ (ATIGA, EVFTA, CPTPP...). HS phải khớp FTA. Tiết kiệm thuế NK',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["NCC: Gửi C/O + CI + PL"]:::ncc
+B["FWD: Kiểm tra C/O hợp lệ?"]:::fwd
+C{"C/O OK?"}:::decision
+D["Khai TK kèm thuế suất FTA"]:::fwd
+E["C/O sai → Yêu cầu NCC sửa"]:::fwd
+F["HQ: Kiểm tra C/O vs HS"]:::hq
+G(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"OK"| D --> F --> G
+C -->|"Sai"| E --> B`},
+
+'s-ct-sxxk':{title:'TH3: SXXK – Định mức sản xuất',sub:'CT: CI + PL + TK + HĐ gia công + Bảng ĐMSX | Giá: 1–2tr/bộ',note:'NK nguyên liệu SXXK. Cần bảng Định mức sản xuất xuất khẩu. Theo dõi nguyên liệu',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Gửi HĐ gia công + ĐMSX"]:::kh
+B["FWD: Soạn TK kèm ĐMSX"]:::fwd
+C["FWD: Đối chiếu NL nhập vs ĐMSX"]:::fwd
+D{"Khớp định mức?"}:::decision
+E["Khai TK miễn thuế (A41)"]:::fwd
+F["Điều chỉnh ĐMSX"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Khớp"| E --> G
+D -->|"Lệch"| F --> C`},
+
+// ─── S4.2 D/O: 3 TH ───
+'s-do-original':{title:'TH1: B/L gốc – Nộp bản gốc',sub:'Giá D/O: 700k–1.5tr | Flow: Nhận B/L gốc → Nộp hãng tàu → Nhận D/O',note:'Phổ biến với L/C. KH nhận B/L gốc từ NH → Giao FWD → Nộp hãng tàu. An toàn nhất',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH/NH: Giao 3 bản B/L gốc"]:::kh
+B["FWD: Nộp 1 bản B/L gốc tại hãng tàu"]:::fwd
+C["FWD: Nộp phí D/O (700k–1.5tr)"]:::fwd
+D["Hãng tàu: Cấp D/O"]:::fwd
+E["FWD: Nộp D/O tại cảng"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+
+'s-do-telex':{title:'TH2: Telex Release – Điện giao hàng',sub:'Giá D/O: 500k–1tr | Flow: NCC surrender → Hãng tàu Telex → FWD nhận D/O',note:'NCC giao nộp B/L tại cảng xuất (Surrender). Hãng tàu Telex xác nhận. Nhanh hơn gốc',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["NCC: Surrender B/L tại cảng xuất"]:::ncc
+B["Hãng tàu: Telex Release → Cảng đích"]:::fwd
+C["FWD: Xác nhận Telex đã nhận"]:::fwd
+D["FWD: Nộp phí + Nhận D/O"]:::fwd
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+
+'s-do-swb':{title:'TH3: Sea Waybill – Vận đơn điện tử',sub:'Giá D/O: 300–700k | Flow: Tự động release, không cần B/L gốc',note:'Sea Waybill = không phải chứng từ sở hữu hàng. Release tự động. Nhanh nhất. Dùng cho cùng tập đoàn',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["NCC: Phát hành SWB thay B/L"]:::ncc
+B["Hàng đến → Tự động release"]:::fwd
+C["FWD: Nộp phí D/O (thấp nhất)"]:::fwd
+D["Nhận D/O → Lấy hàng"]:::fwd
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+
+// ─── S4.4 LƯU TRỮ: 2 TH ───
+'s-lt-dien-tu':{title:'TH1: Lưu trữ điện tử – Cloud/DMS',sub:'Scan → OCR → Đánh mã → Lưu Cloud | Tra cứu: theo TK, ngày, KH',note:'Scan 300dpi, OCR trích xuất dữ liệu. Lưu trữ trên DMS (Document Management System)',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Scan CT 300dpi"]:::fwd
+B["OCR: Trích xuất dữ liệu"]:::fwd
+C["Đánh mã hồ sơ: TK-Ngày-KH"]:::fwd
+D["Upload Cloud/DMS"]:::fwd
+E["KH: Tra cứu online khi cần"]:::kh
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+
+'s-lt-ban-cung':{title:'TH2: Lưu trữ bản cứng – Kho CT vật lý',sub:'Đóng hộp → Đánh mã → Kho CT | Thời hạn: 5 năm (QĐ HQ)',note:'Luật HQ yêu cầu lưu CT gốc 5 năm. Kho CT phải chống ẩm, chống cháy',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Sắp xếp CT theo thứ tự"]:::fwd
+B["Đóng hộp + Dán nhãn mã"]:::fwd
+C["Nhập kho CT (chống ẩm, cháy)"]:::fwd
+D["Sau 5 năm → Hủy (có biên bản)"]:::fwd
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+
+// ─── S5.1 BẢO HIỂM: 3 TH ───
+'s-bh-all-risk':{title:'TH1: All Risk – Mọi rủi ro',sub:'Phí: 0.2–0.3% CIF | Coverage: Mọi rủi ro trừ chiến tranh | Hàng giá trị cao',note:'Bảo hiểm rộng nhất. Bồi thường mọi tổn thất (trừ chiến tranh, đình công, hao hụt tự nhiên)',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Yêu cầu BH All Risk"]:::kh
+B["BH: Tính phí = 0.2–0.3% x CIF x 110%"]:::nh
+C["KH: Thanh toán phí BH"]:::kh
+D["BH: Cấp Policy + Certificate"]:::nh
+E{"Có tổn thất?"}:::decision
+F["Claim: Giám định → Bồi thường 100%"]:::nh
+G["Không → Kết thúc"]:::nh
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Có"| F --> H
+E -->|"Không"| G --> H`},
+
+'s-bh-wa':{title:'TH2: WA – Tổn thất riêng (With Average)',sub:'Phí: 0.1–0.15% CIF | Coverage: Tổn thất riêng do thiên tai, đắm tàu',note:'Bồi thường tổn thất riêng khi vượt franchise (mức miễn thường). Rẻ hơn All Risk',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Yêu cầu BH WA"]:::kh
+B["BH: Tính phí = 0.1–0.15% x CIF x 110%"]:::nh
+C["BH: Cấp Policy"]:::nh
+D{"Tổn thất riêng?"}:::decision
+E{"Vượt franchise?"}:::decision
+F["Bồi thường phần vượt"]:::nh
+G["Không bồi thường"]:::nh
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Có"| E
+D -->|"Không"| G --> H
+E -->|"Vượt"| F --> H
+E -->|"Không"| G`},
+
+'s-bh-fpa':{title:'TH3: FPA – Tổn thất toàn bộ (Free Particular Average)',sub:'Phí: 0.05–0.1% CIF | Coverage: Chỉ tổn thất toàn bộ | Hàng rẻ',note:'Rẻ nhất. Chỉ bồi khi tổn thất toàn bộ (Total Loss). Phù hợp hàng giá trị thấp, bulk',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Yêu cầu BH FPA"]:::kh
+B["BH: Tính phí = 0.05–0.1% CIF"]:::nh
+C["BH: Cấp Policy"]:::nh
+D{"Tổn thất?"}:::decision
+E["Tổn thất toàn bộ → Bồi thường"]:::nh
+F["Tổn thất riêng → Không bồi"]:::nh
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Toàn bộ"| E --> G
+D -->|"Riêng"| F --> G`},
+
+// ─── S5.2 L/C: 3 TH ───
+'s-lc-sight':{title:'TH1: L/C at sight – Trả ngay',sub:'Phí: 0.15% + swift 500k | Flow: NCC giao → NH kiểm CT → Trả ngay',note:'An toàn nhất cho NCC. NH trả ngay khi CT hợp lệ. KH cần có tiền ký quỹ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Ký quỹ + Mở L/C at sight"]:::kh
+B["NH phát hành → Swift → NH thông báo"]:::nh
+C["NCC: Giao hàng + Nộp CT cho NH"]:::ncc
+D["NH: Kiểm CT (5 ngày làm việc)"]:::nh
+E{"CT hợp lệ?"}:::decision
+F["Thanh toán ngay → Ký hậu B/L"]:::nh
+G["Bất hợp lệ → Sửa đổi"]:::nh
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> H
+E -->|"Không"| G --> D`},
+
+'s-lc-usance':{title:'TH2: L/C usance – Trả chậm 30–180 ngày',sub:'Phí: 0.2% + swift + lãi 4–8%/năm | KH có thời gian bán hàng trước khi trả',note:'NH chấp nhận hối phiếu → NCC nhận tiền ngay (chiết khấu) hoặc chờ. KH trả sau',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Mở L/C usance 60/90/180 ngày"]:::kh
+B["NCC: Giao hàng + Nộp CT"]:::ncc
+C["NH: Kiểm CT → Chấp nhận hối phiếu"]:::nh
+D{"NCC muốn tiền ngay?"}:::decision
+E["Chiết khấu hối phiếu (NCC nhận ngay)"]:::nh
+F["Chờ đáo hạn (NCC nhận sau)"]:::nh
+G["KH: Thanh toán khi đáo hạn"]:::kh
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Ngay"| E --> G --> H
+D -->|"Chờ"| F --> G`},
+
+'s-lc-transferable':{title:'TH3: L/C Transferable – Chuyển nhượng',sub:'Phí: 0.25% + swift | KH trung gian chuyển L/C cho NCC thực tế',note:'Dùng khi KH là thương nhân trung gian. Chuyển L/C (phần/toàn bộ) cho NCC gốc',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH (trung gian): Mở L/C Transferable"]:::kh
+B["NH: Phát hành L/C có điều khoản transfer"]:::nh
+C["KH: Yêu cầu chuyển nhượng cho NCC gốc"]:::kh
+D["NH: Chuyển L/C (giá thấp hơn)"]:::nh
+E["NCC gốc: Giao hàng + Nộp CT"]:::ncc
+F["KH: Thay CI (giá cao hơn) → Hưởng chênh lệch"]:::kh
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+
+// ─── S5.3 DEBIT NOTE: 2 TH ───
+'s-dn-ok':{title:'TH1: KH chấp nhận – Thanh toán',sub:'Timeline: 7–15 ngày | Flow: DN → OK → Pay → VAT Invoice',note:'Happy path. KH xác nhận chi phí → chuyển tiền → FWD xuất VAT Invoice',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Gửi Debit Note cho KH"]:::fwd
+B["KH: Kiểm tra chi tiết phí"]:::kh
+C["KH: Xác nhận OK"]:::kh
+D["KH: Chuyển tiền thanh toán"]:::kh
+E["FWD: Xuất hoá đơn VAT"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+
+'s-dn-dispute':{title:'TH2: KH phản hồi – Điều chỉnh',sub:'Timeline: 15–30 ngày | Flow: DN → Dispute → Adjust → Re-DN → Pay',note:'KH không đồng ý 1 số khoản phí. FWD giải trình hoặc điều chỉnh. Mất thời gian',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Gửi Debit Note"]:::fwd
+B["KH: Phản hồi khoản phí không đồng ý"]:::kh
+C["FWD: Giải trình + Cung cấp chứng từ"]:::fwd
+D{"KH: Chấp nhận giải trình?"}:::decision
+E["OK → Thanh toán → VAT Invoice"]:::kh
+F["Không → FWD điều chỉnh DN"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"OK"| E --> G
+D -->|"Không"| F --> A`},
+
+// ─── S6.1 GIÁM ĐỊNH: 3 TH ───
+'s-gd-so-luong':{title:'TH1: Giám định số lượng – Đếm/Cân',sub:'Giá: 2–3tr/lô | Đơn vị: SGS, Vinacontrol | CT: Chứng thư GĐ SL',note:'Kiểm đếm số lượng thực tế vs CI/PL. Cân trọng lượng. Khi nghi thiếu hàng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Yêu cầu GĐ số lượng"]:::kh
+B["GĐ viên: Đến hiện trường"]:::qc
+C["Kiểm đếm + Cân trọng lượng"]:::qc
+D["Đối chiếu vs CI/PL"]:::qc
+E["Cấp Chứng thư GĐ số lượng"]:::qc
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+
+'s-gd-chat-luong':{title:'TH2: Giám định chất lượng – Thử nghiệm',sub:'Giá: 3–5tr/lô | Đơn vị: Bureau Veritas, TUV | CT: Chứng thư GĐ CL',note:'Lấy mẫu → Thử nghiệm lab → So tiêu chuẩn. Khi hàng nghi kém chất lượng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Yêu cầu GĐ chất lượng"]:::kh
+B["GĐ viên: Lấy mẫu đại diện"]:::qc
+C["Lab: Thử nghiệm theo tiêu chuẩn"]:::qc
+D{"Đạt tiêu chuẩn?"}:::decision
+E["Đạt → Cấp Chứng thư GĐ CL"]:::qc
+F["Không → Ghi nhận sai lệch"]:::qc
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Đạt"| E --> G
+D -->|"Không"| F --> G`},
+
+'s-gd-ton-that':{title:'TH3: Giám định tổn thất – Cho BH claim',sub:'Giá: 3–8tr/lô | Đơn vị: Công ty GĐ BH | CT: Chứng thư tổn thất',note:'Xác định mức độ tổn thất để BH bồi thường. Cần ảnh, biên bản, survey report',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["KH: Phát hiện tổn thất → Báo BH"]:::kh
+B["BH: Cử GĐ viên đến hiện trường"]:::nh
+C["GĐ viên: Khảo sát + Chụp ảnh"]:::qc
+D["Xác định nguyên nhân + Mức tổn thất"]:::qc
+E["Cấp Survey Report + Chứng thư"]:::qc
+F["KH: Nộp claim BH kèm chứng thư"]:::kh
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+
+// ─── S6.2 KIỂM DỊCH: 3 TH ───
+'s-kd-dong-vat':{title:'TH1: Kiểm dịch Động vật – Cục Thú y',sub:'Giá: 1–2tr/lô | SLA: 3–5 ngày | CT: CN kiểm dịch ĐV',note:'Thịt, hải sản, sữa, da, lông. Cục Thú y kiểm tra bệnh, dư lượng kháng sinh',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Đăng ký KD động vật (NSW)"]:::fwd
+B["Nộp: Health Certificate nước XK"]:::fwd
+C["Cục Thú y: Kiểm tra lâm sàng"]:::qc
+D["Lấy mẫu → Xét nghiệm bệnh"]:::qc
+E{"Kết quả?"}:::decision
+F["Đạt → Cấp CN kiểm dịch ĐV"]:::qc
+G["Không → Tiêu hủy/Tái xuất"]:::qc
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Đạt"| F --> H
+E -->|"Không"| G --> H`},
+
+'s-kd-thuc-vat':{title:'TH2: Kiểm dịch Thực vật – Cục BVTV',sub:'Giá: 1–2tr/lô | SLA: 3–5 ngày | CT: CN kiểm dịch TV',note:'Gạo, trái cây, rau, gỗ, hạt giống. Cục BVTV kiểm tra sâu bệnh, nấm mốc',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Đăng ký KD thực vật"]:::fwd
+B["Nộp: Phytosanitary Certificate"]:::fwd
+C["Cục BVTV: Kiểm tra ngoại quan"]:::qc
+D{"Phát hiện sâu bệnh?"}:::decision
+E["Không → Cấp CN kiểm dịch TV"]:::qc
+F["Có → Xử lý hun trùng"]:::qc
+G["Kiểm tra lại sau xử lý"]:::qc
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Không"| E --> H
+D -->|"Có"| F --> G --> E`},
+
+'s-kd-y-te':{title:'TH3: Kiểm dịch Y tế – Bộ Y tế',sub:'Giá: 2–3tr/lô | SLA: 5–7 ngày | CT: CN kiểm dịch Y tế',note:'Thiết bị y tế, mỹ phẩm, thực phẩm chức năng. Bộ Y tế kiểm tra an toàn',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Đăng ký KD y tế"]:::fwd
+B["Nộp: Hồ sơ CN + Mẫu sản phẩm"]:::fwd
+C["Bộ Y tế: Kiểm tra hồ sơ + Mẫu"]:::qc
+D{"Kết quả?"}:::decision
+E["Đạt → Cấp CN đủ ĐK nhập khẩu"]:::qc
+F["Không → Bổ sung hồ sơ/Tái xuất"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Đạt"| E --> G
+D -->|"Không"| F --> G`},
+
+// ─── S6.3 FUMIGATION: 2 TH ───
+'s-fm-mb':{title:'TH1: Methyl Bromide – Hoá chất',sub:'Giá: 1–2tr/cont | Thời gian: 24h | CT: CN hun trùng + Dấu IPPC',note:'Phun hoá chất MB. Nhanh hơn HT. Nhưng MB gây hại tầng ozone → dần bị cấm ở nhiều nước',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Đặt lịch hun trùng MB"]:::fwd
+B["Đơn vị KD: Kiểm tra pallet/hàng"]:::qc
+C["Phun Methyl Bromide vào cont/kho"]:::qc
+D["Bịt kín → Chờ 24h"]:::qc
+E["Thông gió → Kiểm tra dư lượng"]:::qc
+F["Cấp CN hun trùng + Đóng dấu IPPC"]:::qc
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F --> G`},
+
+'s-fm-ht':{title:'TH2: Heat Treatment – Nhiệt',sub:'Giá: 1.5–2.5tr/cont | Thời gian: 48h | CT: CN hun trùng + Dấu IPPC',note:'Gia nhiệt pallet gỗ ở 56 độ C trong 30 phút. An toàn hơn MB. Nhiều nước EU yêu cầu HT',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD: Đặt lịch Heat Treatment"]:::fwd
+B["Đưa pallet/gỗ vào buồng nhiệt"]:::qc
+C["Gia nhiệt 56 độ C / 30 phút"]:::qc
+D["Đo nhiệt độ lõi gỗ (sensor)"]:::qc
+E{"Đạt 56 độ C?"}:::decision
+F["Cấp CN HT + Đóng dấu IPPC"]:::qc
+G["Gia nhiệt thêm"]:::qc
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Đạt"| F --> H
+E -->|"Chưa"| G --> C`}
 };
 /* ── RENDER + MODAL ── */
 const svgCache = {};
