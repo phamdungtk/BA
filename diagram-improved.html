@@ -54,6 +54,24 @@
     .tree-li:only-child::after,.tree-li:only-child::before{display:none}
     .tree-li:only-child{padding-top:0}
 
+    
+    /* ── HORIZONTAL TREE MODE ── */
+    .tree-horizontal .tree-root{flex-direction:column;align-items:flex-start;padding-top:0;padding-left:16px}
+    .tree-horizontal .tree-ul{flex-direction:column;align-items:flex-start;padding-top:0;padding-left:28px;justify-content:flex-start}
+    .tree-horizontal .tree-ul-sub::before{top:50%;left:0;height:auto;width:28px;border-left:none;border-top:2px solid var(--node-line);margin-left:0}
+    .tree-horizontal .tree-li{flex-direction:row;align-items:flex-start;padding-top:0;padding-left:28px;padding-right:0;padding-bottom:6px;text-align:left}
+    .tree-horizontal .tree-li::before{top:50%;right:auto;left:0;width:28px;height:auto;border-top:2px solid var(--node-line);border-left:none}
+    .tree-horizontal .tree-li::after{top:0;left:0;width:auto;height:50%;border-top:none;border-left:2px solid var(--node-line)}
+    .tree-horizontal .tree-li:first-child::before{border-top:2px solid var(--node-line)}
+    .tree-horizontal .tree-li:first-child::after{top:50%;height:50%}
+    .tree-horizontal .tree-li:last-child::after{height:50%;border-top:none}
+    .tree-horizontal .tree-li:only-child::before{display:block}
+    .tree-horizontal .tree-li:only-child::after{display:none}
+    .tree-horizontal .tree-li:only-child{padding-left:28px}
+    .tree-horizontal .node{text-align:left;max-width:180px}
+    .tree-horizontal .node-root{max-width:220px}
+    .tree-horizontal .collapsible{flex-direction:column}
+    .tree-horizontal .collapsible.collapsed{max-height:0!important;max-width:0!important}
     /* ── NODES ── */
     .node{position:relative;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;border-radius:12px;border:2px solid var(--border);padding:7px 12px;min-width:95px;max-width:145px;font-size:11px;font-weight:600;color:var(--text);cursor:pointer;z-index:10;white-space:normal;line-height:1.3;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s,filter .18s}
     .node:hover{transform:translateY(-3px);filter:brightness(1.15)}
@@ -214,7 +232,7 @@
     <button class="tb-btn" id="btnFit" title="Fit"><i class="bi bi-fullscreen"></i></button>
     <button class="tb-btn" id="btnReset" title="Reset"><i class="bi bi-arrow-counterclockwise"></i></button>
     <div class="tb-sep"></div>
-    <button class="tb-btn" id="btnCollapseAll" title="Thu gọn"><i class="bi bi-arrows-collapse"></i></button>
+    <button class="tb-btn" id="btnTreeDir" title="Chế độ ngang/dọc" onclick="toggleTreeDir()"><i class="bi bi-layout-sidebar"></i></button><div class="tb-sep"></div><button class="tb-btn" id="btnCollapseAll" title="Thu gọn"><i class="bi bi-arrows-collapse"></i></button>
     <button class="tb-btn" id="btnExpandAll" title="Mở rộng"><i class="bi bi-arrows-expand"></i></button>
   </div>
   <div class="topbar-right"><span><span class="kbd">Scroll</span>=Zoom</span><span><span class="kbd">Drag</span>=Pan</span></div>
@@ -6109,6 +6127,22 @@ function filterGlossary(q){
     }
     g.classList.toggle('gl-hide',!hasVisible);
   });
+}
+
+// Tree direction toggle
+let treeHorizontal = false;
+function toggleTreeDir(){
+  treeHorizontal = !treeHorizontal;
+  const canvas = document.querySelector('.canvas');
+  canvas.classList.toggle('tree-horizontal', treeHorizontal);
+  const btn = document.getElementById('btnTreeDir');
+  btn.innerHTML = treeHorizontal ? '<i class="bi bi-layout-split"></i>' : '<i class="bi bi-layout-sidebar"></i>';
+  btn.title = treeHorizontal ? 'Chế độ dọc' : 'Chế độ ngang';
+  // Re-fit after layout change
+  setTimeout(()=>{
+    if(typeof fitCanvas==='function') fitCanvas();
+    if(typeof updateMinimap==='function') updateMinimap();
+  }, 400);
 }
 document.addEventListener('DOMContentLoaded',()=>{renderGlossary();
 
