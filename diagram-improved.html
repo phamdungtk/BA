@@ -2768,7 +2768,7 @@ document.getElementById('btnFit').onclick=()=>{const c=canvas.getBoundingClientR
 function upXY(cx,cy){const r=wrapper.getBoundingClientRect();document.getElementById('xyDisplay').textContent=`${Math.round((cx-r.left-r.width/2-tx)/scale)}, ${Math.round((cy-r.top-r.height/2-ty)/scale)}`;}
 
 /* ── TOGGLE ── */
-document.querySelectorAll('[data-toggle="children"]').forEach(n=>{n.addEventListener('click',e=>{e.stopPropagation();const i=n.querySelector('.toggle-icon');if(!i)return;const u=document.getElementById(i.id.replace('-icon','-children'));if(u){u.classList.toggle('collapsed');i.classList.toggle('rotated');setTimeout(upMM,400);}});});
+document.querySelectorAll('[data-toggle="children"]').forEach(n=>{n.addEventListener('click',e=>{e.stopPropagation();const i=n.querySelector('.toggle-icon');if(!i)return;const u=n.parentElement&&n.parentElement.querySelector(':scope > ul.collapsible')||document.getElementById((i.id||'').replace('-icon','-children'));if(u){u.classList.toggle('collapsed');i.classList.toggle('rotated');setTimeout(upMM,400);}});});
 document.getElementById('btnCollapseAll').onclick=()=>{document.querySelectorAll('.collapsible').forEach(u=>u.classList.add('collapsed'));document.querySelectorAll('.toggle-icon').forEach(i=>i.classList.add('rotated'));setTimeout(upMM,400);};
 document.getElementById('btnExpandAll').onclick=()=>{document.querySelectorAll('.collapsible').forEach(u=>u.classList.remove('collapsed'));document.querySelectorAll('.toggle-icon').forEach(i=>i.classList.remove('rotated'));setTimeout(upMM,400);};
 
