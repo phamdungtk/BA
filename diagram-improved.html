@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -277,13 +277,21 @@
             <li class="tree-li">
               <div class="node node-module" data-toggle="children"><span class="node-label">Module</span>★ Hải quan ★<button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-hq-master')" title="Xem tổng thể H1-H6" style="background:rgba(245,158,11,.15);border-color:rgba(245,158,11,.4);color:#fbbf24"><i class="bi bi-diagram-3"></i> Tổng thể</button><i class="bi bi-chevron-down toggle-icon" id="hq-icon"></i></div>
               <ul class="tree-ul tree-ul-sub collapsible collapsed" id="hq-children">
-                <!-- H1: Tờ khai --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1</span>Tờ khai<span class="group-badge">19</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h1')" title="Luồng nội bộ H1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h1-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h1-children">
+                <!-- H1: Tờ khai --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1</span>Tờ khai<span class="group-badge">39</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h1')" title="Luồng nội bộ H1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h1-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h1-children">
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.1</span>Đăng ký TK<span class="group-badge">5</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-dang-ky-tk')" title="WF tổng H1.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-a11')">TH1: NK thường (A11)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-a41')">TH2: SXXK (A41)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-a31')">TH3: Tại chỗ (A31)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-g13')">TH4: Tạm nhập (G13)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-tk-a12')">TH5: Hàng mẫu (A12)</div></li></ul></li>
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.2</span>Khai báo chi tiết<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-khai-bao')" title="WF tổng H1.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kb-hs-trigia')">TH1: HS + Trị giá</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kb-xuatxu')">TH2: Xuất xứ + C/O</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-kb-cont')">TH3: Container + Kiện</div></li></ul></li>
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.3</span>Sửa/Huỷ TK<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-sua-huy')" title="WF tổng H1.3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-sua-truoc')">TH1: Sửa trước TQ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-sua-sau')">TH2: Sửa sau TQ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-huy-tk')">TH3: Huỷ tờ khai</div></li></ul></li>
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.4</span>Nộp TK qua ECUS<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-nop-vnaccs')" title="WF tổng H1.4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-ok')">TH1: Nộp thành công</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-loi')">TH2: Lỗi hệ thống</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-bosung')">TH3: Nộp bổ sung</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-nop-giay')">TH4: Tờ khai giấy</div></li></ul></li>
                 </ul></li>
-                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.5</span>Dòng tờ khai<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-dong-tk')" title="WF tổng H1.5"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-them')">TH1: Thêm dòng TK</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-sua')">TH2: Sửa dòng TK</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-xoa')">TH3: Xoá dòng TK</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-nhieucont')">TH4: Dòng nhiều container</div></li></ul></li>
+                  <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.5</span>Dòng tờ khai<span class="group-badge">24</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h15')" title="Luồng nội bộ H1.5"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed">
+                    <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.5.1</span>Phân loại hàng (HS &amp; Mô tả)<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-dtk-phanloai')" title="WF tổng H1.5.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-hs')">TH1: Tra mã HS 8 số</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-mota')">TH2: Mô tả hàng hoá HQ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-hs-quanly')">TH3: HS thuộc danh mục quản lý</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-hs-sai')">TH4: HS sai → ECUS cảnh báo</div></li></ul></li>
+                    <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.5.2</span>Lượng hàng &amp; Đơn vị<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-dtk-luong')" title="WF tổng H1.5.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-sl-chinh')">TH1: SL đơn vị chính</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-sl-phu')">TH2: SL đơn vị phụ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-sl-quydoi')">TH3: Quy đổi đơn vị</div></li></ul></li>
+                    <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.5.3</span>Trị giá dòng<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-dtk-trigia')" title="WF tổng H1.5.3"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-dongia')">TH1: Đơn giá nguyên tệ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-phanbo')">TH2: Phân bổ phí VT/BH</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-tygia')">TH3: Tỷ giá quy đổi VND</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-trigia-thue')">TH4: Trị giá tính thuế</div></li></ul></li>
+                    <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.5.4</span>Thuế theo dòng<span class="group-badge">4</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-dtk-thue')" title="WF tổng H1.5.4"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-thue-nk')">TH1: Thuế NK (HS + FTA)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-thue-vat')">TH2: VAT (0/5/8/10%)</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-thue-ttdb')">TH3: TTĐB / BVMT</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-thue-pvtm')">TH4: Thuế PVTM (AD/CVD)</div></li></ul></li>
+                    <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.5.5</span>Xuất xứ &amp; Ưu đãi<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-dtk-xuatxu')" title="WF tổng H1.5.5"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-nuocxx')">TH1: Nước xuất xứ theo dòng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-fta')">TH2: Mã ưu đãi FTA</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-co')">TH3: C/O áp dụng cho dòng</div></li></ul></li>
+                    <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.5.6</span>GP &amp; Kiểm tra CNG<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-dtk-gpcng')" title="WF tổng H1.5.6"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-gp')">TH1: Dòng cần GP chuyên ngành</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-cng')">TH2: Dòng cần kiểm tra CNG</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-mienkiem')">TH3: Dòng miễn kiểm</div></li></ul></li>
+                    <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H1.5.7</span>Phân bổ Container<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-dtk-cont')" title="WF tổng H1.5.7"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-1dong1cont')">TH1: 1 dòng – 1 container</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-1dongnhieucont')">TH2: 1 dòng – nhiều container</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-dtk-nhieudong1cont')">TH3: Nhiều dòng – 1 container</div></li></ul></li>
+                  </ul></li>
                 <!-- H2: Phân luồng --><li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H2</span>Phân luồng &amp; Kiểm tra<span class="group-badge">14</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('cascade-h2')" title="Luồng nội bộ H2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon" id="h2-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed" id="h2-children">
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H2.1</span>Phân luồng tự động<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-phan-luong')" title="WF tổng H2.1"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-luong-xanh')">TH1: Luồng Xanh</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-luong-vang')">TH2: Luồng Vàng</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-luong-do')">TH3: Luồng Đỏ</div></li></ul></li>
                   <li class="tree-li"><div class="node node-group" data-toggle="children"><span class="node-label">H2.2</span>KT hồ sơ (Vàng)<span class="group-badge">3</span><button class="cascade-btn" onclick="event.stopPropagation();showWF('hq-kt-hoso')" title="WF tổng H2.2"><i class="bi bi-diagram-3"></i></button><i class="bi bi-chevron-down toggle-icon"></i></div><ul class="tree-ul tree-ul-sub collapsible collapsed"><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hs-du')">TH1: Đủ CT → TQ</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hs-thieu')">TH2: Thiếu → Bổ sung</div></li><li class="tree-li"><div class="node node-attr" onclick="showWF('hq-hs-sai')">TH3: Sai → Chuyển Đỏ</div></li></ul></li>
@@ -2968,69 +2976,390 @@ C -->|"Thành công"| D --> H
 C -->|"Lỗi HT"| E --> B
 C -->|"Bổ sung"| F --> B
 C -->|"Sự cố dài"| G --> H`},
-'hq-dtk-them':{title:'TH1: Thêm dòng TK',sub:'Mỗi dòng = 1 mặt hàng trên ECUS',note:'Mỗi dòng gồm: HS 8 số, mô tả, SL, đơn giá, trị giá, thuế suất',chart:`flowchart TD
+// ── H1.5.1 Phân loại hàng (HS & Mô tả) ──
+'hq-dtk-hs':{title:'TH1: Tra mã HS 8 số',sub:'HS quyết định thuế + GP + CNG',note:'FWD tra biểu thuế trên ECUS – 8 số theo Danh mục AHTN',chart:`flowchart TD
 S(("Bắt đầu")):::event
-A["FWD mở TK trên ECUS"]:::fwd
-B["Thêm dòng mới"]:::fwd
-C["Nhập HS 8 số"]:::fwd
-D["Nhập mô tả + SL + Đơn giá"]:::fwd
-E["ECUS tự tính trị giá + Thuế"]:::fwd
-F{"Thêm dòng tiếp?"}:::fwd
-G["Lưu TK"]:::fwd
+A["FWD mở biểu thuế ECUS"]:::fwd
+B["Nhập từ khoá mô tả hàng"]:::fwd
+C["ECUS gợi ý mã HS"]:::fwd
+D["FWD chọn HS 8 số"]:::fwd
+E{"ECUS validate?"}:::fwd
+F["HS hợp lệ – Ghi nhận"]:::fwd
+G["HS không tồn tại – Nhập lại"]:::fwd
 H(("Hoàn thành")):::event
-S --> A --> B --> C --> D --> E --> F
-F -->|"Có"| B
-F -->|"Không"| G --> H`},
-'hq-dtk-sua':{title:'TH2: Sửa dòng TK',sub:'Sửa HS/SL/Giá trên ECUS',note:'Sửa trước nộp = tự do · Sửa sau nộp = cần đơn',chart:`flowchart TD
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> H
+E -->|"Lỗi"| G --> B`},
+'hq-dtk-mota':{title:'TH2: Mô tả hàng hoá HQ',sub:'Mô tả phải khớp HS + CI/PL',note:'Mô tả sai = HQ yêu cầu giải trình – rủi ro chuyển Đỏ',chart:`flowchart TD
 S(("Bắt đầu")):::event
-A["FWD chọn dòng cần sửa"]:::fwd
-B{"Đã nộp TK chưa?"}:::fwd
-C["Sửa trực tiếp trên ECUS"]:::fwd
-D["Khai bổ sung trên ECUS"]:::fwd
-E["ECUS tính lại thuế"]:::fwd
-F["Lưu thay đổi"]:::fwd
+A["FWD nhập mô tả hàng"]:::fwd
+B["Tên hàng + Nhãn hiệu"]:::fwd
+C["Quy cách + Model"]:::fwd
+D["Thành phần + Công dụng"]:::fwd
+E["ECUS lưu mô tả"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-dtk-hs-quanly':{title:'TH3: HS thuộc danh mục quản lý',sub:'ECUS tự động cảnh báo GP/CNG',note:'Một số HS cần GP Bộ ngành hoặc CNG trước TQ',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD chọn HS"]:::fwd
+B["ECUS đối chiếu danh mục"]:::fwd
+C{"HS quản lý?"}:::fwd
+D["Cảnh báo: Cần GP chuyên ngành"]:::fwd
+E["Cảnh báo: Cần kiểm tra CNG"]:::fwd
+F["Không quản lý – Tiếp tục"]:::fwd
+G["FWD nhập số GP/CNG"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"GP"| D --> G --> H
+C -->|"CNG"| E --> G
+C -->|"Không"| F --> H`},
+'hq-dtk-hs-sai':{title:'TH4: HS sai → ECUS cảnh báo',sub:'Rủi ro: Truy thu thuế + Phạt',note:'Sai HS = sai thuế suất – HQ phát hiện sẽ truy thu',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD nhập HS"]:::fwd
+B["ECUS so mô tả vs HS"]:::fwd
+C{"Khớp?"}:::fwd
+D["Cảnh báo: Mô tả không khớp HS"]:::fwd
+E["FWD kiểm tra lại"]:::fwd
+F{"Sửa?"}:::fwd
+G["Sửa HS mới"]:::fwd
+H["Giữ nguyên – Chịu rủi ro"]:::fwd
+I(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Khớp"| I
+C -->|"Lệch"| D --> E --> F
+F -->|"Sửa"| G --> I
+F -->|"Giữ"| H --> I`},
+'hq-dtk-phanloai':{title:'H1.5.1 Phân loại hàng',sub:'HS 8 số + Mô tả + Danh mục quản lý',note:'HS quyết định thuế suất, GP chuyên ngành, kiểm tra CNG',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Tra mã HS trên ECUS"]:::fwd
+B["Nhập mô tả hàng hoá"]:::fwd
+C{"HS thuộc DM quản lý?"}:::fwd
+D["Nhập số GP/CNG"]:::fwd
+E["Tiếp tục"]:::fwd
+F{"HS khớp mô tả?"}:::fwd
+G["Cảnh báo – Kiểm tra lại"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Có"| D --> F
+C -->|"Không"| E --> F
+F -->|"Khớp"| H
+F -->|"Lệch"| G --> A`},
+// ── H1.5.2 Lượng hàng & Đơn vị ──
+'hq-dtk-sl-chinh':{title:'TH1: SL đơn vị chính',sub:'KGM/PCE/MTR/LTR... theo HS',note:'Đơn vị chính do HQ quy định theo mã HS',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD nhập SL hàng"]:::fwd
+B["Chọn đơn vị tính (ĐVT)"]:::fwd
+C["ECUS gợi ý ĐVT theo HS"]:::fwd
+D["Nhập số lượng"]:::fwd
+E["ECUS tính trị giá dòng"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-dtk-sl-phu':{title:'TH2: SL đơn vị phụ',sub:'HQ yêu cầu khai thêm ĐVT phụ',note:'VD: Khai KGM (chính) + PCE (phụ) cho cùng dòng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HS yêu cầu ĐVT phụ"]:::fwd
+B["ECUS hiện trường ĐVT phụ"]:::fwd
+C["FWD nhập SL đơn vị phụ"]:::fwd
+D["ECUS validate"]:::fwd
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+'hq-dtk-sl-quydoi':{title:'TH3: Quy đổi đơn vị',sub:'ECUS tự quy đổi hoặc FWD nhập tay',note:'VD: 1 thùng = 24 PCE – ECUS có bảng quy đổi',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["SL gốc trên CI/PL"]:::fwd
+B{"ĐVT khớp ĐVT HQ?"}:::fwd
+C["Dùng trực tiếp"]:::fwd
+D["FWD quy đổi thủ công"]:::fwd
+E["Nhập SL đã quy đổi"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Khớp"| C --> F
+B -->|"Khác"| D --> E --> F`},
+'hq-dtk-luong':{title:'H1.5.2 Lượng hàng',sub:'ĐVT chính + phụ + Quy đổi',note:'SL quyết định trị giá dòng – sai SL = sai thuế',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Nhập SL ĐVT chính"]:::fwd
+B{"Cần ĐVT phụ?"}:::fwd
+C["Nhập SL ĐVT phụ"]:::fwd
+D{"Cần quy đổi?"}:::fwd
+E["Quy đổi ĐVT"]:::fwd
+F["ECUS ghi nhận"]:::fwd
 G(("Hoàn thành")):::event
 S --> A --> B
-B -->|"Chưa"| C --> E --> F --> G
-B -->|"Rồi"| D --> E`},
-'hq-dtk-xoa':{title:'TH3: Xoá dòng TK',sub:'Chỉ xoá được trước khi nộp',note:'Sau khi nộp phải huỷ TK hoặc khai bổ sung',chart:`flowchart TD
+B -->|"Có"| C --> D
+B -->|"Không"| D
+D -->|"Có"| E --> F
+D -->|"Không"| F
+F --> G`},
+// ── H1.5.3 Trị giá dòng ──
+'hq-dtk-dongia':{title:'TH1: Đơn giá nguyên tệ',sub:'Giá trên CI × SL = Trị giá dòng',note:'Đơn giá theo đồng tiền trên hợp đồng/CI',chart:`flowchart TD
 S(("Bắt đầu")):::event
-A["FWD chọn dòng cần xoá"]:::fwd
-B{"TK đã nộp?"}:::fwd
-C["Xoá dòng trên ECUS"]:::fwd
-D["ECUS tính lại tổng"]:::fwd
-E["Không được xoá"]:::fwd
-F["Phải huỷ TK hoặc khai BS"]:::fwd
-G(("Hoàn thành")):::event
-S --> A --> B
-B -->|"Chưa"| C --> D --> G
-B -->|"Rồi"| E --> F --> G`},
-'hq-dtk-nhieucont':{title:'TH4: Dòng nhiều container',sub:'1 dòng hàng chia ra nhiều cont',note:'Phân bổ SL/Trọng lượng theo từng cont trên ECUS',chart:`flowchart TD
+A["Lấy đơn giá từ CI"]:::fwd
+B["Nhập đơn giá vào ECUS"]:::fwd
+C["Chọn đồng tiền (USD/EUR/CNY)"]:::fwd
+D["ECUS tính: Đơn giá × SL"]:::fwd
+E["Trị giá dòng nguyên tệ"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-dtk-phanbo':{title:'TH2: Phân bổ phí VT/BH',sub:'Phí vận tải + Bảo hiểm chia theo dòng',note:'CIF = FOB + Freight + Insurance – phân bổ theo tỷ trọng',chart:`flowchart TD
 S(("Bắt đầu")):::event
-A["Dòng TK có SL lớn"]:::fwd
-B["Khai đóng nhiều cont"]:::fwd
-C["Phân bổ SL theo cont"]:::fwd
-D["Khai số cont + Seal"]:::fwd
-E["ECUS tổng hợp"]:::fwd
-F["Đối chiếu manifest"]:::hq
+A["Tổng phí VT trên CI"]:::fwd
+B["Tổng phí BH"]:::fwd
+C["ECUS tính tỷ trọng dòng"]:::fwd
+D["Phân bổ VT theo dòng"]:::fwd
+E["Phân bổ BH theo dòng"]:::fwd
+F["CIF dòng = FOB + VT + BH"]:::fwd
 G(("Hoàn thành")):::event
 S --> A --> B --> C --> D --> E --> F --> G`},
-'hq-dong-tk':{title:'H1.5 Dòng tờ khai',sub:'4 thao tác trên dòng TK',note:'Mỗi TK có N dòng – mỗi dòng = 1 mặt hàng với HS/SL/Giá/Thuế riêng',chart:`flowchart TD
+'hq-dtk-tygia':{title:'TH3: Tỷ giá quy đổi VND',sub:'Tỷ giá NHNN ngày đăng ký TK',note:'ECUS tự lấy tỷ giá – FWD không nhập tay',chart:`flowchart TD
 S(("Bắt đầu")):::event
-A["FWD mở TK trên ECUS"]:::fwd
-B{"Thao tác?"}:::fwd
-C["Thêm dòng mới"]:::fwd
-D["Sửa dòng"]:::fwd
-E["Xoá dòng"]:::fwd
-F["Phân bổ cont"]:::fwd
-G["ECUS tính tổng thuế"]:::fwd
+A["ECUS lấy tỷ giá NHNN"]:::fwd
+B["Ngày đăng ký TK"]:::fwd
+C["Tỷ giá USD/VND, EUR/VND..."]:::fwd
+D["Quy đổi trị giá sang VND"]:::fwd
+E["Trị giá tính thuế VND"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-dtk-trigia-thue':{title:'TH4: Trị giá tính thuế',sub:'CIF × Tỷ giá = Trị giá tính thuế VND',note:'Cơ sở tính tất cả các loại thuế',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["CIF dòng (nguyên tệ)"]:::fwd
+B["Tỷ giá quy đổi"]:::fwd
+C["ECUS tính: CIF × Tỷ giá"]:::fwd
+D["Trị giá tính thuế VND"]:::fwd
+E["Làm tròn theo quy định"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-dtk-trigia':{title:'H1.5.3 Trị giá dòng',sub:'Đơn giá → Phân bổ VT/BH → Tỷ giá → Trị giá thuế',note:'Trị giá dòng = cơ sở tính thuế NK + VAT',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Nhập đơn giá nguyên tệ"]:::fwd
+B["Phân bổ phí VT/BH"]:::fwd
+C["CIF dòng"]:::fwd
+D["Quy đổi VND"]:::fwd
+E["Trị giá tính thuế"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+// ── H1.5.4 Thuế theo dòng ──
+'hq-dtk-thue-nk':{title:'TH1: Thuế NK (HS + FTA)',sub:'TS theo HS – giảm nếu có C/O FTA',note:'Thuế NK = Trị giá × Thuế suất (MFN hoặc FTA)',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["ECUS tra TS theo HS"]:::fwd
+B{"Có mã ưu đãi FTA?"}:::fwd
+C["TS ưu đãi FTA"]:::fwd
+D["TS MFN thường"]:::fwd
+E["Thuế NK = Trị giá × TS"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Có"| C --> E --> F
+B -->|"Không"| D --> E`},
+'hq-dtk-thue-vat':{title:'TH2: VAT theo dòng',sub:'0% / 5% / 8% / 10% tuỳ mặt hàng',note:'VAT = (Trị giá + Thuế NK) × TS VAT',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["ECUS tra TS VAT theo HS"]:::fwd
+B{"Mức VAT?"}:::fwd
+C["0% – Miễn VAT"]:::fwd
+D["5% – Thiết yếu"]:::fwd
+E["8% – Giảm đặc biệt"]:::fwd
+F["10% – Thường"]:::fwd
+G["VAT = (CIF+NK) × TS"]:::fwd
 H(("Hoàn thành")):::event
 S --> A --> B
-B -->|"Thêm"| C --> G
-B -->|"Sửa"| D --> G
-B -->|"Xoá"| E --> G
-B -->|"Nhiều cont"| F --> G
+B -->|"0%"| C --> G
+B -->|"5%"| D --> G
+B -->|"8%"| E --> G
+B -->|"10%"| F --> G
 G --> H`},
+'hq-dtk-thue-ttdb':{title:'TH3: TTĐB / BVMT',sub:'Chỉ áp dụng cho HS đặc biệt',note:'Rượu/Bia/Thuốc lá/Ô tô/Xăng dầu – thuế rất cao',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["ECUS kiểm HS"]:::fwd
+B{"Thuộc DM TTĐB?"}:::fwd
+C["Tính TTĐB theo TS"]:::fwd
+D{"Thuộc DM BVMT?"}:::fwd
+E["Tính BVMT (đồng/tấn)"]:::fwd
+F["Không có thuế đặc biệt"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B
+B -->|"Có"| C --> D
+B -->|"Không"| D
+D -->|"Có"| E --> G
+D -->|"Không"| F --> G`},
+'hq-dtk-thue-pvtm':{title:'TH4: Thuế PVTM (AD/CVD)',sub:'Chống bán phá giá / Chống trợ cấp',note:'Áp dụng cho hàng có biện pháp PVTM – thuế rất cao',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["ECUS kiểm HS + Nước XX"]:::fwd
+B{"Có biện pháp PVTM?"}:::fwd
+C["Thuế AD (chống bán phá giá)"]:::fwd
+D["Thuế CVD (chống trợ cấp)"]:::fwd
+E["Cộng vào tổng thuế dòng"]:::fwd
+F["Không có PVTM"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B
+B -->|"AD"| C --> E --> G
+B -->|"CVD"| D --> E
+B -->|"Không"| F --> G`},
+'hq-dtk-thue':{title:'H1.5.4 Thuế theo dòng',sub:'NK + VAT + TTĐB + BVMT + PVTM',note:'ECUS tự động tính – FWD kiểm tra kết quả',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Thuế NK (HS × TS)"]:::fwd
+B["VAT ((CIF+NK) × TS)"]:::fwd
+C{"TTĐB/BVMT?"}:::fwd
+D["Tính TTĐB/BVMT"]:::fwd
+E{"PVTM?"}:::fwd
+F["Tính AD/CVD"]:::fwd
+G["Tổng thuế dòng"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Có"| D --> E
+C -->|"Không"| E
+E -->|"Có"| F --> G
+E -->|"Không"| G
+G --> H`},
+// ── H1.5.5 Xuất xứ & Ưu đãi ──
+'hq-dtk-nuocxx':{title:'TH1: Nước xuất xứ theo dòng',sub:'Mỗi dòng có thể khác nước XX',note:'1 TK có thể NK từ nhiều nước – mỗi dòng khai riêng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD chọn nước XX"]:::fwd
+B["Nhập mã nước (CN/JP/KR...)"]:::fwd
+C["ECUS đối chiếu C/O"]:::fwd
+D{"Khớp C/O?"}:::fwd
+E["Ghi nhận XX"]:::fwd
+F["Cảnh báo lệch"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Khớp"| E --> G
+D -->|"Lệch"| F --> A`},
+'hq-dtk-fta':{title:'TH2: Mã ưu đãi FTA',sub:'ATIGA/EVFTA/CPTPP/RCEP/ACFTA...',note:'Chọn đúng FTA → thuế suất giảm 5–30%',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD chọn FTA áp dụng"]:::fwd
+B["ECUS hiện TS ưu đãi"]:::fwd
+C{"Có C/O tương ứng?"}:::fwd
+D["Áp TS ưu đãi"]:::fwd
+E["Áp TS MFN thường"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Có"| D --> F
+C -->|"Không"| E --> F`},
+'hq-dtk-co':{title:'TH3: C/O áp dụng cho dòng',sub:'1 C/O có thể cover nhiều dòng',note:'FWD map C/O cho từng dòng trên ECUS',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["FWD nhập số C/O"]:::fwd
+B["Chọn dòng TK áp dụng"]:::fwd
+C["ECUS đối chiếu HS vs C/O"]:::fwd
+D{"HS nằm trong C/O?"}:::fwd
+E["Áp ưu đãi cho dòng"]:::fwd
+F["Cảnh báo: HS không có trong C/O"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C --> D
+D -->|"Có"| E --> G
+D -->|"Không"| F --> A`},
+'hq-dtk-xuatxu':{title:'H1.5.5 Xuất xứ dòng',sub:'Nước XX + FTA + C/O mapping',note:'Xuất xứ quyết định thuế suất ưu đãi cho từng dòng',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Khai nước XX"]:::fwd
+B["Chọn FTA"]:::fwd
+C{"Có C/O?"}:::fwd
+D["Map C/O cho dòng"]:::fwd
+E["Áp TS ưu đãi"]:::fwd
+F["Áp TS MFN"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B --> C
+C -->|"Có"| D --> E --> G
+C -->|"Không"| F --> G`},
+// ── H1.5.6 GP & Kiểm tra CNG ──
+'hq-dtk-gp':{title:'TH1: Dòng cần GP chuyên ngành',sub:'GP Bộ NN/YT/CT theo HS',note:'ECUS cảnh báo khi HS thuộc danh mục cần GP',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HS thuộc DM cần GP"]:::fwd
+B["ECUS yêu cầu nhập số GP"]:::fwd
+C["FWD nhập số GP + Ngày cấp"]:::fwd
+D["ECUS validate GP"]:::fwd
+E{"GP hợp lệ?"}:::fwd
+F["Tiếp tục khai"]:::fwd
+G["Không nộp được TK"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"OK"| F --> H
+E -->|"Lỗi"| G --> C`},
+'hq-dtk-cng':{title:'TH2: Dòng cần kiểm tra CNG',sub:'Kiểm dịch/An toàn TP/Chất lượng',note:'Hàng phải qua CNG trước khi TQ – kết quả ảnh hưởng GP',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HS thuộc DM kiểm tra CNG"]:::fwd
+B["ECUS hiện mã CNG"]:::fwd
+C["FWD nhập số đăng ký CNG"]:::fwd
+D["Nộp TK – Chờ kết quả CNG"]:::fwd
+E{"Kết quả CNG?"}:::qc
+F["Đạt – TQ"]:::hq
+G["Không đạt – Tái xuất"]:::hq
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E
+E -->|"Đạt"| F --> H
+E -->|"Không"| G --> H`},
+'hq-dtk-mienkiem':{title:'TH3: Dòng miễn kiểm',sub:'HS không thuộc DM quản lý',note:'Phần lớn hàng hoá thông thường – không cần GP/CNG',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["HS không thuộc DM quản lý"]:::fwd
+B["ECUS không yêu cầu GP/CNG"]:::fwd
+C["FWD bỏ qua trường GP"]:::fwd
+D["Tiếp tục khai dòng"]:::fwd
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+'hq-dtk-gpcng':{title:'H1.5.6 GP & CNG',sub:'GP chuyên ngành + CNG theo dòng',note:'ECUS tự cảnh báo khi HS thuộc danh mục quản lý',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["ECUS kiểm HS vs DM"]:::fwd
+B{"Cần GP/CNG?"}:::fwd
+C["Nhập số GP"]:::fwd
+D["Nhập mã CNG"]:::fwd
+E["Miễn kiểm"]:::fwd
+F["Tiếp tục"]:::fwd
+G(("Hoàn thành")):::event
+S --> A --> B
+B -->|"GP"| C --> F
+B -->|"CNG"| D --> F
+B -->|"Không"| E --> F
+F --> G`},
+// ── H1.5.7 Phân bổ Container ──
+'hq-dtk-1dong1cont':{title:'TH1: 1 dòng – 1 container',sub:'Trường hợp đơn giản nhất',note:'Toàn bộ SL dòng nằm trong 1 cont',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Dòng TK có 1 cont"]:::fwd
+B["Nhập số cont + Seal"]:::fwd
+C["SL dòng = SL cont"]:::fwd
+D["ECUS đối chiếu manifest"]:::fwd
+E(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E`},
+'hq-dtk-1dongnhieucont':{title:'TH2: 1 dòng – nhiều container',sub:'Hàng cùng loại đóng nhiều cont',note:'Phân bổ SL/Trọng lượng theo từng cont',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Dòng TK đóng nhiều cont"]:::fwd
+B["Nhập danh sách cont"]:::fwd
+C["Phân bổ SL theo cont"]:::fwd
+D["Phân bổ trọng lượng"]:::fwd
+E["ECUS tổng hợp = SL dòng"]:::fwd
+F{"Khớp SL dòng?"}:::fwd
+G["Lưu"]:::fwd
+H["Sửa lại phân bổ"]:::fwd
+I(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F
+F -->|"Khớp"| G --> I
+F -->|"Lệch"| H --> C`},
+'hq-dtk-nhieudong1cont':{title:'TH3: Nhiều dòng – 1 container',sub:'Nhiều mặt hàng chung 1 cont',note:'Trường hợp phổ biến – hàng LCL hoặc nhiều HS cùng cont',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A["Nhiều dòng TK cùng 1 cont"]:::fwd
+B["Mỗi dòng khai cùng số cont"]:::fwd
+C["Phân bổ SL riêng mỗi dòng"]:::fwd
+D["ECUS tổng trọng lượng cont"]:::fwd
+E["Đối chiếu manifest"]:::fwd
+F(("Hoàn thành")):::event
+S --> A --> B --> C --> D --> E --> F`},
+'hq-dtk-cont':{title:'H1.5.7 Phân bổ Container',sub:'3 kiểu phân bổ dòng/cont',note:'Đối chiếu SL dòng vs SL cont vs manifest hãng tàu',chart:`flowchart TD
+S(("Bắt đầu")):::event
+A{"Kiểu phân bổ?"}:::fwd
+B["1 dòng – 1 cont"]:::fwd
+C["1 dòng – nhiều cont"]:::fwd
+D["Nhiều dòng – 1 cont"]:::fwd
+E["ECUS đối chiếu manifest"]:::fwd
+F(("Hoàn thành")):::event
+S --> A
+A -->|"1:1"| B --> E
+A -->|"1:N"| C --> E
+A -->|"N:1"| D --> E
+E --> F`},
+'cascade-h15':{title:'H1.5: Luồng nội bộ Dòng TK',sub:'7 nhóm trường trên ECUS',note:'Phân loại → Lượng → Trị giá → Thuế → XX → GP/CNG → Container',chart:`flowchart TD
+S(("FWD thêm dòng")):::event
+A["H1.5.1 Phân loại (HS)"]:::fwd
+B["H1.5.2 Lượng hàng"]:::fwd
+C["H1.5.3 Trị giá dòng"]:::fwd
+D["H1.5.4 Thuế theo dòng"]:::thue
+E["H1.5.5 Xuất xứ"]:::fwd
+F["H1.5.6 GP/CNG"]:::hq
+G["H1.5.7 Container"]:::fwd
+H(("Hoàn thành")):::event
+S --> A --> B --> C --> E
+E --> D --> F --> G --> H`},
 'cascade-h1':{title:'H1: Luồng nội bộ Tờ khai',sub:'5 bước tuần tự trên ECUS',note:'H1.1 Đăng ký → H1.2 Khai báo → H1.5 Dòng TK → H1.3 Sửa/Huỷ → H1.4 Nộp ECUS',chart:`flowchart TD
 S(("KH yêu cầu khai TK")):::event
 A["H1.1 Đăng ký TK"]:::fwd
