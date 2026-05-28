@@ -110,6 +110,10 @@
     .cascade-btn:hover{background:rgba(251,191,36,.25);transform:scale(1.1);box-shadow:0 0 8px rgba(251,191,36,.3)}
 
     
+    
+    .wf-help-term{color:#fbbf24;cursor:help;border-bottom:1px dashed rgba(251,191,36,.4);position:relative}
+    .wf-help-term sup{font-size:8px;color:rgba(251,191,36,.6);margin-left:1px}
+    .wf-help-term:hover{color:#fde68a}
     /* ── GLOSSARY PANEL ── */
     .glossary-panel{position:fixed;bottom:14px;right:14px;width:320px;background:rgba(13,17,23,.97);border:1px solid var(--border);border-radius:12px;backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,.5);z-index:100;font-size:11px;transition:all .3s ease;max-height:calc(100vh - 100px);overflow:hidden;display:flex;flex-direction:column}
     .glossary-panel.gl-collapsed .glossary-body{max-height:0;padding:0 10px;overflow:hidden}
@@ -5875,7 +5879,7 @@ window.showWF = async function(key) {
   document.getElementById('wfNote').innerHTML = '<i class="bi bi-cpu"></i> ' + d.note;
   mZoom = 1; mTx=0; mTy=0; applyMZ();
   modal.classList.add('open');
-  if (svgCache[key]) { chartWrap.innerHTML = svgCache[key]; setTimeout(mZFit,50); return; }
+  if (svgCache[key]) { chartWrap.innerHTML = svgCache[key]; injectSvgHelp(); setTimeout(mZFit,50); return; }
   chartWrap.innerHTML = '<div class="loading-indicator"><i class="bi bi-arrow-repeat"></i>Rendering...</div>';
   try {
     renderN++;
@@ -6122,6 +6126,33 @@ for(const terms of Object.values(GLOSSARY)){
   }
 }
 
+
+// Inject help tooltips into rendered Mermaid SVG nodes
+function injectSvgHelp(){
+  const nodes = chartWrap.querySelectorAll('.node .label, .nodeLabel, .edgeLabel .label');
+  nodes.forEach(el => {
+    const text = el.textContent.trim();
+    for(const [term, def] of Object.entries(HELP_LOOKUP)){
+      if(text.toLowerCase().includes(term.toLowerCase()) && term.length > 1){
+        const parent = el.closest('.node') || el.closest('.edgeLabel') || el;
+        parent.style.cursor = 'help';
+        parent.setAttribute('data-svghelp', term);
+        // Add subtle indicator
+        parent.addEventListener('mouseenter', function(e){
+          const r = this.getBoundingClientRect();
+          helpTip.innerHTML = `<div class="ht-term">${term.toUpperCase()}</div><div class="ht-def">${HELP_LOOKUP[term]}</div>`;
+          helpTip.style.display = 'block';
+          helpTip.style.left = Math.min(r.left, window.innerWidth - 300) + 'px';
+          helpTip.style.top = (r.bottom + 6) + 'px';
+        });
+        parent.addEventListener('mouseleave', function(){
+          helpTip.style.display = 'none';
+        });
+        break;
+      }
+    }
+  });
+}
 // Add data-help to tree nodes that contain known terms
 document.querySelectorAll('.node').forEach(node=>{
   const text=node.textContent;
