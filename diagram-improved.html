@@ -6106,7 +6106,7 @@ function filterGlossary(q){
     g.classList.toggle('gl-hide',!hasVisible);
   });
 }
-renderGlossary();
+document.addEventListener('DOMContentLoaded',()=>{renderGlossary();
 
 // Help tooltip on hover for tree nodes with data-help
 const helpTip=document.createElement('div');
@@ -6149,6 +6149,7 @@ document.addEventListener('mouseover',e=>{
 document.addEventListener('mouseout',e=>{
   if(!e.target.closest('[data-help]'))helpTip.style.display='none';
 });
+}); // end DOMContentLoaded
 </script>
 
 <!-- ═══ GLOSSARY PANEL ═══ -->
