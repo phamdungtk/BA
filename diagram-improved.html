@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -4824,25 +4824,25 @@ D -->|"Có"| E --> H
 D -->|"Không"| H
 S --> F --> H
 S --> G --> H`},
-'cascade-hq-master':{title:'Tổng thể Module Hải quan',sub:'7 nhóm · 124 TH',note:'H1→H2→H3→H4→H5 (H6 song song) → H7 sau TQ',chart:`flowchart TD
+'cascade-hq-master':{title:'Tổng thể Hải quan – 7 nhóm H bắt cặp (8 cặp)',sub:'H1 (Tờ khai) → H2 (Phân luồng) → H3 (Thuế) → H4 (KT) → H5 (TQ) + H6 (CK) → H7 (Sau TQ)',note:'8 cặp: ①H1→H2, ②H2→H3, ③H3→H4, ④H4→H5, ⑤H5→H7, ⑥H6→H2, ⑦H5→E, ⑧H7→E',chart:`flowchart TD
 S(("KH yêu cầu NK")):::event
 H1["H1: Tờ khai (55)"]:::fwd
 H2["H2: Phân luồng (8)"]:::hq
-H3["H3: Trị giá + Thuế (14)"]:::thue
+H3["H3: Trị giá + Thuế (17)"]:::thue
 H4["H4: Kiểm tra HQ (9)"]:::hq
 H5["H5: Thông quan (11)"]:::hq
 H6["H6: Cửa khẩu (10)"]:::fwd
-H7["H7: Sau TQ (15)"]:::hq
+H7["H7: Sau TQ (21)"]:::hq
 E(("Hàng về kho")):::event
 S --> H1
-H1 -->|"Khai + Nộp"| H2
-H2 -->|"Phân luồng"| H3
-H3 -->|"Nộp thuế"| H4
-H6 -->|"Hàng đến CK"| H2
-H4 -->|"KT xong"| H5
-H5 -->|"TQ"| E
-H5 -..->|"Hậu kiểm"| H7
-H7 -..-> E`},
+H1 -->|"① Khai + Nộp"| H2
+H2 -->|"② Phân luồng→Thuế"| H3
+H3 -->|"③ Nộp thuế→KT"| H4
+H4 -->|"④ KT xong→TQ"| H5
+H6 -->|"⑥ Hàng đến CK"| H2
+H5 -->|"⑦ TQ"| E
+H5 -.->|"⑤ Hậu kiểm"| H7
+H7 -.->|"⑧"| E`},
 // ═══════════════ NEW WFs: Đợt 1 Gap Fill ═══════════════
 // ── G1: Model/Spec, SKU ──
 'model-spec':{title:'Model / Spec',sub:'Mã model + thông số kỹ thuật',note:'ECUS yêu cầu mô tả chi tiết sản phẩm',chart:`flowchart TD
