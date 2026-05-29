@@ -240,8 +240,8 @@
 
     .hint-bar{position:fixed;top:100px;left:50%;transform:translateX(-50%);background:rgba(13,17,23,.9);border:1px solid var(--border);border-radius:8px;padding:4px 12px;font-size:10px;color:var(--text-muted);backdrop-filter:blur(8px);display:flex;align-items:center;gap:6px;z-index:50;opacity:1;transition:opacity .5s;pointer-events:none}
     .hint-bar.hidden{opacity:0}
-    .collapsible{overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1),opacity .35s;max-height:5000px;opacity:1}
-    .collapsible.collapsed{max-height:0!important;opacity:0}
+    .collapsible{overflow:hidden;max-height:5000px;opacity:1;position:relative;visibility:visible}
+    .collapsible.collapsed{max-height:0!important;opacity:0;overflow:hidden;padding:0!important;margin:0!important;pointer-events:none;position:absolute;visibility:hidden}
   </style>
 </head>
 <body>
