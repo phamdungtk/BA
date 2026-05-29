@@ -6269,13 +6269,32 @@ window.buildOlLevel=function(ul, depth){
   lis.forEach(li => {
     const node = li.querySelector(':scope > .node');
     if(!node) return;
-    const text = node.textContent.replace(/[▸▾]/g,'').replace(/\s+/g,' ').trim();
+    // Clean text: remove labels, badges, button text, icons
+    let text = '';
+    node.childNodes.forEach(ch => {
+      if(ch.nodeType === 3) text += ch.textContent;
+      else if(ch.classList && !ch.classList.contains('node-label') && !ch.classList.contains('group-badge') && !ch.classList.contains('cascade-btn') && !ch.classList.contains('toggle-icon') && !ch.classList.contains('cat-icon') && !ch.classList.contains('entity-icon'))
+        text += ch.textContent;
+    });
+    text = text.replace(/[▸▾★📊]/g,'').replace(/\s+/g,' ').trim();
+    const label = node.querySelector('.node-label');
+    if(label) text = label.textContent.trim() + ' ' + text;
     const subUl = li.querySelector(':scope > .tree-ul');
     const childCount = subUl ? subUl.querySelectorAll(':scope > .tree-li').length : 0;
     const hasChildren = childCount > 0;
+    // Get WF key from onclick OR cascade button
+    let wfKey = '';
     const onclickAttr = node.getAttribute('onclick') || '';
     const wfMatch = onclickAttr.match(/showWF\('([^']+)'\)/);
-    const wfKey = wfMatch ? wfMatch[1] : '';
+    if(wfMatch) wfKey = wfMatch[1];
+    else {
+      const cascBtn = node.querySelector('.cascade-btn');
+      if(cascBtn){
+        const cascClick = cascBtn.getAttribute('onclick') || '';
+        const cascMatch = cascClick.match(/showWF\('([^']+)'\)/);
+        if(cascMatch) wfKey = cascMatch[1];
+      }
+    }
     
     let icon = '📄';
     if(node.classList.contains('node-root')) icon = '🏠';
